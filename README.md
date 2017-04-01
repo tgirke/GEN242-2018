@@ -1,2 +1,3 @@
-# GEN242-2017
-Class: Data Analysis in Genome Biology
+# Class: Data Analysis in Genome Biology (GEN242)
+
+The website of this repository is available [here](http://girke.bioinformatics.ucr.edu/GEN242-2017).
