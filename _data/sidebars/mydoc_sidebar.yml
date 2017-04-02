@@ -2,8 +2,8 @@
 
 entries:
 - title: sidebar
-  product: <center><font color="#8b9299" size="6">GEN242</font></center>
-  version: <center><font color="#8b9299" size="3">Spring 2017</font></center>
+  product: GEN242
+  version: Spring 2017
   folders:
 
   - title:
