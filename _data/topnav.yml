@@ -3,8 +3,8 @@
 topnav:
 - title: Topnav
   items:
-    - title: News
-      url: /news
+    - title: Piazza
+      external_url: https://piazza.com/class/j10z7wzbqum2tb
 
 #Topnav dropdowns
 topnav_dropdowns:
