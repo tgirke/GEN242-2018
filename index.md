@@ -1,4 +1,5 @@
 ---
+layout: page
 title: Data Analysis in Genome Biology
 sidebar: mydoc_sidebar
 permalink: index.html

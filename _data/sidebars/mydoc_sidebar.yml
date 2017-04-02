@@ -19,17 +19,17 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Overview
+  - title: Home
     output: web, pdf
     folderitems:
 
-    - title: Get started
+    - title: Introduction
       url: /index.html
       output: web, pdf
       type: homepage
 
-    - title: Introduction
-      url: /mydoc_introduction.html
+    - title: Syllabus
+      url: /mydoc_syllabus.html
       output: web, pdf
 
     - title: Supported features
