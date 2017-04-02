@@ -31,7 +31,14 @@ entries:
     - title: Syllabus
       url: /mydoc_syllabus.html
       output: web, pdf
+  
+  - title: Internal
+    output: web, pdf
+    folderitems:
 
+    - title: Internal Resources
+      url: /mydoc_internal.html
+      output: web, pdf
 
   - title: Schedule
     output: web, pdf
