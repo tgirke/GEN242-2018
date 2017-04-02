@@ -1,7 +1,8 @@
 ---
-layout: page
 title: Data Analysis in Genome Biology
-summary: These brief instructions will help you get started quickly with the theme. The other topics in this help provide additional information and detail about working with other aspects of this theme and Jekyll. GEN242 is a graduate class taught at the University of California, Riverside. Currently, the main instructor is <a href="http://girke.bioinformatics.ucr.edu/">Thomas Girke</a>.
+sidebar: mydoc_sidebar
+permalink: index.html
+summary: GEN242 is a graduate class taught at the University of California, Riverside. Currently, the main instructor is <a href="http://girke.bioinformatics.ucr.edu/">Thomas Girke</a>.
 ---
 
 <img align="right" title="gen242logo" src="pages/mydoc/GEN242_home_images/logo1.jpg"><img/>
