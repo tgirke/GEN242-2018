@@ -47,4 +47,69 @@ entries:
     - title: Course Schedule
       url: /mydoc_schedule.html
       output: web, pdf
+  
+  - title: Lecture Slides
+    output: web
+    folderitems:
+
+    - title: Course Introduction
+      url: /mydoc/mydoc_slides_01.html
+      output: web
+    
+  - title: Homework
+    output: web
+    folderitems:
+      
+  - title: GitHub
+    output: web
+    folderitems:
+
+  - title: Biocluster & Linux
+    output: web
+    folderitems:
+    
+  - title: Introduction to R
+    output: web
+    folderitems:
+
+  - title: Programming in R
+    output: web
+    folderitems:
+
+  - title: NGS Analysis Basics
+    output: web
+    folderitems:
+
+  - title: NGS Workflow Overview
+    output: web
+    folderitems:
+
+  - title: RNA-Seq Workflow
+    output: web
+    folderitems:
+
+  - title: ChIP-Seq Workflow
+    output: web
+    folderitems:
+
+  - title: VAR-Seq Workflow
+    output: web
+    folderitems:
+
+  - title: Graphics and Visualization
+    output: web
+    folderitems:
+
+  - title: Cluster Analysis
+    output: web
+    folderitems:
+
+  - title: Paper Presentations
+    output: web
+    folderitems:
+
+  - title: Course Projects
+    output: web
+    folderitems:
+    
 
