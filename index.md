@@ -1,5 +1,5 @@
 ---
-title: Getting started with the Documentation Theme for Jekyll
+title: Data Analysis in Genome Biology
 keywords: sample homepage
 tags: [getting_started]
 sidebar: mydoc_sidebar
