@@ -53,7 +53,7 @@ entries:
     folderitems:
 
     - title: Course Introduction
-      url: /mydoc/mydoc_slides_01.html
+      url: /mydoc_slides_01.html
       output: web
     
   - title: Homework
