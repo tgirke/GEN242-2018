@@ -6,7 +6,7 @@ topnav:
     - title: Piazza
       external_url: https://piazza.com/class/j10z7wzbqum2tb
     - title: GitHub Repo
-      external_url: https://github.com/tgirke/GEN242-2017
+      external_url: https://github.com/tgirke/GEN242
 
 #Topnav dropdowns
 topnav_dropdowns:
