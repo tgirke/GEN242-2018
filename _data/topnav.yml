@@ -22,8 +22,8 @@ topnav_dropdowns:
           external_url: http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual
         - title: GitHub
           external_url: https://guides.github.com/activities/hello-world/
-        - title: Jekyll
-          external_url: http://jekyllrb.com/
+        - title: HPC Center (HPCC)
+          external_url: http://hpcc.ucr.edu/
         - title: Girke Lab
           external_url: http://girke.bioinformatics.ucr.edu/
         - title: Jekyll Doc Theme
