@@ -1,0 +1,115 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: <center><font color="#26466D" size="6">GEN242</font></center>
+  version: <center><font color="#8b9299" size="3">Spring 2017</font></center>
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage
+      output: pdf
+      type: frontmatter
+
+  - title: Home
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /index.html
+      output: web, pdf
+      type: homepage
+
+    - title: Syllabus
+      url: /mydoc_syllabus.html
+      output: web, pdf
+  
+  - title: Internal
+    output: web, pdf
+    folderitems:
+
+    - title: Internal Resources
+      url: /mydoc_internal.html
+      output: web, pdf
+
+  - title: Schedule
+    output: web, pdf
+    folderitems:
+
+    - title: Course Schedule
+      url: /mydoc_schedule.html
+      output: web, pdf
+  
+  - title: Lecture Slides
+    output: web
+    folderitems:
+
+    - title: Course Introduction
+      url: /mydoc_slides_01.html
+      output: web
+    
+  - title: Homework
+    output: web
+    folderitems:
+      
+  - title: GitHub
+    output: web
+    folderitems:
+
+  - title: Biocluster & Linux
+    output: web
+    folderitems:
+    
+  - title: Introduction to R
+    output: web
+    folderitems:
+
+  - title: Programming in R
+    output: web
+    folderitems:
+
+  - title: NGS Analysis Basics
+    output: web
+    folderitems:
+
+  - title: NGS Workflow Overview
+    output: web
+    folderitems:
+
+  - title: RNA-Seq Workflow
+    output: web
+    folderitems:
+
+  - title: ChIP-Seq Workflow
+    output: web
+    folderitems:
+
+  - title: VAR-Seq Workflow
+    output: web
+    folderitems:
+
+  - title: Graphics and Visualization
+    output: web
+    folderitems:
+
+  - title: Cluster Analysis
+    output: web
+    folderitems:
+
+  - title: Paper Presentations
+    output: web
+    folderitems:
+
+  - title: Course Projects
+    output: web
+    folderitems:
+    
+

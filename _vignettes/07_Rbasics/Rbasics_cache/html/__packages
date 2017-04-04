@@ -1,0 +1,9 @@
+base
+BiocStyle
+limma
+ggplot2
+gplots
+DBI
+RSQLite
+knitr
+xtable

@@ -1,0 +1,125 @@
+[
+
+
+
+
+
+
+{
+"title": "Data Analysis in Genome Biology",
+"tags": "",
+"keywords": "",
+"url": "index.html",
+"summary": "GEN242 is a graduate class taught at the University of California, Riverside. Currently, the main instructor is <a href="http://girke.bioinformatics.ucr.edu/">Thomas Girke</a>."
+}
+,
+
+
+
+{
+"title": "Internal Resources",
+"tags": "",
+"keywords": "",
+"url": "mydoc_internal.html",
+"summary": "This page provides a link to password protected resources that are only accessible to students of this class."
+}
+,
+
+
+
+{
+"title": "Course Schedule",
+"tags": "",
+"keywords": "",
+"url": "mydoc_schedule.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Scroll layout",
+"tags": "special_layouts",
+"keywords": "json, scrolling, scrollto, jquery plugin",
+"url": "jsmydoc_scroll.html",
+"summary": "This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way."
+}
+,
+
+
+
+{
+"title": "Course Introduction",
+"tags": "",
+"keywords": "",
+"url": "mydoc_slides_01.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Syllabus - GEN242",
+"tags": "",
+"keywords": "",
+"url": "mydoc_syllabus.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "GitHub Introduction",
+"tags": "",
+"keywords": "",
+"url": "mydoc_tutorial_01.html",
+"summary": ""
+}
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+"title": "Sample post",
+"tags": "newsgetting_started",
+"keywords": "",
+"url": "samplepost.html",
+"summary": "This is some summary frontmatter for my sample post."
+}
+,
+
+
+{
+"title": "Welcome to Jekyll!",
+"tags": "news",
+"keywords": "",
+"url": "myupdate.html",
+"summary": ""
+}
+,
+
+
+{
+"title": "Test post from last year",
+"tags": "news",
+"keywords": "",
+"url": "test-post-from-last-year.html",
+"summary": ""
+}
+
+
+
+]
