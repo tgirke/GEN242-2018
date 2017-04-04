@@ -68,7 +68,7 @@ git push -u origin master
 + Clone existing remote repository
     
 {% highlight sh %}
-git clone git@github.com:<user_name>/<repos_name>.git
+git clone https://github.com/<user_name>/<repos_name>.git
 {% endhighlight %}
 
 + Before working on project, update local git repos 
