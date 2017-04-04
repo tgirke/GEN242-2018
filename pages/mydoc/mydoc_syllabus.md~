@@ -64,9 +64,9 @@ Safari) preinstalled. Tablet computers with mobile operating systems are not
 suitable for running the required software. User accounts on a research
 computer cluster will be provided at the beginning of the course. To log in to
 the cluster, students also need to install a terminal application for their
-operating system (_e.g._ [iTerm2](http://www.iterm2.com/#/section/home) on OS X
-or [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) on
-Windows) as well as a file exchange software such as
+operating system (_e.g._ [iTerm2](http://www.iterm2.com/#/section/home) on OS X,
+and [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) or 
+[MobaXterm](http://mobaxterm.mobatek.net/) on Windows) as well as a file exchange software such as
 [FileZilla](https://filezilla-project.org/download.php?type=client). In
 addition, a recent version of [R](http://www.r-project.org) and
 [RStudio](http://rstudio.org) should be installed on each laptop.
