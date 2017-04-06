@@ -8,7 +8,7 @@ permalink: mydoc_tutorial_02.html
 
 * A compute cluster is an assembly of CPU units, so called compute nodes that work together to perform many computations in parallel. To achieve this, an internal network (e.g. Infiniband interconnect) connects the nodes to a larger unit, while a head node controls the load and traffic across the entire system.
 
-* Usually, users log into the head node to submit their compute requests via `qsub` to a queuing system provided by resource management and scheduling software, such as TORQUE and MAUI. The queuing system distributes the processes to the compute nodes in a controlled fashion.
+* Usually, users log into the head node to submit their compute requests via `srun` to a queuing system provided by resource management and scheduling software, such as TORQUE and MAUI. The queuing system distributes the processes to the compute nodes in a controlled fashion.
 
 * Because the head node controls the entire system, users should never run compute jobs on the head node directly!
 
@@ -33,7 +33,7 @@ permalink: mydoc_tutorial_02.html
 
 ### User traffic
 
-- Compute tasks need to be submitted via `qsub`
+- Compute tasks need to be submitted via `srun`
 - Biocluster headnode only for login, not for compute tasks!
 - Monitor cluster activity: `qstat` or `qstatMonitor`
 
@@ -269,7 +269,7 @@ The disk usage of `home` and `bigdata` can be monitored on the [Biocluster Dashb
 ## Queuing system 
 
 Biocluster uses Slurm as queuing and load balancing system. To control user traffic, any 
-type of compute intensive jobs need to be submitted via the `qsub` (see below) to the compute 
+type of compute intensive jobs need to be submitted via the `srun` (see below) to the compute 
 nodes. Much more detailed information on this topic is available in the biocluster manual 
 [here](http://hpcc.ucr.edu/manuals_linux-cluster_intro.html).
 
