@@ -12,23 +12,23 @@ permalink: mydoc_tutorial_02.html
 
 * Because the head node controls the entire system, users should never run compute jobs on the head node directly!
 
-* For code testing purposes, one can log into one of the nodes with `qsub -I` and run jobs interactively. Alternatively, one can log into the test node owl via ssh.
+* For code testing purposes, one can log into one of the nodes with `srun --pty bash -l` and run jobs interactively. Alternatively, one can log into the test node owl via ssh.
 
 ## Hardware Infrastructure
 
 ### Compute nodes
 
-- Over 3,000 CPU cores
+- Over 4,500 CPU cores
 - 50 batch compute nodes, each with 64 CPU cores and 512GB RAM
 - 6 high-memory nodes, each 32 CPU cores and 1024GB RAM
-- 4 GPU nodes, each with 10,000 cuda cores
+- 12 GPU nodes, each with 5,000 cuda cores
     
 ### Interconnect 
 - FDR IB @56Gbs 
 
 ### Storage
 
-- Parallel GPFS storage system with 1.5PB usable space
+- Parallel GPFS storage system with 2.1 PB usable space
 - Backup of same architecture and similar amount
 
 ### User traffic
@@ -39,8 +39,8 @@ permalink: mydoc_tutorial_02.html
 
 ### Manuals
 
-- [Biocluster Manual](http://manuals.bioinformatics.ucr.edu/home/hpc)
-- [Linux Manual](http://manuals.bioinformatics.ucr.edu/home/linux-basics#TOC-Exercises)
+- [Biocluster Manual](http://hpcc.ucr.edu/manuals_linux-cluster_intro.html)
+- [Linux Manual](http://hpcc.ucr.edu/manuals_linux-basics.html)
 
 
 ## Log into Biocluster
@@ -166,7 +166,7 @@ grep pattern nonexistingfile 2 > mystderr
 
 ## Homework Assignment (HW2)
 
-See HW2 page [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_homework_02.html).
+See HW2 page [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_02.html).
 
 ## Permissions and ownership
 
@@ -268,10 +268,12 @@ The disk usage of `home` and `bigdata` can be monitored on the [Biocluster Dashb
 
 ## Queuing system 
 
-Biocluster uses Torque/Maui as queuing and load balancing system. To control user traffic, any 
+Biocluster uses Slurm as queuing and load balancing system. To control user traffic, any 
 type of compute intensive jobs need to be submitted via the `qsub` (see below) to the compute 
 nodes. Much more detailed information on this topic is available in the biocluster manual 
-[here](http://manuals.bioinformatics.ucr.edu/home/hpc).
+[here](http://hpcc.ucr.edu/manuals_linux-cluster_intro.html).
+
+<!--
 
 ### Job submission with `qsub`
 
@@ -361,6 +363,8 @@ Altering jobs with `qalter` (here walltime)
 {% highlight sh %}
 qalter -l walltime=8:00 <JOBID>
 {% endhighlight %}
+
+-->
 
 ## Text/code editor options
 
