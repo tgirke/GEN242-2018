@@ -67,6 +67,10 @@ entries:
   - title: Homework
     output: web
     folderitems:
+    
+    - title: HW1 - Online Tools
+      url: /mydoc_homework_01.html
+      output: web
       
   - title: GitHub
     output: web
