@@ -94,7 +94,7 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
         image_dir2 <- gsub("^.*/", "", image_dir) # Note, image path is relative in html source
         newhtmlimgpath <- paste0(image_dir2, "/", gsub("^.*/", "", htmlimgpath))
         newhtmlimgpath <- paste0(gsub("(^.*?src=\").*", "\\1", htmlimgtag), 
-                                 "../", newhtmlimgpath, 
+                                 "./pages/mydoc/", newhtmlimgpath, 
                                  gsub("^.*?src=\".*?(\".*)", "\\1", htmlimgtag))
         md[htmlimgindex] <- newhtmlimgpath
         ## Copy image files into image_dir
@@ -111,7 +111,7 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
         image_dir2 <- gsub("^.*/", "", image_dir) # Note, image path is relative in html source
         newmdimgpath <- paste0(image_dir2, "/", gsub("^.*/", "", mdimgpath))
         newmdimgpath <- paste0(gsub("(\\!\\[.*{0,}\\]\\().*", "\\1", mdimgtag),
-                               "../", newmdimgpath,
+                               "./pages/mydoc/", newmdimgpath,
                                ")")
         md[mdimgindex] <- newmdimgpath
         ## Copy image files into image_dir
@@ -149,18 +149,19 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     }
     
     ## (7) Add Jekyll Doc front matter to each list component
-    for(i in seq_along(mdlist)) {
+    for(i in seq_along(mdlist)) { 
         frontmatter <- c(starttag="---", 
                          title=paste0("title: ", gsub("^# {1,}", "", titles[i])), 
-                         keywords="keywords: ", 
                          last_updated=paste0("last_updated: ", date()), 
+                         sidebar="sidebar: mydoc_sidebar",
+                         permalink="permalink: ",
                          endtag="---")
         mdlist[[i]] <- c(as.character(frontmatter), mdlist[[i]][-1])
     }
     
     ## Special handling of first page
     mdlist[[1]][2] <- paste0("title: ", mymaindoctitle) # Uses in front matter main title of source document
-    mdlist[[1]] <- c(mdlist[[1]][1:5], myauthor, "", mydate, "", altformats, "", paste0("#", titles[1]), mdlist[[1]][6:length(mdlist[[1]])])    
+    mdlist[[1]] <- c(mdlist[[1]][1:6], myauthor, "", mydate, "", altformats, "", paste0("#", titles[1]), mdlist[[1]][6:length(mdlist[[1]])])    
 
     ## (8) Write sections to files named after input files with numbers appended
     filenumbers <- sprintf(paste0("%0", as.character(nchar(length(mdlist))), "d"), seq_along(mdlist))
@@ -172,10 +173,16 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     }
     filenames <- paste0(gsub("/$", "", outpath), "/mydoc_", outfilebasename, "_", filenumbers, ".md")
     filenames <- gsub("/{1,}", "/", filenames)
+    
+    ## Add permalink info to front matter 
+    permalink <- paste0(gsub("(^.*/)|(md$)", "", filenames), "html")
+    for(i in seq_along(mdlist)) mdlist[[i]][5] <- paste0(mdlist[[i]][5], permalink[i])
+    
     for(i in seq_along(mdlist)) {
         writeLines(mdlist[[i]], filenames[i])
         cat(paste("Created file:", filenames[i]), "\n") 
     }
+    
     
     ## (9) Register new files in sidebar (_data/sidebars/mydoc_sidebar.yml)
     sb <- readLines("../../_data/sidebars/mydoc_sidebar.yml") 
@@ -455,7 +462,7 @@ renderBib <- function(x, bibtex="bibtex.bib") {
 
 ## Run from command-line with arguments
 myargs <- commandArgs()
-md2Jekyll(mdfile=myargs[6], sidebartitle=NULL, sidebarpos=as.numeric(myargs[7]), outfilebasename=NULL, outpath="../../mydoc", sidebar_url_path="../../_data/sidebars/", fenced2highlight=TRUE, image_dir=NULL)
+md2Jekyll(mdfile=myargs[6], sidebartitle=NULL, sidebarpos=as.numeric(myargs[7]), outfilebasename=NULL, outpath="../../pages/mydoc", sidebar_url_path="../../_data/sidebars/", fenced2highlight=TRUE, image_dir=NULL)
 # $ Rscript ../md2jekyll.R bioassayR.knit.md 8
 
 

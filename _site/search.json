@@ -17,6 +17,193 @@
 
 
 {
+"title": "Introduction to R",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_01.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "R Package Repositories",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_02.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Installation of R and Add-on Packages",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_03.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Getting Around",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_04.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Basic Syntax",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_05.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Data Types",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_06.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Data objects",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_07.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Important Utilities",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_08.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Operators and Calculations",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_09.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Reading and Writing External Data",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_10.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Useful R Functions",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_11.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "SQLite Databases",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_12.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Graphics in R",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_13.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Analysis Routine",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_14.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "R Markdown",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_15.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Session Info",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_16.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "References",
+"tags": "",
+"keywords": "",
+"url": "mydoc_Rbasics_17.html",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "Internal Resources",
 "tags": "",
 "keywords": "",
