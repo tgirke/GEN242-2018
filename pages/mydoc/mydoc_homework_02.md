@@ -49,7 +49,7 @@ blastall -p blastp -i myseq.fasta -d halobacterium.faa -o blastp.out -e 1e-6 -v 
 blastall -p blastp -i myseq.fasta -d halobacterium.faa -m 8 -e 1e-6 > blastp.tab
 {% endhighlight %}
 
-Additional exercise material in [Linux Manual](http://manuals.bioinformatics.ucr.edu/home/linux-basics#TOC-Exercises)
+Additional exercise material in [Linux Manual](http://hpcc.ucr.edu/manuals_linux-basics.html#exercises)
 
 ## Homework assignment
 
@@ -62,4 +62,4 @@ Upload result file to your private course GitHub repository under `Homework/HW2/
 
 ## Due date
 
-Most homeworks will be due one week after they are assigned. This one is due on Thu, April 7th at 6:00 PM.
+Most homeworks will be due one week after they are assigned. This one is due on Thu, April 13th at 6:00 PM.
