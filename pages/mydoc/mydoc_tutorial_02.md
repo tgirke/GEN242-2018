@@ -417,7 +417,7 @@ Important modifier keys to control vim
 ## Vim-R-Tmux essentials
 Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r)
 
-<center><img title="Vim-R-Tmux" src="Rbasics_files/screenshot.png" ></center>
+<center><img title="Vim-R-Tmux" src="pages/mydoc/Rbasics_files/screenshot.png" ></center>
 <center>Vim-R-Tmux IDE for R</center>
 
 ### Basics

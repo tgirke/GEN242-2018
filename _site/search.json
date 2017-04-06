@@ -248,6 +248,28 @@
 
 
 {
+"title": "Molecular Biology Essentials",
+"tags": "",
+"keywords": "",
+"url": "mydoc_slides_02.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Databases and Software for Genome Biology",
+"tags": "",
+"keywords": "",
+"url": "mydoc_slides_03.html",
+"summary": ""
+}
+,
+
+
+
+{
 "title": "Syllabus - GEN242",
 "tags": "",
 "keywords": "",
@@ -263,6 +285,17 @@
 "tags": "",
 "keywords": "",
 "url": "mydoc_tutorial_01.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Introduction to Biocluster and Linux",
+"tags": "",
+"keywords": "",
+"url": "mydoc_tutorial_02.html",
 "summary": ""
 }
 ,
