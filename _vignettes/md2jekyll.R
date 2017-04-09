@@ -193,10 +193,13 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
         cat(paste("Created file:", filenames[i]), "\n") 
     }
     
-    ## (9) Copy R Markdown *.html to pages/mydoc. This makes it easier to render this HTML file on GitHub
+    ## (9) Copy R Markdown *.html and *.pdf to pages/mydoc. This makes it easier to render files on GitHub
     rmdhtmlfile <- paste0(outpath, "/", gsub(".knit.md", ".html", mdfile))
     file.copy(from=basename(rmdhtmlfile), to=rmdhtmlfile, overwrite = TRUE)
     cat(paste("Copied R Markdown HTML file to:", rmdhtmlfile), "\n")
+    rmdpdffile <- paste0(outpath, "/", gsub(".knit.md", ".pdf", mdfile))
+    file.copy(from=basename(rmdhtmlfile), to=rmdpdffile, overwrite = TRUE)
+    cat(paste("Copied R Markdown PDF file to:", rmdhtmlfile), "\n")
 
     ## (10) Register new files in sidebar (_data/sidebars/mydoc_sidebar.yml)
     sb <- readLines("../../_data/sidebars/mydoc_sidebar.yml") 

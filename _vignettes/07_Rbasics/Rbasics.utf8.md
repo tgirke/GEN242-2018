@@ -19,13 +19,7 @@ bibliography: bibtex.bib
 
 <!---
 - Compile from command-line
-echo "rmarkdown::render('Rbasics.Rmd', clean=F)" | R -slave; R CMD Stangle Rbasics.Rmd; Rscript ../md2jekyll.R Rbasics.knit.md 8
-
-- Commit to github
-git commit -am "some edits"; git push -u origin master
-
-- To customize font size and other style features, add this line to output section in preamble:  
-    css: style.css
+Rscript -e "rmarkdown::render('Rbasics.Rmd', c('html_document', 'pdf_document'), clean=F); knitr::knit('Rbasics.Rmd', tangle=TRUE)"; Rscript ../md2jekyll.R Rbasics.knit.md 8
 -->
 
 <script type="text/javascript">
@@ -941,9 +935,9 @@ frame1[1:2,]
 ```
 
 ```
-##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-## 104          6.3         2.9          5.6         1.8 virginica
-## 12           4.8         3.4          1.6         0.2    setosa
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 110          7.2         3.6          6.1         2.5  virginica
+## 60           5.2         2.7          3.9         1.4 versicolor
 ```
 
 ```r
@@ -976,13 +970,6 @@ into an SQLite database (here `test.db`).
 
 ```r
 library(RSQLite)
-```
-
-```
-## Loading required package: DBI
-```
-
-```r
 mydb <- dbConnect(SQLite(), "test.db") # Creates database file test.db
 mydf1 <- data.frame(ids=paste0("id", seq_along(iris[,1])), iris)
 mydf2 <- mydf1[sample(seq_along(mydf1[,1]), 10),]
@@ -1021,16 +1008,16 @@ dbGetQuery(mydb, 'SELECT * FROM mydf2')
 
 ```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 1  id144          6.8         3.2          5.9         2.3  virginica
-## 2  id107          4.9         2.5          4.5         1.7  virginica
-## 3   id72          6.1         2.8          4.0         1.3 versicolor
-## 4   id21          5.4         3.4          1.7         0.2     setosa
+## 1    id8          5.0         3.4          1.5         0.2     setosa
+## 2   id28          5.2         3.5          1.5         0.2     setosa
+## 3  id111          6.5         3.2          5.1         2.0  virginica
+## 4   id65          5.6         2.9          3.6         1.3 versicolor
 ## 5   id92          6.1         3.0          4.6         1.4 versicolor
-## 6   id62          5.9         3.0          4.2         1.5 versicolor
-## 7  id114          5.7         2.5          5.0         2.0  virginica
-## 8   id30          4.7         3.2          1.6         0.2     setosa
-## 9   id45          5.1         3.8          1.9         0.4     setosa
-## 10 id142          6.9         3.1          5.1         2.3  virginica
+## 6  id108          7.3         2.9          6.3         1.8  virginica
+## 7  id140          6.9         3.1          5.4         2.1  virginica
+## 8   id37          5.5         3.5          1.3         0.2     setosa
+## 9  id101          6.3         3.3          6.0         2.5  virginica
+## 10 id118          7.7         3.8          6.7         2.2  virginica
 ```
 
 ## Query database
@@ -1060,27 +1047,27 @@ dbGetQuery(mydb, 'SELECT * FROM mydf1, mydf2 WHERE mydf1.ids = mydf2.ids')
 
 ```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species   ids Sepal.Length
-## 1   id21          5.4         3.4          1.7         0.2     setosa  id21          5.4
-## 2   id30          4.7         3.2          1.6         0.2     setosa  id30          4.7
-## 3   id45          5.1         3.8          1.9         0.4     setosa  id45          5.1
-## 4   id62          5.9         3.0          4.2         1.5 versicolor  id62          5.9
-## 5   id72          6.1         2.8          4.0         1.3 versicolor  id72          6.1
-## 6   id92          6.1         3.0          4.6         1.4 versicolor  id92          6.1
-## 7  id107          4.9         2.5          4.5         1.7  virginica id107          4.9
-## 8  id114          5.7         2.5          5.0         2.0  virginica id114          5.7
-## 9  id142          6.9         3.1          5.1         2.3  virginica id142          6.9
-## 10 id144          6.8         3.2          5.9         2.3  virginica id144          6.8
+## 1    id8          5.0         3.4          1.5         0.2     setosa   id8          5.0
+## 2   id28          5.2         3.5          1.5         0.2     setosa  id28          5.2
+## 3   id37          5.5         3.5          1.3         0.2     setosa  id37          5.5
+## 4   id65          5.6         2.9          3.6         1.3 versicolor  id65          5.6
+## 5   id92          6.1         3.0          4.6         1.4 versicolor  id92          6.1
+## 6  id101          6.3         3.3          6.0         2.5  virginica id101          6.3
+## 7  id108          7.3         2.9          6.3         1.8  virginica id108          7.3
+## 8  id111          6.5         3.2          5.1         2.0  virginica id111          6.5
+## 9  id118          7.7         3.8          6.7         2.2  virginica id118          7.7
+## 10 id140          6.9         3.1          5.4         2.1  virginica id140          6.9
 ##    Sepal.Width Petal.Length Petal.Width    Species
-## 1          3.4          1.7         0.2     setosa
-## 2          3.2          1.6         0.2     setosa
-## 3          3.8          1.9         0.4     setosa
-## 4          3.0          4.2         1.5 versicolor
-## 5          2.8          4.0         1.3 versicolor
-## 6          3.0          4.6         1.4 versicolor
-## 7          2.5          4.5         1.7  virginica
-## 8          2.5          5.0         2.0  virginica
-## 9          3.1          5.1         2.3  virginica
-## 10         3.2          5.9         2.3  virginica
+## 1          3.4          1.5         0.2     setosa
+## 2          3.5          1.5         0.2     setosa
+## 3          3.5          1.3         0.2     setosa
+## 4          2.9          3.6         1.3 versicolor
+## 5          3.0          4.6         1.4 versicolor
+## 6          3.3          6.0         2.5  virginica
+## 7          2.9          6.3         1.8  virginica
+## 8          3.2          5.1         2.0  virginica
+## 9          3.8          6.7         2.2  virginica
+## 10         3.1          5.4         2.1  virginica
 ```
 
 
@@ -1175,7 +1162,7 @@ Plot data
 plot(y[,1], y[,2]) 
 ```
 
-<img src="Rbasics_files/figure-html/basic_scatter_plot-1.png" width="672" />
+![](Rbasics_files/figure-latex/basic_scatter_plot-1.pdf)<!-- --> 
 
 ### All pairs
 
@@ -1184,7 +1171,7 @@ plot(y[,1], y[,2])
 pairs(y) 
 ```
 
-<img src="Rbasics_files/figure-html/pairs_scatter_plot-1.png" width="672" />
+![](Rbasics_files/figure-latex/pairs_scatter_plot-1.pdf)<!-- --> 
 
 ### With labels
 
@@ -1194,7 +1181,7 @@ plot(y[,1], y[,2], pch=20, col="red", main="Symbols and Labels")
 text(y[,1]+0.03, y[,2], rownames(y))
 ```
 
-<img src="Rbasics_files/figure-html/labels_scatter_plot-1.png" width="672" />
+![](Rbasics_files/figure-latex/labels_scatter_plot-1.pdf)<!-- --> 
 
 ## More examples
 
@@ -1206,7 +1193,7 @@ plot(y[,1], y[,2], type="n", main="Plot of Labels")
 text(y[,1], y[,2], rownames(y)) 
 ```
 
-<img src="Rbasics_files/figure-html/row_scatter_plot-1.png" width="672" />
+![](Rbasics_files/figure-latex/row_scatter_plot-1.pdf)<!-- --> 
 
 __Usage of important plotting parameters__
 
@@ -1237,7 +1224,7 @@ plot(y[,1], y[,2])
 myline <- lm(y[,2]~y[,1]); abline(myline, lwd=2) 
 ```
 
-<img src="Rbasics_files/figure-html/plot_regression-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_regression-1.pdf)<!-- --> 
 
 ```r
 summary(myline) 
@@ -1273,7 +1260,7 @@ Same plot as above, but on log scale
 plot(y[,1], y[,2], log="xy") 
 ```
 
-<img src="Rbasics_files/figure-html/plot_regression_log-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_regression_log-1.pdf)<!-- --> 
 
 ### Add a mathematical expression
 
@@ -1282,7 +1269,7 @@ plot(y[,1], y[,2], log="xy")
 plot(y[,1], y[,2]); text(y[1,1], y[1,2], expression(sum(frac(1,sqrt(x^2*pi)))), cex=1.3) 
 ```
 
-<img src="Rbasics_files/figure-html/plot_regression_math-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_regression_math-1.pdf)<!-- --> 
 
 ## Homework 3B 
 
@@ -1298,7 +1285,7 @@ Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_ho
 plot(y[,1], type="l", lwd=2, col="blue") 
 ```
 
-<img src="Rbasics_files/figure-html/plot_line_single-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_line_single-1.pdf)<!-- --> 
 
 ### Many Data Sets
 
@@ -1321,7 +1308,7 @@ for(i in 2:length(y[1,])) {
 }
 ```
 
-<img src="Rbasics_files/figure-html/plot_line_many-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_line_many-1.pdf)<!-- --> 
 
 ```r
 close.screen(all=TRUE) 
@@ -1337,7 +1324,7 @@ barplot(y[1:4,], ylim=c(0, max(y[1:4,])+0.3), beside=TRUE, legend=letters[1:4])
 text(labels=round(as.vector(as.matrix(y[1:4,])),2), x=seq(1.5, 13, by=1) + sort(rep(c(0,1,2), 4)), y=as.vector(as.matrix(y[1:4,]))+0.04) 
 ```
 
-<img src="Rbasics_files/figure-html/plot_bar_simple-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_bar_simple-1.pdf)<!-- --> 
     
 ### Error Bars
 
@@ -1348,7 +1335,7 @@ stdev <- sd(t(y))
 arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
 ```
 
-<img src="Rbasics_files/figure-html/plot_bar_error-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_bar_error-1.pdf)<!-- --> 
 
 ## Histograms
 
@@ -1357,7 +1344,7 @@ arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
 hist(y, freq=TRUE, breaks=10)
 ```
 
-<img src="Rbasics_files/figure-html/plot_hist-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_hist-1.pdf)<!-- --> 
 
 ## Density Plots
 
@@ -1366,7 +1353,7 @@ hist(y, freq=TRUE, breaks=10)
 plot(density(y), col="red")
 ```
 
-<img src="Rbasics_files/figure-html/plot_dens-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_dens-1.pdf)<!-- --> 
 
 ## Pie Charts
 
@@ -1377,7 +1364,7 @@ legend("topright", legend=row.names(y), cex=1.3, bty="n", pch=15, pt.cex=1.8,
 col=rainbow(length(y[,1]), start=0.1, end=0.8), ncol=1) 
 ```
 
-<img src="Rbasics_files/figure-html/plot_pie-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_pie-1.pdf)<!-- --> 
 
 ## Color Selection Utilities
 
@@ -1419,20 +1406,6 @@ Color gradients with `colorpanel` function from `gplots` library`
 
 ```r
 library(gplots)
-```
-
-```
-## 
-## Attaching package: 'gplots'
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     lowess
-```
-
-```r
 colorpanel(5, "darkblue", "yellow", "white")
 ```
 
@@ -1567,7 +1540,7 @@ query[1:4, ]
 ## NA          <NA>                   NA       NA <NA>    NA    NA    NA    NA
 ## NA.1        <NA>                   NA       NA <NA>    NA    NA    NA    NA
 ## NA.2        <NA>                   NA       NA <NA>    NA    NA    NA    NA
-## 216  AT1G02730.1               132588     1181    C 0.972 0.038 0.008 0.045
+## 219  AT1G02730.1               132588     1181    C 0.972 0.038 0.008 0.045
 ```
 
 ```r
@@ -1575,7 +1548,7 @@ dim(query)
 ```
 
 ```
-## [1] 1109    8
+## [1] 1092    8
 ```
 
 - __Homework 3F__: How many protein entries in the `my`_mw`_target` data frame have a MW of greater then 4,000 and less then 5,000. Subset the data frame accordingly and sort it by MW to check that your result is correct.
@@ -1648,7 +1621,7 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12]
 plot(my_mw_target4[1:500,3:4], col="red")
 ```
 
-<img src="Rbasics_files/figure-html/plot_example-1.png" width="672" />
+![](Rbasics_files/figure-latex/plot_example-1.pdf)<!-- --> 
 
 ## Export Results and Run Entire Exercise as Script
 
@@ -1847,7 +1820,7 @@ dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
 ggplot(dsmall, aes(color, price/carat)) + geom_jitter(alpha = I(1 / 2), aes(color=color))
 ```
 
-<img src="Rbasics_files/figure-html/some_jitter_plot-1.png" width="672" />
+![](Rbasics_files/figure-latex/some_jitter_plot-1.pdf)<!-- --> 
 
 Sometimes it can be useful to explicitly write an image to a file and then insert that 
 image into the final document by referencing its file name in the R Markdown source. For 
@@ -1863,7 +1836,7 @@ dev.off()
 ```
 
 ```
-## png 
+## pdf 
 ##   2
 ```
 <center><img title="some_title" src="myplot.png"/></center>
@@ -1919,7 +1892,7 @@ sessionInfo()
 ## [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## attached base packages:
-## [1] stats     graphics  utils     datasets  grDevices methods   base     
+## [1] methods   stats     graphics  utils     datasets  grDevices base     
 ## 
 ## other attached packages:
 ## [1] knitr_1.14      gplots_3.0.1    RSQLite_1.0.0   DBI_0.5-1       ggplot2_2.1.0   limma_3.30.0   
@@ -1929,8 +1902,8 @@ sessionInfo()
 ##  [1] Rcpp_0.12.7        magrittr_1.5       munsell_0.4.3      colorspace_1.2-7   highr_0.6         
 ##  [6] stringr_1.1.0      plyr_1.8.4         caTools_1.17.1     tools_3.3.3        grid_3.3.3        
 ## [11] gtable_0.2.0       KernSmooth_2.23-15 htmltools_0.3.5    gtools_3.5.0       yaml_2.1.13       
-## [16] assertthat_0.1     digest_0.6.10      tibble_1.2         formatR_1.4        bitops_1.0-6      
-## [21] codetools_0.2-15   evaluate_0.10      rmarkdown_1.1      labeling_0.3       gdata_2.17.0      
+## [16] assertthat_0.1     digest_0.6.10      tibble_1.2         formatR_1.4        codetools_0.2-15  
+## [21] bitops_1.0-6       evaluate_0.10      rmarkdown_1.1      labeling_0.3       gdata_2.17.0      
 ## [26] stringi_1.1.2      scales_0.4.0
 ```
 

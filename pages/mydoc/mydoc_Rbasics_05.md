@@ -1,6 +1,6 @@
 ---
 title: Basic Syntax
-last_updated: Sun Apr  9 16:38:13 2017
+last_updated: Sun Apr  9 16:57:31 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_05.html
 ---
