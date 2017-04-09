@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>GitHub Introduction | Data Analysis in Genome Biology</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Data Analysis in Genome Biology</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="https://piazza.com/class/j10z7wzbqum2tb" target="_blank">Piazza</a></li>
+                
+                
+                
+                <li><a href="https://github.com/tgirke/GEN242" target="_blank">GitHub Repo</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://cran.r-project.org/" target="_blank">CRAN</a></li>
+                        
+                        
+                        
+                        <li><a href="http://bioconductor.org/" target="_blank">Bioconductor</a></li>
+                        
+                        
+                        
+                        <li><a href="http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual" target="_blank">R & Bioconductor Manual</a></li>
+                        
+                        
+                        
+                        <li><a href="https://guides.github.com/activities/hello-world/" target="_blank">GitHub</a></li>
+                        
+                        
+                        
+                        <li><a href="http://hpcc.ucr.edu/" target="_blank">HPC Center (HPCC)</a></li>
+                        
+                        
+                        
+                        <li><a href="http://girke.bioinformatics.ucr.edu/" target="_blank">Girke Lab</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/documentation-theme-jekyll" target="_blank">Jekyll Doc Theme</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:thomas.girke@ucr.edu?subject=GEN242 Class Web Site feedback&body=I have some feedback about the GitHub Introduction page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="GitHub Introduction">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle"><center><font color="#26466D" size="6">GEN242</font></center> <center><font color="#8b9299" size="3">Spring 2017</font></center></li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Home</a>
+        <ul>
+            
+            
+            
+            <li><a href="index.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_syllabus.html">Syllabus</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Internal</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_internal.html">Internal Resources</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Schedule</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_schedule.html">Course Schedule</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Lecture Slides</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_slides_01.html">Course Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_slides_02.html">Molbiol Basics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_slides_03.html">Databases and Software</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Homework</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_homework_01.html">HW1 - Online Tools</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_homework_02.html">HW2 - Biocluster/Linux</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">GitHub</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="mydoc_tutorial_01.html">GitHub</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Biocluster & Linux</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_tutorial_02.html">Linux Basics</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Introduction to R</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_Rbasics_01.html">1. Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_02.html">2. R Package Repositories</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_03.html">3. Installation of R and Add-on Packages</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_04.html">4. Getting Around</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_05.html">5. Basic Syntax</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_06.html">6. Data Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_07.html">7. Data objects</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_08.html">8. Important Utilities</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_09.html">9. Operators and Calculations</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_10.html">10. Reading and Writing External Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_11.html">11. Useful R Functions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_12.html">12. SQLite Databases</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_13.html">13. Graphics in R</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_14.html">14. Analysis Routine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_15.html">15. R Markdown</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_16.html">16. Session Info</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_17.html">17. References</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Programming in R</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">NGS Analysis Basics</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">NGS Workflow Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">RNA-Seq Workflow</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">ChIP-Seq Workflow</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">VAR-Seq Workflow</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Graphics and Visualization</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cluster Analysis</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Paper Presentations</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Course Projects</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">GitHub Introduction</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+<!--
+    
+
+    <a target="_blank" href="https://github.com/tgirke/GEN242/blob/gh-pages/pages//mydoc_tutorial_01.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+-->
+    
+
+  <h2 id="gen242-and-github">GEN242 and GitHub</h2>
+
+<ul>
+  <li>Note, this class will make heavy use of GitHub</li>
+  <li>Homework assignments will be submitted to private GitHub repositories: one repository for each student</li>
+  <li>Course projects will also use private GitHub repositories: one repository for each course project (shared among students of each project)</li>
+  <li>Each student will need a personal GitHub account. They can be created <a href="https://github.com/personal">here</a>.</li>
+  <li>GitHub provides an unlimited number of free public repositories to each user. Via GitHub Education students can sign up for free private GitHub accounts (see <a href="https://education.github.com">here</a>).</li>
+  <li>All private GitHub accounts required for this class will be provided by the instructor via <a href="https://classroom.github.com/">GitHub Classroom</a></li>
+  <li>For beginners this <a href="https://guides.github.com/activities/hello-world/">quick guide</a> may be useful</li>
+</ul>
+
+<h2 id="what-are-git-and-github">What are Git and GitHub?</h2>
+
+<ul>
+  <li>Git is a distributed version control system similar to SVN</li>
+  <li>GitHub is an online social coding service based on Git</li>
+  <li>Combined Git/GitHub: environment for version control and social coding</li>
+</ul>
+
+<h2 id="installing-git">Installing Git</h2>
+<ul>
+  <li><a href="http://git-scm.com/book/en/Getting-Started-Installing-Git">Install</a> on Windows, OS X and Linux</li>
+  <li>When using it from RStudio, it needs to find the Git executable</li>
+</ul>
+
+<h2 id="git-basics-from-command-line">Git Basics from Command-Line</h2>
+
+<ul>
+  <li>Finding help from command-line</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git &lt;<span class="nb">command</span>&gt; --help</code></pre></figure>
+
+<ul>
+  <li>Initialize a directory as a Git repository</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git init</code></pre></figure>
+
+<ul>
+  <li>Add files to Git repository (staging area)</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git add myfile</code></pre></figure>
+
+<p>After editing file(s) in your repos, record a snapshot of the staging area</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git commit -am <span class="s2">"some edits"</span></code></pre></figure>
+
+<h2 id="github-basics-from-command-line">GitHub Basics from Command-Line</h2>
+
+<ul>
+  <li>Generate a new remote repository. Alternatively, create the repository online on the GitHub site.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git remote add origin https://github.com/tgirke/myrepos.git</code></pre></figure>
+
+<ul>
+  <li>Push updates to remote. Next time one can just use <code class="highlighter-rouge">git push</code></li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git push -u origin master</code></pre></figure>
+
+<ul>
+  <li>Clone existing remote repository</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git clone https://github.com/&lt;user_name&gt;/&lt;repos_name&gt;.git</code></pre></figure>
+
+<ul>
+  <li>Before working on project, update local git repos</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git pull </code></pre></figure>
+
+<ul>
+  <li>Make changes and recommit local to remote</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">git commit -am <span class="s2">"some edits"</span>; git push -u origin master</code></pre></figure>
+
+<h2 id="using-github-from-rstudio">Using GitHub from RStudio</h2>
+<ul>
+  <li>After installing Git, set path to Git executable in Rstudio:
+    <ul>
+      <li>Tools <code class="highlighter-rouge">&gt;</code> Global Options <code class="highlighter-rouge">&gt;</code> Git/SVN</li>
+    </ul>
+  </li>
+  <li>
+    <p>If needed, login to GitHub account and create repository. Use option <code class="highlighter-rouge">Initialize this repository with a README</code>.</p>
+  </li>
+  <li>Clone repository by copying &amp; pasting URL from repository into RStudio’s ‘Clone Git Repository’ window:
+    <ul>
+      <li>File <code class="highlighter-rouge">&gt;</code> New Project <code class="highlighter-rouge">&gt;</code> Version Control <code class="highlighter-rouge">&gt;</code> Git <code class="highlighter-rouge">&gt;</code> Provide URL</li>
+    </ul>
+  </li>
+  <li>Now do some work (<em>e.g.</em> add an R script), commit and push changes as follows:
+    <ul>
+      <li>Tools <code class="highlighter-rouge">&gt;</code> Version Control <code class="highlighter-rouge">&gt;</code> Commit</li>
+    </ul>
+  </li>
+  <li>
+    <p>Check files in staging area and press <code class="highlighter-rouge">Commit Button</code></p>
+  </li>
+  <li>
+    <p>To commit changes to GitHub, press <code class="highlighter-rouge">Push Button</code></p>
+  </li>
+  <li>
+    <p>Shortcuts to automate above routines are <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">here</a></p>
+  </li>
+  <li>To resolve password issues, follow instructions <a href="https://github.com/jennybc/stat540_2014/blob/master/seminars/seminar92_git.md">here</a>.</li>
+</ul>
+
+
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 UC Riverside. All rights reserved. <br />
+ Site last generated: Apr 9, 2017 <br />
+<!--
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+-->
+</div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>

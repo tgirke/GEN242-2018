@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>Introduction to Biocluster and Linux | Data Analysis in Genome Biology</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4000feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> Data Analysis in Genome Biology</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- entries without drop-downs appear here -->
+                
+                
+                
+                <li><a href="https://piazza.com/class/j10z7wzbqum2tb" target="_blank">Piazza</a></li>
+                
+                
+                
+                <li><a href="https://github.com/tgirke/GEN242" target="_blank">GitHub Repo</a></li>
+                
+                
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="https://cran.r-project.org/" target="_blank">CRAN</a></li>
+                        
+                        
+                        
+                        <li><a href="http://bioconductor.org/" target="_blank">Bioconductor</a></li>
+                        
+                        
+                        
+                        <li><a href="http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual" target="_blank">R & Bioconductor Manual</a></li>
+                        
+                        
+                        
+                        <li><a href="https://guides.github.com/activities/hello-world/" target="_blank">GitHub</a></li>
+                        
+                        
+                        
+                        <li><a href="http://hpcc.ucr.edu/" target="_blank">HPC Center (HPCC)</a></li>
+                        
+                        
+                        
+                        <li><a href="http://girke.bioinformatics.ucr.edu/" target="_blank">Girke Lab</a></li>
+                        
+                        
+                        
+                        <li><a href="http://idratherbewriting.com/documentation-theme-jekyll" target="_blank">Jekyll Doc Theme</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                
+                
+                
+			<li>
+
+
+
+  <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:thomas.girke@ucr.edu?subject=GEN242 Class Web Site feedback&body=I have some feedback about the Introduction to Biocluster and Linux page: ' + window.location.href;"><i class="fa fa-envelope-o"></i> Feedback</a>
+
+</li>
+
+		
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Introduction to Biocluster and Linux">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <li class="sidebarTitle"><center><font color="#26466D" size="6">GEN242</font></center> <center><font color="#8b9299" size="3">Spring 2017</font></center></li>
+    
+    
+    
+        
+    
+    <li>
+        <a href="#">Home</a>
+        <ul>
+            
+            
+            
+            <li><a href="index.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_syllabus.html">Syllabus</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Internal</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_internal.html">Internal Resources</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Schedule</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_schedule.html">Course Schedule</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Lecture Slides</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_slides_01.html">Course Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_slides_02.html">Molbiol Basics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_slides_03.html">Databases and Software</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Homework</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_homework_01.html">HW1 - Online Tools</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_homework_02.html">HW2 - Biocluster/Linux</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">GitHub</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_tutorial_01.html">GitHub</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Biocluster & Linux</a>
+        <ul>
+            
+            
+            
+            <li class="active"><a href="mydoc_tutorial_02.html">Linux Basics</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Introduction to R</a>
+        <ul>
+            
+            
+            
+            <li><a href="mydoc_Rbasics_01.html">1. Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_02.html">2. R Package Repositories</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_03.html">3. Installation of R and Add-on Packages</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_04.html">4. Getting Around</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_05.html">5. Basic Syntax</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_06.html">6. Data Types</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_07.html">7. Data objects</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_08.html">8. Important Utilities</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_09.html">9. Operators and Calculations</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_10.html">10. Reading and Writing External Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_11.html">11. Useful R Functions</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_12.html">12. SQLite Databases</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_13.html">13. Graphics in R</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_14.html">14. Analysis Routine</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_15.html">15. R Markdown</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_16.html">16. Session Info</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="mydoc_Rbasics_17.html">17. References</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Programming in R</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">NGS Analysis Basics</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">NGS Workflow Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">RNA-Seq Workflow</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">ChIP-Seq Workflow</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">VAR-Seq Workflow</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Graphics and Visualization</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cluster Analysis</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Paper Presentations</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Course Projects</a>
+        <ul>
+            
+            
+            
+            <li><a href="">To be added</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+</div>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+    <!-- Content Column -->
+    <div class="col-md-9">
+        <div class="post-header">
+   <h1 class="post-title-main">Introduction to Biocluster and Linux</h1>
+</div>
+
+
+
+<div class="post-content">
+
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2,h3,h4' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+  
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+
+<!--
+    
+
+    <a target="_blank" href="https://github.com/tgirke/GEN242/blob/gh-pages/pages//mydoc_tutorial_02.md" class="btn btn-default githubEditButton" role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
+-->
+    
+
+  <h2 id="what-is-a-compute-cluster">What Is a Compute Cluster?</h2>
+
+<ul>
+  <li>
+    <p>A compute cluster is an assembly of CPU units, so called compute nodes that work together to perform many computations in parallel. To achieve this, an internal network (e.g. Infiniband interconnect) connects the nodes to a larger unit, while a head node controls the load and traffic across the entire system.</p>
+  </li>
+  <li>
+    <p>Usually, users log into the head node to submit their compute requests via <code class="highlighter-rouge">srun</code> to a queuing system provided by resource management and scheduling software, such as TORQUE and MAUI. The queuing system distributes the processes to the compute nodes in a controlled fashion.</p>
+  </li>
+  <li>
+    <p>Because the head node controls the entire system, users should never run compute jobs on the head node directly!</p>
+  </li>
+  <li>
+    <p>For code testing purposes, one can log into one of the nodes with <code class="highlighter-rouge">srun --pty bash -l</code> and run jobs interactively. Alternatively, one can log into the test node owl via ssh.</p>
+  </li>
+</ul>
+
+<h2 id="hardware-infrastructure">Hardware Infrastructure</h2>
+
+<h3 id="compute-nodes">Compute nodes</h3>
+
+<ul>
+  <li>Over 4,500 CPU cores</li>
+  <li>50 batch compute nodes, each with 64 CPU cores and 512GB RAM</li>
+  <li>6 high-memory nodes, each 32 CPU cores and 1024GB RAM</li>
+  <li>12 GPU nodes, each with 5,000 cuda cores</li>
+</ul>
+
+<h3 id="interconnect">Interconnect</h3>
+<ul>
+  <li>FDR IB @56Gbs</li>
+</ul>
+
+<h3 id="storage">Storage</h3>
+
+<ul>
+  <li>Parallel GPFS storage system with 2.1 PB usable space</li>
+  <li>Backup of same architecture and similar amount</li>
+</ul>
+
+<h3 id="user-traffic">User traffic</h3>
+
+<ul>
+  <li>Compute tasks need to be submitted via <code class="highlighter-rouge">srun</code></li>
+  <li>Biocluster headnode only for login, not for compute tasks!</li>
+  <li>Monitor cluster activity: <code class="highlighter-rouge">qstat</code> or <code class="highlighter-rouge">qstatMonitor</code></li>
+</ul>
+
+<h3 id="manuals">Manuals</h3>
+
+<ul>
+  <li><a href="http://hpcc.ucr.edu/manuals_linux-cluster_intro.html">Biocluster Manual</a></li>
+  <li><a href="http://hpcc.ucr.edu/manuals_linux-basics.html">Linux Manual</a></li>
+</ul>
+
+<h2 id="log-into-biocluster">Log into Biocluster</h2>
+
+<ul>
+  <li>Login command on OS X or Linux</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">ssh -X user@biocluster.ucr.edu</code></pre></figure>
+
+<p>Type password</p>
+
+<ul>
+  <li>
+    <p>Windows: provide same information in <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">Putty</a></p>
+
+    <ul>
+      <li>Host name: <code class="highlighter-rouge">biocluster.ucr.edu</code></li>
+      <li>User name: …</li>
+      <li>Password: …</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="important-linux-commands">Important Linux Commands</h2>
+
+<p>Finding help</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">man &lt;program_name&gt;</code></pre></figure>
+
+<p>List content of current directory</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">ls</code></pre></figure>
+
+<p>Print current working directory</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">pwd</span></code></pre></figure>
+
+<p>Search in files and directories</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">grep</code></pre></figure>
+
+<p>Word count</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">wc</code></pre></figure>
+
+<p>Create directory</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">mkdir</code></pre></figure>
+
+<p>Delete files and directories</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">rm</code></pre></figure>
+
+<p>Move and rename files</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">mv</code></pre></figure>
+
+<p>Copy files from internet to <code class="highlighter-rouge">pwd</code></p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">wget</code></pre></figure>
+
+<p>Viewing files</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">less</code></pre></figure>
+
+<h2 id="file-exchange">File Exchange</h2>
+
+<p><strong>GUI applications</strong></p>
+
+<ul>
+  <li>Windows: <a href="http://winscp.net/eng/index.php">WinSCP</a></li>
+  <li>Mac OS X: <a href="http://cyberduck.en.softonic.com/mac">CyberDuck</a></li>
+  <li>Win/OS X/Linux: <a href="https://filezilla-project.org/">FileZilla</a></li>
+</ul>
+
+<p><strong>SCP command-line tool</strong></p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">scp file user@remotehost:/home/user/ <span class="c"># From local to remote </span>
+scp user@remotehost:/home/user/file . <span class="c"># From remote to local </span></code></pre></figure>
+
+<h2 id="std-inouterr-redirect--wildcards">STD IN/OUT/ERR, Redirect &amp; Wildcards</h2>
+
+<p>Wildcard <code class="highlighter-rouge">*</code> to specify many files</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">file.<span class="k">*</span>                        </code></pre></figure>
+
+<p>Redirect <code class="highlighter-rouge">ls</code> output to file</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">ls &gt; file                     </code></pre></figure>
+
+<p>Specify file as input to command</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">command</span> &lt; myfile              </code></pre></figure>
+
+<p>Append output of command to file</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">command</span> &gt;&gt; myfile             </code></pre></figure>
+
+<p>Pipe <code class="highlighter-rouge">STDOUT</code> of one command to another command</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">command1 | command2     </code></pre></figure>
+
+<p>Turn off progress info</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">command</span> &gt; /dev/null </code></pre></figure>
+
+<p>Pipe output of <code class="highlighter-rouge">grep</code> to <code class="highlighter-rouge">wc</code></p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">grep pattern file | wc        </code></pre></figure>
+
+<p>Print <code class="highlighter-rouge">STDERR</code> to file</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">grep pattern nonexistingfile 2 &gt; mystderr </code></pre></figure>
+
+<h2 id="homework-assignment-hw2">Homework Assignment (HW2)</h2>
+
+<p>See HW2 page <a href="http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_02.html">here</a>.</p>
+
+<h2 id="permissions-and-ownership">Permissions and ownership</h2>
+
+<p>List directories and files</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">ls -al </code></pre></figure>
+
+<p>The previous command shows something like this for each file/dir: <code class="highlighter-rouge">drwxrwxrwx</code>. The 
+meaning of this syntax is as follows:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">d</code>: directory</li>
+  <li><code class="highlighter-rouge">rwx</code>: read, write and execute permissions, respectively
+    <ul>
+      <li>first triplet: user permissions (u)</li>
+      <li>second triplet: group permissions (g)</li>
+      <li>third triplet: world permissions (o)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Example for assigning write and execute permissions to user, group and world</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">chmod ugo+rx my_file</code></pre></figure>
+
+<ul>
+  <li><code class="highlighter-rouge">+</code> causes the permissions selected to be added</li>
+  <li><code class="highlighter-rouge">-</code> causes them to be removed</li>
+  <li><code class="highlighter-rouge">=</code> causes them to be the only permissions that the file has.</li>
+</ul>
+
+<p>Syntax for changing user &amp; group ownership</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">chown &lt;user&gt;:&lt;group&gt; &lt;file or dir&gt; </code></pre></figure>
+
+<h2 id="symbolic-links">Symbolic Links</h2>
+<p>Symbolic links are short nicknames to files and directories that save typing of their full paths.</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">ln -s original_filename new_nickname</code></pre></figure>
+
+<h2 id="software-and-module-system">Software and module system</h2>
+
+<ul>
+  <li>Over 500 software tools are currently installed on biocluster</li>
+  <li>Most common research databases used in bioinformatics are available</li>
+  <li>Support of most common programming languages used in research computing</li>
+  <li>A module system is used to facilitate the management of software tools. This includes any number of versions of each software.</li>
+  <li>New software install requests can be sent to support@biocluster.ucr.edu.</li>
+  <li>To use software manged under the module system, users need to learn using some basic commands. The most common commands are listed below.</li>
+</ul>
+
+<p>Print available modules</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">module avail</code></pre></figure>
+
+<p>Print available modules starting with R</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">module avail R</code></pre></figure>
+
+<p>Load default module R</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">module load R</code></pre></figure>
+
+<p>Load specific module R version</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">module load R/3.2.2</code></pre></figure>
+
+<p>List loaded modules</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">module list</code></pre></figure>
+
+<p>Unload module R</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">module unload R</code></pre></figure>
+
+<p>Unload specific module R</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">module unload R/3.2.3-dev</code></pre></figure>
+
+<h2 id="big-data-storage">Big data storage</h2>
+
+<p>Each user account on biocluster comes only with 20GB of disk space. Much more disk space is 
+available in a dedicated <code class="highlighter-rouge">bigdata</code> directory. How much space depends on the subscription 
+of each user group. The path of <code class="highlighter-rouge">bigdata</code> and <code class="highlighter-rouge">bigdata-shared</code> is as follows:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">/bigdata/labname/username</code></li>
+  <li><code class="highlighter-rouge">/bigdata/labname/shared</code></li>
+</ul>
+
+<p>All lab members share the same bigdata pool. The course number <code class="highlighter-rouge">gen242</code> is used as <code class="highlighter-rouge">labname</code>
+for user accounts adminstered under GEN242.</p>
+
+<p>The disk usage of <code class="highlighter-rouge">home</code> and <code class="highlighter-rouge">bigdata</code> can be monitored on the <a href="https://dashboard.bioinfo.ucr.edu/">Biocluster Dashboard</a>.</p>
+
+<h2 id="queuing-system">Queuing system</h2>
+
+<p>Biocluster uses Slurm as queuing and load balancing system. To control user traffic, any 
+type of compute intensive jobs need to be submitted via the <code class="highlighter-rouge">srun</code> (see below) to the compute 
+nodes. Much more detailed information on this topic is available in the biocluster manual 
+<a href="http://hpcc.ucr.edu/manuals_linux-cluster_intro.html">here</a>.</p>
+
+<!--
+
+### Job submission with `qsub`
+
+Basic job submission with `qsub` without a submission script
+
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nb">echo</span> ’command_args’ | qsub</code></pre></figure>
+
+
+Alternatively, one can submit jobs via a submission script as shown below. This much more
+flexible approach is preferred for submitting scripts from the command-line.
+
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qsub script_name.sh</code></pre></figure>
+
+
+Sample submission script, here called `script_name.sh` to run `my_script.R`
+
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="c">#!/bin/bash</span>
+<span class="nb">cd</span> <span class="nv">$PBS_O_WORKDIR</span>
+Rscript my_script.R</code></pre></figure>
+
+
+Interactive session: logs user into node
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qsub -I</code></pre></figure>
+
+
+Interactive session with specific resource requests
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qsub -q batch -l <span class="nv">nodes</span><span class="o">=</span>1:ppn<span class="o">=</span>2,mem<span class="o">=</span>8gb,walltime<span class="o">=</span>03:00:00 -I</code></pre></figure>
+
+
+Submit job to `batch` queue with specific resource requests (queue, nodes, cpu, memory, walltime)
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qsub -q batch -l <span class="nv">nodes</span><span class="o">=</span>1:ppn<span class="o">=</span>2,mem<span class="o">=</span>8gb,walltime<span class="o">=</span>03:00:00 script_name.sh</code></pre></figure>
+
+
+Submit job to `highmem` queue with specific resource requests 
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qsub -q highmem -l <span class="nv">nodes</span><span class="o">=</span>1:ppn<span class="o">=</span>2,mem<span class="o">=</span>8gb,walltime<span class="o">=</span>03:00:00 script_name.sh</code></pre></figure>
+
+
+
+`STDOUT` and `STDERROR` files generate by each job
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">SCRIPTNAME.sh.oJOBID or STDIN.oJOBID
+SCRIPTNAME.sh.eJOBID or STDIN.eJOBID</code></pre></figure>
+
+
+### Monitoring jobs with `qstat`
+
+List all jobs in queue
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qstat</code></pre></figure>
+
+
+List jobs of a specific user
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qstat -u &lt;user&gt;</code></pre></figure>
+
+
+Print more detailed information about jobs
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qstat -tf1</code></pre></figure>
+
+
+Custom command to summarize and visualize cluster activity
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qstatMonitor</code></pre></figure>
+
+
+### Deleting and altering jobs 
+
+Delete a single job
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qdel &lt;JOBID&gt; <span class="c"># Delete single job</span></code></pre></figure>
+
+
+Delete all jobs of a user
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qselect -u &lt;user&gt; | xargs qdel <span class="c"># All jobs of a user</span></code></pre></figure>
+
+
+Altering jobs with `qalter` (here walltime)
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">qalter -l <span class="nv">walltime</span><span class="o">=</span>8:00 &lt;JOBID&gt;</code></pre></figure>
+
+
+-->
+
+<h2 id="textcode-editor-options">Text/code editor options</h2>
+
+<p>The following list includes examples of several widely used code editors.</p>
+
+<ul>
+  <li><strong>Vi/Vim/Neovim</strong>: Non-graphical (terminal-based) editor. Vi is guaranteed to be available on any system. Vim is the improved version of vi.</li>
+  <li><strong>Emacs</strong>: Non-graphical or window-based editor. You still need to know keystroke commands to use it. Installed on all Linux distributions and on most other Unix systems.</li>
+  <li><strong>Pico</strong>: Simple terminal-based editor available on most versions of Unix. Uses keystroke commands, but they are listed in logical fashion at bottom of screen.</li>
+  <li><strong>Nano</strong>: A simple terminal-based editor which is default on modern Debian systems.</li>
+  <li><strong>Atom</strong>: Modern text editor developed by GitHub project.</li>
+</ul>
+
+<h3 id="why-does-it-matter">Why does it matter?</h3>
+
+<p>To work efficiently on remote systems like a computer cluster, it is essential
+to learn how to work in a pure command-line interface. GUI environments like
+RStudio and similar coding environments are not suitable for this. In addition,
+there is a lot of value of knowing how to work in an environment that is not
+restricted to a specific programming language. Therefore, this class embraces
+RStudio where it is useful, but for working on remote systems like biocluster, it 
+uses Vim and Tmux. Both are useful for many programming languages.
+Combinded with the <code class="highlighter-rouge">vim-r</code> plugin they also provide a powerful command-line working
+environment for R. The following provides a brief introduction to this environment.</p>
+
+<h3 id="vim-overview">Vim overview</h3>
+
+<p>The following opens a file (here <code class="highlighter-rouge">myfile</code>) with vim</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">vim myfile.txt</code></pre></figure>
+
+<p>Once you are in Vim the most important commands are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">i</code>: The <code class="highlighter-rouge">i</code> key brings you into the insert mode for typing.</li>
+  <li><code class="highlighter-rouge">Esc</code>: The <code class="highlighter-rouge">Esc</code> key brings you out of the insert mode.</li>
+  <li><code class="highlighter-rouge">:</code>: The <code class="highlighter-rouge">:</code> key starts the command mode at the bottom of the screen.</li>
+</ul>
+
+<p>Use the arrow keys to move your cursor in the text. Using <code class="highlighter-rouge">Fn Up/Down key</code> allows to page through
+the text quicker. In the following command overview, all commands starting with <code class="highlighter-rouge">:</code> need to be typed in the command mode. 
+All other commands are typed in the normal mode after pushing the <code class="highlighter-rouge">Esc</code> key.</p>
+
+<p>Important modifier keys to control vim</p>
+
+<ul>
+  <li><code class="highlighter-rouge">:w</code>: save changes to file. If you are in editing mode you have to hit <code class="highlighter-rouge">Esc</code> first.</li>
+  <li><code class="highlighter-rouge">:q</code>: quit file that has not been changed</li>
+  <li><code class="highlighter-rouge">:wq</code>: save and quit file</li>
+  <li><code class="highlighter-rouge">:!q</code>: quit file without saving any changes</li>
+</ul>
+
+<h3 id="useful-resources-for-learning-vim">Useful resources for learning vim</h3>
+
+<ul>
+  <li><a href="http://www.openvim.com">Interactive Vim Tutorial</a></li>
+  <li><a href="http://vimdoc.sourceforge.net/">Official Vim Documentation</a></li>
+  <li><a href="http://manuals.bioinformatics.ucr.edu/home/linux-basics#TOC-Vim-Manual">UCR Linux Manual</a></li>
+</ul>
+
+<h2 id="vim-r-tmux-essentials">Vim-R-Tmux essentials</h2>
+<p>Terminal-based Working Environment for R: <a href="http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r">Vim-R-Tmux</a></p>
+
+<center><img title="Vim-R-Tmux" src="pages/mydoc/Rbasics_files/screenshot.png" /></center>
+<center>Vim-R-Tmux IDE for R</center>
+
+<h3 id="basics">Basics</h3>
+
+<p>Tmux is a terminal multiplexer that allows to split terminal windows and to deattach/reattach to
+existing terminal sessions. Combinded with the <code class="highlighter-rouge">vim-r</code> plugin it provides a powerful command-line working 
+environment for R where users can send code from a script to the R console or command-line.
+Both tmux and the <code class="highlighter-rouge">vim-r</code> plugin need to be installed on a system. On Biocluster both are configured
+in each user account. A detailed user manual is available <a href="http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r">here</a>.
+The following give a short introduction into the basic usage:</p>
+
+<p><strong>1. Start tmux session</strong></p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">tmux <span class="c"># starts a new tmux session </span>
+tmux a <span class="c">#  attaches to an existing session </span></code></pre></figure>
+
+<p><strong>2. Open R script in vim</strong></p>
+
+<p>This can be any of these file types: <code class="highlighter-rouge">*.R</code>, <code class="highlighter-rouge">*.Rnw</code> or <code class="highlighter-rouge">*.Rmd</code>.</p>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">vim myscript.R</code></pre></figure>
+
+<p><strong>3. Open vim-connected R session by pressing the <code class="highlighter-rouge">F2</code> key</strong></p>
+
+<p>This will open an R session in a separate tmux pane. Note, in the provided <code class="highlighter-rouge">.tmux.conf</code> file 
+the command key binding has been reassigned from the tmux default <code class="highlighter-rouge">Ctrl-b</code> to <code class="highlighter-rouge">Ctrl-a</code>, 
+and the shortcut for starting R from vim has be reassigned from <code class="highlighter-rouge">\rf</code> to <code class="highlighter-rouge">F2</code> in the <code class="highlighter-rouge">.vimrc</code> 
+file. The command key binding <code class="highlighter-rouge">Ctrl-a</code> is the most important key sequence in order to move 
+around in tmux. For instance, the key sequence <code class="highlighter-rouge">Ctrl-a o</code> will switch between the vim and R 
+panes, and <code class="highlighter-rouge">Ctrl-a Ctrl-o</code> will swap the two panes.</p>
+
+<p><strong>4. Send R code vim to the R pane</strong></p>
+
+<p>Single lines of code can be sent from vim to the R console by pressing the space bar. To send 
+several lines at once, one can select them in vim’s visual mode and then hit the space bar. 
+Please note, the default command for sending code lines in the vim-r-plugin is <code class="highlighter-rouge">\l</code>. This key 
+binding has been remapped in the provided <code class="highlighter-rouge">.vimrc</code> file to the space bar. Most other key 
+bindings (shortcuts) still start with the <code class="highlighter-rouge">\</code> as LocalLeader, <em>e.g.</em> <code class="highlighter-rouge">\rh</code> opens the help for 
+a function/object where the curser is located in vim. More details on this are given below.</p>
+
+<h3 id="important-keybindings-for-vim">Important keybindings for vim</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;F2&gt;</code>: opens vim-connected R session; remapped in <code class="highlighter-rouge">.vimrc</code> from default <code class="highlighter-rouge">\rf</code></li>
+  <li><code class="highlighter-rouge">&lt;spacebar&gt;</code>: sends code from vim to R; here remapped in <code class="highlighter-rouge">.vimrc</code> from default <code class="highlighter-rouge">\l</code></li>
+  <li><code class="highlighter-rouge">:split</code> or <code class="highlighter-rouge">:vsplit</code>: splits viewport (similar to pane split in tmux)</li>
+  <li><code class="highlighter-rouge">Ctrl-w-w</code>: jumps cursor to next viewport</li>
+  <li><code class="highlighter-rouge">Ctrl-w-r</code>: swaps viewports</li>
+  <li><code class="highlighter-rouge">Ctrl-s</code> and <code class="highlighter-rouge">Ctrl-x</code>: freezes/unfreezes vim (some systems)</li>
+</ul>
+
+<h3 id="important-keybindings-for-tmux">Important keybindings for tmux</h3>
+
+<p><strong>Pane-level commands</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">Ctrl-a %</code>: splits pane vertically</li>
+  <li><code class="highlighter-rouge">Ctrl-a "</code>: splits pane horizontally</li>
+  <li><code class="highlighter-rouge">Ctrl-a-o</code>: jumps cursor to next pane</li>
+  <li><code class="highlighter-rouge">Ctrl-a Ctrl-o</code>: swaps panes</li>
+  <li><code class="highlighter-rouge">Ctrl-a &lt;space bar&gt;</code>: rotates pane arrangement</li>
+</ul>
+
+<p><strong>Window-level comands</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">Ctrl-a n</code>: switches to next tmux window</li>
+  <li><code class="highlighter-rouge">Ctrl-a Ctrl-a</code>: switches to previous tmux window</li>
+  <li><code class="highlighter-rouge">Ctrl-a c</code>: creates a new tmux window</li>
+  <li><code class="highlighter-rouge">Ctrl-a 1</code>: switches to specific tmux window selected by number</li>
+</ul>
+
+<p><strong>Session-level comands</strong></p>
+
+<ul>
+  <li><code class="highlighter-rouge">Ctrl-a d</code>: detaches from current session</li>
+  <li><code class="highlighter-rouge">Ctrl-a s</code>: switch between available tmux sesssions</li>
+  <li><code class="highlighter-rouge">$ tmux new -s &lt;name&gt;</code>: starts new session with a specific name</li>
+  <li><code class="highlighter-rouge">$ tmux ls</code>: lists available tmux session(s)</li>
+  <li><code class="highlighter-rouge">$ tmux attach -t &lt;id&gt;</code>: attaches to specific tmux session</li>
+  <li><code class="highlighter-rouge">$ tmux attach</code>: reattaches to session</li>
+  <li><code class="highlighter-rouge">$ tmux kill-session -t &lt;id&gt;</code>: kills a specific tmux session</li>
+  <li><code class="highlighter-rouge">Ctrl-a : kill-session</code>: kills a session from tmux command mode that can be initiated with <code class="highlighter-rouge">Ctrl-a :</code></li>
+</ul>
+
+
+
+    <div class="tags">
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+               &copy;2017 UC Riverside. All rights reserved. <br />
+ Site last generated: Apr 9, 2017 <br />
+<!--
+<p><img src="images/company_logo.png" alt="Company logo"/></p>
+-->
+</div>
+            </div>
+</footer>
+
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+
+</body>
+
+</html>
