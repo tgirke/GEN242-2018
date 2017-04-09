@@ -3,21 +3,19 @@ title: "Introduction to R"
 author: "Author: Thomas Girke"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
 output:
-  BiocStyle::html_document:
+  html_document:
     toc: true
-    toc_depth: 3
+    toc_float:
+        collapsed: false
+        smooth_scroll: true
+    toc_depth: 2
     fig_caption: yes
+    code_folding: show
+    number_sections: true
 
 fontsize: 14pt
 bibliography: bibtex.bib
 ---
-<!--
-%% \VignetteEngine{knitr::rmarkdown}
-%\VignetteIndexEntry{Overview Vignette}
-%% \VignetteDepends{methods}
-%% \VignetteKeywords{compute cluster, pipeline, reports}
-%% \VignettePackage{longevityTools}
--->
 
 <!---
 - Compile from command-line
@@ -71,7 +69,6 @@ common operating systems.
 
 ## R Working Environments
 
-## Working environments (IDEs) for R
 <center><img title="R_Interfaces" src="images/rinterface.png"/></center>
 <center> R Projects and Interfaces</center>
 

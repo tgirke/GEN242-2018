@@ -1,6 +1,6 @@
 ---
 title: R Markdown
-last_updated: Sun Apr  9 16:12:13 2017
+last_updated: Sun Apr  9 16:38:13 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_15.html
 ---
@@ -183,7 +183,7 @@ dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
 ggplot(dsmall, aes(color, price/carat)) + geom_jitter(alpha = I(1 / 2), aes(color=color))
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/some_jitter_plot-1.png)
+<img src="./pages/mydoc/Rbasics_files/some_jitter_plot-1.png" width="672" />
 
 Sometimes it can be useful to explicitly write an image to a file and then insert that 
 image into the final document by referencing its file name in the R Markdown source. For 

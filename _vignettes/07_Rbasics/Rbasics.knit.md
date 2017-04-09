@@ -3,21 +3,19 @@ title: "Introduction to R"
 author: "Author: Thomas Girke"
 date: "Last update: 09 April, 2017" 
 output:
-  BiocStyle::html_document:
+  html_document:
     toc: true
-    toc_depth: 3
+    toc_float:
+        collapsed: false
+        smooth_scroll: true
+    toc_depth: 2
     fig_caption: yes
+    code_folding: show
+    number_sections: true
 
 fontsize: 14pt
 bibliography: bibtex.bib
 ---
-<!--
-%% \VignetteEngine{knitr::rmarkdown}
-%\VignetteIndexEntry{Overview Vignette}
-%% \VignetteDepends{methods}
-%% \VignetteKeywords{compute cluster, pipeline, reports}
-%% \VignettePackage{longevityTools}
--->
 
 <!---
 - Compile from command-line
@@ -73,7 +71,6 @@ common operating systems.
 
 ## R Working Environments
 
-## Working environments (IDEs) for R
 <center><img title="R_Interfaces" src="images/rinterface.png"/></center>
 <center> R Projects and Interfaces</center>
 
@@ -944,9 +941,9 @@ frame1[1:2,]
 ```
 
 ```
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 73          6.3         2.5          4.9         1.5 versicolor
-## 14          4.3         3.0          1.1         0.1     setosa
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 104          6.3         2.9          5.6         1.8 virginica
+## 12           4.8         3.4          1.6         0.2    setosa
 ```
 
 ```r
@@ -1024,16 +1021,16 @@ dbGetQuery(mydb, 'SELECT * FROM mydf2')
 
 ```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 1   id46          4.8         3.0          1.4         0.3     setosa
-## 2  id137          6.3         3.4          5.6         2.4  virginica
-## 3   id87          6.7         3.1          4.7         1.5 versicolor
-## 4    id8          5.0         3.4          1.5         0.2     setosa
-## 5   id42          4.5         2.3          1.3         0.3     setosa
-## 6   id16          5.7         4.4          1.5         0.4     setosa
-## 7  id142          6.9         3.1          5.1         2.3  virginica
-## 8  id117          6.5         3.0          5.5         1.8  virginica
-## 9   id41          5.0         3.5          1.3         0.3     setosa
-## 10  id56          5.7         2.8          4.5         1.3 versicolor
+## 1  id144          6.8         3.2          5.9         2.3  virginica
+## 2  id107          4.9         2.5          4.5         1.7  virginica
+## 3   id72          6.1         2.8          4.0         1.3 versicolor
+## 4   id21          5.4         3.4          1.7         0.2     setosa
+## 5   id92          6.1         3.0          4.6         1.4 versicolor
+## 6   id62          5.9         3.0          4.2         1.5 versicolor
+## 7  id114          5.7         2.5          5.0         2.0  virginica
+## 8   id30          4.7         3.2          1.6         0.2     setosa
+## 9   id45          5.1         3.8          1.9         0.4     setosa
+## 10 id142          6.9         3.1          5.1         2.3  virginica
 ```
 
 ## Query database
@@ -1063,27 +1060,27 @@ dbGetQuery(mydb, 'SELECT * FROM mydf1, mydf2 WHERE mydf1.ids = mydf2.ids')
 
 ```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species   ids Sepal.Length
-## 1    id8          5.0         3.4          1.5         0.2     setosa   id8          5.0
-## 2   id16          5.7         4.4          1.5         0.4     setosa  id16          5.7
-## 3   id41          5.0         3.5          1.3         0.3     setosa  id41          5.0
-## 4   id42          4.5         2.3          1.3         0.3     setosa  id42          4.5
-## 5   id46          4.8         3.0          1.4         0.3     setosa  id46          4.8
-## 6   id56          5.7         2.8          4.5         1.3 versicolor  id56          5.7
-## 7   id87          6.7         3.1          4.7         1.5 versicolor  id87          6.7
-## 8  id117          6.5         3.0          5.5         1.8  virginica id117          6.5
-## 9  id137          6.3         3.4          5.6         2.4  virginica id137          6.3
-## 10 id142          6.9         3.1          5.1         2.3  virginica id142          6.9
+## 1   id21          5.4         3.4          1.7         0.2     setosa  id21          5.4
+## 2   id30          4.7         3.2          1.6         0.2     setosa  id30          4.7
+## 3   id45          5.1         3.8          1.9         0.4     setosa  id45          5.1
+## 4   id62          5.9         3.0          4.2         1.5 versicolor  id62          5.9
+## 5   id72          6.1         2.8          4.0         1.3 versicolor  id72          6.1
+## 6   id92          6.1         3.0          4.6         1.4 versicolor  id92          6.1
+## 7  id107          4.9         2.5          4.5         1.7  virginica id107          4.9
+## 8  id114          5.7         2.5          5.0         2.0  virginica id114          5.7
+## 9  id142          6.9         3.1          5.1         2.3  virginica id142          6.9
+## 10 id144          6.8         3.2          5.9         2.3  virginica id144          6.8
 ##    Sepal.Width Petal.Length Petal.Width    Species
-## 1          3.4          1.5         0.2     setosa
-## 2          4.4          1.5         0.4     setosa
-## 3          3.5          1.3         0.3     setosa
-## 4          2.3          1.3         0.3     setosa
-## 5          3.0          1.4         0.3     setosa
-## 6          2.8          4.5         1.3 versicolor
-## 7          3.1          4.7         1.5 versicolor
-## 8          3.0          5.5         1.8  virginica
-## 9          3.4          5.6         2.4  virginica
-## 10         3.1          5.1         2.3  virginica
+## 1          3.4          1.7         0.2     setosa
+## 2          3.2          1.6         0.2     setosa
+## 3          3.8          1.9         0.4     setosa
+## 4          3.0          4.2         1.5 versicolor
+## 5          2.8          4.0         1.3 versicolor
+## 6          3.0          4.6         1.4 versicolor
+## 7          2.5          4.5         1.7  virginica
+## 8          2.5          5.0         2.0  virginica
+## 9          3.1          5.1         2.3  virginica
+## 10         3.2          5.9         2.3  virginica
 ```
 
 
@@ -1178,7 +1175,7 @@ Plot data
 plot(y[,1], y[,2]) 
 ```
 
-![](Rbasics_files/figure-html/basic_scatter_plot-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/basic_scatter_plot-1.png" width="672" />
 
 ### All pairs
 
@@ -1187,7 +1184,7 @@ plot(y[,1], y[,2])
 pairs(y) 
 ```
 
-![](Rbasics_files/figure-html/pairs_scatter_plot-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/pairs_scatter_plot-1.png" width="672" />
 
 ### With labels
 
@@ -1197,7 +1194,7 @@ plot(y[,1], y[,2], pch=20, col="red", main="Symbols and Labels")
 text(y[,1]+0.03, y[,2], rownames(y))
 ```
 
-![](Rbasics_files/figure-html/labels_scatter_plot-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/labels_scatter_plot-1.png" width="672" />
 
 ## More examples
 
@@ -1209,7 +1206,7 @@ plot(y[,1], y[,2], type="n", main="Plot of Labels")
 text(y[,1], y[,2], rownames(y)) 
 ```
 
-![](Rbasics_files/figure-html/row_scatter_plot-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/row_scatter_plot-1.png" width="672" />
 
 __Usage of important plotting parameters__
 
@@ -1240,7 +1237,7 @@ plot(y[,1], y[,2])
 myline <- lm(y[,2]~y[,1]); abline(myline, lwd=2) 
 ```
 
-![](Rbasics_files/figure-html/plot_regression-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_regression-1.png" width="672" />
 
 ```r
 summary(myline) 
@@ -1276,7 +1273,7 @@ Same plot as above, but on log scale
 plot(y[,1], y[,2], log="xy") 
 ```
 
-![](Rbasics_files/figure-html/plot_regression_log-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_regression_log-1.png" width="672" />
 
 ### Add a mathematical expression
 
@@ -1285,7 +1282,7 @@ plot(y[,1], y[,2], log="xy")
 plot(y[,1], y[,2]); text(y[1,1], y[1,2], expression(sum(frac(1,sqrt(x^2*pi)))), cex=1.3) 
 ```
 
-![](Rbasics_files/figure-html/plot_regression_math-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_regression_math-1.png" width="672" />
 
 ## Homework 3B 
 
@@ -1301,7 +1298,7 @@ Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_ho
 plot(y[,1], type="l", lwd=2, col="blue") 
 ```
 
-![](Rbasics_files/figure-html/plot_line_single-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_line_single-1.png" width="672" />
 
 ### Many Data Sets
 
@@ -1324,7 +1321,7 @@ for(i in 2:length(y[1,])) {
 }
 ```
 
-![](Rbasics_files/figure-html/plot_line_many-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_line_many-1.png" width="672" />
 
 ```r
 close.screen(all=TRUE) 
@@ -1340,7 +1337,7 @@ barplot(y[1:4,], ylim=c(0, max(y[1:4,])+0.3), beside=TRUE, legend=letters[1:4])
 text(labels=round(as.vector(as.matrix(y[1:4,])),2), x=seq(1.5, 13, by=1) + sort(rep(c(0,1,2), 4)), y=as.vector(as.matrix(y[1:4,]))+0.04) 
 ```
 
-![](Rbasics_files/figure-html/plot_bar_simple-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_bar_simple-1.png" width="672" />
     
 ### Error Bars
 
@@ -1351,7 +1348,7 @@ stdev <- sd(t(y))
 arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
 ```
 
-![](Rbasics_files/figure-html/plot_bar_error-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_bar_error-1.png" width="672" />
 
 ## Histograms
 
@@ -1360,7 +1357,7 @@ arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
 hist(y, freq=TRUE, breaks=10)
 ```
 
-![](Rbasics_files/figure-html/plot_hist-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_hist-1.png" width="672" />
 
 ## Density Plots
 
@@ -1369,7 +1366,7 @@ hist(y, freq=TRUE, breaks=10)
 plot(density(y), col="red")
 ```
 
-![](Rbasics_files/figure-html/plot_dens-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_dens-1.png" width="672" />
 
 ## Pie Charts
 
@@ -1380,7 +1377,7 @@ legend("topright", legend=row.names(y), cex=1.3, bty="n", pch=15, pt.cex=1.8,
 col=rainbow(length(y[,1]), start=0.1, end=0.8), ncol=1) 
 ```
 
-![](Rbasics_files/figure-html/plot_pie-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_pie-1.png" width="672" />
 
 ## Color Selection Utilities
 
@@ -1569,8 +1566,8 @@ query[1:4, ]
 ##               ID Molecular.Weight.Da. Residues  Loc   cTP   mTP    SP other
 ## NA          <NA>                   NA       NA <NA>    NA    NA    NA    NA
 ## NA.1        <NA>                   NA       NA <NA>    NA    NA    NA    NA
-## 219  AT1G02730.1               132588     1181    C 0.972 0.038 0.008 0.045
-## 243  AT1G02890.1               136825     1252    C 0.748 0.529 0.011 0.013
+## NA.2        <NA>                   NA       NA <NA>    NA    NA    NA    NA
+## 216  AT1G02730.1               132588     1181    C 0.972 0.038 0.008 0.045
 ```
 
 ```r
@@ -1578,7 +1575,7 @@ dim(query)
 ```
 
 ```
-## [1] 581   8
+## [1] 1109    8
 ```
 
 - __Homework 3F__: How many protein entries in the `my`_mw`_target` data frame have a MW of greater then 4,000 and less then 5,000. Subset the data frame accordingly and sort it by MW to check that your result is correct.
@@ -1651,7 +1648,7 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12]
 plot(my_mw_target4[1:500,3:4], col="red")
 ```
 
-![](Rbasics_files/figure-html/plot_example-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/plot_example-1.png" width="672" />
 
 ## Export Results and Run Entire Exercise as Script
 
@@ -1850,7 +1847,7 @@ dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
 ggplot(dsmall, aes(color, price/carat)) + geom_jitter(alpha = I(1 / 2), aes(color=color))
 ```
 
-![](Rbasics_files/figure-html/some_jitter_plot-1.png)<!-- -->
+<img src="Rbasics_files/figure-html/some_jitter_plot-1.png" width="672" />
 
 Sometimes it can be useful to explicitly write an image to a file and then insert that 
 image into the final document by referencing its file name in the R Markdown source. For 
@@ -1932,8 +1929,8 @@ sessionInfo()
 ##  [1] Rcpp_0.12.7        magrittr_1.5       munsell_0.4.3      colorspace_1.2-7   highr_0.6         
 ##  [6] stringr_1.1.0      plyr_1.8.4         caTools_1.17.1     tools_3.3.3        grid_3.3.3        
 ## [11] gtable_0.2.0       KernSmooth_2.23-15 htmltools_0.3.5    gtools_3.5.0       yaml_2.1.13       
-## [16] assertthat_0.1     digest_0.6.10      tibble_1.2         formatR_1.4        codetools_0.2-15  
-## [21] bitops_1.0-6       evaluate_0.10      rmarkdown_1.1      labeling_0.3       gdata_2.17.0      
+## [16] assertthat_0.1     digest_0.6.10      tibble_1.2         formatR_1.4        bitops_1.0-6      
+## [21] codetools_0.2-15   evaluate_0.10      rmarkdown_1.1      labeling_0.3       gdata_2.17.0      
 ## [26] stringi_1.1.2      scales_0.4.0
 ```
 

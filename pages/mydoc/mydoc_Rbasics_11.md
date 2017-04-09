@@ -1,6 +1,6 @@
 ---
 title: Useful R Functions
-last_updated: Sun Apr  9 16:12:13 2017
+last_updated: Sun Apr  9 16:38:13 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_11.html
 ---
@@ -77,9 +77,9 @@ frame1[1:2,]
 {% endhighlight %}
 
 {% highlight txt %}
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 73          6.3         2.5          4.9         1.5 versicolor
-## 14          4.3         3.0          1.1         0.1     setosa
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 104          6.3         2.9          5.6         1.8 virginica
+## 12           4.8         3.4          1.6         0.2    setosa
 {% endhighlight %}
 
 {% highlight r %}

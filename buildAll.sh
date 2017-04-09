@@ -1,12 +1,12 @@
 #!/bin/bash
-## Script that runs typical workflow when updating site
+## Convenience script to add, commit and push updates to gh-pages branch on GitHub 
 ## Author: Thomas Girke
 ## Last update: Apr 9, 2017
 
-## (1) Make sure you are in the gh-pages branch
+## (1) Makes sure you are in gh-pages branch
 git checkout gh-pages  
 
-## (4) Commit edits made in gh-pages branch 
+## (2) Commit edits made in gh-pages branch 
 git add -A :/
 git commit -am "some edits"
 git push -u origin gh-pages

@@ -1,6 +1,6 @@
 ---
 title: Session Info
-last_updated: Sun Apr  9 16:12:13 2017
+last_updated: Sun Apr  9 16:38:13 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
@@ -32,8 +32,8 @@ sessionInfo()
 ##  [1] Rcpp_0.12.7        magrittr_1.5       munsell_0.4.3      colorspace_1.2-7   highr_0.6         
 ##  [6] stringr_1.1.0      plyr_1.8.4         caTools_1.17.1     tools_3.3.3        grid_3.3.3        
 ## [11] gtable_0.2.0       KernSmooth_2.23-15 htmltools_0.3.5    gtools_3.5.0       yaml_2.1.13       
-## [16] assertthat_0.1     digest_0.6.10      tibble_1.2         formatR_1.4        codetools_0.2-15  
-## [21] bitops_1.0-6       evaluate_0.10      rmarkdown_1.1      labeling_0.3       gdata_2.17.0      
+## [16] assertthat_0.1     digest_0.6.10      tibble_1.2         formatR_1.4        bitops_1.0-6      
+## [21] codetools_0.2-15   evaluate_0.10      rmarkdown_1.1      labeling_0.3       gdata_2.17.0      
 ## [26] stringi_1.1.2      scales_0.4.0
 {% endhighlight %}
 

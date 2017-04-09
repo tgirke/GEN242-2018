@@ -1,6 +1,6 @@
 ---
 title: Introduction to R 
-last_updated: Sun Apr  9 16:12:13 2017
+last_updated: Sun Apr  9 16:38:13 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
@@ -42,7 +42,6 @@ common operating systems.
 
 ## R Working Environments
 
-## Working environments (IDEs) for R
 <center><img title="R_Interfaces" src="./pages/mydoc/Rbasics_files/rinterface.png"/></center>
 <center> R Projects and Interfaces</center>
 

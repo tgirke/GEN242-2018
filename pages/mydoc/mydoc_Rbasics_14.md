@@ -1,6 +1,6 @@
 ---
 title: Analysis Routine
-last_updated: Sun Apr  9 16:12:13 2017
+last_updated: Sun Apr  9 16:38:13 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_14.html
 ---
@@ -103,8 +103,8 @@ query[1:4, ]
 ##               ID Molecular.Weight.Da. Residues  Loc   cTP   mTP    SP other
 ## NA          <NA>                   NA       NA <NA>    NA    NA    NA    NA
 ## NA.1        <NA>                   NA       NA <NA>    NA    NA    NA    NA
-## 219  AT1G02730.1               132588     1181    C 0.972 0.038 0.008 0.045
-## 243  AT1G02890.1               136825     1252    C 0.748 0.529 0.011 0.013
+## NA.2        <NA>                   NA       NA <NA>    NA    NA    NA    NA
+## 216  AT1G02730.1               132588     1181    C 0.972 0.038 0.008 0.045
 {% endhighlight %}
 
 {% highlight r %}
@@ -112,7 +112,7 @@ dim(query)
 {% endhighlight %}
 
 {% highlight txt %}
-## [1] 581   8
+## [1] 1109    8
 {% endhighlight %}
 
 - __Homework 3F__: How many protein entries in the `my`_mw`_target` data frame have a MW of greater then 4,000 and less then 5,000. Subset the data frame accordingly and sort it by MW to check that your result is correct.
@@ -185,7 +185,7 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12]
 plot(my_mw_target4[1:500,3:4], col="red")
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_example-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_example-1.png" width="672" />
 
 ## Export Results and Run Entire Exercise as Script
 

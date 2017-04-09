@@ -1,6 +1,6 @@
 ---
 title: Graphics in R
-last_updated: Sun Apr  9 16:12:13 2017
+last_updated: Sun Apr  9 16:38:13 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_13.html
 ---
@@ -94,7 +94,7 @@ Plot data
 plot(y[,1], y[,2]) 
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/basic_scatter_plot-1.png)
+<img src="./pages/mydoc/Rbasics_files/basic_scatter_plot-1.png" width="672" />
 
 ### All pairs
 
@@ -103,7 +103,7 @@ plot(y[,1], y[,2])
 pairs(y) 
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/pairs_scatter_plot-1.png)
+<img src="./pages/mydoc/Rbasics_files/pairs_scatter_plot-1.png" width="672" />
 
 ### With labels
 
@@ -113,7 +113,7 @@ plot(y[,1], y[,2], pch=20, col="red", main="Symbols and Labels")
 text(y[,1]+0.03, y[,2], rownames(y))
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/labels_scatter_plot-1.png)
+<img src="./pages/mydoc/Rbasics_files/labels_scatter_plot-1.png" width="672" />
 
 ## More examples
 
@@ -125,7 +125,7 @@ plot(y[,1], y[,2], type="n", main="Plot of Labels")
 text(y[,1], y[,2], rownames(y)) 
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/row_scatter_plot-1.png)
+<img src="./pages/mydoc/Rbasics_files/row_scatter_plot-1.png" width="672" />
 
 __Usage of important plotting parameters__
 
@@ -156,7 +156,7 @@ plot(y[,1], y[,2])
 myline <- lm(y[,2]~y[,1]); abline(myline, lwd=2) 
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_regression-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_regression-1.png" width="672" />
 
 {% highlight r %}
 summary(myline) 
@@ -192,7 +192,7 @@ Same plot as above, but on log scale
 plot(y[,1], y[,2], log="xy") 
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_regression_log-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_regression_log-1.png" width="672" />
 
 ### Add a mathematical expression
 
@@ -201,7 +201,7 @@ plot(y[,1], y[,2], log="xy")
 plot(y[,1], y[,2]); text(y[1,1], y[1,2], expression(sum(frac(1,sqrt(x^2*pi)))), cex=1.3) 
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_regression_math-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_regression_math-1.png" width="672" />
 
 ## Homework 3B 
 
@@ -217,7 +217,7 @@ Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_ho
 plot(y[,1], type="l", lwd=2, col="blue") 
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_line_single-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_line_single-1.png" width="672" />
 
 ### Many Data Sets
 
@@ -240,7 +240,7 @@ for(i in 2:length(y[1,])) {
 }
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_line_many-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_line_many-1.png" width="672" />
 
 {% highlight r %}
 close.screen(all=TRUE) 
@@ -256,7 +256,7 @@ barplot(y[1:4,], ylim=c(0, max(y[1:4,])+0.3), beside=TRUE, legend=letters[1:4])
 text(labels=round(as.vector(as.matrix(y[1:4,])),2), x=seq(1.5, 13, by=1) + sort(rep(c(0,1,2), 4)), y=as.vector(as.matrix(y[1:4,]))+0.04) 
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_bar_simple-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_bar_simple-1.png" width="672" />
     
 ### Error Bars
 
@@ -267,7 +267,7 @@ stdev <- sd(t(y))
 arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_bar_error-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_bar_error-1.png" width="672" />
 
 ## Histograms
 
@@ -276,7 +276,7 @@ arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
 hist(y, freq=TRUE, breaks=10)
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_hist-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_hist-1.png" width="672" />
 
 ## Density Plots
 
@@ -285,7 +285,7 @@ hist(y, freq=TRUE, breaks=10)
 plot(density(y), col="red")
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_dens-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_dens-1.png" width="672" />
 
 ## Pie Charts
 
@@ -296,7 +296,7 @@ legend("topright", legend=row.names(y), cex=1.3, bty="n", pch=15, pt.cex=1.8,
 col=rainbow(length(y[,1]), start=0.1, end=0.8), ncol=1) 
 {% endhighlight %}
 
-![](./pages/mydoc/Rbasics_files/plot_pie-1.png)
+<img src="./pages/mydoc/Rbasics_files/plot_pie-1.png" width="672" />
 
 ## Color Selection Utilities
 
