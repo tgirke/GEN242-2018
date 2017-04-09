@@ -1,6 +1,6 @@
 ---
 title: Introduction to R 
-last_updated: Sun Apr  9 15:29:37 2017
+last_updated: Sun Apr  9 15:43:41 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
@@ -9,10 +9,10 @@ Author: Thomas Girke
 Last update: 09 April, 2017 
 
 Alternative formats of this vignette:
-[`Single-page .Rmd HTML`](https://htmlpreview.github.io/?https://github.com/tgirke/GEN242/blob/master/vignettes/07_Rbasics/Rbasics.html),
-[`.Rmd`](https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/07_Rbasics/Rbasics.Rmd),
-[`.R`](https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/07_Rbasics/Rbasics.R)
-[Old Slides `.pdf`](https://drive.google.com/file/d/0B-lLYVUOliJFWERSVEg3M2Z2cWs/view?usp=sharing)
+[HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Rbasics.html),
+[.Rmd](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/Rbasics.Rmd),
+[R](https://raw.githubusercontent.com/tgirke/GEN242/gh_pages/_vignettes/07_Rbasics/Rbasics.R)
+[Old PDF Slides](https://drive.google.com/file/d/0B-lLYVUOliJFWERSVEg3M2Z2cWs/view?usp=sharing)
 
 ## Overview
 ---
