@@ -1,6 +1,6 @@
 ---
 title: Basic Syntax
-last_updated: Sun Apr  9 15:06:35 2017
+last_updated: Sun Apr  9 15:29:37 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_05.html
 ---
@@ -58,4 +58,4 @@ $ R --slave < my_script.R
 {% endhighlight %}
 
 <br><br><center><a href="mydoc_Rbasics_04.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<a href="mydoc_Rbasics_06.html"><img src="../images/right_arrow.png" alt="Next page."></a></center>
+<a href="mydoc_Rbasics_06.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

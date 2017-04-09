@@ -1,6 +1,6 @@
 ---
 title: Graphics in R
-last_updated: Sun Apr  9 15:06:35 2017
+last_updated: Sun Apr  9 15:29:37 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_13.html
 ---
@@ -386,4 +386,4 @@ dev.off()
 Homework 3C: [Bar Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
 <br><br><center><a href="mydoc_Rbasics_12.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<a href="mydoc_Rbasics_14.html"><img src="../images/right_arrow.png" alt="Next page."></a></center>
+<a href="mydoc_Rbasics_14.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

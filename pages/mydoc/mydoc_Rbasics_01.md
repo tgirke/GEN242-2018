@@ -1,6 +1,6 @@
 ---
 title: Introduction to R 
-last_updated: Sun Apr  9 15:06:35 2017
+last_updated: Sun Apr  9 15:29:37 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
@@ -73,4 +73,4 @@ Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinforma
 <center>Vim-R-Tmux IDE for R</center>
 
 <br><br><center><a href="mydoc_Rbasics_01.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<a href="mydoc_Rbasics_02.html"><img src="../images/right_arrow.png" alt="Next page."></a></center>
+<a href="mydoc_Rbasics_02.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

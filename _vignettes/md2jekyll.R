@@ -179,7 +179,7 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     for(i in seq_along(mdlist)) mdlist[[i]][5] <- paste0(mdlist[[i]][5], permalink[i])
    
     ## Next/previous page image links
-    nextpageurl <- paste0('<a href=\"', permalink, '\"><img src=\"../images/right_arrow.png\" alt="Next page."></a>')
+    nextpageurl <- paste0('<a href=\"', permalink, '\"><img src=\"images/right_arrow.png\" alt="Next page."></a>')
     nextpageurl <- nextpageurl[c(2:length(nextpageurl), 1)]
     nextpageurl <- paste0(nextpageurl, "</center>")
     previouspageurl <- paste0('<a href=\"', permalink, '\"><img src=\"images/left_arrow.png\" alt="Previous page."></a>')
