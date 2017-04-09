@@ -1,6 +1,6 @@
 ---
 title: Operators and Calculations
-last_updated: Tue Apr  4 21:47:38 2017
+last_updated: Sun Apr  9 15:06:35 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_09.html
 ---
@@ -64,3 +64,5 @@ apply(iris[1:6,1:3], 1, mean)
 ## 3.333333 3.100000 3.066667 3.066667 3.333333 3.666667
 {% endhighlight %}
 
+<br><br><center><a href="mydoc_Rbasics_08.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<a href="mydoc_Rbasics_10.html"><img src="../images/right_arrow.png" alt="Next page."></a></center>

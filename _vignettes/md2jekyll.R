@@ -177,12 +177,21 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     ## Add permalink info to front matter 
     permalink <- paste0(gsub("(^.*/)|(md$)", "", filenames), "html")
     for(i in seq_along(mdlist)) mdlist[[i]][5] <- paste0(mdlist[[i]][5], permalink[i])
-    
+   
+    ## Next/previous page image links
+    nextpageurl <- paste0('<a href=\"', permalink, '\"><img src=\"../images/right_arrow.png\" alt="Next page."></a>')
+    nextpageurl <- nextpageurl[c(2:length(nextpageurl), 1)]
+    nextpageurl <- paste0(nextpageurl, "</center>")
+    previouspageurl <- paste0('<a href=\"', permalink, '\"><img src=\"images/left_arrow.png\" alt="Previous page."></a>')
+    previouspageurl <- previouspageurl[c(1,1:(length(previouspageurl)-1))]
+    previouspageurl <- paste0("<br><br><center>", previouspageurl, "Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page")
+    for(i in seq_along(mdlist)) mdlist[[i]] <- c(mdlist[[i]], previouspageurl[i], nextpageurl[i])
+
+    ## Write subpages to files
     for(i in seq_along(mdlist)) {
         writeLines(mdlist[[i]], filenames[i])
         cat(paste("Created file:", filenames[i]), "\n") 
     }
-    
     
     ## (9) Register new files in sidebar (_data/sidebars/mydoc_sidebar.yml)
     sb <- readLines("../../_data/sidebars/mydoc_sidebar.yml") 
@@ -216,22 +225,14 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     ## Construct new sidebar entries
     mytitles <- gsub("# {1,}", "", titles)
     mytitles <- paste0(1:length(mytitles), ". ", mytitles)
-    myurls <- paste0("/mydoc/", basename(filenames))
-    myurls <- gsub(".md$", "/", myurls)
+    myurls <- paste0("", basename(filenames))
+    myurls <- gsub(".md$", ".html", myurls)
     sectionheader <- c(paste0("  - title: ", sidebartitle),
-                       "    audience: writers, designers",
-                       "    platform: all",
-                       "    product: all",
-                       "    version: all",
                        "    output: web, pdf",
                        "    folderitems:",
                        "")
     subsections <- c("    - title: ",
                      "      url: ",
-                     "      audience: writers, designers",
-                     "      platform: all",
-                     "      product: all",
-                     "      version: all",
                      "      output: web",
                      "")
     subsectionlist <- lapply(seq_along(mytitles), function(x) subsections)
@@ -247,50 +248,6 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     sidebarfile <- gsub("/{1,}", "/", sidebarfile)
     writeLines(unlist(sblist), sidebarfile)
     cat(paste("Created file", sidebarfile), "\n")
-    
-    ## (10) Add new files to URL configuration file (_data/mydoc/mydoc_urls.yml)
-    urls <- readLines("../../_data/urls.yml")
-    splitFcturl <- function(url, pattern) {    
-        splitpos <- grep(pattern, url)
-        if(length(splitpos) != 0) {
-            splitdist <- c(splitpos, length(url)+1) - c(1, splitpos) 
-            urllist <- split(url, factor(rep(c(1, splitpos), splitdist)))
-            mynames <- url[splitpos]
-            mynames <- gsub(" {1,}", "_", mynames)
-            mynames <- gsub(":", "", mynames)
-            names(urllist) <- mynames
-            return(urllist)
-        } else {
-            stop("mydoc_urls.yml is expected to contain at least one component.")
-        }
-    }
-    ## Split on title lines
-    urllist <- splitFcturl(url=urls, pattern="^\\w{1,}.*:")
-    ## Construct new url entries
-    mytitles <- gsub("# {1,}", "", titles)
-    myurls <- paste0("../mydoc/", basename(filenames))
-    myurls <- gsub(".md$", ".html", myurls)
-    headerlines <- gsub("(^.*/)|(.html$)", "", myurls)
-    urlentry <- c("",
-                  "  title: ",
-                  "  url: ",
-                  "  link: ",
-                  "")
-    newurllist <- lapply(seq_along(mytitles), function(x) urlentry)
-    for(i in seq_along(newurllist)) {
-        newurllist[[i]][1] <- paste0(headerlines[i], ":")
-        newurllist[[i]][2] <- paste0(newurllist[[i]][2], "\"", mytitles[i], "\"")
-        newurllist[[i]][3] <- paste0(newurllist[[i]][3], "\"", myurls[i], "\"")
-        newurllist[[i]][4] <- paste0(newurllist[[i]][4], "\"<a href='", myurls[i], "'>", mytitles[i], "</a>\"")
-    }
-    names(newurllist) <- headerlines
-    urllist <- urllist[!names(urllist) %in% names(newurllist)] # Removes existing section entry
-    urllist <- c(urllist, newurllist)
-    urllist <- urllist[!duplicated(names(urllist))] # Removes duplicated entries
-    urlfile <- paste0(sidebar_url_path, "/", "mydoc_urls.yml")
-    urlfile <- gsub("/{1,}", "/", urlfile)
-    writeLines(unlist(urllist), urlfile)
-    cat(paste("Created file", urlfile), "\n")
 }
 
 ## Usage:

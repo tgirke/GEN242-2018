@@ -1,6 +1,6 @@
 ---
 title: Useful R Functions
-last_updated: Tue Apr  4 21:47:38 2017
+last_updated: Sun Apr  9 15:06:35 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_11.html
 ---
@@ -77,9 +77,9 @@ frame1[1:2,]
 {% endhighlight %}
 
 {% highlight txt %}
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 3          4.7         3.2          1.3         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 73          6.3         2.5          4.9         1.5 versicolor
+## 14          4.3         3.0          1.1         0.1     setosa
 {% endhighlight %}
 
 {% highlight r %}
@@ -99,3 +99,5 @@ dim(my_result)
 ## [1] 150  11
 {% endhighlight %}
 
+<br><br><center><a href="mydoc_Rbasics_10.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<a href="mydoc_Rbasics_12.html"><img src="../images/right_arrow.png" alt="Next page."></a></center>

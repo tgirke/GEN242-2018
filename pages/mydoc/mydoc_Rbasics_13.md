@@ -1,6 +1,6 @@
 ---
 title: Graphics in R
-last_updated: Tue Apr  4 21:47:38 2017
+last_updated: Sun Apr  9 15:06:35 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_13.html
 ---
@@ -205,7 +205,7 @@ plot(y[,1], y[,2]); text(y[1,1], y[1,2], expression(sum(frac(1,sqrt(x^2*pi)))), 
 
 ## Homework 3B 
 
-Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_homework_03.html)
+Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
 
 ## Line Plots
@@ -383,5 +383,7 @@ dev.off()
 
 ## Homework 3C
 
-Homework 3C: [Bar Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_homework_03.html)
+Homework 3C: [Bar Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
+<br><br><center><a href="mydoc_Rbasics_12.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<a href="mydoc_Rbasics_14.html"><img src="../images/right_arrow.png" alt="Next page."></a></center>

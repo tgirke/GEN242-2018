@@ -1,6 +1,6 @@
 ---
 title: R Markdown
-last_updated: Tue Apr  4 21:47:38 2017
+last_updated: Sun Apr  9 15:06:35 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_15.html
 ---
@@ -57,7 +57,7 @@ package from Bioconductor.
  ---
 title: "My First R Markdown Document"
 author: "Author: First Last"
-date: "Last update: 21 June, 2016"
+date: "Last update: 09 April, 2017"
 output:
   BiocStyle::html_document:
     toc: true
@@ -236,3 +236,5 @@ the corresponding [R Markdown page](http://rmarkdown.rstudio.com/authoring_bibli
 Also, for general reference management and outputting references in Bibtex format [Paperpile](https://paperpile.com/features) 
 can be very helpful.
 
+<br><br><center><a href="mydoc_Rbasics_14.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<a href="mydoc_Rbasics_16.html"><img src="../images/right_arrow.png" alt="Next page."></a></center>

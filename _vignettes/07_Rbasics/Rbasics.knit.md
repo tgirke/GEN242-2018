@@ -1,7 +1,7 @@
 ---
 title: "Introduction to R" 
 author: "Author: Thomas Girke"
-date: "Last update: 21 June, 2016" 
+date: "Last update: 09 April, 2017" 
 output:
   BiocStyle::html_document:
     toc: true
@@ -868,7 +868,7 @@ close(zz)
 
 ## Homework 3A 
 
-Homework 3A: [Object Subsetting Routines and Import/Export](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_homework_03.html)
+Homework 3A: [Object Subsetting Routines and Import/Export](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
 # Useful R Functions
 
@@ -944,9 +944,9 @@ frame1[1:2,]
 ```
 
 ```
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 3          4.7         3.2          1.3         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 73          6.3         2.5          4.9         1.5 versicolor
+## 14          4.3         3.0          1.1         0.1     setosa
 ```
 
 ```r
@@ -1024,16 +1024,16 @@ dbGetQuery(mydb, 'SELECT * FROM mydf2')
 
 ```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 1  id115          5.8         2.8          5.1         2.4  virginica
-## 2   id73          6.3         2.5          4.9         1.5 versicolor
-## 3   id80          5.7         2.6          3.5         1.0 versicolor
-## 4   id63          6.0         2.2          4.0         1.0 versicolor
-## 5  id123          7.7         2.8          6.7         2.0  virginica
-## 6   id99          5.1         2.5          3.0         1.1 versicolor
-## 7  id126          7.2         3.2          6.0         1.8  virginica
-## 8    id2          4.9         3.0          1.4         0.2     setosa
-## 9   id91          5.5         2.6          4.4         1.2 versicolor
-## 10  id20          5.1         3.8          1.5         0.3     setosa
+## 1   id46          4.8         3.0          1.4         0.3     setosa
+## 2  id137          6.3         3.4          5.6         2.4  virginica
+## 3   id87          6.7         3.1          4.7         1.5 versicolor
+## 4    id8          5.0         3.4          1.5         0.2     setosa
+## 5   id42          4.5         2.3          1.3         0.3     setosa
+## 6   id16          5.7         4.4          1.5         0.4     setosa
+## 7  id142          6.9         3.1          5.1         2.3  virginica
+## 8  id117          6.5         3.0          5.5         1.8  virginica
+## 9   id41          5.0         3.5          1.3         0.3     setosa
+## 10  id56          5.7         2.8          4.5         1.3 versicolor
 ```
 
 ## Query database
@@ -1063,27 +1063,27 @@ dbGetQuery(mydb, 'SELECT * FROM mydf1, mydf2 WHERE mydf1.ids = mydf2.ids')
 
 ```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species   ids Sepal.Length
-## 1    id2          4.9         3.0          1.4         0.2     setosa   id2          4.9
-## 2   id20          5.1         3.8          1.5         0.3     setosa  id20          5.1
-## 3   id63          6.0         2.2          4.0         1.0 versicolor  id63          6.0
-## 4   id73          6.3         2.5          4.9         1.5 versicolor  id73          6.3
-## 5   id80          5.7         2.6          3.5         1.0 versicolor  id80          5.7
-## 6   id91          5.5         2.6          4.4         1.2 versicolor  id91          5.5
-## 7   id99          5.1         2.5          3.0         1.1 versicolor  id99          5.1
-## 8  id115          5.8         2.8          5.1         2.4  virginica id115          5.8
-## 9  id123          7.7         2.8          6.7         2.0  virginica id123          7.7
-## 10 id126          7.2         3.2          6.0         1.8  virginica id126          7.2
+## 1    id8          5.0         3.4          1.5         0.2     setosa   id8          5.0
+## 2   id16          5.7         4.4          1.5         0.4     setosa  id16          5.7
+## 3   id41          5.0         3.5          1.3         0.3     setosa  id41          5.0
+## 4   id42          4.5         2.3          1.3         0.3     setosa  id42          4.5
+## 5   id46          4.8         3.0          1.4         0.3     setosa  id46          4.8
+## 6   id56          5.7         2.8          4.5         1.3 versicolor  id56          5.7
+## 7   id87          6.7         3.1          4.7         1.5 versicolor  id87          6.7
+## 8  id117          6.5         3.0          5.5         1.8  virginica id117          6.5
+## 9  id137          6.3         3.4          5.6         2.4  virginica id137          6.3
+## 10 id142          6.9         3.1          5.1         2.3  virginica id142          6.9
 ##    Sepal.Width Petal.Length Petal.Width    Species
-## 1          3.0          1.4         0.2     setosa
-## 2          3.8          1.5         0.3     setosa
-## 3          2.2          4.0         1.0 versicolor
-## 4          2.5          4.9         1.5 versicolor
-## 5          2.6          3.5         1.0 versicolor
-## 6          2.6          4.4         1.2 versicolor
-## 7          2.5          3.0         1.1 versicolor
-## 8          2.8          5.1         2.4  virginica
-## 9          2.8          6.7         2.0  virginica
-## 10         3.2          6.0         1.8  virginica
+## 1          3.4          1.5         0.2     setosa
+## 2          4.4          1.5         0.4     setosa
+## 3          3.5          1.3         0.3     setosa
+## 4          2.3          1.3         0.3     setosa
+## 5          3.0          1.4         0.3     setosa
+## 6          2.8          4.5         1.3 versicolor
+## 7          3.1          4.7         1.5 versicolor
+## 8          3.0          5.5         1.8  virginica
+## 9          3.4          5.6         2.4  virginica
+## 10         3.1          5.1         2.3  virginica
 ```
 
 
@@ -1178,7 +1178,7 @@ Plot data
 plot(y[,1], y[,2]) 
 ```
 
-![](Rbasics_files/figure-html/basic_scatter_plot-1.png)\
+![](Rbasics_files/figure-html/basic_scatter_plot-1.png)<!-- -->
 
 ### All pairs
 
@@ -1187,7 +1187,7 @@ plot(y[,1], y[,2])
 pairs(y) 
 ```
 
-![](Rbasics_files/figure-html/pairs_scatter_plot-1.png)\
+![](Rbasics_files/figure-html/pairs_scatter_plot-1.png)<!-- -->
 
 ### With labels
 
@@ -1197,7 +1197,7 @@ plot(y[,1], y[,2], pch=20, col="red", main="Symbols and Labels")
 text(y[,1]+0.03, y[,2], rownames(y))
 ```
 
-![](Rbasics_files/figure-html/labels_scatter_plot-1.png)\
+![](Rbasics_files/figure-html/labels_scatter_plot-1.png)<!-- -->
 
 ## More examples
 
@@ -1209,7 +1209,7 @@ plot(y[,1], y[,2], type="n", main="Plot of Labels")
 text(y[,1], y[,2], rownames(y)) 
 ```
 
-![](Rbasics_files/figure-html/row_scatter_plot-1.png)\
+![](Rbasics_files/figure-html/row_scatter_plot-1.png)<!-- -->
 
 __Usage of important plotting parameters__
 
@@ -1240,7 +1240,7 @@ plot(y[,1], y[,2])
 myline <- lm(y[,2]~y[,1]); abline(myline, lwd=2) 
 ```
 
-![](Rbasics_files/figure-html/plot_regression-1.png)\
+![](Rbasics_files/figure-html/plot_regression-1.png)<!-- -->
 
 ```r
 summary(myline) 
@@ -1276,7 +1276,7 @@ Same plot as above, but on log scale
 plot(y[,1], y[,2], log="xy") 
 ```
 
-![](Rbasics_files/figure-html/plot_regression_log-1.png)\
+![](Rbasics_files/figure-html/plot_regression_log-1.png)<!-- -->
 
 ### Add a mathematical expression
 
@@ -1285,11 +1285,11 @@ plot(y[,1], y[,2], log="xy")
 plot(y[,1], y[,2]); text(y[1,1], y[1,2], expression(sum(frac(1,sqrt(x^2*pi)))), cex=1.3) 
 ```
 
-![](Rbasics_files/figure-html/plot_regression_math-1.png)\
+![](Rbasics_files/figure-html/plot_regression_math-1.png)<!-- -->
 
 ## Homework 3B 
 
-Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_homework_03.html)
+Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
 
 ## Line Plots
@@ -1301,7 +1301,7 @@ Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/my
 plot(y[,1], type="l", lwd=2, col="blue") 
 ```
 
-![](Rbasics_files/figure-html/plot_line_single-1.png)\
+![](Rbasics_files/figure-html/plot_line_single-1.png)<!-- -->
 
 ### Many Data Sets
 
@@ -1324,7 +1324,7 @@ for(i in 2:length(y[1,])) {
 }
 ```
 
-![](Rbasics_files/figure-html/plot_line_many-1.png)\
+![](Rbasics_files/figure-html/plot_line_many-1.png)<!-- -->
 
 ```r
 close.screen(all=TRUE) 
@@ -1340,7 +1340,7 @@ barplot(y[1:4,], ylim=c(0, max(y[1:4,])+0.3), beside=TRUE, legend=letters[1:4])
 text(labels=round(as.vector(as.matrix(y[1:4,])),2), x=seq(1.5, 13, by=1) + sort(rep(c(0,1,2), 4)), y=as.vector(as.matrix(y[1:4,]))+0.04) 
 ```
 
-![](Rbasics_files/figure-html/plot_bar_simple-1.png)\
+![](Rbasics_files/figure-html/plot_bar_simple-1.png)<!-- -->
     
 ### Error Bars
 
@@ -1351,7 +1351,7 @@ stdev <- sd(t(y))
 arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
 ```
 
-![](Rbasics_files/figure-html/plot_bar_error-1.png)\
+![](Rbasics_files/figure-html/plot_bar_error-1.png)<!-- -->
 
 ## Histograms
 
@@ -1360,7 +1360,7 @@ arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
 hist(y, freq=TRUE, breaks=10)
 ```
 
-![](Rbasics_files/figure-html/plot_hist-1.png)\
+![](Rbasics_files/figure-html/plot_hist-1.png)<!-- -->
 
 ## Density Plots
 
@@ -1369,7 +1369,7 @@ hist(y, freq=TRUE, breaks=10)
 plot(density(y), col="red")
 ```
 
-![](Rbasics_files/figure-html/plot_dens-1.png)\
+![](Rbasics_files/figure-html/plot_dens-1.png)<!-- -->
 
 ## Pie Charts
 
@@ -1380,7 +1380,7 @@ legend("topright", legend=row.names(y), cex=1.3, bty="n", pch=15, pt.cex=1.8,
 col=rainbow(length(y[,1]), start=0.1, end=0.8), ncol=1) 
 ```
 
-![](Rbasics_files/figure-html/plot_pie-1.png)\
+![](Rbasics_files/figure-html/plot_pie-1.png)<!-- -->
 
 ## Color Selection Utilities
 
@@ -1467,7 +1467,7 @@ dev.off()
 
 ## Homework 3C
 
-Homework 3C: [Bar Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_homework_03.html)
+Homework 3C: [Bar Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
 # Analysis Routine
 
@@ -1566,11 +1566,11 @@ query[1:4, ]
 ```
 
 ```
-##              ID Molecular.Weight.Da. Residues Loc   cTP   mTP    SP other
-## 219 AT1G02730.1               132588     1181   C 0.972 0.038 0.008 0.045
-## 243 AT1G02890.1               136825     1252   C 0.748 0.529 0.011 0.013
-## 281 AT1G03160.1               100732      912   C 0.871 0.235 0.011 0.007
-## 547 AT1G05380.1               126360     1138   C 0.740 0.099 0.016 0.358
+##               ID Molecular.Weight.Da. Residues  Loc   cTP   mTP    SP other
+## NA          <NA>                   NA       NA <NA>    NA    NA    NA    NA
+## NA.1        <NA>                   NA       NA <NA>    NA    NA    NA    NA
+## 219  AT1G02730.1               132588     1181    C 0.972 0.038 0.008 0.045
+## 243  AT1G02890.1               136825     1252    C 0.748 0.529 0.011 0.013
 ```
 
 ```r
@@ -1578,7 +1578,7 @@ dim(query)
 ```
 
 ```
-## [1] 170   8
+## [1] 581   8
 ```
 
 - __Homework 3F__: How many protein entries in the `my`_mw`_target` data frame have a MW of greater then 4,000 and less then 5,000. Subset the data frame accordingly and sort it by MW to check that your result is correct.
@@ -1596,10 +1596,10 @@ my_mw_target3[1:3,1:8]
 ```
 
 ```
-##        loci          ID Molecular.Weight.Da. Residues Loc  cTP   mTP    SP
-## 1 AT1G01010 AT1G01010.1                49426      429   _ 0.10 0.090 0.075
-## 2 AT1G01020 AT1G01020.1                28092      245   * 0.01 0.636 0.158
-## 3 AT1G01020 AT1G01020.2                21711      191   * 0.01 0.636 0.158
+##        loci          ID Molecular.Weight.Da. Residues  Loc cTP mTP SP
+## 1 AT1G01010 AT1G01010.1                49426      429 <NA>  NA  NA NA
+## 2 AT1G01020 AT1G01020.1                28092      245 <NA>  NA  NA NA
+## 3 AT1G01020 AT1G01020.2                21711      191 <NA>  NA  NA NA
 ```
 
 - __Homework 3G__: Retrieve those rows in `my_mw_target3` where the second column contains the following identifiers: `c("AT5G52930.1", "AT4G18950.1", "AT1G15385.1", "AT4G36500.1", "AT1G67530.1")`. Use the `%in%` function for this query. As an alternative approach, assign the second column to the row index of the data frame and then perform the same query again using the row index. Explain the difference of the two methods.
@@ -1622,9 +1622,9 @@ data.frame(my_mw_target4, avg_AA_WT=(my_mw_target4[,3] / my_mw_target4[,4]))[1:2
 ```
 
 ```
-##   Loc  cTP   mTP    SP other Freq avg_AA_WT
-## 1   _ 0.10 0.090 0.075 0.925    1  115.2121
-## 2   * 0.01 0.636 0.158 0.448    2  114.6612
+##    Loc cTP mTP SP other Freq.Var1 Freq.Freq
+## 1 <NA>  NA  NA NA    NA AT1G01010         1
+## 2 <NA>  NA  NA NA    NA AT1G01020         2
 ```
 
 - __Step 9__: Calculate for each row the mean and standard deviation across several columns
@@ -1637,9 +1637,9 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12]
 ```
 
 ```
-##   Loc  cTP   mTP    SP other Freq   mean     stdev
-## 1   _ 0.10 0.090 0.075 0.925    1 0.2975 0.4184595
-## 2   * 0.01 0.636 0.158 0.448    2 0.3130 0.2818912
+##    Loc cTP mTP SP other Freq.Var1 Freq.Freq mean
+## 1 <NA>  NA  NA NA    NA AT1G01010         1   NA
+## 2 <NA>  NA  NA NA    NA AT1G01020         2   NA
 ```
 
 ## Plotting Example
@@ -1651,7 +1651,7 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12]
 plot(my_mw_target4[1:500,3:4], col="red")
 ```
 
-![](Rbasics_files/figure-html/plot_example-1.png)\
+![](Rbasics_files/figure-html/plot_example-1.png)<!-- -->
 
 ## Export Results and Run Entire Exercise as Script
 
@@ -1723,7 +1723,7 @@ package from Bioconductor.
  ---
 title: "My First R Markdown Document"
 author: "Author: First Last"
-date: "Last update: 21 June, 2016"
+date: "Last update: 09 April, 2017"
 output:
   BiocStyle::html_document:
     toc: true
@@ -1911,9 +1911,9 @@ sessionInfo()
 ```
 
 ```
-## R version 3.2.3 (2015-12-10)
+## R version 3.3.3 (2017-03-06)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 14.04.3 LTS
+## Running under: Ubuntu 14.04.5 LTS
 ## 
 ## locale:
 ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C               LC_TIME=en_US.UTF-8       
@@ -1925,13 +1925,16 @@ sessionInfo()
 ## [1] stats     graphics  utils     datasets  grDevices methods   base     
 ## 
 ## other attached packages:
-## [1] ggplot2_2.0.0   limma_3.26.3    BiocStyle_1.8.0
+## [1] knitr_1.14      gplots_3.0.1    RSQLite_1.0.0   DBI_0.5-1       ggplot2_2.1.0   limma_3.30.0   
+## [7] BiocStyle_2.2.0
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.3      codetools_0.2-14 digest_0.6.9     plyr_1.8.3       grid_3.2.3      
-##  [6] gtable_0.1.2     formatR_1.2.1    magrittr_1.5     evaluate_0.8     scales_0.3.0    
-## [11] stringi_1.0-1    rmarkdown_0.9.2  tools_3.2.3      stringr_1.0.0    munsell_0.4.2   
-## [16] yaml_2.1.13      colorspace_1.2-6 htmltools_0.3    knitr_1.12
+##  [1] Rcpp_0.12.7        magrittr_1.5       munsell_0.4.3      colorspace_1.2-7   highr_0.6         
+##  [6] stringr_1.1.0      plyr_1.8.4         caTools_1.17.1     tools_3.3.3        grid_3.3.3        
+## [11] gtable_0.2.0       KernSmooth_2.23-15 htmltools_0.3.5    gtools_3.5.0       yaml_2.1.13       
+## [16] assertthat_0.1     digest_0.6.10      tibble_1.2         formatR_1.4        codetools_0.2-15  
+## [21] bitops_1.0-6       evaluate_0.10      rmarkdown_1.1      labeling_0.3       gdata_2.17.0      
+## [26] stringi_1.1.2      scales_0.4.0
 ```
 
 # References

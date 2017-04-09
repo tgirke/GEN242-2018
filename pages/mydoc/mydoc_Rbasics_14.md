@@ -1,6 +1,6 @@
 ---
 title: Analysis Routine
-last_updated: Tue Apr  4 21:47:38 2017
+last_updated: Sun Apr  9 15:06:35 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_14.html
 ---
@@ -100,11 +100,11 @@ query[1:4, ]
 {% endhighlight %}
 
 {% highlight txt %}
-##              ID Molecular.Weight.Da. Residues Loc   cTP   mTP    SP other
-## 219 AT1G02730.1               132588     1181   C 0.972 0.038 0.008 0.045
-## 243 AT1G02890.1               136825     1252   C 0.748 0.529 0.011 0.013
-## 281 AT1G03160.1               100732      912   C 0.871 0.235 0.011 0.007
-## 547 AT1G05380.1               126360     1138   C 0.740 0.099 0.016 0.358
+##               ID Molecular.Weight.Da. Residues  Loc   cTP   mTP    SP other
+## NA          <NA>                   NA       NA <NA>    NA    NA    NA    NA
+## NA.1        <NA>                   NA       NA <NA>    NA    NA    NA    NA
+## 219  AT1G02730.1               132588     1181    C 0.972 0.038 0.008 0.045
+## 243  AT1G02890.1               136825     1252    C 0.748 0.529 0.011 0.013
 {% endhighlight %}
 
 {% highlight r %}
@@ -112,7 +112,7 @@ dim(query)
 {% endhighlight %}
 
 {% highlight txt %}
-## [1] 170   8
+## [1] 581   8
 {% endhighlight %}
 
 - __Homework 3F__: How many protein entries in the `my`_mw`_target` data frame have a MW of greater then 4,000 and less then 5,000. Subset the data frame accordingly and sort it by MW to check that your result is correct.
@@ -130,10 +130,10 @@ my_mw_target3[1:3,1:8]
 {% endhighlight %}
 
 {% highlight txt %}
-##        loci          ID Molecular.Weight.Da. Residues Loc  cTP   mTP    SP
-## 1 AT1G01010 AT1G01010.1                49426      429   _ 0.10 0.090 0.075
-## 2 AT1G01020 AT1G01020.1                28092      245   * 0.01 0.636 0.158
-## 3 AT1G01020 AT1G01020.2                21711      191   * 0.01 0.636 0.158
+##        loci          ID Molecular.Weight.Da. Residues  Loc cTP mTP SP
+## 1 AT1G01010 AT1G01010.1                49426      429 <NA>  NA  NA NA
+## 2 AT1G01020 AT1G01020.1                28092      245 <NA>  NA  NA NA
+## 3 AT1G01020 AT1G01020.2                21711      191 <NA>  NA  NA NA
 {% endhighlight %}
 
 - __Homework 3G__: Retrieve those rows in `my_mw_target3` where the second column contains the following identifiers: `c("AT5G52930.1", "AT4G18950.1", "AT1G15385.1", "AT4G36500.1", "AT1G67530.1")`. Use the `%in%` function for this query. As an alternative approach, assign the second column to the row index of the data frame and then perform the same query again using the row index. Explain the difference of the two methods.
@@ -156,9 +156,9 @@ data.frame(my_mw_target4, avg_AA_WT=(my_mw_target4[,3] / my_mw_target4[,4]))[1:2
 {% endhighlight %}
 
 {% highlight txt %}
-##   Loc  cTP   mTP    SP other Freq avg_AA_WT
-## 1   _ 0.10 0.090 0.075 0.925    1  115.2121
-## 2   * 0.01 0.636 0.158 0.448    2  114.6612
+##    Loc cTP mTP SP other Freq.Var1 Freq.Freq
+## 1 <NA>  NA  NA NA    NA AT1G01010         1
+## 2 <NA>  NA  NA NA    NA AT1G01020         2
 {% endhighlight %}
 
 - __Step 9__: Calculate for each row the mean and standard deviation across several columns
@@ -171,9 +171,9 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12]
 {% endhighlight %}
 
 {% highlight txt %}
-##   Loc  cTP   mTP    SP other Freq   mean     stdev
-## 1   _ 0.10 0.090 0.075 0.925    1 0.2975 0.4184595
-## 2   * 0.01 0.636 0.158 0.448    2 0.3130 0.2818912
+##    Loc cTP mTP SP other Freq.Var1 Freq.Freq mean
+## 1 <NA>  NA  NA NA    NA AT1G01010         1   NA
+## 2 <NA>  NA  NA NA    NA AT1G01020         2   NA
 {% endhighlight %}
 
 ## Plotting Example
@@ -203,3 +203,5 @@ write.table(my_mw_target4, file="my_file.xls", quote=F, sep="\t", col.names = NA
 source("exerciseRbasics.R")
 {% endhighlight %}
 
+<br><br><center><a href="mydoc_Rbasics_13.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<a href="mydoc_Rbasics_15.html"><img src="../images/right_arrow.png" alt="Next page."></a></center>

@@ -532,7 +532,7 @@ close(zz)
 
 ## Homework 3A 
 
-Homework 3A: [Object Subsetting Routines and Import/Export](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_homework_03.html)
+Homework 3A: [Object Subsetting Routines and Import/Export](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
 # Useful R Functions
 
@@ -778,7 +778,7 @@ plot(y[,1], y[,2]); text(y[1,1], y[1,2], expression(sum(frac(1,sqrt(x^2*pi)))), 
 
 ## Homework 3B 
 
-Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_homework_03.html)
+Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
 
 ## Line Plots
@@ -884,7 +884,7 @@ dev.off()
 
 ## Homework 3C
 
-Homework 3C: [Bar Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_homework_03.html)
+Homework 3C: [Bar Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
 # Analysis Routine
 

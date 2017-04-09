@@ -1,12 +1,12 @@
 ---
 title: Introduction to R 
-last_updated: Tue Apr  4 20:50:26 2017
+last_updated: Sun Apr  9 12:44:56 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
 Author: Thomas Girke
 
-Last update: 21 June, 2016 
+Last update: 08 April, 2017 
 
 Alternative formats of this vignette:
 [`Single-page .Rmd HTML`](https://htmlpreview.github.io/?https://github.com/tgirke/GEN242/blob/master/vignettes/07_Rbasics/Rbasics.html),
@@ -43,7 +43,7 @@ common operating systems.
 ## R Working Environments
 
 ## Working environments (IDEs) for R
-<center><img title="R_Interfaces" src="../Rbasics_files/rinterface.png"/></center>
+<center><img title="R_Interfaces" src="./pages/mydoc/Rbasics_files/rinterface.png"/></center>
 <center> R Projects and Interfaces</center>
 
 Some R working environments with support for syntax highlighting and utilities to send code 
@@ -60,7 +60,7 @@ to the R console:
 New integrated development environment (IDE) for [R](http://www.rstudio.com/ide/download/). Highly functional for both beginners and 
 advanced.
 
-<center><img title="RStudio" src="../Rbasics_files/rstudio.png"/></center>
+<center><img title="RStudio" src="./pages/mydoc/Rbasics_files/rstudio.png"/></center>
 <center> RStudio IDE</center>
 
 Some userful shortcuts: `Ctrl+Enter` (send code), `Ctrl+Shift+C` (comment/uncomment), `Ctrl+1/2` (switch window focus)
@@ -69,6 +69,26 @@ Some userful shortcuts: `Ctrl+Enter` (send code), `Ctrl+Shift+C` (comment/uncomm
 
 Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r)
 
-<center><img title="Vim-R-Tmux" src="../Rbasics_files/screenshot.png" ></center>
+<center><img title="Vim-R-Tmux" src="./pages/mydoc/Rbasics_files/screenshot.png" ></center>
 <center>Vim-R-Tmux IDE for R</center>
 
+<center>[Next Page](mydoc_Rbasics_02.html)</center>
+<center><a href="mydoc_Rbasics_02.html">Next Page</a></center>
+<br><br><center><a href="mydoc_Rbasics_01.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_01.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_02.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_03.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_04.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_05.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_06.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_07.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_08.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_09.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_10.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_11.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_12.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_13.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_14.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_15.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<br><br><center><a href="mydoc_Rbasics_16.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<a href="mydoc_Rbasics_02.html"><img src="right_arrow.png" alt="Next page."></a></center>

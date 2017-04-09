@@ -93,47 +93,155 @@ entries:
       output: web
     
   - title: Introduction to R
-    output: web
+    output: web, pdf
     folderitems:
+
+    - title: 1. Overview
+      url: mydoc_Rbasics_01.html
+      output: web
+
+    - title: 2. R Package Repositories
+      url: mydoc_Rbasics_02.html
+      output: web
+
+    - title: 3. Installation of R and Add-on Packages
+      url: mydoc_Rbasics_03.html
+      output: web
+
+    - title: 4. Getting Around
+      url: mydoc_Rbasics_04.html
+      output: web
+
+    - title: 5. Basic Syntax
+      url: mydoc_Rbasics_05.html
+      output: web
+
+    - title: 6. Data Types 
+      url: mydoc_Rbasics_06.html
+      output: web
+
+    - title: 7. Data objects
+      url: mydoc_Rbasics_07.html
+      output: web
+
+    - title: 8. Important Utilities
+      url: mydoc_Rbasics_08.html
+      output: web
+
+    - title: 9. Operators and Calculations
+      url: mydoc_Rbasics_09.html
+      output: web
+
+    - title: 10. Reading and Writing External Data
+      url: mydoc_Rbasics_10.html
+      output: web
+
+    - title: 11. Useful R Functions
+      url: mydoc_Rbasics_11.html
+      output: web
+
+    - title: 12. SQLite Databases
+      url: mydoc_Rbasics_12.html
+      output: web
+
+    - title: 13. Graphics in R
+      url: mydoc_Rbasics_13.html
+      output: web
+
+    - title: 14. Analysis Routine
+      url: mydoc_Rbasics_14.html
+      output: web
+
+    - title: 15. R Markdown
+      url: mydoc_Rbasics_15.html
+      output: web
+
+    - title: 16. Session Info
+      url: mydoc_Rbasics_16.html
+      output: web
+
+    - title: 17. References
+      url: mydoc_Rbasics_17.html
+      output: web
 
   - title: Programming in R
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
 
   - title: NGS Analysis Basics
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
 
   - title: NGS Workflow Overview
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
 
   - title: RNA-Seq Workflow
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
 
   - title: ChIP-Seq Workflow
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
 
   - title: VAR-Seq Workflow
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
 
   - title: Graphics and Visualization
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
 
   - title: Cluster Analysis
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
 
   - title: Paper Presentations
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
 
   - title: Course Projects
     output: web
     folderitems:
+    
+    - title: To be added
+      url:
+      output: web
     
 
