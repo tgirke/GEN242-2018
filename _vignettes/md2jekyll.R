@@ -198,7 +198,7 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     file.copy(from=basename(rmdhtmlfile), to=rmdhtmlfile, overwrite = TRUE)
     cat(paste("Copied R Markdown HTML file to:", rmdhtmlfile), "\n")
     rmdpdffile <- paste0(outpath, "/", gsub(".knit.md", ".pdf", mdfile))
-    file.copy(from=basename(rmdhtmlfile), to=rmdpdffile, overwrite = TRUE)
+    file.copy(from=basename(rmdpdffile), to=rmdpdffile, overwrite = TRUE)
     cat(paste("Copied R Markdown PDF file to:", rmdhtmlfile), "\n")
 
     ## (10) Register new files in sidebar (_data/sidebars/mydoc_sidebar.yml)
