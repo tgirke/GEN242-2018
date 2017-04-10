@@ -1,6 +1,6 @@
 ---
 title: 12. SQLite Databases
-last_updated: Sun Apr  9 18:17:50 2017
+last_updated: Sun Apr  9 18:51:21 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -54,16 +54,16 @@ dbGetQuery(mydb, 'SELECT * FROM mydf2')
 
 {% highlight txt %}
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 1    id8          5.0         3.4          1.5         0.2     setosa
-## 2   id28          5.2         3.5          1.5         0.2     setosa
-## 3  id111          6.5         3.2          5.1         2.0  virginica
-## 4   id65          5.6         2.9          3.6         1.3 versicolor
-## 5   id92          6.1         3.0          4.6         1.4 versicolor
-## 6  id108          7.3         2.9          6.3         1.8  virginica
-## 7  id140          6.9         3.1          5.4         2.1  virginica
-## 8   id37          5.5         3.5          1.3         0.2     setosa
-## 9  id101          6.3         3.3          6.0         2.5  virginica
-## 10 id118          7.7         3.8          6.7         2.2  virginica
+## 1   id99          5.1         2.5          3.0         1.1 versicolor
+## 2   id16          5.7         4.4          1.5         0.4     setosa
+## 3   id51          7.0         3.2          4.7         1.4 versicolor
+## 4  id141          6.7         3.1          5.6         2.4  virginica
+## 5  id135          6.1         2.6          5.6         1.4  virginica
+## 6  id127          6.2         2.8          4.8         1.8  virginica
+## 7   id73          6.3         2.5          4.9         1.5 versicolor
+## 8  id148          6.5         3.0          5.2         2.0  virginica
+## 9   id13          4.8         3.0          1.4         0.1     setosa
+## 10  id40          5.1         3.4          1.5         0.2     setosa
 {% endhighlight %}
 
 ## Query database
@@ -93,27 +93,27 @@ dbGetQuery(mydb, 'SELECT * FROM mydf1, mydf2 WHERE mydf1.ids = mydf2.ids')
 
 {% highlight txt %}
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species   ids Sepal.Length
-## 1    id8          5.0         3.4          1.5         0.2     setosa   id8          5.0
-## 2   id28          5.2         3.5          1.5         0.2     setosa  id28          5.2
-## 3   id37          5.5         3.5          1.3         0.2     setosa  id37          5.5
-## 4   id65          5.6         2.9          3.6         1.3 versicolor  id65          5.6
-## 5   id92          6.1         3.0          4.6         1.4 versicolor  id92          6.1
-## 6  id101          6.3         3.3          6.0         2.5  virginica id101          6.3
-## 7  id108          7.3         2.9          6.3         1.8  virginica id108          7.3
-## 8  id111          6.5         3.2          5.1         2.0  virginica id111          6.5
-## 9  id118          7.7         3.8          6.7         2.2  virginica id118          7.7
-## 10 id140          6.9         3.1          5.4         2.1  virginica id140          6.9
+## 1   id13          4.8         3.0          1.4         0.1     setosa  id13          4.8
+## 2   id16          5.7         4.4          1.5         0.4     setosa  id16          5.7
+## 3   id40          5.1         3.4          1.5         0.2     setosa  id40          5.1
+## 4   id51          7.0         3.2          4.7         1.4 versicolor  id51          7.0
+## 5   id73          6.3         2.5          4.9         1.5 versicolor  id73          6.3
+## 6   id99          5.1         2.5          3.0         1.1 versicolor  id99          5.1
+## 7  id127          6.2         2.8          4.8         1.8  virginica id127          6.2
+## 8  id135          6.1         2.6          5.6         1.4  virginica id135          6.1
+## 9  id141          6.7         3.1          5.6         2.4  virginica id141          6.7
+## 10 id148          6.5         3.0          5.2         2.0  virginica id148          6.5
 ##    Sepal.Width Petal.Length Petal.Width    Species
-## 1          3.4          1.5         0.2     setosa
-## 2          3.5          1.5         0.2     setosa
-## 3          3.5          1.3         0.2     setosa
-## 4          2.9          3.6         1.3 versicolor
-## 5          3.0          4.6         1.4 versicolor
-## 6          3.3          6.0         2.5  virginica
-## 7          2.9          6.3         1.8  virginica
-## 8          3.2          5.1         2.0  virginica
-## 9          3.8          6.7         2.2  virginica
-## 10         3.1          5.4         2.1  virginica
+## 1          3.0          1.4         0.1     setosa
+## 2          4.4          1.5         0.4     setosa
+## 3          3.4          1.5         0.2     setosa
+## 4          3.2          4.7         1.4 versicolor
+## 5          2.5          4.9         1.5 versicolor
+## 6          2.5          3.0         1.1 versicolor
+## 7          2.8          4.8         1.8  virginica
+## 8          2.6          5.6         1.4  virginica
+## 9          3.1          5.6         2.4  virginica
+## 10         3.0          5.2         2.0  virginica
 {% endhighlight %}
 
 
