@@ -6,9 +6,9 @@ output:
   html_document:
     toc: true
     toc_float:
-        collapsed: false
+        collapsed: true
         smooth_scroll: true
-    toc_depth: 2
+    toc_depth: 3
     fig_caption: yes
     code_folding: show
     number_sections: true
