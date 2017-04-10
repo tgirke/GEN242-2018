@@ -138,6 +138,8 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     
         ## Write sections stored in list components to separate files
         titles <- sapply(seq_along(mdlist), function(x) mdlist[[x]][1])
+        mytitles <- gsub("# {1,}", "", titles)
+        mytitles <- paste0(1:length(mytitles), ". ", mytitles)
     } else {
         stop("mdfile is expected to contain at least one section tag.")
     }
@@ -151,7 +153,7 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     ## (7) Add Jekyll Doc front matter to each list component
     for(i in seq_along(mdlist)) { 
         frontmatter <- c(starttag="---", 
-                         title=paste0("title: ", gsub("^# {1,}", "", titles[i])), 
+                         title=paste0("title: ", mytitles[i]), 
                          last_updated=paste0("last_updated: ", date()), 
                          sidebar="sidebar: mydoc_sidebar",
                          permalink="permalink: ",
@@ -161,7 +163,7 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     
     ## Special handling of first page
     mdlist[[1]][2] <- paste0("title: ", mymaindoctitle) # Uses in front matter main title of source document
-    mdlist[[1]] <- c(mdlist[[1]][1:6], myauthor, "", mydate, "", altformats, "", paste0("#", titles[1]), mdlist[[1]][6:length(mdlist[[1]])])    
+    mdlist[[1]] <- c(mdlist[[1]][1:6], myauthor, "", mydate, "", altformats, "", paste0("# ", mytitles[1]), mdlist[[1]][7:length(mdlist[[1]])])    
 
     ## (8) Write sections to files named after input files with numbers appended
     filenumbers <- sprintf(paste0("%0", as.character(nchar(length(mdlist))), "d"), seq_along(mdlist))
@@ -231,8 +233,6 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     sblist <- sblist[!names(sblist) %in% sidebartitle] # Removes existing section entry
     sblist <- c(header, sblist)        
     ## Construct new sidebar entries
-    mytitles <- gsub("# {1,}", "", titles)
-    mytitles <- paste0(1:length(mytitles), ". ", mytitles)
     myurls <- paste0("", basename(filenames))
     myurls <- gsub(".md$", ".html", myurls)
     sectionheader <- c(paste0("  - title: ", sidebartitle),

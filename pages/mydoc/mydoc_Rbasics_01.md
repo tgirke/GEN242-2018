@@ -1,6 +1,6 @@
 ---
 title: Introduction to R 
-last_updated: Sun Apr  9 17:20:11 2017
+last_updated: Sun Apr  9 18:01:25 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
@@ -15,8 +15,7 @@ Alternative formats of this vignette:
 [ [R](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/Rbasics.R){:target="_blank"} ],
 [ [Old PDF Slides](https://drive.google.com/file/d/0B-lLYVUOliJFWERSVEg3M2Z2cWs/view?usp=sharing){:target="_blank"} ]
 
-## Overview
----
+# 1. Overview
 
 ## What is R?
 

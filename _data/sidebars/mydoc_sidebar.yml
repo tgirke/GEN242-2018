@@ -104,7 +104,7 @@ entries:
       url: /mydoc_Rbasics_02.html
       output: web
 
-    - title: 3. Installation of R and Add-on Packages
+    - title: 3. Installation of R Packages
       url: /mydoc_Rbasics_03.html
       output: web
 

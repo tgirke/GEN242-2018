@@ -100,7 +100,7 @@ Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinforma
 * Bioconductor (>1,100 packages) bioscience data analysis - [URL](http://www.bioconductor.org/)
 * Omegahat (>90 packages) programming interfaces - [URL](https://github.com/omegahat?tab=repositories)
 
-# Installation of R and Add-on Packages
+# Installation of R Packages
 
 (1.) Install R for your operating system from [CRAN](http://cran.at.r-project.org/).
 

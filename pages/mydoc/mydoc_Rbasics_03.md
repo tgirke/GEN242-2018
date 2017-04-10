@@ -1,6 +1,6 @@
 ---
-title: Installation of R and Add-on Packages
-last_updated: Sun Apr  9 17:20:11 2017
+title: 3. Installation of R Packages
+last_updated: Sun Apr  9 18:01:25 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_03.html
 ---
