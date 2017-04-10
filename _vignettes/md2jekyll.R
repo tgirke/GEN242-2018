@@ -240,7 +240,7 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
                        "    folderitems:",
                        "")
     subsections <- c("    - title: ",
-                     "      url: ",
+                     "      url: /",
                      "      output: web",
                      "")
     subsectionlist <- lapply(seq_along(mytitles), function(x) subsections)

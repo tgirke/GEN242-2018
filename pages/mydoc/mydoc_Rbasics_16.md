@@ -1,6 +1,6 @@
 ---
 title: Session Info
-last_updated: Sun Apr  9 17:10:21 2017
+last_updated: Sun Apr  9 17:20:11 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
