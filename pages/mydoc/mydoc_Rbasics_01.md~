@@ -1,21 +1,21 @@
 ---
-title: Introduction to R 
-last_updated: Sun Apr  9 12:44:56 2017
+title: Introduction to R <br> 1. Overview
+last_updated: Sun Apr  9 18:01:25 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
 Author: Thomas Girke
 
-Last update: 08 April, 2017 
+Last update: 09 April, 2017 
 
 Alternative formats of this vignette:
-[`Single-page .Rmd HTML`](https://htmlpreview.github.io/?https://github.com/tgirke/GEN242/blob/master/vignettes/07_Rbasics/Rbasics.html),
-[`.Rmd`](https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/07_Rbasics/Rbasics.Rmd),
-[`.R`](https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/07_Rbasics/Rbasics.R)
-[Old Slides `.pdf`](https://drive.google.com/file/d/0B-lLYVUOliJFWERSVEg3M2Z2cWs/view?usp=sharing)
+[ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Rbasics.html){:target="_blank"} ],
+[ [PDF](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Rbasics.pdf){:target="_blank"} ],
+[ [.Rmd](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/Rbasics.Rmd){:target="_blank"} ],
+[ [R](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/Rbasics.R){:target="_blank"} ],
+[ [Old PDF Slides](https://drive.google.com/file/d/0B-lLYVUOliJFWERSVEg3M2Z2cWs/view?usp=sharing){:target="_blank"} ]
 
-## Overview
----
+# 1. Overview
 
 ## What is R?
 
@@ -42,7 +42,6 @@ common operating systems.
 
 ## R Working Environments
 
-## Working environments (IDEs) for R
 <center><img title="R_Interfaces" src="./pages/mydoc/Rbasics_files/rinterface.png"/></center>
 <center> R Projects and Interfaces</center>
 
@@ -72,23 +71,5 @@ Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinforma
 <center><img title="Vim-R-Tmux" src="./pages/mydoc/Rbasics_files/screenshot.png" ></center>
 <center>Vim-R-Tmux IDE for R</center>
 
-<center>[Next Page](mydoc_Rbasics_02.html)</center>
-<center><a href="mydoc_Rbasics_02.html">Next Page</a></center>
-<br><br><center><a href="mydoc_Rbasics_01.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_01.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_02.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_03.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_04.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_05.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_06.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_07.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_08.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_09.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_10.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_11.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_12.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_13.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_14.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_15.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<br><br><center><a href="mydoc_Rbasics_16.html"><img src="right_arrow.jpg" alt="Next page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
-<a href="mydoc_Rbasics_02.html"><img src="right_arrow.png" alt="Next page."></a></center>
+<br><br><center><a href="mydoc_Rbasics_01.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
+<a href="mydoc_Rbasics_02.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

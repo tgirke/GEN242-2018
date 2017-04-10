@@ -162,8 +162,8 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     }
     
     ## Special handling of first page
-    mdlist[[1]][2] <- paste0("title: ", mymaindoctitle) # Uses in front matter main title of source document
-    mdlist[[1]] <- c(mdlist[[1]][1:6], myauthor, "", mydate, "", altformats, "", paste0("# ", mytitles[1]), mdlist[[1]][7:length(mdlist[[1]])])    
+    mdlist[[1]][2] <- paste0("title: ", mymaindoctitle, " <br> <br> ", mytitles[1]) # Uses in front matter main title of source document
+    mdlist[[1]] <- c(mdlist[[1]][1:6], myauthor, "", mydate, "", altformats, "", mdlist[[1]][7:length(mdlist[[1]])])    
 
     ## (8) Write sections to files named after input files with numbers appended
     filenumbers <- sprintf(paste0("%0", as.character(nchar(length(mdlist))), "d"), seq_along(mdlist))
