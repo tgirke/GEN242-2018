@@ -4,22 +4,22 @@ sidebar: mydoc_sidebar
 permalink: mydoc_tutorial_02.html 
 ---
 
-## What Is a Compute Cluster?
+## What Is a Computer Cluster?
 
-* A compute cluster is an assembly of CPU units, so called compute nodes that work together to perform many computations in parallel. To achieve this, an internal network (e.g. Infiniband interconnect) connects the nodes to a larger unit, while a head node controls the load and traffic across the entire system.
+* A computer cluster is an assembly of CPU units, so called computer nodes that work together to perform many computations in parallel. To achieve this, an internal network (e.g. Infiniband interconnect) connects the nodes to a larger unit, while a head node controls the load and traffic across the entire system.
 
-* Usually, users log into the head node to submit their compute requests via `srun` to a queuing system provided by resource management and scheduling software, such as TORQUE and MAUI. The queuing system distributes the processes to the compute nodes in a controlled fashion.
+* Usually, users log into the head node to submit their computer requests via `srun` to a queuing system provided by resource management and scheduling software, such as TORQUE and MAUI. The queuing system distributes the processes to the computer nodes in a controlled fashion.
 
-* Because the head node controls the entire system, users should never run compute jobs on the head node directly!
+* Because the head node controls the entire system, users should never run computing jobs on the head node directly!
 
 * For code testing purposes, one can log into one of the nodes with `srun --pty bash -l` and run jobs interactively. Alternatively, one can log into the test node owl via ssh.
 
 ## Hardware Infrastructure
 
-### Compute nodes
+### Computer nodes
 
 - Over 4,500 CPU cores
-- 50 batch compute nodes, each with 64 CPU cores and 512GB RAM
+- 50 batch computer nodes, each with 64 CPU cores and 512GB RAM
 - 6 high-memory nodes, each 32 CPU cores and 1024GB RAM
 - 12 GPU nodes, each with 5,000 cuda cores
     
@@ -33,8 +33,8 @@ permalink: mydoc_tutorial_02.html
 
 ### User traffic
 
-- Compute tasks need to be submitted via `srun`
-- Biocluster headnode only for login, not for compute tasks!
+- Computing tasks need to be submitted via `srun`
+- Biocluster headnode only for login, not for computing tasks!
 - Monitor cluster activity: `qstat` or `qstatMonitor`
 
 ### Manuals
@@ -269,7 +269,7 @@ The disk usage of `home` and `bigdata` can be monitored on the [Biocluster Dashb
 ## Queuing system 
 
 Biocluster uses Slurm as queuing and load balancing system. To control user traffic, any 
-type of compute intensive jobs need to be submitted via the `srun` (see below) to the compute 
+type of compute intensive jobs need to be submitted via the `srun` (see below) to the computer
 nodes. Much more detailed information on this topic is available in the biocluster manual 
 [here](http://hpcc.ucr.edu/manuals_linux-cluster_intro.html).
 
