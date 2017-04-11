@@ -60,7 +60,7 @@ permalink: mydoc_tutorial_01.html
 
 ## GitHub Basics from Command-Line
 
-1. Generate a new remote repository on GitHub online. To avoid errors, do not
+1. Generate a new remote repository on GitHub online or use [hub](https://hub.github.com/) command-line wrapper for this. To avoid errors with the online method, do not
    initialize the new repository with README, license, or `.gitignore` files. You can
    add these files after your project has been pushed to GitHub.
 
