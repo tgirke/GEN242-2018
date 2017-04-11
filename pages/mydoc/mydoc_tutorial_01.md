@@ -28,60 +28,69 @@ permalink: mydoc_tutorial_01.html
 
 + Finding help from command-line 
 
-{% highlight sh %}
-git <command> --help
-{% endhighlight %}
+    ```sh
+    git <command> --help
+    ```
 
 + Initialize a directory as a Git repository
 
-{% highlight sh %}
-git init
-{% endhighlight %}
+    ```sh
+    git init
+    ```
 	
-+ Add files to Git repository (staging area) 
++ Add specific files to Git repository (staging area) 
 
-{% highlight sh %}
-git add myfile
-{% endhighlight %}
+   ```sh
+   git add myfile
+   ```
 
-After editing file(s) in your repos, record a snapshot of the staging area 
++ Add all files recursively 
 
-{% highlight sh %}
-git commit -am "some edits"
-{% endhighlight %}
+  To ignore specific files (_e.g._ temp files), list them in a `.gitignore` file in your repository's root directory. Regular expressions are supported. See [here](https://help.github.com/articles/ignoring-files/) for more details.
 
+   ```sh
+   git add -A :/
+   ```
+
++ After editing file(s) in your repos, record a snapshot of the staging area 
+
+   ```sh
+   git commit -am "some edits"
+   ```
 
 ## GitHub Basics from Command-Line
 
-+ Generate a new remote repository. Alternatively, create the repository online on the GitHub site.
+1. Generate a new remote repository on GitHub online. To avoid errors, do not
+   initialize the new repository with README, license, or `.gitignore` files. You can
+   add these files after your project has been pushed to GitHub.
 
-{% highlight sh %}
-git remote add origin https://github.com/tgirke/myrepos.git
-{% endhighlight %}
+   ```sh
+   git remote add origin https://github.com/<user_name>/<repos_name>.git
+   ```
 
-+ Push updates to remote. Next time one can just use `git push`
+2. Push updates to remote. Next time one can just use `git push`
 
-{% highlight sh %}
-git push -u origin master
-{% endhighlight %}
+    ```sh
+    git push -u origin master
+    ```
 
-+ Clone existing remote repository
+3. Clone existing remote repository
     
-{% highlight sh %}
-git clone https://github.com/<user_name>/<repos_name>.git
-{% endhighlight %}
+    ```sh
+    git clone https://github.com/<user_name>/<repos_name>.git
+    ```
 
-+ Before working on project, update local git repos 
+4. Before working on project, update local git repos 
 
-{% highlight sh %}
-git pull 
-{% endhighlight %}
+    ```sh
+    git pull 
+    ```
 
-+ Make changes and recommit local to remote 
+5. Make changes and recommit local to remote 
 
-{% highlight sh %}
-git commit -am "some edits"; git push -u origin master
-{% endhighlight %}
+    ```sh
+    git commit -am "some edits"; git push -u origin master
+    ```
 
 
 ## Using GitHub from RStudio

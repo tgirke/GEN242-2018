@@ -427,7 +427,7 @@ renderBib <- function(x, bibtex="bibtex.bib") {
 
 ## Run from command-line with arguments
 myargs <- commandArgs()
-md2Jekyll(mdfile=myargs[6], sidebartitle=NULL, sidebarpos=as.numeric(myargs[7]), outfilebasename=NULL, outpath="../../pages/mydoc", sidebar_url_path="../../_data/sidebars/", fenced2highlight=TRUE, image_dir=NULL)
+md2Jekyll(mdfile=myargs[6], sidebartitle=NULL, sidebarpos=as.numeric(myargs[7]), outfilebasename=NULL, outpath="../../pages/mydoc", sidebar_url_path="../../_data/sidebars/", fenced2highlight=FALSE, image_dir=NULL)
 # $ Rscript ../md2jekyll.R bioassayR.knit.md 8
 
 

@@ -47,9 +47,9 @@ permalink: mydoc_tutorial_02.html
 
 + Login command on OS X or Linux 
 
-{% highlight sh %}
+```sh
 ssh -X user@biocluster.ucr.edu
-{% endhighlight %}
+```
   
 Type password
 
@@ -63,54 +63,54 @@ Type password
 ## Important Linux Commands
 
 Finding help
-{% highlight sh %}
+```sh
 man <program_name>
-{% endhighlight %}
+```
         
 List content of current directory
-{% highlight sh %}
+```sh
 ls
-{% endhighlight %}
+```
 
 Print current working directory
-{% highlight sh %}
+```sh
 pwd
-{% endhighlight %}
+```
 
 Search in files and directories
-{% highlight sh %}
+```sh
 grep
-{% endhighlight %}
+```
 
 Word count
-{% highlight sh %}
+```sh
 wc
-{% endhighlight %}
+```
 
 Create directory
-{% highlight sh %}
+```sh
 mkdir
-{% endhighlight %}
+```
 
 Delete files and directories
-{% highlight sh %}
+```sh
 rm
-{% endhighlight %}
+```
 
 Move and rename files
-{% highlight sh %}
+```sh
 mv
-{% endhighlight %}
+```
 
 Copy files from internet to `pwd`
-{% highlight sh %}
+```sh
 wget
-{% endhighlight %}
+```
 
 Viewing files
-{% highlight sh %}
+```sh
 less
-{% endhighlight %}
+```
 
 
 ## File Exchange
@@ -123,46 +123,46 @@ __GUI applications__
         
 __SCP command-line tool__
 
-{% highlight sh %}
+```sh
 scp file user@remotehost:/home/user/ # From local to remote 
 scp user@remotehost:/home/user/file . # From remote to local 
-{% endhighlight %}
+```
 
 	
 ## STD IN/OUT/ERR, Redirect & Wildcards
 
 Wildcard `*` to specify many files
-{% highlight sh %}
+```sh
 file.*                        
-{% endhighlight %}
+```
 Redirect `ls` output to file
-{% highlight sh %}
+```sh
 ls > file                     
-{% endhighlight %}
+```
 Specify file as input to command
-{% highlight sh %}
+```sh
 command < myfile              
-{% endhighlight %}
+```
 Append output of command to file
-{% highlight sh %}
+```sh
 command >> myfile             
-{% endhighlight %}
+```
 Pipe `STDOUT` of one command to another command
-{% highlight sh %}
+```sh
 command1 | command2     
-{% endhighlight %}
+```
 Turn off progress info 
-{% highlight sh %}
+```sh
 command > /dev/null 
-{% endhighlight %}
+```
 Pipe output of `grep` to `wc`
-{% highlight sh %}
+```sh
 grep pattern file | wc        
-{% endhighlight %}
+```
 Print `STDERR` to file
-{% highlight sh %}
+```sh
 grep pattern nonexistingfile 2 > mystderr 
-{% endhighlight %}
+```
 
 ## Homework Assignment (HW2)
 
@@ -172,9 +172,9 @@ See HW2 page [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_02
 
 List directories and files
 
-{% highlight sh %}
+```sh
 ls -al 
-{% endhighlight %}
+```
 
 The previous command shows something like this for each file/dir: `drwxrwxrwx`. The 
 meaning of this syntax is as follows:
@@ -186,24 +186,24 @@ meaning of this syntax is as follows:
     * third triplet: world permissions (o)
 
 Example for assigning write and execute permissions to user, group and world
-{% highlight sh %}
+```sh
 chmod ugo+rx my_file
-{% endhighlight %}
+```
 
 * `+` causes the permissions selected to be added
 * `-` causes them to be removed
 * `=` causes them to be the only permissions that the file has.
 
 Syntax for changing user & group ownership
-{% highlight sh %}
+```sh
 chown <user>:<group> <file or dir> 
-{% endhighlight %}
+```
 
 ## Symbolic Links
 Symbolic links are short nicknames to files and directories that save typing of their full paths. 
-{% highlight sh %}
+```sh
 ln -s original_filename new_nickname
-{% endhighlight %}
+```
 
 
 ## Software and module system
@@ -216,39 +216,39 @@ ln -s original_filename new_nickname
 * To use software manged under the module system, users need to learn using some basic commands. The most common commands are listed below.
 
 Print available modules
-{% highlight sh %}
+```sh
 module avail
-{% endhighlight %}
+```
 
 Print available modules starting with R
-{% highlight sh %}
+```sh
 module avail R
-{% endhighlight %}
+```
 
 Load default module R
-{% highlight sh %}
+```sh
 module load R
-{% endhighlight %}
+```
 
 Load specific module R version
-{% highlight sh %}
+```sh
 module load R/3.2.2
-{% endhighlight %}
+```
 
 List loaded modules
-{% highlight sh %}
+```sh
 module list
-{% endhighlight %}
+```
 
 Unload module R
-{% highlight sh %}
+```sh
 module unload R
-{% endhighlight %}
+```
 
 Unload specific module R
-{% highlight sh %}
+```sh
 module unload R/3.2.3-dev
-{% endhighlight %}
+```
 
 
 ## Big data storage
@@ -269,7 +269,7 @@ The disk usage of `home` and `bigdata` can be monitored on the [Biocluster Dashb
 ## Queuing system 
 
 Biocluster uses Slurm as queuing and load balancing system. To control user traffic, any 
-type of compute intensive jobs need to be submitted via the `qsub` (see below) to the compute 
+type of compute intensive jobs need to be submitted via the `srun` (see below) to the compute 
 nodes. Much more detailed information on this topic is available in the biocluster manual 
 [here](http://hpcc.ucr.edu/manuals_linux-cluster_intro.html).
 
@@ -279,90 +279,90 @@ nodes. Much more detailed information on this topic is available in the bioclust
 
 Basic job submission with `qsub` without a submission script
 
-{% highlight sh %}
+```sh
 echo ’command_args’ | qsub
-{% endhighlight %}
+```
 
 Alternatively, one can submit jobs via a submission script as shown below. This much more
 flexible approach is preferred for submitting scripts from the command-line.
 
-{% highlight sh %}
+```sh
 qsub script_name.sh
-{% endhighlight %}
+```
 
 Sample submission script, here called `script_name.sh` to run `my_script.R`
 
-{% highlight sh %}
+```sh
 #!/bin/bash
 cd $PBS_O_WORKDIR
 Rscript my_script.R
-{% endhighlight %}
+```
 
 Interactive session: logs user into node
-{% highlight sh %}
+```sh
 qsub -I
-{% endhighlight %}
+```
 
 Interactive session with specific resource requests
-{% highlight sh %}
+```sh
 qsub -q batch -l nodes=1:ppn=2,mem=8gb,walltime=03:00:00 -I
-{% endhighlight %}
+```
 
 Submit job to `batch` queue with specific resource requests (queue, nodes, cpu, memory, walltime)
-{% highlight sh %}
+```sh
 qsub -q batch -l nodes=1:ppn=2,mem=8gb,walltime=03:00:00 script_name.sh
-{% endhighlight %}
+```
 
 Submit job to `highmem` queue with specific resource requests 
-{% highlight sh %}
+```sh
 qsub -q highmem -l nodes=1:ppn=2,mem=8gb,walltime=03:00:00 script_name.sh
-{% endhighlight %}
+```
 
 
 `STDOUT` and `STDERROR` files generate by each job
-{% highlight sh %}
+```sh
 SCRIPTNAME.sh.oJOBID or STDIN.oJOBID
 SCRIPTNAME.sh.eJOBID or STDIN.eJOBID
-{% endhighlight %}
+```
 
 ### Monitoring jobs with `qstat`
 
 List all jobs in queue
-{% highlight sh %}
+```sh
 qstat
-{% endhighlight %}
+```
 
 List jobs of a specific user
-{% highlight sh %}
+```sh
 qstat -u <user>
-{% endhighlight %}
+```
 
 Print more detailed information about jobs
-{% highlight sh %}
+```sh
 qstat -tf1
-{% endhighlight %}
+```
 
 Custom command to summarize and visualize cluster activity
-{% highlight sh %}
+```sh
 qstatMonitor
-{% endhighlight %}
+```
 
 ### Deleting and altering jobs 
 
 Delete a single job
-{% highlight sh %}
+```sh
 qdel <JOBID> # Delete single job
-{% endhighlight %}
+```
 
 Delete all jobs of a user
-{% highlight sh %}
+```sh
 qselect -u <user> | xargs qdel # All jobs of a user
-{% endhighlight %}
+```
 
 Altering jobs with `qalter` (here walltime)
-{% highlight sh %}
+```sh
 qalter -l walltime=8:00 <JOBID>
-{% endhighlight %}
+```
 
 -->
 
@@ -391,9 +391,9 @@ environment for R. The following provides a brief introduction to this environme
 ### Vim overview
 
 The following opens a file (here `myfile`) with vim
-{% highlight sh %}
+```sh
 vim myfile.txt
-{% endhighlight %}
+```
 
 Once you are in Vim the most important commands are:
 
@@ -434,18 +434,18 @@ in each user account. A detailed user manual is available [here](http://manuals.
 The following give a short introduction into the basic usage:
 
 __1. Start tmux session__
-{% highlight sh %}
+```sh
 tmux # starts a new tmux session 
 tmux a #  attaches to an existing session 
-{% endhighlight %}
+```
 
 __2. Open R script in vim__ 
 
 This can be any of these file types: `*.R`, `*.Rnw` or `*.Rmd`.
 
-{% highlight sh %}
+```sh
 vim myscript.R
-{% endhighlight %}
+```
 
 __3. Open vim-connected R session by pressing the `F2` key__ 
 
