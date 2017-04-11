@@ -6,48 +6,48 @@ permalink: mydoc_homework_02.html
 
 ## Topic: Linux Basics
 
-(1) Download Halobacterium proteome and inspect it
-{% highlight sh %}
-wget http://biocluster.ucr.edu/~tgirke/Linux.sh # downloads code from this slide
-module load ncbi-blast/2.2.26
-wget ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/archaea/Halobacterium_salinarum/representative/GCA_000069025.1_ASM6902v1/GCA_000069025.1_ASM6902v1_protein.faa.gz
-gunzip GCA_000069025.1_ASM6902v1_protein.faa.gz
-mv GCA_000069025.1_ASM6902v1_protein.faa halobacterium.faa
-less halobacterium.faa # press q to quit
-{% endhighlight %}
+1. Download Halobacterium proteome and inspect it
+    ```sh
+    wget http://biocluster.ucr.edu/~tgirke/Linux.sh # downloads code from this slide
+    module load ncbi-blast/2.2.26
+    wget ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/archaea/Halobacterium_salinarum/representative/GCA_000069025.1_ASM6902v1/GCA_000069025.1_ASM6902v1_protein.faa.gz
+    gunzip GCA_000069025.1_ASM6902v1_protein.faa.gz
+    mv GCA_000069025.1_ASM6902v1_protein.faa halobacterium.faa
+    less halobacterium.faa # press q to quit
+    ```
 
-(2) How many protein sequences are stored in the downloaded file?
-{% highlight sh %}
-grep '>' halobacterium.faa | wc
-grep '^>' halobacterium.faa --count
-{% endhighlight %}
+2. How many protein sequences are stored in the downloaded file?
+    ```sh
+    grep '>' halobacterium.faa | wc
+    grep '^>' halobacterium.faa --count
+    ```
 
-(3) How many proteins contain the pattern `WxHxxH` or `WxHxxHH`?
-{% highlight sh %}
-egrep 'W.H..H{1,2}' halobacterium.faa --count
-{% endhighlight %}
+3. How many proteins contain the pattern `WxHxxH` or `WxHxxHH`?
+    ```sh
+    egrep 'W.H..H{1,2}' halobacterium.faa --count
+    ```
 
-(4) Use `less` to find IDs for pattern matches or use `awk`
-{% highlight sh %}
-awk --posix -v RS='>' '/W.H..(H){1,2}/ { print ">" $0;}' halobacterium.faa | less
-awk --posix -v RS='>' '/W.H..(H){1,2}/ { print ">" $0;}' halobacterium.faa | grep '^>' | cut -c 2- | cut -f 1 -d\ > myIDs
-{% endhighlight %}
+4. Use `less` to find IDs for pattern matches or use `awk`
+    ```sh
+    awk --posix -v RS='>' '/W.H..(H){1,2}/ { print ">" $0;}' halobacterium.faa | less
+    awk --posix -v RS='>' '/W.H..(H){1,2}/ { print ">" $0;}' halobacterium.faa | grep '^>' | cut -c 2- | cut -f 1 -d\ > myIDs
+    ```
 
-(5) Create a BLASTable database with `formatdb`
-{% highlight sh %}
-formatdb -i halobacterium.faa -p T -o
-{% endhighlight %}
+5. Create a BLASTable database with `formatdb`
+    ```sh
+    formatdb -i halobacterium.faa -p T -o
+    ```
 
-(6) Query BLASTable database by IDs stored in a file (_e.g._ `myIDs`)
-{% highlight sh %}
-fastacmd -d halobacterium.faa -i myIDs > myseq.fasta
-{% endhighlight %}
+6. Query BLASTable database by IDs stored in a file (_e.g._ `myIDs`)
+    ```sh
+    fastacmd -d halobacterium.faa -i myIDs > myseq.fasta
+    ```
 
-(7) Run BLAST search for sequences stored in `myseq.fasta`
-{% highlight sh %}
-blastall -p blastp -i myseq.fasta -d halobacterium.faa -o blastp.out -e 1e-6 -v 10 -b 10
-blastall -p blastp -i myseq.fasta -d halobacterium.faa -m 8 -e 1e-6 > blastp.tab
-{% endhighlight %}
+7. Run BLAST search for sequences stored in `myseq.fasta`
+    ```sh
+    blastall -p blastp -i myseq.fasta -d halobacterium.faa -o blastp.out -e 1e-6 -v 10 -b 10
+    blastall -p blastp -i myseq.fasta -d halobacterium.faa -m 8 -e 1e-6 > blastp.tab
+    ```
 
 Additional exercise material in [Linux Manual](http://hpcc.ucr.edu/manuals_linux-basics.html#exercises)
 
