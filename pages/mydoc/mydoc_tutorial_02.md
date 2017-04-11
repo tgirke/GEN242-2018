@@ -53,7 +53,7 @@ ssh -X user@biocluster.ucr.edu
   
 Type password
 
-+ Windows: provide same information in [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
++ Windows: provide same information in a terminal application like [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) or [MobaXterm](http://mobaxterm.mobatek.net/).
     
     + Host name: `biocluster.ucr.edu`
     + User name: ...
