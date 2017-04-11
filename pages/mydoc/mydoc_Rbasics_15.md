@@ -1,6 +1,6 @@
 ---
 title: 15. R Markdown
-last_updated: Sun Apr  9 18:51:21 2017
+last_updated: Mon Apr 10 19:00:04 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_15.html
 ---
@@ -25,9 +25,9 @@ Bibtex, respectively.
 ### Install R Markdown
 
 
-{% highlight r %}
+```r
 install.packages("rmarkdown")
-{% endhighlight %}
+```
 
 ### Initialize a new R Markdown (`Rmd`) script
 
@@ -53,11 +53,11 @@ with `pdf_document` and `html_document`, respectively. The `BiocStyle::` prefix 
 formatting style of the [`BiocStyle`](http://bioconductor.org/packages/release/bioc/html/BiocStyle.html) 
 package from Bioconductor.
 
-{% highlight txt %}
+```
  ---
 title: "My First R Markdown Document"
 author: "Author: First Last"
-date: "Last update: 09 April, 2017"
+date: "Last update: 10 April, 2017"
 output:
   BiocStyle::html_document:
     toc: true
@@ -67,7 +67,7 @@ output:
 fontsize: 14pt
 bibliography: bibtex.bib
  ---
-{% endhighlight %}
+```
 
 ### Render `Rmd` script
 
@@ -76,17 +76,17 @@ The `output_format` argument defines the format of the output (_e.g._ `html_docu
 all supported output formats. Alternatively, one can specify several output formats in the metadata section as shown in the above example.
 
 
-{% highlight r %}
+```r
 rmarkdown::render("sample.Rmd", clean=TRUE, output_format="html_document")
-{% endhighlight %}
+```
 
 The following shows two options how to run the rendering from the command-line.
 
 
-{% highlight sh %}
+```sh
 $ echo "rmarkdown::render('sample.Rmd', clean=TRUE)" | R --slave
 $ Rscript -e "rmarkdown::render('sample.Rmd', clean=TRUE)"
-{% endhighlight %}
+```
 
 Alternatively, one can use a Makefile to evaluate and render an R Markdown
 script. A sample Makefile for rendering the above `sample.Rmd` can be
@@ -98,9 +98,9 @@ name is `systemPipeRNAseq.Rmd`).  To execute the `Makefile`, run the following
 command from the command-line.
 
 
-{% highlight sh %}
+```sh
 $ make -B
-{% endhighlight %}
+```
 
 ### R code chunks
 
@@ -111,11 +111,11 @@ plain R code. A code chunk is terminated by a new line starting with three backt
 The following shows an example of such a code chunk. Note the backslashes are
 not part of it. They have been added to print the code chunk syntax in this document.
 
-{% highlight txt %}
+```
 	```\{r code_chunk_name, eval=FALSE\}
 	x <- 1:10
 	```
-{% endhighlight %}
+```
 
 The following lists the most important arguments to control the behavior of R code chunks:
 
@@ -149,10 +149,10 @@ much nicer formatted tables can be generated with the functions `kable`, `pander
 example uses `kable` from the `knitr` package.
 
 
-{% highlight r %}
+```r
 library(knitr)
 kable(iris[1:12,])
-{% endhighlight %}
+```
 
 
 
@@ -177,11 +177,11 @@ inserted in the output file. The size of the figure can be controlled with the `
 and `fig.width` arguments.
 
 
-{% highlight r %}
+```r
 library(ggplot2)
 dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
 ggplot(dsmall, aes(color, price/carat)) + geom_jitter(alpha = I(1 / 2), aes(color=color))
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/some_jitter_plot-1.png" width="672" />
 
@@ -192,16 +192,16 @@ file named `myplot.png`. To insert the file  in the final document, one can use 
 Markdown or HTML syntax, _e.g._: `<img src="./pages/mydoc/Rbasics_files/myplot.png"/>`.  
 
 
-{% highlight r %}
+```r
 png("myplot.png")
 ggplot(dsmall, aes(color, price/carat)) + geom_jitter(alpha = I(1 / 2), aes(color=color))
 dev.off()
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## png 
 ##   2
-{% endhighlight %}
+```
 <center><img title="some_title" src="./pages/mydoc/Rbasics_files/myplot.png"/></center>
 
 ### Inline R code

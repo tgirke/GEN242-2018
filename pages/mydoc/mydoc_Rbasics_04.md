@@ -1,6 +1,6 @@
 ---
 title: 4. Getting Around
-last_updated: Sun Apr  9 18:51:21 2017
+last_updated: Mon Apr 10 19:00:04 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_04.html
 ---
@@ -20,12 +20,12 @@ permalink: mydoc_Rbasics_04.html
 * __Closing R__:
 
 
-{% highlight r %}
+```r
 q()  
-{% endhighlight %}
-{% highlight txt %}
+```
+```
 Save workspace image? [y/n/c]:
-{% endhighlight %}
+```
         
 * __Note__:
     When responding with `y`, then the entire R workspace will be written to
@@ -38,33 +38,33 @@ Save workspace image? [y/n/c]:
 
 Create an object with the assignment operator `<-` or `=`
 
-{% highlight r %}
+```r
 object <- ...
-{% endhighlight %}
+```
 
 List objects in current R session
 
-{% highlight r %}
+```r
 ls()
-{% endhighlight %}
+```
 
 Return content of current working directory
 
-{% highlight r %}
+```r
 dir()
-{% endhighlight %}
+```
 
 Return path of current working directory
 
-{% highlight r %}
+```r
 getwd()
-{% endhighlight %}
+```
 
 Change current working directory
 
-{% highlight r %}
+```r
 setwd("/home/user")
-{% endhighlight %}
+```
 
 <br><br><center><a href="mydoc_Rbasics_03.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_05.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

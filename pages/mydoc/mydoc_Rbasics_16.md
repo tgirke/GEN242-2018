@@ -1,16 +1,16 @@
 ---
 title: 16. Session Info
-last_updated: Sun Apr  9 18:51:21 2017
+last_updated: Mon Apr 10 19:00:04 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
 
 
-{% highlight r %}
+```r
 sessionInfo()
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## R version 3.3.3 (2017-03-06)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Ubuntu 14.04.5 LTS
@@ -35,7 +35,7 @@ sessionInfo()
 ## [16] assertthat_0.1     digest_0.6.10      tibble_1.2         formatR_1.4        bitops_1.0-6      
 ## [21] codetools_0.2-15   evaluate_0.10      rmarkdown_1.1      labeling_0.3       gdata_2.17.0      
 ## [26] stringi_1.1.2      scales_0.4.0
-{% endhighlight %}
+```
 
 <br><br><center><a href="mydoc_Rbasics_15.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_17.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

@@ -1,6 +1,6 @@
 ---
 title: 3. Installation of R Packages
-last_updated: Sun Apr  9 18:51:21 2017
+last_updated: Mon Apr 10 19:00:04 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_03.html
 ---
@@ -12,21 +12,21 @@ permalink: mydoc_Rbasics_03.html
 (3.) Install CRAN Packages from R console like this:
 
 
-{% highlight r %}
+```r
 install.packages(c("pkg1", "pkg2")) 
 install.packages("pkg.zip", repos=NULL)
-{% endhighlight %}
+```
 
 (4.) Install Bioconductor packages as follows:
 
 
-{% highlight r %}
+```r
 source("http://www.bioconductor.org/biocLite.R")
 library(BiocInstaller)
 BiocVersion()
 biocLite()
 biocLite(c("pkg1", "pkg2"))
-{% endhighlight %}
+```
 
 (5.) For more details consult the [Bioc Install page](http://www.bioconductor.org/install/)
 and [BiocInstaller](http://www.bioconductor.org/packages/release/bioc/html/BiocInstaller.html) package.

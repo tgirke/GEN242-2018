@@ -1,6 +1,6 @@
 ---
 title: 13. Graphics in R
-last_updated: Sun Apr  9 18:51:21 2017
+last_updated: Mon Apr 10 19:00:04 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_13.html
 ---
@@ -83,35 +83,35 @@ __Help on graphics functions__
 Sample data set for subsequent plots
 
 
-{% highlight r %}
+```r
 set.seed(1410)
 y <- matrix(runif(30), ncol=3, dimnames=list(letters[1:10], LETTERS[1:3]))
-{% endhighlight %}
+```
 
 Plot data
 
-{% highlight r %}
+```r
 plot(y[,1], y[,2]) 
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/basic_scatter_plot-1.png" width="672" />
 
 ### All pairs
 
 
-{% highlight r %}
+```r
 pairs(y) 
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/pairs_scatter_plot-1.png" width="672" />
 
 ### With labels
 
 
-{% highlight r %}
+```r
 plot(y[,1], y[,2], pch=20, col="red", main="Symbols and Labels")
 text(y[,1]+0.03, y[,2], rownames(y))
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/labels_scatter_plot-1.png" width="672" />
 
@@ -120,24 +120,24 @@ text(y[,1]+0.03, y[,2], rownames(y))
 __Print instead of symbols the row names__
 
 
-{% highlight r %}
+```r
 plot(y[,1], y[,2], type="n", main="Plot of Labels")
 text(y[,1], y[,2], rownames(y)) 
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/row_scatter_plot-1.png" width="672" />
 
 __Usage of important plotting parameters__
 
 
-{% highlight r %}
+```r
 grid(5, 5, lwd = 2) 
 op <- par(mar=c(8,8,8,8), bg="lightblue")
 plot(y[,1], y[,2], type="p", col="red", cex.lab=1.2, cex.axis=1.2, 
      cex.main=1.2, cex.sub=1, lwd=4, pch=20, xlab="x label", 
      ylab="y label", main="My Main", sub="My Sub")
 par(op)
-{% endhighlight %}
+```
 __Important arguments_
 
 - `mar`: specifies the margin sizes around the plotting area in order: `c(bottom, left, top, right)` 
@@ -151,18 +151,18 @@ __Important arguments_
 ### Add regression line 
 
 
-{% highlight r %}
+```r
 plot(y[,1], y[,2])
 myline <- lm(y[,2]~y[,1]); abline(myline, lwd=2) 
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_regression-1.png" width="672" />
 
-{% highlight r %}
+```r
 summary(myline) 
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## 
 ## Call:
 ## lm(formula = y[, 2] ~ y[, 1])
@@ -181,25 +181,25 @@ summary(myline)
 ## Residual standard error: 0.3095 on 8 degrees of freedom
 ## Multiple R-squared:  0.09589,	Adjusted R-squared:  -0.01712 
 ## F-statistic: 0.8485 on 1 and 8 DF,  p-value: 0.3839
-{% endhighlight %}
+```
 
 ### Log scale
 
 Same plot as above, but on log scale
 
 
-{% highlight r %}
+```r
 plot(y[,1], y[,2], log="xy") 
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_regression_log-1.png" width="672" />
 
 ### Add a mathematical expression
 
 
-{% highlight r %}
+```r
 plot(y[,1], y[,2]); text(y[1,1], y[1,2], expression(sum(frac(1,sqrt(x^2*pi)))), cex=1.3) 
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_regression_math-1.png" width="672" />
 
@@ -213,9 +213,9 @@ Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_ho
 ### Single data set
 
 
-{% highlight r %}
+```r
 plot(y[,1], type="l", lwd=2, col="blue") 
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_line_single-1.png" width="672" />
 
@@ -224,77 +224,77 @@ plot(y[,1], type="l", lwd=2, col="blue")
 Plots line graph for all columns in data frame `y`. The `split.screen` function is used in this example in a for loop to overlay several line graphs in the same plot. 
 
 
-{% highlight r %}
+```r
 split.screen(c(1,1)) 
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## [1] 1
-{% endhighlight %}
+```
 
-{% highlight r %}
+```r
 plot(y[,1], ylim=c(0,1), xlab="Measurement", ylab="Intensity", type="l", lwd=2, col=1)
 for(i in 2:length(y[1,])) { 
 	screen(1, new=FALSE)
 	plot(y[,i], ylim=c(0,1), type="l", lwd=2, col=i, xaxt="n", yaxt="n", ylab="", xlab="", main="", bty="n") 
 }
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_line_many-1.png" width="672" />
 
-{% highlight r %}
+```r
 close.screen(all=TRUE) 
-{% endhighlight %}
+```
 
 ## Bar Plots 
 
 ### Basics
 
 
-{% highlight r %}
+```r
 barplot(y[1:4,], ylim=c(0, max(y[1:4,])+0.3), beside=TRUE, legend=letters[1:4]) 
 text(labels=round(as.vector(as.matrix(y[1:4,])),2), x=seq(1.5, 13, by=1) + sort(rep(c(0,1,2), 4)), y=as.vector(as.matrix(y[1:4,]))+0.04) 
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_bar_simple-1.png" width="672" />
     
 ### Error Bars
 
 
-{% highlight r %}
+```r
 bar <- barplot(m <- rowMeans(y) * 10, ylim=c(0, 10))
 stdev <- sd(t(y))
 arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_bar_error-1.png" width="672" />
 
 ## Histograms
 
 
-{% highlight r %}
+```r
 hist(y, freq=TRUE, breaks=10)
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_hist-1.png" width="672" />
 
 ## Density Plots
 
 
-{% highlight r %}
+```r
 plot(density(y), col="red")
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_dens-1.png" width="672" />
 
 ## Pie Charts
 
 
-{% highlight r %}
+```r
 pie(y[,1], col=rainbow(length(y[,1]), start=0.1, end=0.8), clockwise=TRUE)
 legend("topright", legend=row.names(y), cex=1.3, bty="n", pch=15, pt.cex=1.8, 
 col=rainbow(length(y[,1]), start=0.1, end=0.8), ncol=1) 
-{% endhighlight %}
+```
 
 <img src="./pages/mydoc/Rbasics_files/plot_pie-1.png" width="672" />
 
@@ -303,47 +303,47 @@ col=rainbow(length(y[,1]), start=0.1, end=0.8), ncol=1)
 Default color palette and how to change it
 
 
-{% highlight r %}
+```r
 palette()
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## [1] "black"   "red"     "green3"  "blue"    "cyan"    "magenta" "yellow"  "gray"
-{% endhighlight %}
+```
 
-{% highlight r %}
+```r
 palette(rainbow(5, start=0.1, end=0.2))
 palette()
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## [1] "#FF9900" "#FFBF00" "#FFE600" "#F2FF00" "#CCFF00"
-{% endhighlight %}
+```
 
-{% highlight r %}
+```r
 palette("default")
-{% endhighlight %}
+```
 
 The `gray` function allows to select any type of gray shades by providing values from 0 to 1
 
-{% highlight r %}
+```r
 gray(seq(0.1, 1, by= 0.2))
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## [1] "#1A1A1A" "#4D4D4D" "#808080" "#B3B3B3" "#E6E6E6"
-{% endhighlight %}
+```
 
 Color gradients with `colorpanel` function from `gplots` library`
 
-{% highlight r %}
+```r
 library(gplots)
 colorpanel(5, "darkblue", "yellow", "white")
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## [1] "#00008B" "#808046" "#FFFF00" "#FFFF80" "#FFFFFF"
-{% endhighlight %}
+```
 Much more on colors in R see Earl Glynn's color chart [here](http://research.stowers-institute.org/efg/R/Color/Chart/)
 
 
@@ -351,21 +351,21 @@ Much more on colors in R see Earl Glynn's color chart [here](http://research.sto
 
 After the `pdf()` command all graphs are redirected to file `test.pdf`. Works for all common formats similarly: jpeg, png, ps, tiff, ...
 
-{% highlight r %}
+```r
 pdf("test.pdf")
 plot(1:10, 1:10)
 dev.off() 
-{% endhighlight %}
+```
 
 Generates Scalable Vector Graphics (SVG) files that can be edited in vector graphics programs, such as InkScape.
 
 
-{% highlight r %}
+```r
 library("RSvgDevice")
 devSVG("test.svg")
 plot(1:10, 1:10)
 dev.off() 
-{% endhighlight %}
+```
 
 ## Homework 3C
 

@@ -1,6 +1,6 @@
 ---
 title: 12. SQLite Databases
-last_updated: Sun Apr  9 18:51:21 2017
+last_updated: Mon Apr 10 19:00:04 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -14,45 +14,45 @@ The following loads two `data.frames` derived from the `iris` data set (here `my
 into an SQLite database (here `test.db`).
 
 
-{% highlight r %}
+```r
 library(RSQLite)
 mydb <- dbConnect(SQLite(), "test.db") # Creates database file test.db
 mydf1 <- data.frame(ids=paste0("id", seq_along(iris[,1])), iris)
 mydf2 <- mydf1[sample(seq_along(mydf1[,1]), 10),]
 dbWriteTable(mydb, "mydf1", mydf1)
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## [1] TRUE
-{% endhighlight %}
+```
 
-{% highlight r %}
+```r
 dbWriteTable(mydb, "mydf2", mydf2)
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## [1] TRUE
-{% endhighlight %}
+```
 
 ## List names of tables in database
 
 
-{% highlight r %}
+```r
 dbListTables(mydb)
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ## [1] "mydf1" "mydf2"
-{% endhighlight %}
+```
 
 ## Import table into `data.frame`
 
 
-{% highlight r %}
+```r
 dbGetQuery(mydb, 'SELECT * FROM mydf2')
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
 ## 1   id99          5.1         2.5          3.0         1.1 versicolor
 ## 2   id16          5.7         4.4          1.5         0.4     setosa
@@ -64,34 +64,34 @@ dbGetQuery(mydb, 'SELECT * FROM mydf2')
 ## 8  id148          6.5         3.0          5.2         2.0  virginica
 ## 9   id13          4.8         3.0          1.4         0.1     setosa
 ## 10  id40          5.1         3.4          1.5         0.2     setosa
-{% endhighlight %}
+```
 
 ## Query database
 
 
-{% highlight r %}
+```r
 dbGetQuery(mydb, 'SELECT * FROM mydf1 WHERE "Sepal.Length" < 4.6')
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ##    ids Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1  id9          4.4         2.9          1.4         0.2  setosa
 ## 2 id14          4.3         3.0          1.1         0.1  setosa
 ## 3 id39          4.4         3.0          1.3         0.2  setosa
 ## 4 id42          4.5         2.3          1.3         0.3  setosa
 ## 5 id43          4.4         3.2          1.3         0.2  setosa
-{% endhighlight %}
+```
 
 ## Join tables
 
 The two tables can be joined on the shared `ids` column as follows. 
 
 
-{% highlight r %}
+```r
 dbGetQuery(mydb, 'SELECT * FROM mydf1, mydf2 WHERE mydf1.ids = mydf2.ids')
-{% endhighlight %}
+```
 
-{% highlight txt %}
+```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species   ids Sepal.Length
 ## 1   id13          4.8         3.0          1.4         0.1     setosa  id13          4.8
 ## 2   id16          5.7         4.4          1.5         0.4     setosa  id16          5.7
@@ -114,7 +114,7 @@ dbGetQuery(mydb, 'SELECT * FROM mydf1, mydf2 WHERE mydf1.ids = mydf2.ids')
 ## 8          2.6          5.6         1.4  virginica
 ## 9          3.1          5.6         2.4  virginica
 ## 10         3.0          5.2         2.0  virginica
-{% endhighlight %}
+```
 
 
 <br><br><center><a href="mydoc_Rbasics_11.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
