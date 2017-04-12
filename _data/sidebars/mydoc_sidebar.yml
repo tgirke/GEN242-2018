@@ -68,6 +68,10 @@ entries:
       url: /mydoc_slides_04.html
       output: web
     
+    - title: Introduction to R
+      url: /mydoc_slides_05.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
