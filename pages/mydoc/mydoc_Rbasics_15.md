@@ -1,6 +1,6 @@
 ---
 title: 15. R Markdown
-last_updated: Thu Apr 13 11:42:44 2017
+last_updated: Thu Apr 13 13:32:39 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_15.html
 ---
@@ -36,8 +36,8 @@ then modify it as needed. Note the file name of an R Markdown scirpt needs to
 have the extension `.Rmd`. Template files for the following examples are available 
 here:
 
-+ R Markdown sample script: [`sample.Rmd`](https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/07_Rbasics/sample.Rmd)
-+ Bibtex file for handling citations and reference section: [`bibtex.bib`](https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/07_Rbasics/bibtex.bib)
++ R Markdown sample script: [`sample.Rmd`](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/sample.Rmd)
++ Bibtex file for handling citations and reference section: [`bibtex.bib`](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/bibtex.bib)
 
 Users want to download these files, open the `sample.Rmd` file with their preferred R IDE 
 (_e.g._ RStudio, vim or emacs), initilize an R session and then direct their R session to 
