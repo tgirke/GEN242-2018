@@ -36,7 +36,7 @@ table(iris$Species)
 
 ## D-H. Analysis Worflow
 
-The instructions for these homework assignments are [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_Rbasics_13.html).
+The instructions for these homework assignments are [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_Rbasics_14.html).
 
 ## Homework submission
 
@@ -44,7 +44,7 @@ Assemble the results from homework assignments A-H in a single R script (`HW3.R`
 
 ## Due date
 
-This homework is due on Thu, April 19th at 6:00 PM.
+This homework is due on Thu, April 20th at 6:00 PM.
 
 ## Homework Solutions
 
