@@ -84,6 +84,10 @@ entries:
       url: /mydoc_homework_02.html
       output: web
       
+    - title: HW3 - Introduction to R
+      url: /mydoc_homework_03.html
+      output: web
+  
   - title: GitHub
     output: web
     folderitems:
