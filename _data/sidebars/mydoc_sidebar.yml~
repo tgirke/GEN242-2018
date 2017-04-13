@@ -84,8 +84,8 @@ entries:
       url: /mydoc_homework_02.html
       output: web
       
-    - title: HW2 - Biocluster/Linux
-      url: /mydoc_homework_02.html
+    - title: HW3 - Introduction to R
+      url: /mydoc_homework_03.html
       output: web
   
   - title: GitHub
