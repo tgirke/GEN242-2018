@@ -1,11 +1,11 @@
 ---
 title: 2. R Package Repositories
-last_updated: Tue Apr 11 06:47:01 2017
+last_updated: Thu Apr 13 11:42:44 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_02.html
 ---
 
-* CRAN (>8,000 packages) general data analysis - [URL](http://cran.at.r-project.org/)
+* CRAN (>11,000 packages) general data analysis - [URL](http://cran.at.r-project.org/)
 * Bioconductor (>1,100 packages) bioscience data analysis - [URL](http://www.bioconductor.org/)
 * Omegahat (>90 packages) programming interfaces - [URL](https://github.com/omegahat?tab=repositories)
 
