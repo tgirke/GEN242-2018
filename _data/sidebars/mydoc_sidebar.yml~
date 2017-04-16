@@ -184,7 +184,7 @@ entries:
       url: /mydoc_Rbasics_17.html
       output: web
 
-  - title: Programming
+  - title: Programming in R
     output: web, pdf
     folderitems:
 
@@ -230,14 +230,6 @@ entries:
 
     - title: 11. References
       url: /mydoc_Programming_in_R_11.html
-      output: web
-
-  - title: Programming in R
-    output: web
-    folderitems:
-    
-    - title: To be added
-      url:
       output: web
 
   - title: NGS Analysis Basics

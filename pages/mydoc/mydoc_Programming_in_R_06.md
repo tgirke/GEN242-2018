@@ -1,6 +1,6 @@
 ---
 title: 6. Running R Scripts
-last_updated: Sun Apr 16 08:11:13 2017
+last_updated: Sun Apr 16 08:19:29 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_06.html
 ---

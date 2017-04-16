@@ -17,7 +17,7 @@ fontsize: 14pt
 bibliography: bibtex.bib
 ---
 
-<!---
+<!--
 - Compile from command-line
 Rscript -e "rmarkdown::render('Programming_in_R.Rmd', c('html_document'), clean=F); knitr::knit('Programming_in_R.Rmd', tangle=TRUE)"; Rscript ../md2jekyll.R Programming_in_R.knit.md 9; Rscript -e "rmarkdown::render('Programming_in_R.Rmd', c('pdf_document'))"
 -->
@@ -709,8 +709,9 @@ This homework is due on Thu, April 21th at 6:00 PM.
 
 ## Homework Solutions
 
+<!--
 See [here](https://drive.google.com/file/d/0B-lLYVUOliJFWlBhb2xNOWdfS0U/view?usp=sharing)
-
+-->
 
 # Session Info
 
