@@ -1,6 +1,6 @@
 ---
 title: 5. Useful Utilities
-last_updated: Sun Apr 16 08:21:25 2017
+last_updated: Sun Apr 16 08:24:08 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_05.html
 ---

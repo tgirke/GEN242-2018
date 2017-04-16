@@ -1,6 +1,6 @@
 ---
 title: Programming in R  <br> <br> 1. Overview
-last_updated: Sun Apr 16 08:21:25 2017
+last_updated: Sun Apr 16 08:24:08 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_01.html
 ---
@@ -10,7 +10,7 @@ Last update: 16 April, 2017
 
 Alternative formats of this vignette:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Programming_in_R.html){:target="_blank"} ],
-[ [PDF](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Programming_in_R..pdf){:target="_blank"} ],
+[ [PDF](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Programming_in_R.pdf){:target="_blank"} ],
 [ [.Rmd](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/08_Programming_in_R/Programming_in_R.Rmd){:target="_blank"} ],
 [ [R](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/08_Programming_in_R/Programming_in_R.R){:target="_blank"} ],
 [ [Old PDF Slides](https://drive.google.com/file/d/0B-lLYVUOliJFSnplWlZWcllYY0E/view?usp=sharing){:target="_blank"} ]
