@@ -35,7 +35,7 @@ permalink: mydoc_tutorial_02.html
 
 - Computing tasks need to be submitted via `srun`
 - Biocluster headnode only for login, not for computing tasks!
-- Monitor cluster activity: `qstat` or `qstatMonitor`
+- Monitor cluster activity: `squeue` or `jobMonitor` (`qstatMonitor`)
 
 ### Manuals
 
@@ -48,12 +48,12 @@ permalink: mydoc_tutorial_02.html
 + Login command on OS X or Linux 
 
 ```sh
-ssh -X user@biocluster.ucr.edu
+ssh -XY user@biocluster.ucr.edu
 ```
   
 Type password
 
-+ Windows: provide same information in [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
++ Windows: provide same information in a terminal application like [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) or [MobaXterm](http://mobaxterm.mobatek.net/).
     
     + Host name: `biocluster.ucr.edu`
     + User name: ...
@@ -273,98 +273,93 @@ type of compute intensive jobs need to be submitted via the `srun` (see below) t
 nodes. Much more detailed information on this topic is available in the biocluster manual 
 [here](http://hpcc.ucr.edu/manuals_linux-cluster_intro.html).
 
-<!--
 
-### Job submission with `qsub`
+### Job submission with `sbatch`
 
-Basic job submission with `qsub` without a submission script
-
+Print information about queues/partitions available on a cluster.
 ```sh
-echo ’command_args’ | qsub
+sinfo
 ```
 
-Alternatively, one can submit jobs via a submission script as shown below. This much more
-flexible approach is preferred for submitting scripts from the command-line.
+Compute jobs are submitted `sbatch` via a submission script (here `script_name.sh`).
 
 ```sh
-qsub script_name.sh
+sbatch script_name.sh
 ```
 
-Sample submission script, here called `script_name.sh` to run `my_script.R`
+The following sample submission script (`script_name.sh`) executes an R script named `my_script.R`.
 
 ```sh
-#!/bin/bash
-cd $PBS_O_WORKDIR
+#!/bin/bash -l
+
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=1G
+#SBATCH --time=1-00:15:00 # 1 day and 15 minutes
+#SBATCH --mail-user=useremail@address.com
+#SBATCH --mail-type=ALL
+#SBATCH --job-name="some_test"
+#SBATCH -p batch # Choose queue/parition from: intel, batch, highmem, gpu, short
+
 Rscript my_script.R
 ```
 
 Interactive session: logs user into node
 ```sh
-qsub -I
+srun --pty bash -l
 ```
 
 Interactive session with specific resource requests
 ```sh
-qsub -q batch -l nodes=1:ppn=2,mem=8gb,walltime=03:00:00 -I
+srun --x11 --partition=batch --mem=2gb --cpus-per-task 4 --ntasks 1 --time 72:00:00 --pty bash -l
 ```
 
-Submit job to `batch` queue with specific resource requests (queue, nodes, cpu, memory, walltime)
-```sh
-qsub -q batch -l nodes=1:ppn=2,mem=8gb,walltime=03:00:00 script_name.sh
-```
+`STDOUT` and `STDERROR` of jobs will be written to files named `slurm-<jobid>.out` or to custom file specified under `#SBATCH --output` in submission script. 
 
-Submit job to `highmem` queue with specific resource requests 
-```sh
-qsub -q highmem -l nodes=1:ppn=2,mem=8gb,walltime=03:00:00 script_name.sh
-```
-
-
-`STDOUT` and `STDERROR` files generate by each job
-```sh
-SCRIPTNAME.sh.oJOBID or STDIN.oJOBID
-SCRIPTNAME.sh.eJOBID or STDIN.eJOBID
-```
-
-### Monitoring jobs with `qstat`
+### Monitoring jobs with `squeue`
 
 List all jobs in queue
 ```sh
-qstat
+squeue
 ```
 
 List jobs of a specific user
 ```sh
-qstat -u <user>
+squeue -u <user>
 ```
 
-Print more detailed information about jobs
+Print more detailed information about a job
 ```sh
-qstat -tf1
+scontrol show job <JOBID>
 ```
 
 Custom command to summarize and visualize cluster activity
 ```sh
-qstatMonitor
+jobMonitor
 ```
 
 ### Deleting and altering jobs 
 
 Delete a single job
 ```sh
-qdel <JOBID> # Delete single job
+scancel -i <JOBID> # Delete single job
 ```
 
 Delete all jobs of a user
 ```sh
-qselect -u <user> | xargs qdel # All jobs of a user
+scancel -u <username> # All jobs of a user
 ```
 
-Altering jobs with `qalter` (here walltime)
+Delete all jobs of a certain name
 ```sh
-qalter -l walltime=8:00 <JOBID>
+scancel --name <myJobName>
 ```
 
--->
+Altering jobs with `scontrol update`. The below example changes the walltime (`<NEW_TIME>`) of a specific job (`<JOBID>`). 
+```sh
+scontrol update jobid=<JOBID> TimeLimit=<NEW_TIME>
+```
 
 ## Text/code editor options
 
