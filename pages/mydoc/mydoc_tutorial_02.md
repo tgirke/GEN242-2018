@@ -19,7 +19,8 @@ permalink: mydoc_tutorial_02.html
 ### Computer nodes
 
 - Over 4,500 CPU cores
-- 50 batch computer nodes, each with 64 CPU cores and 512GB RAM
+- 48 AMD computer nodes, each with 64 CPU cores and 512GB RAM
+- 40 Intel computer nodes, each with 32 CPU cores and 512GB RAM
 - 6 high-memory nodes, each 32 CPU cores and 1024GB RAM
 - 12 GPU nodes, each with 5,000 cuda cores
     
