@@ -270,9 +270,12 @@ The disk usage of `home` and `bigdata` can be monitored on the [Biocluster Dashb
 
 Biocluster uses Slurm as queuing and load balancing system. To control user traffic, any 
 type of compute intensive jobs need to be submitted via the `sbatch` or `srun` (see below) to the computer
-nodes. Much more detailed information on this topic is available in the biocluster manual 
-[here](http://hpcc.ucr.edu/manuals_linux-cluster_jobs.html).
+nodes. Much more detailed information on this topic can be found on these sites: 
 
++ [UCR HPCC Manual](http://hpcc.ucr.edu/manuals_linux-cluster_jobs.html)
++ [Slurm Documentation](https://slurm.schedmd.com/documentation.html)
++ [Torque/Slurm Comparison](http://www.nersc.gov/users/computational-systems/cori/running-jobs/for-edison-users/torque-moab-vs-slurm-comparisons/)
++ [Slurm Quick Start Tutorial](http://www.ceci-hpc.be/slurm_tutorial.html)
 
 ### Job submission with `sbatch`
 
