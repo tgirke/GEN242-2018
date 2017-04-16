@@ -72,6 +72,10 @@ entries:
       url: /mydoc_slides_05.html
       output: web
     
+    - title: Sequence Alignments
+      url: /mydoc_slides_06.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
