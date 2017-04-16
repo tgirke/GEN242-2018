@@ -269,7 +269,7 @@ The disk usage of `home` and `bigdata` can be monitored on the [Biocluster Dashb
 ## Queuing system 
 
 Biocluster uses Slurm as queuing and load balancing system. To control user traffic, any 
-type of compute intensive jobs need to be submitted via the `srun` (see below) to the computer
+type of compute intensive jobs need to be submitted via the `sbatch` or `srun` (see below) to the computer
 nodes. Much more detailed information on this topic is available in the biocluster manual 
 [here](http://hpcc.ucr.edu/manuals_linux-cluster_intro.html).
 
