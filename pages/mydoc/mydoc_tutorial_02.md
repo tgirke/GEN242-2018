@@ -315,7 +315,7 @@ Interactive session with specific resource requests
 srun --x11 --partition=batch --mem=2gb --cpus-per-task 4 --ntasks 1 --time 72:00:00 --pty bash -l
 ```
 
-`STDOUT` and `STDERROR` of jobs will be written to files named `slurm-<jobid>.out` or to custom file specified under `#SBATCH --output` in submission script. 
+`STDOUT` and `STDERROR` of jobs will be written to files named `slurm-<jobid>.out` or to custom a file specified under `#SBATCH --output` in the submission script. 
 
 ### Monitoring jobs with `squeue`
 
