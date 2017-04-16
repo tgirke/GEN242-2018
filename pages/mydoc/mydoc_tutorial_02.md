@@ -347,12 +347,12 @@ jobMonitor
 
 Delete a single job
 ```sh
-scancel -i <JOBID> # Delete single job
+scancel -i <JOBID>
 ```
 
 Delete all jobs of a user
 ```sh
-scancel -u <username> # All jobs of a user
+scancel -u <username> 
 ```
 
 Delete all jobs of a certain name
