@@ -266,9 +266,9 @@ for user accounts adminstered under GEN242.
 The disk usage of `home` and `bigdata` can be monitored on the [Biocluster Dashboard](https://dashboard.bioinfo.ucr.edu/).
 
 
-## Queuing system 
+## Queuing system: `Slurm` 
 
-Biocluster uses Slurm as queuing and load balancing system. To control user traffic, any 
+Biocluster uses `Slurm` as queuing and load balancing system. To control user traffic, any 
 type of compute intensive jobs need to be submitted via the `sbatch` or `srun` (see below) to the computer
 nodes. Much more detailed information on this topic can be found on these sites: 
 
