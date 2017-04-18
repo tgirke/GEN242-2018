@@ -17,7 +17,7 @@ P98187: FIPFSAGPRNCIGQK
 {% endhighlight %}
 
 Use in each case BLOSUM50 as substitution matrix and 8 as gap opening and extension penalties. 
-Note, [here](https://github.com/tgirke/GEN242/blob/master/vignettes/06_Homework/mydoc_homework_04.R) is some R code to create the initial matrix programmatically and then upload it into your spreadsheet program, or continue solving the homework by writing an R script.
+Note, [here](https://github.com/tgirke/GEN242/blob/gh-pages/_vignettes/06_Homework/mydoc_homework_04.R) is some R code to create the initial matrix programmatically and then upload it into your spreadsheet program, or continue solving the homework by writing an R script.
 Your answers should contain the following components: 
 
 1. Manually populated dynamic programming matrices
