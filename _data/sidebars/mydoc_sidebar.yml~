@@ -308,8 +308,7 @@ entries:
     output: web
     folderitems:
     
-    - title: To be added
-      url:
+    - title: Overview
+      url: mydoc_project_00.html
       output: web
     
-
