@@ -9,7 +9,7 @@ permalink: mydoc_homework_04.html
 - __Task 1__: Which sequence type - amino acid or nucleotide - is more appropriate to search databases for remotely related sequences? Provide at least three reasons for your decision. 
     
 ## B. Dynamic Programming for Pairwise Alignments
-- __Task 2__: Create manually (or write an R script for it) one global and one local alignment for the following two protein sequences using the Needleman-Wusch and Smith-Waterman algorithms:
+- __Task 2__: Create manually (or write an R script for it) one global and one local alignment for the following two protein sequences using the Needleman-Wusch and Smith-Waterman algorithms, respectively:
     
 {% highlight sh %}
 O15528: PFGFGKRSCMGRRLA
@@ -17,7 +17,7 @@ P98187: FIPFSAGPRNCIGQK
 {% endhighlight %}
 
 Use in each case BLOSUM50 as substitution matrix and 8 as gap opening and extension penalties. 
-Note, [here](https://github.com/tgirke/GEN242/blob/gh-pages/_vignettes/06_Homework/mydoc_homework_04.R) is some R code to create the initial matrix programmatically and then upload it into your spreadsheet program, or continue solving the homework by writing an R script.
+Note, [here](https://github.com/tgirke/GEN242/blob/gh-pages/_vignettes/06_Homework/mydoc_homework_04.R) is some R code to create the initial matrix programmatically for upload to a spreadsheet program. Alternatively, solve the entire homework by writing an R script.
 Your answers should contain the following components: 
 
 1. Manually populated dynamic programming matrices
@@ -38,7 +38,7 @@ writePairwiseAlignments(p)
 
 Your answers should address the following items: 
 		
-1. Record the scores for the scoring matrices BLOSUM50, BLOSUM62 and BLOSUM80
+1. Record the scores for the scoring matrices BLOSUM50, BLOSUM62 and BLOSUM80.
 2. How and why do the scores differ for the three scoring matrices?
 
 ## Homework submission
