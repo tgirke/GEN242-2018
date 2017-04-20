@@ -99,6 +99,10 @@ entries:
     - title: HW4 - Pairwise Alignments
       url: /mydoc_homework_04.html
       output: web
+    
+    - title: HW5 - Programming in R
+      url: /mydoc_Programming_in_R_09.html
+      output: web
   
   - title: GitHub
     output: web

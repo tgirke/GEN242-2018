@@ -76,6 +76,10 @@ entries:
       url: /mydoc_slides_06.html
       output: web
     
+    - title: Programming in R
+      url: /mydoc_slides_07.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
@@ -94,6 +98,10 @@ entries:
     
     - title: HW4 - Pairwise Alignments
       url: /mydoc_homework_04.html
+      output: web
+    
+    - title: HW5 - Programming in R
+      url: /mydoc_Programming_in_R_09.html
       output: web
   
   - title: GitHub
