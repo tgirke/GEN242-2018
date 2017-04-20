@@ -647,7 +647,7 @@ image(olMA)
 __Task 4.1__: Save one or more of your functions to a file called `script.R` and build the package with the `package.skeleton` function.
 
 ```{r package_skeleton2, eval=FALSE}
-package.skeleton(name="mypackage", code_files=c("script1.R"), namespace=TRUE)
+package.skeleton(name="mypackage", code_files=c("script1.R"))
 ```
 
 __Task 4.2__: Build tarball of the package

@@ -1,6 +1,6 @@
 ---
 title: 8. Programming Exercises
-last_updated: Sun Apr 16 08:24:08 2017
+last_updated: Thu Apr 20 13:00:33 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_08.html
 ---
@@ -215,7 +215,7 @@ __Task 4.1__: Save one or more of your functions to a file called `script.R` and
 
 
 ```r
-package.skeleton(name="mypackage", code_files=c("script1.R"), namespace=TRUE)
+package.skeleton(name="mypackage", code_files=c("script1.R"))
 ```
 
 __Task 4.2__: Build tarball of the package

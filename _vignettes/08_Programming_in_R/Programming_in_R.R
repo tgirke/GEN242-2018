@@ -258,7 +258,7 @@ olMA[1:12,]
 image(olMA)
 
 ## ----package_skeleton2, eval=FALSE---------------------------------------
-## package.skeleton(name="mypackage", code_files=c("script1.R"), namespace=TRUE)
+## package.skeleton(name="mypackage", code_files=c("script1.R"))
 
 ## ----build_package_tar, eval=FALSE---------------------------------------
 ## system("R CMD build mypackage")
