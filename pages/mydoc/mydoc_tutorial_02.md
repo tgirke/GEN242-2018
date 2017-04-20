@@ -276,6 +276,7 @@ nodes. Much more detailed information on this topic can be found on these sites:
 + [UCR HPCC Manual](http://hpcc.ucr.edu/manuals_linux-cluster_jobs.html)
 + [Slurm Documentation](https://slurm.schedmd.com/documentation.html)
 + [Torque/Slurm Comparison](http://www.nersc.gov/users/computational-systems/cori/running-jobs/for-edison-users/torque-moab-vs-slurm-comparisons/)
++ [Switching from Torque to Slurm](https://sites.google.com/a/case.edu/hpc-upgraded-cluster/slurm-cluster-commands)
 + [Slurm Quick Start Tutorial](http://www.ceci-hpc.be/slurm_tutorial.html)
 
 ### Job submission with `sbatch`
