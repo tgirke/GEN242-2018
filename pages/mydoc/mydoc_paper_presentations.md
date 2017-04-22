@@ -18,8 +18,7 @@ All references in [Paperpile](https://paperpile.com/shared/Ts5JKq)
 
 ### ChIP-Seq1 - Motif Prediction    
 
-+ McLeay, Robert C, and Timothy L Bailey. 2010. “Motif Enrichment Analysis: A Unified Framework and an Evaluation on ChIP Data.” BMC Bioinformatics 11: 165. [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/20356413)
-+ Frith, Martin C., Yutao Fu, Liqun Yu, Jiang‐fan Chen, Ulla Hansen, and Zhiping Weng. 2004. “Detection of Functional DNA Motifs via Statistical Over‐representation.” Nucleic Acids Research 32 (4): 1372–81. [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/14988425)
++ Alipanahi B, Delong A, Weirauch MT, Frey BJ (2015) Predicting the sequence specificities of DNA- and RNA-binding proteins by deep learning. Nat Biotechnol 33: 831–838. [PubMed](https://www.ncbi.nlm.nih.gov/pubmed/26213851)
 + Tompa, M, N Li, T L Bailey, G M Church, B De Moor, E Eskin, A V Favorov, et al. 2005. “Assessing Computational Tools for the Discovery of Transcription Factor Binding Sites.” Nature Biotechnology 23 (1): 137–44. [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/15637633)
 
 
@@ -30,7 +29,7 @@ All references in [Paperpile](https://paperpile.com/shared/Ts5JKq)
 + Wilbanks EG, Facciotti MT (2010) Evaluation of algorithm performance in ChIP-seq peak detection. PLoS One. doi: 10.1371/journal.pone.0011471 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/20628599)
 + Lun ATL, Smyth GK (2014) De novo detection of differentially bound regions for ChIP-seq data using peaks and windows: controlling error rates correctly. Nucleic Acids Res 42: e95 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/24852250)
 
-
+<!--
 ### RNA-Seq1 - RNA-Seq Aligners 
 
 + Kim D, Pertea G, Trapnell C, Pimentel H, Kelley R, Salzberg SL (2013) TopHat2: accurate alignment of transcriptomes in the presence of insertions, deletions and gene fusions. Genome Biol. doi: 10.1186/gb-2013-14-4-r36 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/23618408)
@@ -60,4 +59,6 @@ All references in [Paperpile](https://paperpile.com/shared/Ts5JKq)
 + Shihab HA, Rogers MF, Gough J, Mort M, Cooper DN, Day INM, Gaunt TR, Campbell C (2015) An integrative approach to predicting the functional effects of non-coding and coding sequence variation. Bioinformatics 31: 1536–1543 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/25583119)
 + Kumar P, Henikoff S, Ng PC (2009) Predicting the effects of coding non-synonymous variants on protein function using the SIFT algorithm. Nat Protoc 4: 1073–1081 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/19561590)
 + Adzhubei I, Jordan DM, Sunyaev SR (2013) Predicting functional effect of human missense mutations using PolyPhen-2. Curr Protoc Hum Genet Chapter 7: Unit7.20 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/23315928)
+
+-->
 
