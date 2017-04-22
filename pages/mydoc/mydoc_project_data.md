@@ -48,27 +48,27 @@ given [below](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_project_data.html
 #### Choose FASTQ data for your project
 
 + The FASTQ files for the ChIP-Seq project are from SRA study [SRP002174](http://www.ncbi.nlm.nih.gov/sra?term=SRP002174) ([Kaufman et al. 2010](http://www.ncbi.nlm.nih.gov/pubmed/20360106))
-{% highlight r %}
+```r
 sraidv <- paste("SRR0388", 45:51, sep="") 
-{% endhighlight %}
+```
 
 + The FASTQ files for the RNA-Seq project are from SRA study [SRP010938](http://www.ncbi.nlm.nih.gov/sra?term=SRP010938) ([Howard et al. 2013](http://www.ncbi.nlm.nih.gov/pubmed/24098335))
-{% highlight r %}
+```r
 sraidv <- paste("SRR4460", 27:44, sep="")
-{% endhighlight %}
+```
 
 + The FASTQ files for the VAR-Seq project are from SRA study [SRP008819](http://www.ncbi.nlm.nih.gov/sra?term=SRP008819) ([Lu et al 2012](http://www.ncbi.nlm.nih.gov/pubmed/22106370))
-{% highlight r %}
+```r
 sraidv <- paste("SRR1051", 389:415, sep="")
-{% endhighlight %}
+```
 
 #### Load libraries and modules
 
-{% highlight r %}
+```r
 library(systemPipeR)
 moduleload("sratoolkit/2.5.0")
 system('fastq-dump --help') # prints help to screen
-{% endhighlight %}
+```
 
 #### Redirect cache output of SRA Toolkit 
 
@@ -77,36 +77,36 @@ To save space in your home account, you may want to redirect this output to your
 `data` directory via a symbolic link. The following shows how to do this for the `data` directory
 of the `ChIP-Seq1` project.
 
-{% highlight r %}
+```r
 system("ln -s /bigdata/gen242/shared/ChIP-Seq1/data ~/ncbi")
-{% endhighlight %}
+```
 
 #### Define download function
 The following function downloads and extracts the FASTQ files for each project from SRA.
 Internally, it uses the `fastq-dump` utility of the SRA Toolkit from NCBI.
 
-{% highlight r %}
+```r
 getSRAfastq <- function(sraid, targetdir, maxreads="1000000000") {
     system(paste("fastq-dump --split-files --gzip --maxSpotId", maxreads, sraid, "--outdir", targetdir))
 }
-{% endhighlight %}
+```
 
 #### Run download
 
 Note the following performs the download in serialized mode for the chosen data set and saves the extracted FASTQ files to 
 the path specified under `targetdir`.
-{% highlight r %}
+```r
 mydir <- getwd(); setwd("data")
 for(i in sraidv) getSRAfastq(sraid=i, targetdir=".")
 setwd(mydir)
-{% endhighlight %}
+```
 
 Alternatively, the download can be performed in parallelized mode with `BiocParallel`. Please run this version only on one of the compute nodes.
-{% highlight r %}
+```r
 mydir <- getwd(); setwd("data")
 # bplapply(sraidv, getSRAfastq, targetdir=".", BPPARAM = MulticoreParam(workers=4))
 setwd(mydir)
-{% endhighlight %}
+```
 
 ### Download reference genome and annotation
 
@@ -114,7 +114,7 @@ The following `downloadRefs` function downloads the _Arabidopsis thaliana_ genom
 It also assigns consistent chromosome identifiers to make them the same among both the genome sequence and the GFF file. This is
 important for many analysis routines such as the read counting in the RNA-Seq workflow.  
 
-{% highlight r %}
+```r
 downloadRefs <- function(rerun=FALSE) {
     if(rerun==TRUE) {
         library(Biostrings)
@@ -126,11 +126,11 @@ downloadRefs <- function(rerun=FALSE) {
         system("wget ftp://ftp.arabidopsis.org/home/tair/Proteins/TAIR10_functional_descriptions -P ./data/")
     }
 }
-{% endhighlight %}
+```
 
 After sourcing the above function, execute it as follows:
-{% highlight r %}
+```r
 downloadRefs(rerun=FALSE) # To execute the function set 'rerun=TRUE'
-{% endhighlight %}
+```
 
 
