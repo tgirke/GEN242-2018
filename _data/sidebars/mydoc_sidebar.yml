@@ -312,6 +312,14 @@ entries:
       url: mydoc_project_intro.html
       output: web
     
+    - title: ChIP-Seq1 - Motif Prediction
+      url: mydoc_project_chipseq1.html
+      output: web
+    
+    - title: ChIP-Seq2 - Peak Callers
+      url: mydoc_project_chipseq2.html
+      output: web
+    
     - title: Project Data
       url: mydoc_project_data.html
       output: web
