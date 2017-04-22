@@ -50,7 +50,7 @@ TBD
 + Zhou X, Lindsay H, Robinson MD (2014) Robustly detecting differential expression in RNA sequencing data using observation weights. Nucleic Acids Res 42: e91 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/24753412)
 -->
 
-### VAR-Seq1 - Functional Annotation/Prediction of Variants 
+### VAR-Seq1 - Functional Prediction
 
 TBD
 
