@@ -309,6 +309,10 @@ entries:
     folderitems:
     
     - title: Overview
-      url: mydoc_project_00.html
+      url: mydoc_project_intro.html
+      output: web
+    
+    - title: Project Data
+      url: mydoc_project_data.html
       output: web
     

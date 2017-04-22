@@ -1,7 +1,7 @@
 ---
 title: Overview of Course Projects
 sidebar: mydoc_sidebar
-permalink: mydoc_project_00.html 
+permalink: mydoc_project_intro.html 
 ---
 
 ## Introduction
