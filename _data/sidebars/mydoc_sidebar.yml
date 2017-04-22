@@ -300,8 +300,8 @@ entries:
     output: web
     folderitems:
     
-    - title: To be added
-      url:
+    - title: Paper Presentations
+      url: mydoc_paper_presentations.html
       output: web
 
   - title: Course Projects

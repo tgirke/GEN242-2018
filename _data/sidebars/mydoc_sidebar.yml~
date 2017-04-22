@@ -300,8 +300,8 @@ entries:
     output: web
     folderitems:
     
-    - title: To be added
-      url:
+    - title: Paper Presentations
+      url: mydoc_paper_presentations.html
       output: web
 
   - title: Course Projects
@@ -313,11 +313,11 @@ entries:
       output: web
     
     - title: ChIP-Seq1 - Motif Prediction
-      url: mydoc_project_intro.html
+      url: mydoc_project_chipseq1.html
       output: web
     
     - title: ChIP-Seq2 - Peak Callers
-      url: mydoc_project_intro.html
+      url: mydoc_project_chipseq2.html
       output: web
     
     - title: Project Data
