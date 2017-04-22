@@ -30,6 +30,7 @@ All references in [Paperpile](https://paperpile.com/shared/Ts5JKq)
 ### RNA-Seq1 - RNA-Seq Aligners 
 
 TBD
+
 <!--
 + Kim D, Pertea G, Trapnell C, Pimentel H, Kelley R, Salzberg SL (2013) TopHat2: accurate alignment of transcriptomes in the presence of insertions, deletions and gene fusions. Genome Biol. doi: 10.1186/gb-2013-14-4-r36 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/23618408)
 + Kim D, Langmead B, Salzberg SL (2015) HISAT: a fast spliced aligner with low memory requirements. Nat Methods 12: 357–360 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/25751142)
@@ -41,6 +42,7 @@ TBD
 ### RNA-Seq2 - DEG Methods  
 
 TBD
+
 <!--
 + Guo Y, Li C-I, Ye F, Shyr Y (2013) Evaluation of read count based RNAseq analysis methods. BMC Genomics 14 Suppl 8: S2 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/24564449)
 + Robinson MD, McCarthy DJ, Smyth GK (2010) edgeR: a Bioconductor package for differential expression analysis of digital gene expression data. Bioinformatics 26: 139–140 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/19910308)
@@ -51,6 +53,7 @@ TBD
 ### VAR-Seq1 - Functional Annotation/Prediction of Variants 
 
 TBD
+
 <!--
 + Kumar RD, Chang L-W, Ellis MJ, Bose R (2013) Prioritizing Potentially Druggable Mutations with dGene: An Annotation Tool for Cancer Genome Sequencing Data. PLoS One 8: e67980 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/23826350)
 + DePristo MA, Banks E, Poplin R, Garimella KV, Maguire JR, Hartl C, Philippakis AA, del Angel G, Rivas MA, Hanna M, et al (2011) A framework for variation discovery and genotyping using next-generation DNA sequencing data. Nat Genet 43: 491–498 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/21478889)
