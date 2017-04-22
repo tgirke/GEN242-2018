@@ -24,10 +24,8 @@ All references in [Paperpile](https://paperpile.com/shared/Ts5JKq)
 
 ### ChiP-Seq2 - Peak Calling  
 
-+ Landt SG, Marinov GK, Kundaje A, Kheradpour P, Pauli F, Batzoglou S, Bernstein BE, Bickel P, Brown JB, Cayting P, et al (2012) ChIP-seq guidelines and practices of the ENCODE and modENCODE consortia. Genome Res 22: 1813–1831 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/22955991)
 + Zhang Y, Liu T, Meyer CA, Eeckhoute J, Johnson DS, Bernstein BE, Nussbaum C, Myers RM, Brown M, Li W, et al (2008) Model-based analysis of ChIP-Seq (MACS). Genome Biol. doi: 10.1186/gb-2008-9-9-r137 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/18798982)
 + Wilbanks EG, Facciotti MT (2010) Evaluation of algorithm performance in ChIP-seq peak detection. PLoS One. doi: 10.1371/journal.pone.0011471 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/20628599)
-+ Lun ATL, Smyth GK (2014) De novo detection of differentially bound regions for ChIP-seq data using peaks and windows: controlling error rates correctly. Nucleic Acids Res 42: e95 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/24852250)
 
 <!--
 ### RNA-Seq1 - RNA-Seq Aligners 
