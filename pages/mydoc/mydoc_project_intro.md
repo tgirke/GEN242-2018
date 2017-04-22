@@ -26,7 +26,7 @@ corresponding NGS Workflow (_e.g._ full RNA-Seq analysis) as well as the
 code and results of the Challenge Project. The final project reports should be written
 in R Markdown. A basic tutorial on R Markdown is available [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_Rbasics_15.html). 
 Both the R Markdown script (`.Rmd`) along with the rendered HTML or PDF report will be submitted to each student's private GitHub repository by or
-before June 8. The expected structure of the final project report is outlined below.
+before June 13. The expected structure of the final project report is outlined below.
 
 ## Structure of final project report
 
