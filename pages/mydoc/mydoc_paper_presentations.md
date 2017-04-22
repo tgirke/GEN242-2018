@@ -14,7 +14,7 @@ The following lists the assigned papers organized by course project topics.
 
 ## Publications organized by course projects
 
-All references in [Paperpile](https://paperpile.com/shared/mgJCNX)
+All references in [Paperpile](https://paperpile.com/shared/Ts5JKq)
 
 ### ChIP-Seq1 - Motif Prediction    
 
