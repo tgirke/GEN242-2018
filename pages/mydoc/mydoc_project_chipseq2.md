@@ -19,9 +19,9 @@ permalink: mydoc_project_chipseq2.html
 
 + Run workflow from start to finish (steps 1-8) on ChIP-Seq data set from Kaufman et al. (2010)
 + Challenge project tasks
-    + Report unique and common peaks identified by tested peak callers.
-    + Compare the results from (a) with the variants identified by Kaufmann et al (2010)
-    + Plot the results from a-b as venn diagrams
+    + Call peaks with MACS2 and PeakSeq
+    + Compare the results from (a) with peaks identified by Kaufmann et al (2010)
+    + Report unique and common peaks among three methods and plot the results as venn diagrams
     + Plot the performance of the peak callers in form of ROC plots. As true result set one can use the union of the peaks identified by all methods. 
 
 ## References
