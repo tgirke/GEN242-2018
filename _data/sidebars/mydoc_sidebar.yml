@@ -328,6 +328,10 @@ entries:
       url: /mydoc_project_chipseq2.html
       output: web
     
+    - title: RNA-Seq1 - Aligners
+      url: /mydoc_project_rnaseq1.html
+      output: web
+    
     - title: Project Data
       url: /mydoc_project_data.html
       output: web

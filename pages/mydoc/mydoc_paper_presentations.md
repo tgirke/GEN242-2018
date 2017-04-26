@@ -29,15 +29,13 @@ All references in [Paperpile](https://paperpile.com/shared/Ts5JKq)
 
 ### RNA-Seq1 - RNA-Seq Aligners 
 
-TBD
++ Bray NL, Pimentel H, Melsted P, Pachter L (2016) Near-optimal probabilistic RNA-seq quantification. Nat Biotechnol. doi: 10.1038/nbt.3519 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/27043002)
++ Kim D, Langmead B, Salzberg SL (2015) HISAT: a fast spliced aligner with low memory requirements. Nat Methods 12: 357–360 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/25751142)
 
 <!--
 + Kim D, Pertea G, Trapnell C, Pimentel H, Kelley R, Salzberg SL (2013) TopHat2: accurate alignment of transcriptomes in the presence of insertions, deletions and gene fusions. Genome Biol. doi: 10.1186/gb-2013-14-4-r36 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/23618408)
-+ Kim D, Langmead B, Salzberg SL (2015) HISAT: a fast spliced aligner with low memory requirements. Nat Methods 12: 357–360 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/25751142)
 + Liao Y, Smyth GK, Shi W (2013) The Subread aligner: fast, accurate and scalable read mapping by seed-and-vote. Nucleic Acids Res 41: e108 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/23558742)
-+ Bray NL, Pimentel H, Melsted P, Pachter L (2016) Near-optimal probabilistic RNA-seq quantification. Nat Biotechnol. doi: 10.1038/nbt.3519 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/27043002)
 -->
-
 
 ### RNA-Seq2 - DEG Methods  
 
