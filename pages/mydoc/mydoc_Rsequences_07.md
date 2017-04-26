@@ -1,6 +1,6 @@
 ---
 title: 7. Transcript Ranges
-last_updated: Wed Apr 26 11:00:19 2017
+last_updated: Wed Apr 26 11:19:41 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_07.html
 ---

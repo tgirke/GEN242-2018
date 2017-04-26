@@ -1,13 +1,13 @@
 ---
 title: 2. Package Requirements
-last_updated: Wed Apr 26 11:00:19 2017
+last_updated: Wed Apr 26 11:19:41 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_02.html
 ---
 
 Several Bioconductor packages are required for this tutorial. To install them, execute
 the following lines in the R console. Please also make sure that you have a recent R version
-installed on your system. R versions `3.2.x` or higher are recommended.
+installed on your system. R versions `3.3.x` or higher are recommended.
 
 
 ```r

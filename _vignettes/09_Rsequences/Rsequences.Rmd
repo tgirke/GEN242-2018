@@ -64,7 +64,7 @@ Bioconductor packages provide much more sophisticated string handling utilities 
 
 Several Bioconductor packages are required for this tutorial. To install them, execute
 the following lines in the R console. Please also make sure that you have a recent R version
-installed on your system. R versions `3.2.x` or higher are recommended.
+installed on your system. R versions `3.3.x` or higher are recommended.
 
 ```{r package_requrirements, eval=FALSE}
 source("https://bioconductor.org/biocLite.R")
