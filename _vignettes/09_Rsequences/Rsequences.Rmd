@@ -58,6 +58,7 @@ Bioconductor packages provide much more sophisticated string handling utilities 
 * [BSgenome](http://bioconductor.org/packages/release/bioc/html/BSgenome.html): genome annotation data
 * [biomaRt](http://bioconductor.org/packages/release/bioc/html/biomaRt.html): interface to BioMart annotations
 * [rtracklayer](http://bioconductor.org/packages/release/bioc/html/rtracklayer.html): Annotation imports, interface to online genome browsers
+* [HelloRanges](http://bioconductor.org/packages/release/bioc/html/HelloRanges.html): Bedtools semantics in Bioc's Ranges infrastructure
 
 
 # Package Requirements

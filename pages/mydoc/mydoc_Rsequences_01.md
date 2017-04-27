@@ -1,6 +1,6 @@
 ---
 title: NGS Analysis Basics <br> <br> 1. Overview
-last_updated: Wed Apr 26 11:19:41 2017
+last_updated: Wed Apr 26 18:48:01 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_01.html
 ---
@@ -37,6 +37,7 @@ Bioconductor packages provide much more sophisticated string handling utilities 
 * [BSgenome](http://bioconductor.org/packages/release/bioc/html/BSgenome.html): genome annotation data
 * [biomaRt](http://bioconductor.org/packages/release/bioc/html/biomaRt.html): interface to BioMart annotations
 * [rtracklayer](http://bioconductor.org/packages/release/bioc/html/rtracklayer.html): Annotation imports, interface to online genome browsers
+* [HelloRanges](http://bioconductor.org/packages/release/bioc/html/HelloRanges.html): Bedtools semantics in Bioc's Ranges infrastructure
 
 
 <br><br><center><a href="mydoc_Rsequences_01.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
