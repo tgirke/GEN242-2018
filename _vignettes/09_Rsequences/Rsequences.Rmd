@@ -583,7 +583,7 @@ Accessing metadata component
 ```{r genomicranges_access5, eval=TRUE}
 values(gff) # or elementMetadata(gff)
 values(gff)[, "type"][1:20] 
-gff[elementMetadata(gff)[ ,"type"] == "gene"] 
+gff[values(gff)[ ,"type"] == "gene"] 
 ```
 
 ### Useful utilities for GRanges objects
