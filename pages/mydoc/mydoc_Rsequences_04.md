@@ -1,6 +1,6 @@
 ---
 title: 4. Sequences in Bioconductor
-last_updated: Thu Apr 27 10:44:09 2017
+last_updated: Thu Apr 27 10:45:51 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_04.html
 ---
