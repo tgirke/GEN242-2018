@@ -1,6 +1,6 @@
 ---
 title: 5. NGS Sequences
-last_updated: Wed Apr 26 18:48:01 2017
+last_updated: Thu Apr 27 10:44:09 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_05.html
 ---

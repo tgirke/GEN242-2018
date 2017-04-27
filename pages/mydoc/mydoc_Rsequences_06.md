@@ -1,6 +1,6 @@
 ---
 title: 6. Range Operations  
-last_updated: Wed Apr 26 18:48:01 2017
+last_updated: Thu Apr 27 10:44:09 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_06.html
 ---
@@ -279,7 +279,7 @@ values(gff)[, "type"][1:20]
 ```
 
 ```r
-gff[elementMetadata(gff)[ ,"type"] == "gene"] 
+gff[values(gff)[ ,"type"] == "gene"] 
 ```
 
 ```

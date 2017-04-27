@@ -281,7 +281,7 @@ width(gff[1:4])
 ## ----genomicranges_access5, eval=TRUE------------------------------------
 values(gff) # or elementMetadata(gff)
 values(gff)[, "type"][1:20] 
-gff[elementMetadata(gff)[ ,"type"] == "gene"] 
+gff[values(gff)[ ,"type"] == "gene"] 
 
 ## ----genomicranges_utilities1, eval=TRUE---------------------------------
 gff <- gff[values(gff)$type != "chromosome"] 
