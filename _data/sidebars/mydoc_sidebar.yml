@@ -376,6 +376,14 @@ entries:
       url: /mydoc_project_rnaseq1.html
       output: web
     
+    - title: RNA-Seq2 - DEG Methods
+      url: /mydoc_project_rnaseq2.html
+      output: web
+    
+    - title: VAR-Seq1 - Functional Prediction
+      url: /mydoc_project_varseq1.html
+      output: web
+    
     - title: Project Data
       url: /mydoc_project_data.html
       output: web
