@@ -744,7 +744,7 @@ Submit the homework results in one well structured and annotated R script to the
 
 ## Due date
 
-This homework is due on Thu, April 28th at 6:00 PM.
+This homework is due on Thu, May 4th at 6:00 PM.
 
 ## Homework Solutions
 
