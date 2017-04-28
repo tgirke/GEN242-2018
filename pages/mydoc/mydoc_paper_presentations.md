@@ -39,12 +39,7 @@ All references in [Paperpile](https://paperpile.com/shared/Ts5JKq)
 
 ### VAR-Seq1 - Functional Prediction
 
-+ Kumar RD, Chang L-W, Ellis MJ, Bose R (2013) Prioritizing Potentially Druggable Mutations with dGene: An Annotation Tool for Cancer Genome Sequencing Data. PLoS One 8: e67980 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/23826350)
 + DePristo MA, Banks E, Poplin R, Garimella KV, Maguire JR, Hartl C, Philippakis AA, del Angel G, Rivas MA, Hanna M, et al (2011) A framework for variation discovery and genotyping using next-generation DNA sequencing data. Nat Genet 43: 491–498 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/21478889)
-+ Li H (2011) A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data. Bioinformatics 27: 2987–2993 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/21903627)
-+ McKenna A, Hanna M, Banks E, Sivachenko A, Cibulskis K, Kernytsky A, Garimella K, Altshuler D, Gabriel S, Daly M, et al (2010) The Genome Analysis Toolkit: a MapReduce framework for analyzing next-generation DNA sequencing data. Genome Res 20: 1297–1303 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/20644199)
 + Shihab HA, Rogers MF, Gough J, Mort M, Cooper DN, Day INM, Gaunt TR, Campbell C (2015) An integrative approach to predicting the functional effects of non-coding and coding sequence variation. Bioinformatics 31: 1536–1543 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/25583119)
-+ Kumar P, Henikoff S, Ng PC (2009) Predicting the effects of coding non-synonymous variants on protein function using the SIFT algorithm. Nat Protoc 4: 1073–1081 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/19561590)
-+ Adzhubei I, Jordan DM, Sunyaev SR (2013) Predicting functional effect of human missense mutations using PolyPhen-2. Curr Protoc Hum Genet Chapter 7: Unit7.20 [PubMed](http://www.ncbi.nlm.nih.gov/pubmed/23315928)
 
 
