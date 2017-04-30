@@ -260,8 +260,8 @@ document.addEventListener("DOMContentLoaded", function() {
 <h1><span class="header-section-number">1</span> Introduction</h1>
 <p>Users want to provide here background information about the design of their RNA-Seq project.</p>
 </div>
-<div id="sample-definitions-and-environment-settings" class="section level1">
-<h1><span class="header-section-number">2</span> Sample definitions and environment settings</h1>
+<div id="samples-and-environment-settings" class="section level1">
+<h1><span class="header-section-number">2</span> Samples and environment settings</h1>
 <div id="environment-settings-and-input-data" class="section level2">
 <h2><span class="header-section-number">2.1</span> Environment settings and input data</h2>
 <p>Typically, the user wants to record here the sources and versions of the reference genome sequence along with the corresponding annotations. In the provided sample data set all data inputs are stored in a <code>data</code> subdirectory and all results will be written to a separate <code>results</code> directory, while the <code>systemPipeRNAseq.Rmd</code> script and the <code>targets</code> file are expected to be located in the parent directory. The R session is expected to run from this parent directory.</p>
@@ -369,8 +369,8 @@ write.table(read_statsDF, &quot;results/alignStats.xls&quot;, row.names=FALSE, q
             urlfile=&quot;./results/IGVurl.txt&quot;)</code></pre>
 </div>
 </div>
-<div id="read-quantification-per-annotation-range" class="section level1">
-<h1><span class="header-section-number">5</span> Read quantification per annotation range</h1>
+<div id="read-quantification" class="section level1">
+<h1><span class="header-section-number">5</span> Read quantification</h1>
 <div id="read-counting-with-summarizeoverlaps-in-parallel-mode-using-multiple-cores" class="section level2">
 <h2><span class="header-section-number">5.1</span> Read counting with <code>summarizeOverlaps</code> in parallel mode using multiple cores</h2>
 <p>Reads overlapping with annotation ranges of interest are counted for each sample using the <code>summarizeOverlaps</code> function <span class="citation">(Lawrence et al. 2013)</span>. The read counting is preformed for exonic gene regions in a non-strand-specific manner while ignoring overlaps among different genes. Subsequently, the expression count values are normalized by <em>reads per kp per million mapped reads</em> (RPKM). The raw read count table (<code>countDFeByg.xls</code>) and the correspoding RPKM table (<code>rpkmDFeByg.xls</code>) are written to separate files in the directory of this project. Parallelization is achieved with the <code>BiocParallel</code> package, here using 8 CPU cores.</p>
@@ -416,8 +416,8 @@ Figure 2: Correlation dendrogram of samples
 <p></br></p>
 </div>
 </div>
-<div id="analysis-of-differentially-expressed-genes-with-edger" class="section level1">
-<h1><span class="header-section-number">6</span> Analysis of differentially expressed genes with edgeR</h1>
+<div id="analysis-of-degs" class="section level1">
+<h1><span class="header-section-number">6</span> Analysis of DEGs</h1>
 <p>The analysis of differentially expressed genes (DEGs) is performed with the glm method of the <code>edgeR</code> package <span class="citation">(Robinson, McCarthy, and Smyth 2010)</span>. The sample comparisons used by this analysis are defined in the header lines of the <code>targets.txt</code> file starting with <code>&lt;CMP&gt;</code>.</p>
 <div id="run-edger" class="section level2">
 <h2><span class="header-section-number">6.1</span> Run <code>edgeR</code></h2>
@@ -464,8 +464,8 @@ Figure 4: Venn Diagram for 4 Up and Down DEG Sets
 <p></br></p>
 </div>
 </div>
-<div id="go-term-enrichment-analysis-of-degs" class="section level1">
-<h1><span class="header-section-number">7</span> GO term enrichment analysis of DEGs</h1>
+<div id="go-term-enrichment-analysis" class="section level1">
+<h1><span class="header-section-number">7</span> GO term enrichment analysis</h1>
 <div id="obtain-gene-to-go-mappings" class="section level2">
 <h2><span class="header-section-number">7.1</span> Obtain gene-to-GO mappings</h2>
 <p>The following shows how to obtain gene-to-GO mappings from <code>biomaRt</code> (here for <em>A. thaliana</em>) and how to organize them for the downstream GO term enrichment analysis. Alternatively, the gene-to-GO mappings can be obtained for many organisms from Bioconductor’s <code>*.db</code> genome annotation packages or GO annotation files provided by various genome databases. For each annotation this relatively slow preprocessing step needs to be performed only once. Subsequently, the preprocessed data can be loaded with the <code>load</code> function as shown in the next subsection.</p>

@@ -50,7 +50,7 @@ Note: the most recent version of this tutorial can be found <a href="https://htm
 Users want to provide here background information about the design of their RNA-Seq project.
 
 
-# Sample definitions and environment settings
+# Samples and environment settings
 
 ## Environment settings and input data
 
@@ -218,7 +218,7 @@ symLink2bam(sysargs=args, htmldir=c("~/.html/", "somedir/"),
 ```
 
 
-# Read quantification per annotation range
+# Read quantification
 
 ## Read counting with `summarizeOverlaps` in parallel mode using multiple cores
 
@@ -292,7 +292,7 @@ dev.off()
 ![](sample_tree.png)
 <div align="center">Figure 2: Correlation dendrogram of samples</div></br>
 
-# Analysis of differentially expressed genes with edgeR 
+# Analysis of DEGs
 
 The analysis of differentially expressed genes (DEGs) is performed with
 the glm method of the `edgeR` package [@Robinson2010-uk]. The sample
@@ -359,7 +359,7 @@ dev.off()
 ![](vennplot.png)
 <div align="center">Figure 4: Venn Diagram for 4 Up and Down DEG Sets</div></br>
 
-# GO term enrichment analysis of DEGs
+# GO term enrichment analysis
 
 ## Obtain gene-to-GO mappings
 

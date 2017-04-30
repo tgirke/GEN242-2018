@@ -1,6 +1,6 @@
 ---
-title: 2. Sample definitions and environment settings
-last_updated: Sun Apr 30 16:25:22 2017
+title: 2. Samples and environment settings
+last_updated: Sun Apr 30 16:28:27 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_02.html
 ---
