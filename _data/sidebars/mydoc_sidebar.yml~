@@ -336,6 +336,54 @@ entries:
       url: /mydoc_systemPipeR_6.html
       output: web
 
+  - title: RNA-Seq
+    output: web, pdf
+    folderitems:
+
+    - title: 1. Introduction
+      url: /mydoc_systemPipeRNAseq_01.html
+      output: web
+
+    - title: 2. Sample definitions and environment settings
+      url: /mydoc_systemPipeRNAseq_02.html
+      output: web
+
+    - title: 3. Read preprocessing
+      url: /mydoc_systemPipeRNAseq_03.html
+      output: web
+
+    - title: 4. Alignments
+      url: /mydoc_systemPipeRNAseq_04.html
+      output: web
+
+    - title: 5. Read quantification per annotation range
+      url: /mydoc_systemPipeRNAseq_05.html
+      output: web
+
+    - title: 6. Analysis of differentially expressed genes with edgeR 
+      url: /mydoc_systemPipeRNAseq_06.html
+      output: web
+
+    - title: 7. GO term enrichment analysis of DEGs
+      url: /mydoc_systemPipeRNAseq_07.html
+      output: web
+
+    - title: 8. Clustering and heat maps
+      url: /mydoc_systemPipeRNAseq_08.html
+      output: web
+
+    - title: 9. Version Information
+      url: /mydoc_systemPipeRNAseq_09.html
+      output: web
+
+    - title: 10. Funding
+      url: /mydoc_systemPipeRNAseq_10.html
+      output: web
+
+    - title: 11. References
+      url: /mydoc_systemPipeRNAseq_11.html
+      output: web
+
   - title: RNA-Seq Workflow
     output: web
     folderitems:
