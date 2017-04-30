@@ -1,6 +1,6 @@
 ---
 title: 5. Read quantification
-last_updated: Sun Apr 30 16:28:27 2017
+last_updated: Sun Apr 30 16:29:37 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_05.html
 ---

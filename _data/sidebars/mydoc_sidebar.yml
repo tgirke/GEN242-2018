@@ -344,7 +344,7 @@ entries:
       url: /mydoc_systemPipeRNAseq_01.html
       output: web
 
-    - title: 2. Sample definitions and environment settings
+    - title: 2. Samples and environment settings
       url: /mydoc_systemPipeRNAseq_02.html
       output: web
 
@@ -356,15 +356,15 @@ entries:
       url: /mydoc_systemPipeRNAseq_04.html
       output: web
 
-    - title: 5. Read quantification per annotation range
+    - title: 5. Read quantification
       url: /mydoc_systemPipeRNAseq_05.html
       output: web
 
-    - title: 6. Analysis of differentially expressed genes with edgeR 
+    - title: 6. Analysis of DEGs
       url: /mydoc_systemPipeRNAseq_06.html
       output: web
 
-    - title: 7. GO term enrichment analysis of DEGs
+    - title: 7. GO term enrichment analysis
       url: /mydoc_systemPipeRNAseq_07.html
       output: web
 
