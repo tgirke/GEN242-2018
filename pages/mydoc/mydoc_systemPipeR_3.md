@@ -1,6 +1,6 @@
 ---
 title: 3. Workflow overview
-last_updated: Sun Apr 30 15:30:32 2017
+last_updated: Sun Apr 30 15:35:20 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeR_3.html
 ---
@@ -225,8 +225,8 @@ bampaths <- runCommandline(args=args[1:2])
 ```
 
 ### Alignment with _`Rsubread`_ (_e.g._ for RNA-Seq)
-The following example shows how one can use within the \Rpackage{systemPipeR} environment the R-based 
-aligner \Rpackage{Rsubread} or other R-based functions that read from input files and write to output files.
+The following example shows how one can use within the `systemPipeR` environment the R-based 
+aligner `Rsubread` or other R-based functions that read from input files and write to output files.
 
 ```r
 library(Rsubread)

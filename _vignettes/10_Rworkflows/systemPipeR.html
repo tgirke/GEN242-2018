@@ -633,7 +633,7 @@ bampaths &lt;- runCommandline(args=args[1:2])</code></pre>
 </div>
 <div id="alignment-with-rsubread-e.g.-for-rna-seq" class="section level3">
 <h3><span class="header-section-number">3.7.3</span> Alignment with <em><code>Rsubread</code></em> (<em>e.g.</em> for RNA-Seq)</h3>
-<p>The following example shows how one can use within the  environment the R-based aligner  or other R-based functions that read from input files and write to output files.</p>
+<p>The following example shows how one can use within the <code>systemPipeR</code> environment the R-based aligner <code>Rsubread</code> or other R-based functions that read from input files and write to output files.</p>
 <pre class="r"><code>library(Rsubread)
 args &lt;- systemArgs(sysma=&quot;param/rsubread.param&quot;, mytargets=&quot;targets.txt&quot;)
 buildindex(basename=reference(args), reference=reference(args)) # Build indexed reference genome

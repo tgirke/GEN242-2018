@@ -408,8 +408,8 @@ bampaths <- runCommandline(args=args[1:2])
 <div align="right">[Back to Table of Contents]()</div>
 
 ### Alignment with _`Rsubread`_ (_e.g._ for RNA-Seq)
-The following example shows how one can use within the \Rpackage{systemPipeR} environment the R-based 
-aligner \Rpackage{Rsubread} or other R-based functions that read from input files and write to output files.
+The following example shows how one can use within the `systemPipeR` environment the R-based 
+aligner `Rsubread` or other R-based functions that read from input files and write to output files.
 ```{r rsubread, eval=FALSE}
 library(Rsubread)
 args <- systemArgs(sysma="param/rsubread.param", mytargets="targets.txt")
