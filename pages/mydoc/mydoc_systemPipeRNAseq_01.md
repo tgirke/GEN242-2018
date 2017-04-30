@@ -1,10 +1,10 @@
 ---
 title: RNA-Seq Workflow Template  <br> <br> 1. Introduction
-last_updated: Sun Apr 30 16:19:36 2017
+last_updated: Sun Apr 30 16:25:22 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_01.html
 ---
-Author: Thomas Girke
+First/last name (first.last@ucr.edu)
 
 Last update: 30 April, 2017 
 

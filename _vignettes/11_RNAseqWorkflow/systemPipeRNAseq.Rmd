@@ -1,6 +1,6 @@
 ---
 title: RNA-Seq Workflow Template 
-author: "Author: Thomas Girke"
+author: "First/last name (first.last@ucr.edu)"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
 output:
   html_document:

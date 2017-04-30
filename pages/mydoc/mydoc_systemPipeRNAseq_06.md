@@ -1,6 +1,6 @@
 ---
 title: 6. Analysis of differentially expressed genes with edgeR 
-last_updated: Sun Apr 30 16:19:36 2017
+last_updated: Sun Apr 30 16:25:22 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_06.html
 ---
