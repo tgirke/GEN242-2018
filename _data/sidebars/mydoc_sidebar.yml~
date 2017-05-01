@@ -216,6 +216,54 @@ entries:
       url: /mydoc_Rbasics_17.html
       output: web
 
+  - title: Programming
+    output: web, pdf
+    folderitems:
+
+    - title: 1. Overview
+      url: /mydoc_Programming_in_R_01.html
+      output: web
+
+    - title: 2. Control Structures
+      url: /mydoc_Programming_in_R_02.html
+      output: web
+
+    - title: 3. Loops
+      url: /mydoc_Programming_in_R_03.html
+      output: web
+
+    - title: 4. Functions
+      url: /mydoc_Programming_in_R_04.html
+      output: web
+
+    - title: 5. Useful Utilities
+      url: /mydoc_Programming_in_R_05.html
+      output: web
+
+    - title: 6. Running R Scripts
+      url: /mydoc_Programming_in_R_06.html
+      output: web
+
+    - title: 7. Building R Packages
+      url: /mydoc_Programming_in_R_07.html
+      output: web
+
+    - title: 8. Programming Exercises
+      url: /mydoc_Programming_in_R_08.html
+      output: web
+
+    - title: 9. Homework 5
+      url: /mydoc_Programming_in_R_09.html
+      output: web
+
+    - title: 10. Session Info
+      url: /mydoc_Programming_in_R_10.html
+      output: web
+
+    - title: 11. References
+      url: /mydoc_Programming_in_R_11.html
+      output: web
+
   - title: Programming in R
     output: web, pdf
     folderitems:
@@ -336,7 +384,7 @@ entries:
       url: /mydoc_systemPipeR_6.html
       output: web
 
-  - title: RNA-Seq
+  - title: RNA-Seq Workflow
     output: web, pdf
     folderitems:
 
@@ -365,54 +413,6 @@ entries:
       output: web
 
     - title: 7. GO term enrichment analysis
-      url: /mydoc_systemPipeRNAseq_07.html
-      output: web
-
-    - title: 8. Clustering and heat maps
-      url: /mydoc_systemPipeRNAseq_08.html
-      output: web
-
-    - title: 9. Version Information
-      url: /mydoc_systemPipeRNAseq_09.html
-      output: web
-
-    - title: 10. Funding
-      url: /mydoc_systemPipeRNAseq_10.html
-      output: web
-
-    - title: 11. References
-      url: /mydoc_systemPipeRNAseq_11.html
-      output: web
-
-  - title: RNA-Seq Workflow
-    output: web, pdf
-    folderitems:
-
-    - title: 1. Introduction
-      url: /mydoc_systemPipeRNAseq_01.html
-      output: web
-
-    - title: 2. Sample definitions and environment settings
-      url: /mydoc_systemPipeRNAseq_02.html
-      output: web
-
-    - title: 3. Read preprocessing
-      url: /mydoc_systemPipeRNAseq_03.html
-      output: web
-
-    - title: 4. Alignments
-      url: /mydoc_systemPipeRNAseq_04.html
-      output: web
-
-    - title: 5. Read quantification per annotation range
-      url: /mydoc_systemPipeRNAseq_05.html
-      output: web
-
-    - title: 6. Analysis of differentially expressed genes with edgeR 
-      url: /mydoc_systemPipeRNAseq_06.html
-      output: web
-
-    - title: 7. GO term enrichment analysis of DEGs
       url: /mydoc_systemPipeRNAseq_07.html
       output: web
 
