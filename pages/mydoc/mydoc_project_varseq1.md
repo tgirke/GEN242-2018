@@ -24,7 +24,7 @@ permalink: mydoc_project_varseq1.html
     + Map all coding variants to one or both of the following protein features:
         + Pfam domains
         + Prosite motifs 
-        + Rank variants mapping to above protein features by degree of conservation
+        + Rank variants mapping to above protein features by the degree of conservation of AA residues
 
 ## References
 
