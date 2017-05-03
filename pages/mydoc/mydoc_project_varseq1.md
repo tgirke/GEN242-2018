@@ -22,9 +22,9 @@ permalink: mydoc_project_varseq1.html
 + Run workflow from start to finish (steps 1-8) on data set from Lu et al (2012)
 + Challenge project tasks
     + Map all coding variants to one or both of the following protein features:
-        + Pfam domain
+        + Pfam domains
         + Prosite motifs 
-        + Rank variants by degree of conservation
+        + Rank variants mapping to above protein features by degree of conservation
 
 ## References
 
