@@ -17,16 +17,14 @@ permalink: mydoc_project_varseq1.html
 + Combine results from many samples
 + Summary statistics of samples
 
-## Challenge Project: Comparison of functional prediction methods of variants
+## Challenge Project: Identification coding variants affecting conserved protein residues
 
 + Run workflow from start to finish (steps 1-8) on data set from Lu et al (2012)
 + Challenge project tasks
-    + Compare the performance of at least 2 functional prediction tools. Consider in your comparisons the following analysis/visualization steps:
-        + Report unique and common functional variants identified by the functional prediction tools.
-        + Plot the results as venn diagrams or similar
-        + Plot the performance of the three methods in form of ROC plots. As true result set one can use the union of the functional variants identified by all three methods. 
-        + Optional: add any additional annotations such as proximity of functional variants to Pfam domains or Prosite motifs.
-
+    + Map all coding variants to one or both of the following protein features:
+        + Pfam domain
+        + Prosite motifs 
+        + Rank variants by degree of conservation
 
 ## References
 
