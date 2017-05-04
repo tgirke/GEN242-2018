@@ -1,6 +1,6 @@
 ---
 title: 7. GO term enrichment analysis
-last_updated: Sun Apr 30 16:29:37 2017
+last_updated: Wed May  3 20:36:08 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_07.html
 ---
@@ -25,7 +25,7 @@ m <- useMart("plants_mart", host="plants.ensembl.org")
 listDatasets(m)
 m <- useMart("plants_mart", dataset="athaliana_eg_gene", host="plants.ensembl.org")
 listAttributes(m) # Choose data types you want to download
-go <- getBM(attributes=c("go_accession", "tair_locus", "go_namespace_1003"), mart=m)
+go <- getBM(attributes=c("go_id", "tair_locus", "name_1006"), mart=m)
 go <- go[go[,3]!="",]; go[,3] <- as.character(go[,3])
 go[go[,3]=="molecular_function", 3] <- "F"; go[go[,3]=="biological_process", 3] <- "P"; go[go[,3]=="cellular_component", 3] <- "C"
 go[1:4,]

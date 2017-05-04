@@ -1,6 +1,6 @@
 ---
 title: 2. Samples and environment settings
-last_updated: Sun Apr 30 16:29:37 2017
+last_updated: Wed May  3 20:36:08 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_02.html
 ---
@@ -39,10 +39,39 @@ additional NGS applications will be provided in the future.
 library(systemPipeRdata)
 genWorkenvir(workflow="rnaseq")
 setwd("rnaseq")
-download.file("https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd", "systemPipeRNAseq.Rmd")
 ```
-Now open the R markdown script `systemPipeRNAseq.Rmd`in your R IDE (_e.g._ vim-r or RStudio) and 
-run the workflow as outlined below. 
+
+Alternatively, this can be done from the command-line as follows:
+
+
+```sh
+Rscript -e "systemPipeRdata::genWorkenvir(workflow='rnaseq')"
+```
+
+Now open the R markdown script `systemPipeRNAseq.Rmd`in your R IDE (_e.g._
+vim-r or RStudio) and run the workflow as outlined below. If you work under
+Vim-R-Tmux, the following command sequence will connect the user in an
+interactive session with a node on the cluster. The code of the `Rmd`
+script can then be sent from Vim on the login (head) node to an open R session running
+on the corresponding computer node. This is important since Tmux sessions
+should not be run on the computer nodes. 
+
+
+```r
+# push `F2` on your keyboard to open interactive R session
+q("no") # closes R session on head node
+srun --x11 --partition=intel --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
+R
+```
+
+Now check whether your R session is running on a computer node of the cluster and not on a head node.
+
+
+```r
+system("hostname") # should return name of a compute node starting with i or c 
+getwd() # checks current working directory of R session
+dir() # returns content of current working directory
+```
 
 ## Required packages and resources
 

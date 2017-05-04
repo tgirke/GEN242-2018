@@ -1,6 +1,6 @@
 ---
 title: 4. Alignments
-last_updated: Sun Apr 30 16:29:37 2017
+last_updated: Wed May  3 20:36:08 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_04.html
 ---
@@ -25,8 +25,22 @@ Submission of alignment jobs to compute cluster, here using 72 CPU cores
 ```r
 moduleload(modules(args))
 system("bowtie2-build ./data/tair10.fasta ./data/tair10.fasta")
-resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
-reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01", 
+resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
+                  resourceList=resources)
+waitForJobs(reg)
+```
+
+## Read mapping with `HISAT2`
+
+
+```r
+args <- systemArgs(sysma="param/hisat2.param", mytargets="targets.txt")
+sysargs(args)[1] # Command-line parameters for first FASTQ file
+moduleload(modules(args))
+system("hisat2-build ./data/tair10.fasta ./data/tair10.fasta")
+resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)
 ```
@@ -48,6 +62,8 @@ and how many of them aligned to the reference.
 read_statsDF <- alignStats(args=args) 
 write.table(read_statsDF, "results/alignStats.xls", row.names=FALSE, quote=FALSE, sep="\t")
 ```
+
+The following shows the alignment statistics for a sample file provided by the `systemPipeR` package. 
 
 
 ```r
