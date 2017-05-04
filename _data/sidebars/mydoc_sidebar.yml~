@@ -308,7 +308,7 @@ entries:
       url: /mydoc_Rsequences_10.html
       output: web
   
-  - title: NGS Workflow Overview
+  - title: Designing
     output: web, pdf
     folderitems:
 
@@ -336,52 +336,32 @@ entries:
       url: /mydoc_systemPipeR_6.html
       output: web
 
-  - title: RNA-Seq
+  - title: NGS Workflow Overview
     output: web, pdf
     folderitems:
 
     - title: 1. Introduction
-      url: /mydoc_systemPipeRNAseq_01.html
+      url: /mydoc_systemPipeR_1.html
       output: web
 
-    - title: 2. Samples and environment settings
-      url: /mydoc_systemPipeRNAseq_02.html
+    - title: 2. Getting Started
+      url: /mydoc_systemPipeR_2.html
       output: web
 
-    - title: 3. Read preprocessing
-      url: /mydoc_systemPipeRNAseq_03.html
+    - title: 3. Workflow overview
+      url: /mydoc_systemPipeR_3.html
       output: web
 
-    - title: 4. Alignments
-      url: /mydoc_systemPipeRNAseq_04.html
+    - title: 4. Workflow templates
+      url: /mydoc_systemPipeR_4.html
       output: web
 
-    - title: 5. Read quantification
-      url: /mydoc_systemPipeRNAseq_05.html
+    - title: 5. Version information
+      url: /mydoc_systemPipeR_5.html
       output: web
 
-    - title: 6. Analysis of DEGs
-      url: /mydoc_systemPipeRNAseq_06.html
-      output: web
-
-    - title: 7. GO term enrichment analysis
-      url: /mydoc_systemPipeRNAseq_07.html
-      output: web
-
-    - title: 8. Clustering and heat maps
-      url: /mydoc_systemPipeRNAseq_08.html
-      output: web
-
-    - title: 9. Version Information
-      url: /mydoc_systemPipeRNAseq_09.html
-      output: web
-
-    - title: 10. Funding
-      url: /mydoc_systemPipeRNAseq_10.html
-      output: web
-
-    - title: 11. References
-      url: /mydoc_systemPipeRNAseq_11.html
+    - title: 6. References
+      url: /mydoc_systemPipeR_6.html
       output: web
 
   - title: RNA-Seq Workflow

@@ -294,8 +294,8 @@ f <- function(x) {
     args <- systemArgs(sysma="param/tophat.param", mytargets="targets.txt")
     seeFastq(fastq=infile1(args)[x], batchsize=100000, klength=8)
 }
-funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsTorque("torque.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
 register(param)
 fqlist <- bplapply(seq(along=args), f)
 seeFastqPlot(unlist(fqlist, recursive=FALSE))
@@ -320,10 +320,9 @@ bampaths <- runCommandline(args=args)
 Alternatively, the computation can be greatly accelerated by processing many files in parallel using several compute nodes of a cluster, where a scheduling/queuing system is used for load balancing. To avoid over-subscription of CPU cores on the compute nodes, the value from _`cores(args)`_ is passed on to the submission command, here _`nodes`_ in the _`resources`_ list object. The number of independent parallel cluster processes is defined under the _`Njobs`_ argument. The following example will run 18 processes in parallel using for each 4 CPU cores. If the resources available on a cluster allow to run all 18 processes at the same time then the shown sample submission will utilize in total 72 CPU cores. Note, _`clusterRun`_ can be used with most queueing systems as it is based on utilities from the _`BatchJobs`_ package which supports the use of template files (_`*.tmpl`_) for defining the run parameters of different schedulers. To run the following code, one needs to have both a conf file (see _`.BatchJob`_ samples [here](https://code.google.com/p/batchjobs/wiki/DortmundUsage)) and a template file (see _`*.tmpl`_ samples [here](https://github.com/tudo-r/BatchJobs/tree/master/examples)) for the queueing available on a system. The following example uses the sample conf and template files for the Torque scheduler provided by this package.  
 
 ```{r run_bowtie_parallel, eval=FALSE}
-resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
-reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01", 
-		  resourceList=resources)
-
+resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01", 
+                  resourceList=resources)
 waitForJobs(reg)
 ```
 
@@ -362,8 +361,8 @@ f <- function(x) {
     args <- systemArgs(sysma="tophat.param", mytargets="targets.txt")
     alignStats(args[x])
 }
-funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsTorque("torque.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
 register(param)
 read_statsList <- bplapply(seq(along=args), f)
 read_statsDF <- do.call("rbind", read_statsList)
@@ -391,9 +390,9 @@ bampaths <- runCommandline(args=args)
 
 Alternatively, submit the job to compute nodes.
 ```{r bowtie2_cluster, eval=FALSE}
-resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
-reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01", 
-		  resourceList=resources)
+resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01", 
+                  resourceList=resources)
 waitForJobs(reg)
 ```
 <div align="right">[Back to Table of Contents]()</div>
@@ -435,8 +434,8 @@ f <- function(x) {
     p <- GsnapParam(genome=gmapGenome, unique_only=TRUE, molecule="DNA", max_mismatches=3)
     o <- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
 }
-funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsTorque("torque.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
 register(param)
 d <- bplapply(seq(along=args), f)
 ```
@@ -480,8 +479,8 @@ f <- function(x) {
     bfl <- BamFileList(outpaths(args), yieldSize=50000, index=character())
     summarizeOverlaps(eByg, bfl[x], mode="Union", ignore.strand=TRUE, inter.feature=TRUE, singleEnd=TRUE)
 }
-funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsTorque("torque.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
 register(param)
 counteByg <- bplapply(seq(along=args), f) 
 countDFeByg <- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)

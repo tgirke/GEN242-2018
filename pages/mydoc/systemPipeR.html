@@ -233,7 +233,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Designing and Running NGS Workflows</h1>
 <h4 class="author"><em>Author: Thomas Girke</em></h4>
-<h4 class="date"><em>Last update: 30 April, 2017</em></h4>
+<h4 class="date"><em>Last update: 04 May, 2017</em></h4>
 
 </div>
 
@@ -531,8 +531,8 @@ f &lt;- function(x) {
     args &lt;- systemArgs(sysma=&quot;param/tophat.param&quot;, mytargets=&quot;targets.txt&quot;)
     seeFastq(fastq=infile1(args)[x], batchsize=100000, klength=8)
 }
-funs &lt;- makeClusterFunctionsTorque(&quot;torque.tmpl&quot;)
-param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, nodes=&quot;1:ppn=1&quot;, memory=&quot;6gb&quot;), cluster.functions=funs)
+funs &lt;- makeClusterFunctionsSLURM(&quot;slurm.tmpl&quot;)
+param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=1, memory=&quot;6gb&quot;), cluster.functions=funs)
 register(param)
 fqlist &lt;- bplapply(seq(along=args), f)
 seeFastqPlot(unlist(fqlist, recursive=FALSE))</code></pre>
@@ -549,9 +549,10 @@ system(&quot;bowtie2-build ./data/tair10.fasta ./data/tair10.fasta&quot;)</code>
 <p>Execute <em><code>SYSargs</code></em> on a single machine without submitting to a queuing system of a compute cluster. This way the input FASTQ files will be processed sequentially. If available, multiple CPU cores can be used for processing each file. The number of CPU cores (here 4) to use for each process is defined in the <em><code>*.param</code></em> file. With <em><code>cores(args)</code></em> one can return this value from the <em><code>SYSargs</code></em> object. Note, if a module system is not installed or used, then the corresponding <em><code>*.param</code></em> file needs to be edited accordingly by either providing an empty field in the line(s) starting with <em><code>module</code></em> or by deleting these lines.</p>
 <pre class="r"><code>bampaths &lt;- runCommandline(args=args)</code></pre>
 <p>Alternatively, the computation can be greatly accelerated by processing many files in parallel using several compute nodes of a cluster, where a scheduling/queuing system is used for load balancing. To avoid over-subscription of CPU cores on the compute nodes, the value from <em><code>cores(args)</code></em> is passed on to the submission command, here <em><code>nodes</code></em> in the <em><code>resources</code></em> list object. The number of independent parallel cluster processes is defined under the <em><code>Njobs</code></em> argument. The following example will run 18 processes in parallel using for each 4 CPU cores. If the resources available on a cluster allow to run all 18 processes at the same time then the shown sample submission will utilize in total 72 CPU cores. Note, <em><code>clusterRun</code></em> can be used with most queueing systems as it is based on utilities from the <em><code>BatchJobs</code></em> package which supports the use of template files (<em><code>*.tmpl</code></em>) for defining the run parameters of different schedulers. To run the following code, one needs to have both a conf file (see <em><code>.BatchJob</code></em> samples <a href="https://code.google.com/p/batchjobs/wiki/DortmundUsage">here</a>) and a template file (see <em><code>*.tmpl</code></em> samples <a href="https://github.com/tudo-r/BatchJobs/tree/master/examples">here</a>) for the queueing available on a system. The following example uses the sample conf and template files for the Torque scheduler provided by this package.</p>
-<pre class="r"><code>resources &lt;- list(walltime=&quot;20:00:00&quot;, nodes=paste0(&quot;1:ppn=&quot;, cores(args)), memory=&quot;10gb&quot;)
-reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;torque.tmpl&quot;, Njobs=18, runid=&quot;01&quot;, 
-                  resourceList=resources)
+<pre class="r"><code>resources &lt;- list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=cores(args), memory=&quot;10G&quot;)
+reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;slurm.tmpl&quot;, Njobs=18, runid=&quot;01&quot;, 
+          resourceList=resources)
+
 waitForJobs(reg)</code></pre>
 <p>Useful commands for monitoring progress of submitted jobs</p>
 <pre class="r"><code>showStatus(reg)
@@ -584,8 +585,8 @@ f &lt;- function(x) {
     args &lt;- systemArgs(sysma=&quot;tophat.param&quot;, mytargets=&quot;targets.txt&quot;)
     alignStats(args[x])
 }
-funs &lt;- makeClusterFunctionsTorque(&quot;torque.tmpl&quot;)
-param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, nodes=&quot;1:ppn=1&quot;, memory=&quot;6gb&quot;), cluster.functions=funs)
+funs &lt;- makeClusterFunctionsSLURM(&quot;slurm.tmpl&quot;)
+param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=1, memory=&quot;6gb&quot;), cluster.functions=funs)
 register(param)
 read_statsList &lt;- bplapply(seq(along=args), f)
 read_statsDF &lt;- do.call(&quot;rbind&quot;, read_statsList)</code></pre>
@@ -612,9 +613,9 @@ read_statsDF &lt;- do.call(&quot;rbind&quot;, read_statsList)</code></pre>
 moduleload(modules(args)) # Skip if module system is not available
 bampaths &lt;- runCommandline(args=args)</code></pre>
 <p>Alternatively, submit the job to compute nodes.</p>
-<pre class="r"><code>resources &lt;- list(walltime=&quot;20:00:00&quot;, nodes=paste0(&quot;1:ppn=&quot;, cores(args)), memory=&quot;10gb&quot;)
-reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;torque.tmpl&quot;, Njobs=18, runid=&quot;01&quot;, 
-                  resourceList=resources)
+<pre class="r"><code>resources &lt;- list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=cores(args), memory=&quot;10G&quot;)
+reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;slurm.tmpl&quot;, Njobs=18, runid=&quot;01&quot;, 
+          resourceList=resources)
 waitForJobs(reg)</code></pre>
 <div align="right">
 <a href>Back to Table of Contents</a>
@@ -657,8 +658,8 @@ f &lt;- function(x) {
     p &lt;- GsnapParam(genome=gmapGenome, unique_only=TRUE, molecule=&quot;DNA&quot;, max_mismatches=3)
     o &lt;- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
 }
-funs &lt;- makeClusterFunctionsTorque(&quot;torque.tmpl&quot;)
-param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, nodes=&quot;1:ppn=1&quot;, memory=&quot;6gb&quot;), cluster.functions=funs)
+funs &lt;- makeClusterFunctionsSLURM(&quot;slurm.tmpl&quot;)
+param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=1, memory=&quot;6gb&quot;), cluster.functions=funs)
 register(param)
 d &lt;- bplapply(seq(along=args), f)</code></pre>
 <div align="right">
@@ -701,8 +702,8 @@ f &lt;- function(x) {
     bfl &lt;- BamFileList(outpaths(args), yieldSize=50000, index=character())
     summarizeOverlaps(eByg, bfl[x], mode=&quot;Union&quot;, ignore.strand=TRUE, inter.feature=TRUE, singleEnd=TRUE)
 }
-funs &lt;- makeClusterFunctionsTorque(&quot;torque.tmpl&quot;)
-param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, nodes=&quot;1:ppn=1&quot;, memory=&quot;6gb&quot;), cluster.functions=funs)
+funs &lt;- makeClusterFunctionsSLURM(&quot;slurm.tmpl&quot;)
+param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=1, memory=&quot;6gb&quot;), cluster.functions=funs)
 register(param)
 counteByg &lt;- bplapply(seq(along=args), f) 
 countDFeByg &lt;- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)

@@ -1,12 +1,12 @@
 ---
 title: Designing and Running NGS Workflows  <br> <br> 1. Introduction
-last_updated: Sun Apr 30 15:59:55 2017
+last_updated: Thu May  4 12:05:43 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeR_1.html
 ---
 Author: Thomas Girke
 
-Last update: 30 April, 2017 
+Last update: 04 May, 2017 
 
 Alternative formats of this tutorial:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/systemPipeR.html){:target="_blank"} ],

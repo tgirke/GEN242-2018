@@ -1,6 +1,6 @@
 ---
 title: 3. Workflow overview
-last_updated: Sun Apr 30 15:59:55 2017
+last_updated: Thu May  4 12:05:43 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeR_3.html
 ---
@@ -97,8 +97,8 @@ f <- function(x) {
     args <- systemArgs(sysma="param/tophat.param", mytargets="targets.txt")
     seeFastq(fastq=infile1(args)[x], batchsize=100000, klength=8)
 }
-funs <- makeClusterFunctionsTorque("torque.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 register(param)
 fqlist <- bplapply(seq(along=args), f)
 seeFastqPlot(unlist(fqlist, recursive=FALSE))
@@ -125,9 +125,10 @@ Alternatively, the computation can be greatly accelerated by processing many fil
 
 
 ```r
-resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
-reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01", 
-                  resourceList=resources)
+resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01", 
+		  resourceList=resources)
+
 waitForJobs(reg)
 ```
 
@@ -178,8 +179,8 @@ f <- function(x) {
     args <- systemArgs(sysma="tophat.param", mytargets="targets.txt")
     alignStats(args[x])
 }
-funs <- makeClusterFunctionsTorque("torque.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 register(param)
 read_statsList <- bplapply(seq(along=args), f)
 read_statsDF <- do.call("rbind", read_statsList)
@@ -208,9 +209,9 @@ bampaths <- runCommandline(args=args)
 Alternatively, submit the job to compute nodes.
 
 ```r
-resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
-reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01", 
-                  resourceList=resources)
+resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01", 
+		  resourceList=resources)
 waitForJobs(reg)
 ```
 
@@ -252,8 +253,8 @@ f <- function(x) {
     p <- GsnapParam(genome=gmapGenome, unique_only=TRUE, molecule="DNA", max_mismatches=3)
     o <- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
 }
-funs <- makeClusterFunctionsTorque("torque.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 register(param)
 d <- bplapply(seq(along=args), f)
 ```
@@ -297,8 +298,8 @@ f <- function(x) {
     bfl <- BamFileList(outpaths(args), yieldSize=50000, index=character())
     summarizeOverlaps(eByg, bfl[x], mode="Union", ignore.strand=TRUE, inter.feature=TRUE, singleEnd=TRUE)
 }
-funs <- makeClusterFunctionsTorque("torque.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 register(param)
 counteByg <- bplapply(seq(along=args), f) 
 countDFeByg <- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)

@@ -108,8 +108,8 @@ systemArgs(sysma=parampath, mytargets=targetspath, type="json")
 ##     args <- systemArgs(sysma="param/tophat.param", mytargets="targets.txt")
 ##     seeFastq(fastq=infile1(args)[x], batchsize=100000, klength=8)
 ## }
-## funs <- makeClusterFunctionsTorque("torque.tmpl")
-## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+## funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 ## register(param)
 ## fqlist <- bplapply(seq(along=args), f)
 ## seeFastqPlot(unlist(fqlist, recursive=FALSE))
@@ -123,9 +123,10 @@ systemArgs(sysma=parampath, mytargets=targetspath, type="json")
 ## bampaths <- runCommandline(args=args)
 
 ## ----run_bowtie_parallel, eval=FALSE-------------------------------------
-## resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
-## reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01",
-##                   resourceList=resources)
+## resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
+## 		  resourceList=resources)
+## 
 ## waitForJobs(reg)
 
 ## ----process_monitoring, eval=FALSE--------------------------------------
@@ -152,8 +153,8 @@ read.table(system.file("extdata", "alignStats.xls", package="systemPipeR"), head
 ##     args <- systemArgs(sysma="tophat.param", mytargets="targets.txt")
 ##     alignStats(args[x])
 ## }
-## funs <- makeClusterFunctionsTorque("torque.tmpl")
-## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+## funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 ## register(param)
 ## read_statsList <- bplapply(seq(along=args), f)
 ## read_statsDF <- do.call("rbind", read_statsList)
@@ -169,9 +170,9 @@ read.table(system.file("extdata", "alignStats.xls", package="systemPipeR"), head
 ## bampaths <- runCommandline(args=args)
 
 ## ----bowtie2_cluster, eval=FALSE-----------------------------------------
-## resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
-## reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01",
-##                   resourceList=resources)
+## resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
+## 		  resourceList=resources)
 ## waitForJobs(reg)
 
 ## ----bwamem_cluster, eval=FALSE------------------------------------------
@@ -199,8 +200,8 @@ read.table(system.file("extdata", "alignStats.xls", package="systemPipeR"), head
 ##     p <- GsnapParam(genome=gmapGenome, unique_only=TRUE, molecule="DNA", max_mismatches=3)
 ##     o <- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
 ## }
-## funs <- makeClusterFunctionsTorque("torque.tmpl")
-## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+## funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 ## register(param)
 ## d <- bplapply(seq(along=args), f)
 
@@ -232,8 +233,8 @@ read.table(system.file("extdata", "alignStats.xls", package="systemPipeR"), head
 ##     bfl <- BamFileList(outpaths(args), yieldSize=50000, index=character())
 ##     summarizeOverlaps(eByg, bfl[x], mode="Union", ignore.strand=TRUE, inter.feature=TRUE, singleEnd=TRUE)
 ## }
-## funs <- makeClusterFunctionsTorque("torque.tmpl")
-## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+## funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 ## register(param)
 ## counteByg <- bplapply(seq(along=args), f)
 ## countDFeByg <- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)
