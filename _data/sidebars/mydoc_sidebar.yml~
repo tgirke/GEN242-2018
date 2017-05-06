@@ -136,15 +136,23 @@ entries:
       url: /mydoc_tutorial_01.html
       output: web
 
-  - title: Biocluster & Linux
+  - title: Linux & HPCC Cluster
     output: web
     folderitems:
     
-    - title: Linux Basics 
+    - title: Introduction
       url: /mydoc_tutorial_02.html
       output: web
     
-    - title: Module System
+    - title: HPCC Cluster
+      url: /mydoc_tutorial_02.html
+      output: web
+    
+    - title: Linux Basics
+      url: /mydoc_tutorial_02.html#linux-basics
+      output: web
+    
+    - title: Software & Module System
       url: /mydoc_tutorial_02.html#software-and-module-system
       output: web
     
@@ -152,7 +160,7 @@ entries:
       url: /mydoc_tutorial_02.html#big-data-storage
       output: web
     
-    - title: Queueing System Slurm 
+    - title: Queueing System Slurm
       url: /mydoc_tutorial_02.html#queuing-system-slurm
       output: web
     

@@ -1,10 +1,15 @@
 ---
-title: Introduction to Biocluster and Linux
+title: Introduction to HPCC Cluster and Linux
 sidebar: mydoc_sidebar
 permalink: mydoc_tutorial_02.html 
 ---
 
-## What Is a Computer Cluster?
+
+## HPCC Cluster Overview
+
+The HPCC Cluster (formerly called biocluster) is a shared research computing system available at UCR. The HPCC website is available [here](http://hpcc.ucr.edu/index.html).
+
+### What Is a Computer Cluster?
 
 * A computer cluster is an assembly of CPU units, so called computer nodes that work together to perform many computations in parallel. To achieve this, an internal network (e.g. Infiniband interconnect) connects the nodes to a larger unit, while a head node controls the load and traffic across the entire system.
 
@@ -14,7 +19,7 @@ permalink: mydoc_tutorial_02.html
 
 * For code testing purposes, one can log into one of the nodes with `srun --pty bash -l` and run jobs interactively. Alternatively, one can log into the test node owl via ssh.
 
-## Hardware Infrastructure
+### Hardware Infrastructure
 
 ### Computer nodes
 
@@ -35,16 +40,18 @@ permalink: mydoc_tutorial_02.html
 ### User traffic
 
 - Computing tasks need to be submitted via `srun`
-- Biocluster headnode only for login, not for computing tasks!
+- HPCC Cluster headnode only for login, not for computing tasks!
 - Monitor cluster activity: `squeue` or `jobMonitor` (`qstatMonitor`)
 
 ### Manuals
 
-- [Biocluster Manual](http://hpcc.ucr.edu/manuals_linux-cluster_intro.html)
+- [HPCC Cluster Manual](http://hpcc.ucr.edu/manuals_linux-cluster_intro.html)
 - [Linux Manual](http://hpcc.ucr.edu/manuals_linux-basics.html)
 
 
-## Log into Biocluster
+## Linux Basics
+
+### Log into HPCC Cluster
 
 + Login command on OS X or Linux 
 
@@ -61,7 +68,7 @@ Type password
     + Password: ...
 
 
-## Important Linux Commands
+### Important Linux Commands
 
 Finding help
 ```sh
@@ -114,7 +121,7 @@ less
 ```
 
 
-## File Exchange
+### File Exchange
 
 __GUI applications__
 
@@ -130,7 +137,7 @@ scp user@remotehost:/home/user/file . # From remote to local
 ```
 
 	
-## STD IN/OUT/ERR, Redirect & Wildcards
+### STD IN/OUT/ERR, Redirect & Wildcards
 
 Wildcard `*` to specify many files
 ```sh
@@ -165,11 +172,11 @@ Print `STDERR` to file
 grep pattern nonexistingfile 2 > mystderr 
 ```
 
-## Homework Assignment (HW2)
+### Homework Assignment (HW2)
 
 See HW2 page [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_02.html).
 
-## Permissions and ownership
+### Permissions and ownership
 
 List directories and files
 
@@ -200,7 +207,7 @@ Syntax for changing user & group ownership
 chown <user>:<group> <file or dir> 
 ```
 
-## Symbolic Links
+### Symbolic Links
 Symbolic links are short nicknames to files and directories that save typing of their full paths. 
 ```sh
 ln -s original_filename new_nickname
@@ -209,7 +216,7 @@ ln -s original_filename new_nickname
 
 ## Software and module system
 
-* Over 500 software tools are currently installed on biocluster
+* Over 750 software tools are currently installed on HPCC Cluster
 * Most common research databases used in bioinformatics are available
 * Support of most common programming languages used in research computing
 * A module system is used to facilitate the management of software tools. This includes any number of versions of each software.
@@ -264,12 +271,12 @@ of each user group. The path of `bigdata` and `bigdata-shared` is as follows:
 All lab members share the same bigdata pool. The course number `gen242` is used as `labname`
 for user accounts adminstered under GEN242.
 
-The disk usage of `home` and `bigdata` can be monitored on the [Biocluster Dashboard](https://dashboard.bioinfo.ucr.edu/).
+The disk usage of `home` and `bigdata` can be monitored on the [HPCC Cluster Dashboard](https://dashboard.bioinfo.ucr.edu/).
 
 
 ## Queuing system: `Slurm` 
 
-Biocluster uses `Slurm` as queuing and load balancing system. To control user traffic, any 
+HPCC Cluster uses `Slurm` as queuing and load balancing system. To control user traffic, any 
 type of compute intensive jobs need to be submitted via the `sbatch` or `srun` (see below) to the computer
 nodes. Much more detailed information on this topic can be found on these sites: 
 
@@ -373,13 +380,13 @@ Resourse limits for users can be viewed as follows.
 sacctmgr show account $GROUP format=Account,User,Partition,GrpCPUs,GrpMem,GrpNodes --ass | grep $USER
 ```
 
-Similarly one can view the limits of the group a user belongs to. 
+Similarly, one can view the limits of the group a user belongs to. 
 ```sh
 sacctmgr show account $GROUP format=Account,User,Partition,GrpCPUs,GrpMem,GrpNodes,GrpTRES%30 --ass | head -3
 ```
 
 
-## Text/code editor options
+## Text/code editors
 
 The following list includes examples of several widely used code editors.
 
@@ -442,7 +449,7 @@ Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinforma
 Tmux is a terminal multiplexer that allows to split terminal windows and to detach/reattach to
 existing terminal sessions. Combinded with the `vim-r` plugin it provides a powerful command-line working 
 environment for R where users can send code from a script to the R console or command-line.
-Both tmux and the `vim-r` plugin need to be installed on a system. On Biocluster both are configured
+Both tmux and the `vim-r` plugin need to be installed on a system. On HPCC Cluster both are configured
 in each user account. A detailed user manual is available [here](http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r).
 The following gives a short introduction into the basic usage:
 
