@@ -144,6 +144,10 @@ entries:
       url: /mydoc_tutorial_02.html
       output: web
     
+    - title: What is a cluster
+      url: /mydoc_tutorial_02.html#what-is-a-computer-cluster
+      output: web
+    
   - title: Introduction to R
     output: web, pdf
     folderitems:
