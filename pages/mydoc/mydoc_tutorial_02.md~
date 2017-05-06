@@ -276,6 +276,7 @@ nodes. Much more detailed information on this topic can be found on these sites:
 + [UCR HPCC Manual](http://hpcc.ucr.edu/manuals_linux-cluster_jobs.html)
 + [Slurm Documentation](https://slurm.schedmd.com/documentation.html)
 + [Torque/Slurm Comparison](http://www.nersc.gov/users/computational-systems/cori/running-jobs/for-edison-users/torque-moab-vs-slurm-comparisons/)
++ [Switching from Torque to Slurm](https://sites.google.com/a/case.edu/hpc-upgraded-cluster/slurm-cluster-commands)
 + [Slurm Quick Start Tutorial](http://www.ceci-hpc.be/slurm_tutorial.html)
 
 ### Job submission with `sbatch`
@@ -365,6 +366,19 @@ Altering jobs with `scontrol update`. The below example changes the walltime (`<
 scontrol update jobid=<JOBID> TimeLimit=<NEW_TIME>
 ```
 
+### Resource limits
+
+Resourse limits for users can be viewed as follows. 
+```sh
+sacctmgr show account $GROUP format=Account,User,Partition,GrpCPUs,GrpMem,GrpNodes --ass | grep $USER
+```
+
+Similarly one can view the limits of the group a user belongs to. 
+```sh
+sacctmgr show account $GROUP format=Account,User,Partition,GrpCPUs,GrpMem,GrpNodes,GrpTRES%30 --ass | head -3
+```
+
+
 ## Text/code editor options
 
 The following list includes examples of several widely used code editors.
@@ -425,12 +439,12 @@ Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinforma
 
 ### Basics
 
-Tmux is a terminal multiplexer that allows to split terminal windows and to deattach/reattach to
+Tmux is a terminal multiplexer that allows to split terminal windows and to detach/reattach to
 existing terminal sessions. Combinded with the `vim-r` plugin it provides a powerful command-line working 
 environment for R where users can send code from a script to the R console or command-line.
 Both tmux and the `vim-r` plugin need to be installed on a system. On Biocluster both are configured
 in each user account. A detailed user manual is available [here](http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r).
-The following give a short introduction into the basic usage:
+The following gives a short introduction into the basic usage:
 
 __1. Start tmux session__
 ```sh
@@ -450,7 +464,7 @@ __3. Open vim-connected R session by pressing the `F2` key__
 
 This will open an R session in a separate tmux pane. Note, in the provided `.tmux.conf` file 
 the command key binding has been reassigned from the tmux default `Ctrl-b` to `Ctrl-a`, 
-and the shortcut for starting R from vim has be reassigned from `\rf` to `F2` in the `.vimrc` 
+and the shortcut for starting R from vim has been reassigned from `\rf` to `F2` in the `.vimrc` 
 file. The command key binding `Ctrl-a` is the most important key sequence in order to move 
 around in tmux. For instance, the key sequence `Ctrl-a o` will switch between the vim and R 
 panes, and `Ctrl-a Ctrl-o` will swap the two panes. 
@@ -479,7 +493,7 @@ __Pane-level commands__
 
 * `Ctrl-a %`: splits pane vertically
 * `Ctrl-a "`: splits pane horizontally
-* `Ctrl-a-o`: jumps cursor to next pane
+* `Ctrl-a o`: jumps cursor to next pane
 * `Ctrl-a Ctrl-o`: swaps panes
 * `Ctrl-a <space bar>`: rotates pane arrangement
 
