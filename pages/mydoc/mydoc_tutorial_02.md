@@ -373,13 +373,13 @@ Resourse limits for users can be viewed as follows.
 sacctmgr show account $GROUP format=Account,User,Partition,GrpCPUs,GrpMem,GrpNodes --ass | grep $USER
 ```
 
-Similarly one can view the limits of the group a user belongs to. 
+Similarly, one can view the limits of the group a user belongs to. 
 ```sh
 sacctmgr show account $GROUP format=Account,User,Partition,GrpCPUs,GrpMem,GrpNodes,GrpTRES%30 --ass | head -3
 ```
 
 
-## Text/code editor options
+## Text/code editors
 
 The following list includes examples of several widely used code editors.
 
