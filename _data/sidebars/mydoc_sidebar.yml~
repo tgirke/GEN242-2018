@@ -140,12 +140,12 @@ entries:
     output: web
     folderitems:
     
-    - title: Introduction
+    - title: Table of Content
       url: /mydoc_tutorial_02.html
       output: web
     
     - title: HPCC Cluster
-      url: /mydoc_tutorial_02.html
+      url: /mydoc_tutorial_02.html#hpcc-cluster-overview
       output: web
     
     - title: Linux Basics
