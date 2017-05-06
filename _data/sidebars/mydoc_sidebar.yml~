@@ -144,9 +144,25 @@ entries:
       url: /mydoc_tutorial_02.html
       output: web
     
-      - title: What is a cluster
-        url: /mydoc_tutorial_02.html#what-is-a-computer-cluster
-        output: web
+    - title: Module System
+      url: /mydoc_tutorial_02.html#software-and-module-system
+      output: web
+    
+    - title: Big Data Storage
+      url: /mydoc_tutorial_02.html#big-data-storage
+      output: web
+    
+    - title: Queueing System: Slurm 
+      url: /mydoc_tutorial_02.html#queuing-system-slurm
+      output: web
+    
+    - title: Text Editors
+      url: /mydoc_tutorial_02.html#textcode-editors
+      output: web
+    
+    - title: Vim-R-Tmux
+      url: /mydoc_tutorial_02.html#vim-r-tmux-essentials
+      output: web
     
   - title: Introduction to R
     output: web, pdf
