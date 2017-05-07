@@ -43,7 +43,6 @@ suppressPackageStartupMessages({
     library(ape)
 })
 ```
-Note: the most recent version of this tutorial can be found <a href="https://htmlpreview.github.io/?https://github.com/tgirke/systemPipeR/blob/master/vignettes/systemPipeRNAseq.html">here</a> and a short overview slide show [here](https://htmlpreview.github.io/?https://github.com/tgirke/systemPipeR/master/inst/extdata/slides/systemPipeRslides.html).
 
 # Introduction
 
