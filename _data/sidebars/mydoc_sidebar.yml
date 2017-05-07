@@ -145,7 +145,7 @@ entries:
       output: web
     
     - title: GitHub in GEN242
-      url: /mydoc_tutorial_01.html
+      url: /mydoc_tutorial_01.html#github-in-gen242
       output: web
     
     - title: Installation
