@@ -140,8 +140,28 @@ entries:
     output: web
     folderitems:
     
-    - title: GitHub
+    - title: Table of Content
       url: /mydoc_tutorial_01.html
+      output: web
+    
+    - title: GitHub in GEN242
+      url: /mydoc_tutorial_01.html
+      output: web
+    
+    - title: Installation
+      url: /mydoc_tutorial_01.html#installing-git
+      output: web
+    
+    - title: Git from Command-line
+      url: /mydoc_tutorial_01.html#git-basics-from-command-Line
+      output: web
+    
+    - title: GitHub from Command-line
+      url: /mydoc_tutorial_01.html#github-basics-from-command-Line
+      output: web
+    
+    - title: GitHub from RStudio
+      url: /mydoc_tutorial_01.html#using-github-from-rstudio
       output: web
 
   - title: Linux & HPCC Cluster

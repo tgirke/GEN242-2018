@@ -4,7 +4,7 @@ sidebar: mydoc_sidebar
 permalink: mydoc_tutorial_01.html 
 ---
 
-## GEN242 and GitHub 
+## GitHub in GEN242 
 
 + Note, this class will make heavy use of GitHub 
 + Homework assignments will be submitted to private GitHub repositories: one repository for each student
