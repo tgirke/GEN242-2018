@@ -1,6 +1,6 @@
 ---
 title: 4. Alignments
-last_updated: Sat May  6 17:58:40 2017
+last_updated: Sun May  7 16:47:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_04.html
 ---
@@ -67,8 +67,8 @@ f <- function(x) {
     p <- GsnapParam(genome=gmapGenome, unique_only=TRUE, molecule="DNA", max_mismatches=3)
     o <- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
 }
-funs <- makeClusterFunctionsTorque("torque.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 register(param)
 d <- bplapply(seq(along=args), f)
 writeTargetsout(x=args, file="targets_gsnap_bam.txt", overwrite=TRUE)

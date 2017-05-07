@@ -25,7 +25,6 @@ library(systemPipeR)
 ## library(systemPipeRdata)
 ## genWorkenvir(workflow="varseq")
 ## setwd("varseq")
-## download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd", "systemPipeVARseq.Rmd")
 
 ## ----load_custom_fct, eval=FALSE-----------------------------------------
 ## source("systemPipeChIPseq_Fct.R")
@@ -83,8 +82,8 @@ targets[,-c(5,6)]
 ##     p <- GsnapParam(genome=gmapGenome, unique_only=TRUE, molecule="DNA", max_mismatches=3)
 ##     o <- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
 ## }
-## funs <- makeClusterFunctionsTorque("torque.tmpl")
-## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+## funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 ## register(param)
 ## d <- bplapply(seq(along=args), f)
 ## writeTargetsout(x=args, file="targets_gsnap_bam.txt", overwrite=TRUE)
@@ -103,8 +102,8 @@ targets[,-c(5,6)]
 ## system("picard CreateSequenceDictionary R=./data/tair10.fasta O=./data/tair10.dict")
 ## system("samtools faidx data/tair10.fasta")
 ## args <- systemArgs(sysma="param/gatk.param", mytargets="targets_bam.txt")
-## resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", 1), memory="10gb")
-## reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01",
+## resources <- list(walltime="20:00:00", ntasks=1, ncpus=1, memory="10G")
+## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
 ##                   resourceList=resources)
 ## waitForJobs(reg)
 ## # unlink(outfile1(args), recursive = TRUE, force = TRUE)
@@ -112,8 +111,8 @@ targets[,-c(5,6)]
 
 ## ----run_bcftools, eval=FALSE--------------------------------------------
 ## args <- systemArgs(sysma="param/sambcf.param", mytargets="targets_bam.txt")
-## resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", 1), memory="10gb")
-## reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01",
+## resources <- list(walltime="20:00:00", ntasks=1, ncpus=1, memory="10G")
+## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
 ##                   resourceList=resources)
 ## waitForJobs(reg)
 ## # unlink(outfile1(args), recursive = TRUE, force = TRUE)
@@ -132,8 +131,8 @@ targets[,-c(5,6)]
 ##     sampleNames(var) <- names(bfl)
 ##     writeVcf(asVCF(var), outfile1(args)[x], index = TRUE)
 ## }
-## funs <- makeClusterFunctionsTorque("torque.tmpl")
-## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+## funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 ## register(param)
 ## d <- bplapply(seq(along=args), f)
 ## writeTargetsout(x=args, file="targets_vartools.txt", overwrite=TRUE)

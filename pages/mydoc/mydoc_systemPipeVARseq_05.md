@@ -1,6 +1,6 @@
 ---
 title: 5. Variant calling
-last_updated: Sat May  6 17:58:40 2017
+last_updated: Sun May  7 16:47:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_05.html
 ---
@@ -31,8 +31,8 @@ moduleload("picard/1.130"); moduleload("samtools/1.3")
 system("picard CreateSequenceDictionary R=./data/tair10.fasta O=./data/tair10.dict")
 system("samtools faidx data/tair10.fasta")
 args <- systemArgs(sysma="param/gatk.param", mytargets="targets_bam.txt")
-resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", 1), memory="10gb")
-reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01",
+resources <- list(walltime="20:00:00", ntasks=1, ncpus=1, memory="10G")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)
 # unlink(outfile1(args), recursive = TRUE, force = TRUE)
@@ -48,8 +48,8 @@ in the current working directory the parameter file `sambcf.param` and the bash 
 
 ```r
 args <- systemArgs(sysma="param/sambcf.param", mytargets="targets_bam.txt")
-resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", 1), memory="10gb")
-reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01",
+resources <- list(walltime="20:00:00", ntasks=1, ncpus=1, memory="10G")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)
 # unlink(outfile1(args), recursive = TRUE, force = TRUE)
@@ -72,8 +72,8 @@ f <- function(x) {
     sampleNames(var) <- names(bfl)
     writeVcf(asVCF(var), outfile1(args)[x], index = TRUE)
 }
-funs <- makeClusterFunctionsTorque("torque.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", nodes="1:ppn=1", memory="6gb"), cluster.functions=funs)
+funs <- makeClusterFunctionsSLURM("slurm.tmpl")
+param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
 register(param)
 d <- bplapply(seq(along=args), f)
 writeTargetsout(x=args, file="targets_vartools.txt", overwrite=TRUE)
