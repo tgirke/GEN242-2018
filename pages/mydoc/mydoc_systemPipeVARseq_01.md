@@ -1,6 +1,6 @@
 ---
 title: VAR-Seq Workflow Template  <br> <br> 1. Introduction
-last_updated: Sat May  6 17:53:49 2017
+last_updated: Sat May  6 17:58:40 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_01.html
 ---

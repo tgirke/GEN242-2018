@@ -25,7 +25,7 @@ library(systemPipeR)
 ## library(systemPipeRdata)
 ## genWorkenvir(workflow="varseq")
 ## setwd("varseq")
-## download.file("https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd", "systemPipeVARseq.Rmd")
+## download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd", "systemPipeVARseq.Rmd")
 
 ## ----load_custom_fct, eval=FALSE-----------------------------------------
 ## source("systemPipeChIPseq_Fct.R")

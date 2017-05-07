@@ -25,7 +25,7 @@ library(systemPipeR)
 ## library(systemPipeRdata)
 ## genWorkenvir(workflow="chipseq")
 ## setwd("chipseq")
-## download.file("https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/12_ChIPseqWorkflow/systemPipeChIPseq.Rmd", "systemPipeChIPseq.Rmd")
+## download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/12_ChIPseqWorkflow/systemPipeChIPseq.Rmd", "systemPipeChIPseq.Rmd")
 
 ## ----load_custom_fct, eval=FALSE-----------------------------------------
 ## source("systemPipeChIPseq_Fct.R")
