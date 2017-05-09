@@ -65,7 +65,7 @@ sraidv <- paste("SRR1051", 389:415, sep="")
 
 ```r
 library(systemPipeR)
-moduleload("sratoolkit/2.5.0")
+moduleload("sratoolkit/2.8.1")
 system('fastq-dump --help') # prints help to screen
 ```
 
@@ -86,7 +86,8 @@ Internally, it uses the `fastq-dump` utility of the SRA Toolkit from NCBI.
 
 ```r
 getSRAfastq <- function(sraid, targetdir, maxreads="1000000000") {
-    system(paste("fastq-dump --split-files --gzip --maxSpotId", maxreads, sraid, "--outdir", targetdir))
+    system(paste("fastq-dump --split-files --gzip --maxSpotId", 
+                  maxreads, sraid, "--outdir", targetdir))
 }
 ```
 
