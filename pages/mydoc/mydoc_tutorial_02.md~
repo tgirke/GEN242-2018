@@ -261,7 +261,7 @@ module unload R/3.2.3-dev
 
 ## Big data storage
 
-Each user account on biocluster comes only with 20GB of disk space. Much more disk space is 
+Each user account on HPCC Cluster comes only with 20GB of disk space. Much more disk space is 
 available in a dedicated `bigdata` directory. How much space depends on the subscription 
 of each user group. The path of `bigdata` and `bigdata-shared` is as follows:
 
@@ -324,7 +324,7 @@ srun --pty bash -l
 
 Interactive session with specific resource requests
 ```sh
-srun --x11 --partition=batch --mem=2gb --cpus-per-task 4 --ntasks 1 --time 72:00:00 --pty bash -l
+srun --x11 --partition=short --mem=2gb --cpus-per-task 4 --ntasks 1 --time 1:00:00 --pty bash -l
 ```
 
 `STDOUT` and `STDERROR` of jobs will be written to files named `slurm-<jobid>.out` or to custom a file specified under `#SBATCH --output` in the submission script. 
@@ -403,7 +403,7 @@ to learn how to work in a pure command-line interface. GUI environments like
 RStudio and similar coding environments are not suitable for this. In addition,
 there is a lot of value of knowing how to work in an environment that is not
 restricted to a specific programming language. Therefore, this class embraces
-RStudio where it is useful, but for working on remote systems like biocluster, it 
+RStudio where it is useful, but for working on remote systems like HPCC Cluster, it 
 uses Vim and Tmux. Both are useful for many programming languages.
 Combinded with the `vim-r` plugin they also provide a powerful command-line working
 environment for R. The following provides a brief introduction to this environment.

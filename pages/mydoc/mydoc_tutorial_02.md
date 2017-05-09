@@ -324,7 +324,7 @@ srun --pty bash -l
 
 Interactive session with specific resource requests
 ```sh
-srun --x11 --partition=batch --mem=2gb --cpus-per-task 4 --ntasks 1 --time 72:00:00 --pty bash -l
+srun --x11 --partition=short --mem=2gb --cpus-per-task 4 --ntasks 1 --time 1:00:00 --pty bash -l
 ```
 
 `STDOUT` and `STDERROR` of jobs will be written to files named `slurm-<jobid>.out` or to custom a file specified under `#SBATCH --output` in the submission script. 
