@@ -1,12 +1,12 @@
 ---
 title: ChIP-Seq Workflow Template  <br> <br> 1. Introduction
-last_updated: Sat May  6 18:00:22 2017
+last_updated: Mon May  8 19:22:59 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_01.html
 ---
 First/last name (first.last@ucr.edu)
 
-Last update: 06 May, 2017 
+Last update: 08 May, 2017 
 
 Alternative formats of this tutorial:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/systemPipeChIPseq.html){:target="_blank"} ],

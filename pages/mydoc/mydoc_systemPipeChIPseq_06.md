@@ -1,6 +1,6 @@
 ---
 title: 6. Peak calling with MACS2
-last_updated: Sat May  6 18:00:22 2017
+last_updated: Mon May  8 19:22:59 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_06.html
 ---
@@ -28,7 +28,7 @@ MACS2 can perform peak calling on ChIP-Seq data with and without input
 samples (Zhang et al., 2008). The following performs peak calling without
 input on all samples specified in the corresponding `args` object. Note, due to
 the small size of the sample data, MACS2 needs to be run here with the
-`–nomodel` setting. For real data sets, users want to remove this parameter 
+`nomodel` setting. For real data sets, users want to remove this parameter 
 in the corresponding `*.param` file(s).
 
 
@@ -50,11 +50,11 @@ file intermediate for running MACS2 with the corresponding input samples.
 
 ```r
 writeTargetsRef(infile="targets_mergeBamByFactor.txt", outfile="targets_bam_ref.txt", silent=FALSE, overwrite=TRUE)
-args <- systemArgs(sysma="param/macs2.param", mytargets="targets_bam_ref.txt")
-sysargs(args)[1] # Command-line parameters for first FASTQ file
-runCommandline(args)
-file.exists(outpaths(args))
-writeTargetsout(x=args, file="targets_macs.txt", overwrite=TRUE)
+args_input <- systemArgs(sysma="param/macs2.param", mytargets="targets_bam_ref.txt")
+sysargs(args_input)[1] # Command-line parameters for first FASTQ file
+runCommandline(args_input)
+file.exists(outpaths(args_input))
+writeTargetsout(x=args_input, file="targets_macs_input.txt", overwrite=TRUE)
 ```
 
 The peak calling results from MACS2 are written for each sample to
@@ -67,6 +67,7 @@ files with extensions used by MACS2.
 The following example shows how one can identify consensus preaks among two peak sets sharing either a minimum absolute overlap and/or
 minimum relative overlap using the `subsetByOverlaps` or `olRanges` functions, respectively. Note, the latter is
 a custom function imported below by sourcing it.
+
 
 ```r
 source("http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/rangeoverlapper.R")

@@ -1,6 +1,6 @@
 ---
 title: 7. Annotate peaks with genomic context
-last_updated: Sat May  6 18:00:22 2017
+last_updated: Mon May  8 19:22:59 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_07.html
 ---
@@ -26,7 +26,6 @@ for(i in seq(along=args)) {
 }
 writeTargetsout(x=args, file="targets_peakanno.txt", overwrite=TRUE)
 ```
-
 
 
 

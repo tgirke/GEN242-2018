@@ -25,10 +25,22 @@ library(systemPipeR)
 ## library(systemPipeRdata)
 ## genWorkenvir(workflow="chipseq")
 ## setwd("chipseq")
-## download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/12_ChIPseqWorkflow/systemPipeChIPseq.Rmd", "systemPipeChIPseq.Rmd")
+
+## ----genRna_workflow_command_line, eval=FALSE, engine="sh"---------------
+## Rscript -e "systemPipeRdata::genWorkenvir(workflow='chipseq')"
 
 ## ----load_custom_fct, eval=FALSE-----------------------------------------
 ## source("systemPipeChIPseq_Fct.R")
+
+## ----node_environment, eval=FALSE----------------------------------------
+## q("no") # closes R session on head node
+## srun --x11 --partition=short --mem=2gb --cpus-per-task 4 --ntasks 1 --time 2:00:00 --pty bash -l
+## R
+
+## ----r_environment, eval=FALSE-------------------------------------------
+## system("hostname") # should return name of a compute node starting with i or c
+## getwd() # checks current working directory of R session
+## dir() # returns content of current working directory
 
 ## ----load_targets_file, eval=TRUE----------------------------------------
 targetspath <- system.file("extdata", "targets_chip.txt", package="systemPipeR")
@@ -56,8 +68,14 @@ targets[1:4,-c(5,6)]
 ## sysargs(args)[1] # Command-line parameters for first FASTQ file
 ## moduleload(modules(args)) # Skip if a module system is not used
 ## system("bowtie2-build ./data/tair10.fasta ./data/tair10.fasta") # Indexes reference genome
-## runCommandline(args)
+## resources <- list(walltime="1:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
+##                   resourceList=resources)
+## waitForJobs(reg)
 ## writeTargetsout(x=args, file="targets_bam.txt", overwrite=TRUE)
+
+## ----bowtie2_align_seq, eval=FALSE---------------------------------------
+## runCommandline(args)
 
 ## ----check_files_exist, eval=FALSE---------------------------------------
 ## file.exists(outpaths(args))
@@ -105,11 +123,11 @@ targets[1:4,-c(5,6)]
 
 ## ----call_peaks_macs_withref, eval=FALSE---------------------------------
 ## writeTargetsRef(infile="targets_mergeBamByFactor.txt", outfile="targets_bam_ref.txt", silent=FALSE, overwrite=TRUE)
-## args <- systemArgs(sysma="param/macs2.param", mytargets="targets_bam_ref.txt")
-## sysargs(args)[1] # Command-line parameters for first FASTQ file
-## runCommandline(args)
-## file.exists(outpaths(args))
-## writeTargetsout(x=args, file="targets_macs.txt", overwrite=TRUE)
+## args_input <- systemArgs(sysma="param/macs2.param", mytargets="targets_bam_ref.txt")
+## sysargs(args_input)[1] # Command-line parameters for first FASTQ file
+## runCommandline(args_input)
+## file.exists(outpaths(args_input))
+## writeTargetsout(x=args_input, file="targets_macs_input.txt", overwrite=TRUE)
 
 ## ----consensus_peaks, eval=FALSE-----------------------------------------
 ## source("http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/rangeoverlapper.R")
@@ -179,7 +197,7 @@ targets[1:4,-c(5,6)]
 ## args <- systemArgs(sysma="param/macs2.param", mytargets="targets_bam_ref.txt")
 ## args_anno <- systemArgs(sysma="param/annotate_peaks.param", mytargets="targets_macs.txt")
 ## annofiles <- outpaths(args_anno)
-## gene_ids <- sapply(names(annofiles), function(x) unique(as.character(read.delim(annofiles[x])[,"gene_id"])))
+## gene_ids <- sapply(names(annofiles), function(x) unique(as.character(read.delim(annofiles[x])[,"geneId"])))
 ## load("data/GO/catdb.RData")
 ## BatchResult <- GOCluster_Report(catdb=catdb, setlist=gene_ids, method="all", id_type="gene", CLSZ=2, cutoff=0.9, gocats=c("MF", "BP", "CC"), recordSpecGO=NULL)
 

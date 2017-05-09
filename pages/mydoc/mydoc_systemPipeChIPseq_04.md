@@ -1,6 +1,6 @@
 ---
 title: 4. Alignments
-last_updated: Sat May  6 18:00:22 2017
+last_updated: Mon May  8 19:22:59 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_04.html
 ---
@@ -11,8 +11,10 @@ The NGS reads of this project will be aligned with `Bowtie2` against the
 reference genome sequence (Langmead et al., 2012). The parameter settings of the
 aligner are defined in the `bowtieSE.param` file. In ChIP-Seq experiments it is
 usually more appropriate to eliminate reads mapping to multiple locations. To
-achieve this, users want to remove the argument setting `-k 50 –non-deterministic` 
+achieve this, users want to remove the argument setting `-k 50 non-deterministic` 
 in the `bowtieSE.param` file.
+
+The following submits 18 alignment jobs via a scheduler to a computer cluster.
 
 
 ```r
@@ -20,8 +22,18 @@ args <- systemArgs(sysma="param/bowtieSE.param", mytargets="targets_chip_trim.tx
 sysargs(args)[1] # Command-line parameters for first FASTQ file
 moduleload(modules(args)) # Skip if a module system is not used
 system("bowtie2-build ./data/tair10.fasta ./data/tair10.fasta") # Indexes reference genome
-runCommandline(args)
+resources <- list(walltime="1:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
+                  resourceList=resources)
+waitForJobs(reg)
 writeTargetsout(x=args, file="targets_bam.txt", overwrite=TRUE)
+```
+
+Alternatively, one can run the alignments sequentially on a single system. 
+
+
+```r
+runCommandline(args)
 ```
 
 Check whether all BAM files have been created

@@ -1,6 +1,6 @@
 ---
 title: 11. Motif analysis
-last_updated: Sat May  6 18:00:22 2017
+last_updated: Mon May  8 19:22:59 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_11.html
 ---
