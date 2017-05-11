@@ -1,9 +1,28 @@
 ---
 title: 4. Read preprocessing
-last_updated: Wed May 10 19:32:42 2017
+last_updated: Wed May 10 19:37:04 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_04.html
 ---
+
+## Experiment definition provided by `targets` file
+
+The `targets` file defines all FASTQ files and sample comparisons of the analysis workflow.
+
+
+```r
+targetspath <- system.file("extdata", "targets_chip.txt", package="systemPipeR")
+targets <- read.delim(targetspath, comment.char = "#")
+targets[1:4,-c(5,6)]
+```
+
+```
+##                   FileName SampleName Factor SampleLong SampleReference
+## 1 ./data/SRR446027_1.fastq        M1A     M1  Mock.1h.A                
+## 2 ./data/SRR446028_1.fastq        M1B     M1  Mock.1h.B                
+## 3 ./data/SRR446029_1.fastq        A1A     A1   Avr.1h.A             M1A
+## 4 ./data/SRR446030_1.fastq        A1B     A1   Avr.1h.B             M1B
+```
 
 ## Read quality filtering and trimming
 

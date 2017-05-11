@@ -96,9 +96,6 @@ FASTQ files are usually the only inputs the user needs to provide.
 Now open the R markdown script `systemPipeChIPseq.Rmd`in your R IDE (_e.g._ vim-r or RStudio) and 
 run the workflow as outlined below. 
 
-The `systemPipeR` package needs to be loaded to perform the analysis steps shown in
-this report [@H_Backman2016-bt].
-
 
 ## Run R session on computer node
 
@@ -121,7 +118,8 @@ getwd() # checks current working directory of R session
 dir() # returns content of current working directory
 ```
 
-Load `systemPipeR` package
+The `systemPipeR` package needs to be loaded to perform the analysis steps shown in
+this report [@H_Backman2016-bt].
 
 ```{r load_systempiper, eval=TRUE}
 library(systemPipeR)
@@ -134,6 +132,8 @@ this step if this is not the case.
 source("systemPipeChIPseq_Fct.R")
 ```
 
+# Read preprocessing
+
 ## Experiment definition provided by `targets` file
 
 The `targets` file defines all FASTQ files and sample comparisons of the analysis workflow.
@@ -143,8 +143,6 @@ targetspath <- system.file("extdata", "targets_chip.txt", package="systemPipeR")
 targets <- read.delim(targetspath, comment.char = "#")
 targets[1:4,-c(5,6)]
 ```
-
-# Read preprocessing
 
 ## Read quality filtering and trimming
 

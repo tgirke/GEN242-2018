@@ -281,7 +281,6 @@ setwd(&quot;chipseq&quot;)</code></pre>
 <div id="run-workflow" class="section level1">
 <h1><span class="header-section-number">3</span> Run workflow</h1>
 <p>Now open the R markdown script <code>systemPipeChIPseq.Rmd</code>in your R IDE (<em>e.g.</em> vim-r or RStudio) and run the workflow as outlined below.</p>
-<p>The <code>systemPipeR</code> package needs to be loaded to perform the analysis steps shown in this report <span class="citation">(H Backman and Girke 2016)</span>.</p>
 <div id="run-r-session-on-computer-node" class="section level2">
 <h2><span class="header-section-number">3.1</span> Run R session on computer node</h2>
 <p>After opening the <code>Rmd</code> file of this workflow in Vim and attaching a connected R session via the <code>F2</code> (or other) key, use the following command sequence to run your R session on a computer node.</p>
@@ -293,13 +292,16 @@ R</code></pre>
 <pre class="r"><code>system(&quot;hostname&quot;) # should return name of a compute node starting with i or c 
 getwd() # checks current working directory of R session
 dir() # returns content of current working directory</code></pre>
-<p>Load <code>systemPipeR</code> package</p>
+<p>The <code>systemPipeR</code> package needs to be loaded to perform the analysis steps shown in this report <span class="citation">(H Backman and Girke 2016)</span>.</p>
 <pre class="r"><code>library(systemPipeR)</code></pre>
 <p>If applicable users can load custom functions not provided by <code>systemPipeR</code>. Skip this step if this is not the case.</p>
 <pre class="r"><code>source(&quot;systemPipeChIPseq_Fct.R&quot;)</code></pre>
 </div>
+</div>
+<div id="read-preprocessing" class="section level1">
+<h1><span class="header-section-number">4</span> Read preprocessing</h1>
 <div id="experiment-definition-provided-by-targets-file" class="section level2">
-<h2><span class="header-section-number">3.2</span> Experiment definition provided by <code>targets</code> file</h2>
+<h2><span class="header-section-number">4.1</span> Experiment definition provided by <code>targets</code> file</h2>
 <p>The <code>targets</code> file defines all FASTQ files and sample comparisons of the analysis workflow.</p>
 <pre class="r"><code>targetspath &lt;- system.file(&quot;extdata&quot;, &quot;targets_chip.txt&quot;, package=&quot;systemPipeR&quot;)
 targets &lt;- read.delim(targetspath, comment.char = &quot;#&quot;)
@@ -310,11 +312,8 @@ targets[1:4,-c(5,6)]</code></pre>
 ## 3 ./data/SRR446029_1.fastq        A1A     A1   Avr.1h.A             M1A
 ## 4 ./data/SRR446030_1.fastq        A1B     A1   Avr.1h.B             M1B</code></pre>
 </div>
-</div>
-<div id="read-preprocessing" class="section level1">
-<h1><span class="header-section-number">4</span> Read preprocessing</h1>
 <div id="read-quality-filtering-and-trimming" class="section level2">
-<h2><span class="header-section-number">4.1</span> Read quality filtering and trimming</h2>
+<h2><span class="header-section-number">4.2</span> Read quality filtering and trimming</h2>
 <p>The following example shows how one can design a custom read preprocessing function using utilities provided by the <code>ShortRead</code> package, and then apply it with <code>preprocessReads</code> in batch mode to all FASTQ samples referenced in the corresponding <code>SYSargs</code> instance (<code>args</code> object below). More detailed information on read preprocessing is provided in <code>systemPipeR's</code> main vignette.</p>
 <pre class="r"><code>args &lt;- systemArgs(sysma=&quot;param/trim.param&quot;, mytargets=&quot;targets_chip.txt&quot;)
 filterFct &lt;- function(fq, cutoff=20, Nexceptions=0) {
@@ -325,7 +324,7 @@ preprocessReads(args=args, Fct=&quot;filterFct(fq, cutoff=20, Nexceptions=0)&quo
 writeTargetsout(x=args, file=&quot;targets_chip_trim.txt&quot;, overwrite=TRUE)</code></pre>
 </div>
 <div id="fastq-quality-report" class="section level2">
-<h2><span class="header-section-number">4.2</span> FASTQ quality report</h2>
+<h2><span class="header-section-number">4.3</span> FASTQ quality report</h2>
 <p>The following <code>seeFastq</code> and <code>seeFastqPlot</code> functions generate and plot a series of useful quality statistics for a set of FASTQ files including per cycle quality box plots, base proportions, base-level quality trends, relative k-mer diversity, length and occurrence distribution of reads, number of reads above quality cutoffs and mean quality distribution. The results are written to a PDF file named <code>fastqReport.pdf</code>.</p>
 <pre class="r"><code>args &lt;- systemArgs(sysma=&quot;param/tophat.param&quot;, mytargets=&quot;targets_chip.txt&quot;)
 library(BiocParallel); library(BatchJobs)
