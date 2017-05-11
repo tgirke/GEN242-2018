@@ -1,6 +1,6 @@
 ---
 title: 2. Workflow environment
-last_updated: Wed May 10 20:13:20 2017
+last_updated: Wed May 10 20:16:18 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_02.html
 ---
@@ -78,7 +78,7 @@ this step if this is not the case.
 
 
 ```r
-source("systemPipeChIPseq_Fct.R")
+source("systemPipeVARseq_Fct.R")
 ```
 
 <br><br><center><a href="mydoc_systemPipeVARseq_01.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page

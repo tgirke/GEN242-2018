@@ -1,7 +1,7 @@
 ---
 title: VAR-Seq Workflow Template 
 author: "First/last name (first.last@ucr.edu)"
-date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
+date: "Last update: 10 May, 2017" 
 output:
   html_document:
     toc: true
@@ -22,27 +22,21 @@ bibliography: bibtex.bib
 Rscript -e "rmarkdown::render('systemPipeVARseq.Rmd', c('html_document'), clean=F); knitr::knit('systemPipeVARseq.Rmd', tangle=TRUE)"; Rscript ../md2jekyll.R systemPipeVARseq.knit.md 14; Rscript -e "rmarkdown::render('systemPipeVARseq.Rmd', c('pdf_document'))"
 -->
 
-```{r style, echo = FALSE, results = 'asis'}
-BiocStyle::markdown()
-options(width=100, max.print=1000)
-knitr::opts_chunk$set(
-    eval=as.logical(Sys.getenv("KNITR_EVAL", "TRUE")),
-    cache=as.logical(Sys.getenv("KNITR_CACHE", "TRUE")))
-```
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector("h1").className = "title";
+});
+</script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  var links = document.links;  
+  for (var i = 0, linksLength = links.length; i < linksLength; i++)
+    if (links[i].hostname != window.location.hostname)
+      links[i].target = '_blank';
+});
+</script>
 
-```{r setup, echo=FALSE, messages=FALSE, warnings=FALSE}
-suppressPackageStartupMessages({
-    library(systemPipeR)
-    library(BiocParallel)
-    library(Biostrings)
-    library(Rsamtools)
-    library(GenomicRanges)
-    library(ggplot2)
-    library(GenomicAlignments)
-    library(ShortRead)
-    library(ape)
-})
-```
+
 
 # Introduction
 
@@ -68,7 +62,8 @@ Load workflow environment with sample data into your current working
 directory. The sample data are described
 [here](http://www.bioconductor.org/packages/devel/bioc/vignettes/systemPipeR/inst/doc/systemPipeR.html#load-sample-data-and-workflow-templates).
 
-```{r genVAR_workflow, eval=FALSE}
+
+```r
 library(systemPipeRdata)
 genWorkenvir(workflow="varseq")
 setwd("varseq")
@@ -76,7 +71,8 @@ setwd("varseq")
 
 Alternatively, this can be done from the command-line as follows:
 
-```{sh genVar_workflow_command_line, eval=FALSE}
+
+```sh
 Rscript -e "systemPipeRdata::genWorkenvir(workflow='varseq')"
 ```
 
@@ -103,7 +99,8 @@ After opening the `Rmd` file of this workflow in Vim and attaching a connected
 R session via the `F2` (or other) key, use the following command sequence to run your R
 session on a computer node.
 
-```{r node_environment, eval=FALSE}
+
+```r
 q("no") # closes R session on head node
 srun --x11 --partition=short --mem=2gb --cpus-per-task 4 --ntasks 1 --time 2:00:00 --pty bash -l
 module load R/3.3.0
@@ -112,7 +109,8 @@ R
 
 Now check whether your R session is running on a computer node of the cluster and assess your environment.
 
-```{r r_environment, eval=FALSE}
+
+```r
 system("hostname") # should return name of a compute node starting with i or c 
 getwd() # checks current working directory of R session
 dir() # returns content of current working directory
@@ -121,14 +119,16 @@ dir() # returns content of current working directory
 The `systemPipeR` package needs to be loaded to perform the analysis steps shown in
 this report [@H_Backman2016-bt].
 
-```{r load_systempiper, eval=TRUE}
+
+```r
 library(systemPipeR)
 ```
 
 If applicable users can load custom functions not provided by `systemPipeR`. Skip
 this step if this is not the case.
 
-```{r load_custom_fct, eval=FALSE}
+
+```r
 source("systemPipeVARseq_Fct.R")
 ```
 
@@ -138,10 +138,33 @@ source("systemPipeVARseq_Fct.R")
 
 The `targets` file defines all FASTQ files and sample comparisons of the analysis workflow.
 
-```{r load_targets_file, eval=TRUE}
+
+```r
 targetspath <- system.file("extdata", "targetsPE.txt", package="systemPipeR")
 targets <- read.delim(targetspath, comment.char = "#")
 targets[,-c(5,6)]
+```
+
+```
+##                   FileName1                FileName2 SampleName Factor        Date
+## 1  ./data/SRR446027_1.fastq ./data/SRR446027_2.fastq        M1A     M1 23-Mar-2012
+## 2  ./data/SRR446028_1.fastq ./data/SRR446028_2.fastq        M1B     M1 23-Mar-2012
+## 3  ./data/SRR446029_1.fastq ./data/SRR446029_2.fastq        A1A     A1 23-Mar-2012
+## 4  ./data/SRR446030_1.fastq ./data/SRR446030_2.fastq        A1B     A1 23-Mar-2012
+## 5  ./data/SRR446031_1.fastq ./data/SRR446031_2.fastq        V1A     V1 23-Mar-2012
+## 6  ./data/SRR446032_1.fastq ./data/SRR446032_2.fastq        V1B     V1 23-Mar-2012
+## 7  ./data/SRR446033_1.fastq ./data/SRR446033_2.fastq        M6A     M6 23-Mar-2012
+## 8  ./data/SRR446034_1.fastq ./data/SRR446034_2.fastq        M6B     M6 23-Mar-2012
+## 9  ./data/SRR446035_1.fastq ./data/SRR446035_2.fastq        A6A     A6 23-Mar-2012
+## 10 ./data/SRR446036_1.fastq ./data/SRR446036_2.fastq        A6B     A6 23-Mar-2012
+## 11 ./data/SRR446037_1.fastq ./data/SRR446037_2.fastq        V6A     V6 23-Mar-2012
+## 12 ./data/SRR446038_1.fastq ./data/SRR446038_2.fastq        V6B     V6 23-Mar-2012
+## 13 ./data/SRR446039_1.fastq ./data/SRR446039_2.fastq       M12A    M12 23-Mar-2012
+## 14 ./data/SRR446040_1.fastq ./data/SRR446040_2.fastq       M12B    M12 23-Mar-2012
+## 15 ./data/SRR446041_1.fastq ./data/SRR446041_2.fastq       A12A    A12 23-Mar-2012
+## 16 ./data/SRR446042_1.fastq ./data/SRR446042_2.fastq       A12B    A12 23-Mar-2012
+## 17 ./data/SRR446043_1.fastq ./data/SRR446043_2.fastq       V12A    V12 23-Mar-2012
+## 18 ./data/SRR446044_1.fastq ./data/SRR446044_2.fastq       V12B    V12 23-Mar-2012
 ```
 
 
@@ -150,7 +173,8 @@ targets[,-c(5,6)]
 The following removes reads with low quality base calls (here Phred
 scores below 20) from all FASTQ files.
 
-```{r preprocess_reads, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/trimPE.param", mytargets="targetsPE.txt")[1:4] # Note: subsetting!
 filterFct <- function(fq, cutoff=20, Nexceptions=0) {
     qcount <- rowSums(as(quality(fq), "matrix") <= cutoff)
@@ -170,13 +194,14 @@ diversity, length and occurrence distribution of reads, number of reads
 above quality cutoffs and mean quality distribution. The results are
 written to a PDF file named `fastqReport.pdf`.
 
-```{r fastq_report, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/tophat.param", mytargets="targets.txt")
 fqlist <- seeFastq(fastq=infile1(args), batchsize=100000, klength=8)
 pdf("./results/fastqReport.pdf", height=18, width=4*length(fqlist))
 seeFastqPlot(fqlist)
 dev.off()
-``` 
+```
 
 ![](fastqReport.png)
 <div align="center">Figure 1: FASTQ quality report for 18 samples</div></br>
@@ -190,7 +215,8 @@ sequence using the highly variant tolerant short read aligner `BWA-MEM`
 [@Li2013-oy; @Li2009-oc]. The parameter settings of the aligner are
 defined in the `bwa.param` file.
 
-```{r load_sysargs, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/bwa.param", mytargets="targets.txt")
 sysargs(args)[1] # Command-line parameters for first FASTQ file
 ```
@@ -198,7 +224,8 @@ sysargs(args)[1] # Command-line parameters for first FASTQ file
 
 Runs the alignments sequentially (_e.g._ on a single machine)
 
-```{r bwa_serial, eval=FALSE}
+
+```r
 moduleload(modules(args))
 system("bwa index -a bwtsw ./data/tair10.fasta")
 bampaths <- runCommandline(args=args)
@@ -207,7 +234,8 @@ bampaths <- runCommandline(args=args)
 Alternatively, the alignment jobs can be submitted to a compute cluster,
 here using 72 CPU cores (18 `qsub` processes each with 4 CPU cores).
 
-```{r bwa_parallel, eval=FALSE}
+
+```r
 moduleload(modules(args))
 system("bwa index -a bwtsw ./data/tair10.fasta")
 resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
@@ -219,7 +247,8 @@ writeTargetsout(x=args, file="targets_bam.txt", overwrite=TRUE)
 
 Check whether all BAM files have been created
 
-```{r check_file_presence, eval=FALSE}
+
+```r
 file.exists(outpaths(args))
 ```
 
@@ -229,7 +258,8 @@ An alternative variant tolerant aligner is `gsnap` from the `gmapR` package
 [@Wu2010-iq]. The following code shows how to run this aligner on
 multiple nodes of a computer cluster that uses Torque as scheduler.
 
-```{r gsnap_parallel, eval=FALSE}
+
+```r
 library(gmapR); library(BiocParallel); library(BatchJobs)
 args <- systemArgs(sysma="param/gsnap.param", mytargets="targetsPE.txt")
 gmapGenome <- GmapGenome(systemPipeR::reference(args), directory="data", name="gmap_tair10chr", create=TRUE)
@@ -253,7 +283,8 @@ writeTargetsout(x=args, file="targets_gsnap_bam.txt", overwrite=TRUE)
 The following generates a summary table of the number of reads in each
 sample and how many of them aligned to the reference.
 
-```{r align_stats, eval=FALSE}
+
+```r
 read_statsDF <- alignStats(args=args) 
 write.table(read_statsDF, "results/alignStats.xls", row.names=FALSE, quote=FALSE, sep="\t")
 ```
@@ -265,7 +296,8 @@ The `symLink2bam` function creates symbolic links to view the BAM alignment file
 genome browser such as IGV. The corresponding URLs are written to a file
 with a path specified under `urlfile`, here `IGVurl.txt`.
 
-```{r symbolic_links, eval=FALSE}
+
+```r
 symLink2bam(sysargs=args, htmldir=c("~/.html/", "projects/gen242/"), 
             urlbase="http://biocluster.ucr.edu/~tgirke/", 
             urlfile="./results/IGVurl.txt")
@@ -294,7 +326,8 @@ current working directory. Samples files for `gatk.param` and
 `gatk_run.sh` are available in the `param` subdirectory
 provided by `systemPipeRdata`.
 
-```{r run_gatk, eval=FALSE}
+
+```r
 moduleload("picard/1.130"); moduleload("samtools/1.3")
 system("picard CreateSequenceDictionary R=./data/tair10.fasta O=./data/tair10.dict")
 system("samtools faidx data/tair10.fasta")
@@ -313,7 +346,8 @@ The following runs the variant calling with `BCFtools`. This step requires
 in the current working directory the parameter file `sambcf.param` and the bash script 
 `sambcf_run.sh`.
 
-```{r run_bcftools, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/sambcf.param", mytargets="targets_bam.txt")
 resources <- list(walltime="20:00:00", ntasks=1, ncpus=1, memory="10G")
 reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
@@ -325,7 +359,8 @@ writeTargetsout(x=args, file="targets_sambcf.txt", overwrite=TRUE)
 
 ## Variant calling with `VariantTools`  
 
-```{r run_varianttools, eval=FALSE}
+
+```r
 library(gmapR); library(BiocParallel); library(BatchJobs)
 args <- systemArgs(sysma="param/vartools.param", mytargets="targets_gsnap_bam.txt")
 f <- function(x) {
@@ -350,7 +385,8 @@ writeTargetsout(x=args, file="targets_vartools.txt", overwrite=TRUE)
 VCF files can be imported into R with the `readVcf` function. Both `VCF` and `VRanges` objects provide
 convenient data structure for working with variant data (_e.g._ SNP quality filtering). 
 
-```{r inspect_vcf, eval=FALSE}
+
+```r
 library(VariantAnnotation)
 args <- systemArgs(sysma="param/filter_gatk.param", mytargets="targets_gatk.txt")
 vcf <- readVcf(infile1(args)[1], "A. thaliana")
@@ -384,7 +420,8 @@ very small, the chosen settings are unreasonabley relaxed. A more
 reasonable filter setting is given in the line below (here commented
 out).
 
-```{r filter_gatk, eval=FALSE}
+
+```r
 library(VariantAnnotation)
 library(BBmisc) # Defines suppressAll()
 args <- systemArgs(sysma="param/filter_gatk.param", mytargets="targets_gatk.txt")[1:4]
@@ -401,7 +438,8 @@ The following shows how to filter the VCF files generated by `BCFtools` using
 similar parameter settings as in the previous filtering of the GATK
 results.
 
-```{r filter_bcftools, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/filter_sambcf.param", mytargets="targets_sambcf.txt")[1:4]
 filter <- "rowSums(vr) >= 2 & (rowSums(vr[,3:4])/rowSums(vr[,1:4]) >= 0.8)"
 # filter <- "rowSums(vr) >= 20 & (rowSums(vr[,3:4])/rowSums(vr[,1:4]) >= 0.8)"
@@ -415,7 +453,8 @@ The following shows how to filter the VCF files generated by `VariantTools` usin
 similar parameter settings as in the previous filtering of the GATK
 results.
 
-```{r filter_varianttools, eval=FALSE}
+
+```r
 library(VariantAnnotation)
 library(BBmisc) # Defines suppressAll()
 args <- systemArgs(sysma="param/filter_vartools.param", mytargets="targets_vartools.txt")[1:4]
@@ -426,7 +465,8 @@ writeTargetsout(x=args, file="targets_vartools_filtered.txt", overwrite=TRUE)
 ```
 
 Check filtering outcome for one sample
-```{r check_filter, eval=FALSE}
+
+```r
 length(as(readVcf(infile1(args)[1], genome="Ath"), "VRanges")[,1])
 length(as(readVcf(outpaths(args)[1], genome="Ath"), "VRanges")[,1])
 ```
@@ -444,7 +484,8 @@ files which are stored in a new `SYSargs` instance.
 ## Basics of annotating variants
 
 Variants overlapping with common annotation features can be identified with `locateVariants`.
-```{r annotate_basics, eval=FALSE}
+
+```r
 library("GenomicFeatures")
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_gatk_filtered.txt")
 txdb <- loadDb("./data/tair10.sqlite")
@@ -453,14 +494,16 @@ locateVariants(vcf, txdb, CodingVariants())
 ```
 Synonymous/non-synonymous variants of coding sequences are computed by the predictCoding function for variants overlapping with coding regions.
 
-```{r annotate_basics_non-synon, eval=FALSE}
+
+```r
 fa <- FaFile(systemPipeR::reference(args))
 predictCoding(vcf, txdb, seqSource=fa)
 ```
 
 ## Annotate filtered variants called by `GATK`
 
-```{r annotate_gatk, eval=FALSE}
+
+```r
 library("GenomicFeatures")
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_gatk_filtered.txt")
 txdb <- loadDb("./data/tair10.sqlite")
@@ -470,7 +513,8 @@ suppressAll(variantReport(args=args, txdb=txdb, fa=fa, organism="A. thaliana"))
 
 ## Annotate filtered variants called by `BCFtools`
 
-```{r annotate_bcftools, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_sambcf_filtered.txt")
 txdb <- loadDb("./data/tair10.sqlite")
 fa <- FaFile(systemPipeR::reference(args))
@@ -479,7 +523,8 @@ suppressAll(variantReport(args=args, txdb=txdb, fa=fa, organism="A. thaliana"))
 
 ## Annotate filtered variants called by `VariantTools`
 
-```{r annotate_varianttools, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_vartools_filtered.txt")
 txdb <- loadDb("./data/tair10.sqlite")
 fa <- FaFile(systemPipeR::reference(args))
@@ -487,7 +532,8 @@ suppressAll(variantReport(args=args, txdb=txdb, fa=fa, organism="A. thaliana"))
 ```
 
 View annotation result for single sample
-```{r view_annotation, eval=FALSE}
+
+```r
 read.delim(outpaths(args)[1])[38:40,]
 ```
 
@@ -504,7 +550,8 @@ the annotation reports. To omit filtering, one can use the setting
 
 ## Combine results from `GATK`  
 
-```{r combine_gatk, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_gatk_filtered.txt")
 combineDF <- combineVarReports(args, filtercol=c(Consequence="nonsynonymous"))
 write.table(combineDF, "./results/combineDF_nonsyn_gatk.xls", quote=FALSE, row.names=FALSE, sep="\t")
@@ -512,7 +559,8 @@ write.table(combineDF, "./results/combineDF_nonsyn_gatk.xls", quote=FALSE, row.n
 
 ## Combine results from `BCFtools`  
 
-```{r combine_bcftools, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_sambcf_filtered.txt")
 combineDF <- combineVarReports(args, filtercol=c(Consequence="nonsynonymous"))
 write.table(combineDF, "./results/combineDF_nonsyn_sambcf.xls", quote=FALSE, row.names=FALSE, sep="\t")
@@ -520,7 +568,8 @@ write.table(combineDF, "./results/combineDF_nonsyn_sambcf.xls", quote=FALSE, row
 
 ## Combine results from `VariantTools`
 
-```{r combine_varianttools, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_vartools_filtered.txt")
 combineDF <- combineVarReports(args, filtercol=c(Consequence="nonsynonymous"))
 write.table(combineDF, "./results/combineDF_nonsyn_vartools.xls", quote=FALSE, row.names=FALSE, sep="\t")
@@ -534,7 +583,8 @@ included in the anntation reports.
 
 ## Summary for `GATK`
 
-```{r summary_gatk, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_gatk_filtered.txt")
 varSummary(args)
 write.table(varSummary(args), "./results/variantStats_gatk.xls", quote=FALSE, col.names = NA, sep="\t")
@@ -542,7 +592,8 @@ write.table(varSummary(args), "./results/variantStats_gatk.xls", quote=FALSE, co
 
 ## Summary for `BCFtools`
 
-```{r summary_bcftools, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_sambcf_filtered.txt")
 varSummary(args)
 write.table(varSummary(args), "./results/variantStats_sambcf.xls", quote=FALSE, col.names = NA, sep="\t")
@@ -550,7 +601,8 @@ write.table(varSummary(args), "./results/variantStats_sambcf.xls", quote=FALSE, 
 
 ## Summary for `VariantTools`  
 
-```{r summary_varianttools, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_vartools_filtered.txt")
 varSummary(args)
 write.table(varSummary(args), "./results/variantStats_vartools.xls", quote=FALSE, col.names = NA, sep="\t")
@@ -563,7 +615,8 @@ identify common and unique variants reported for different samples
 and/or variant callers. The below generates a 4-way venn diagram
 comparing four sampes for each of the two variant callers.
 
-```{r venn_diagram, eval=FALSE}
+
+```r
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_gatk_filtered.txt")
 varlist <- sapply(names(outpaths(args))[1:4], function(x) as.character(read.delim(outpaths(args)[x])$VARID))
 vennset_gatk <- overLapper(varlist, type="vennsets")
@@ -586,7 +639,8 @@ dev.off()
 
 The following plots a selected variant with `ggbio`.
 
-```{r plot_variant, eval=FALSE}
+
+```r
 library(ggbio)
 mychr <- "ChrC"; mystart <- 11000; myend <- 13000
 args <- systemArgs(sysma="param/bwa.param", mytargets="targets.txt")
@@ -605,8 +659,56 @@ dev.off()
 
 # Version Information
 
-```{r sessionInfo}
+
+```r
 sessionInfo()
+```
+
+```
+## R version 3.4.0 (2017-04-21)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Ubuntu 14.04.5 LTS
+## 
+## Matrix products: default
+## BLAS: /usr/lib/libblas/libblas.so.3.0
+## LAPACK: /usr/lib/lapack/liblapack.so.3.0
+## 
+## locale:
+##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C               LC_TIME=en_US.UTF-8       
+##  [4] LC_COLLATE=en_US.UTF-8     LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                  LC_ADDRESS=C              
+## [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+## 
+## attached base packages:
+## [1] stats4    parallel  methods   stats     graphics  utils     datasets  grDevices base     
+## 
+## other attached packages:
+##  [1] ape_4.1                    ggplot2_2.2.1              systemPipeR_1.10.0        
+##  [4] ShortRead_1.34.0           GenomicAlignments_1.12.0   SummarizedExperiment_1.6.0
+##  [7] DelayedArray_0.2.0         matrixStats_0.52.2         Biobase_2.36.0            
+## [10] BiocParallel_1.10.0        Rsamtools_1.28.0           Biostrings_2.44.0         
+## [13] XVector_0.16.0             GenomicRanges_1.28.0       GenomeInfoDb_1.12.0       
+## [16] IRanges_2.10.0             S4Vectors_0.14.0           BiocGenerics_0.22.0       
+## [19] BiocStyle_2.4.0           
+## 
+## loaded via a namespace (and not attached):
+##  [1] edgeR_3.18.0            splines_3.4.0           latticeExtra_0.6-28     RBGL_1.52.0            
+##  [5] GenomeInfoDbData_0.99.0 yaml_2.1.14             Category_2.42.0         RSQLite_1.1-2          
+##  [9] backports_1.0.5         lattice_0.20-35         limma_3.32.0            digest_0.6.12          
+## [13] RColorBrewer_1.1-2      checkmate_1.8.2         colorspace_1.3-2        htmltools_0.3.5        
+## [17] Matrix_1.2-8            plyr_1.8.4              GSEABase_1.38.0         XML_3.98-1.6           
+## [21] pheatmap_1.0.8          biomaRt_2.32.0          genefilter_1.58.0       zlibbioc_1.22.0        
+## [25] xtable_1.8-2            GO.db_3.4.1             scales_0.4.1            brew_1.0-6             
+## [29] tibble_1.3.0            annotate_1.54.0         GenomicFeatures_1.28.0  lazyeval_0.2.0         
+## [33] survival_2.41-3         magrittr_1.5            memoise_1.1.0           evaluate_0.10          
+## [37] fail_1.3                nlme_3.1-131            hwriter_1.3.2           GOstats_2.42.0         
+## [41] graph_1.54.0            tools_3.4.0             BBmisc_1.11             stringr_1.2.0          
+## [45] sendmailR_1.2-1         munsell_0.4.3           locfit_1.5-9.1          AnnotationDbi_1.38.0   
+## [49] compiler_3.4.0          grid_3.4.0              RCurl_1.95-4.8          rjson_0.2.15           
+## [53] AnnotationForge_1.18.0  bitops_1.0-6            base64enc_0.1-3         rmarkdown_1.5          
+## [57] codetools_0.2-15        gtable_0.2.0            DBI_0.6-1               knitr_1.15.1           
+## [61] rtracklayer_1.36.0      rprojroot_1.2           stringi_1.1.5           BatchJobs_1.6          
+## [65] Rcpp_0.12.10
 ```
 
 # Funding

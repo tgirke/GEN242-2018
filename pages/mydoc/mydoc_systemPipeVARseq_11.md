@@ -1,6 +1,6 @@
 ---
 title: 11. Plot variants programmatically 
-last_updated: Wed May 10 20:13:20 2017
+last_updated: Wed May 10 20:16:18 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_11.html
 ---

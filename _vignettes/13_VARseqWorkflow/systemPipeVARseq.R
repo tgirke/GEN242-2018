@@ -41,7 +41,7 @@ suppressPackageStartupMessages({
 library(systemPipeR)
 
 ## ----load_custom_fct, eval=FALSE-----------------------------------------
-## source("systemPipeChIPseq_Fct.R")
+## source("systemPipeVARseq_Fct.R")
 
 ## ----load_targets_file, eval=TRUE----------------------------------------
 targetspath <- system.file("extdata", "targetsPE.txt", package="systemPipeR")
