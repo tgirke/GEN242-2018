@@ -1,50 +1,73 @@
 ---
-title: 3. Read preprocessing
-last_updated: Mon May  8 19:22:59 2017
+title: 3. Run workflow
+last_updated: Wed May 10 19:32:42 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_03.html
 ---
 
-## Read quality filtering and trimming
+Now open the R markdown script `systemPipeChIPseq.Rmd`in your R IDE (_e.g._ vim-r or RStudio) and 
+run the workflow as outlined below. 
 
-The following example shows how one can design a custom read
-preprocessing function using utilities provided by the `ShortRead` package, and then
-apply it with `preprocessReads` in batch mode to all FASTQ samples referenced in the
-corresponding `SYSargs` instance (`args` object below). More detailed information on
-read preprocessing is provided in `systemPipeR's` main vignette.
+The `systemPipeR` package needs to be loaded to perform the analysis steps shown in
+this report (H Backman et al., 2016).
 
 
-```r
-args <- systemArgs(sysma="param/trim.param", mytargets="targets_chip.txt")
-filterFct <- function(fq, cutoff=20, Nexceptions=0) {
-    qcount <- rowSums(as(quality(fq), "matrix") <= cutoff)
-    fq[qcount <= Nexceptions] # Retains reads where Phred scores are >= cutoff with N exceptions
-}
-preprocessReads(args=args, Fct="filterFct(fq, cutoff=20, Nexceptions=0)", batchsize=100000)
-writeTargetsout(x=args, file="targets_chip_trim.txt", overwrite=TRUE)
-```
+## Run R session on computer node
 
-## FASTQ quality report
-
-The following `seeFastq` and `seeFastqPlot` functions generate and plot a series of useful quality
-statistics for a set of FASTQ files including per cycle quality box
-plots, base proportions, base-level quality trends, relative k-mer
-diversity, length and occurrence distribution of reads, number of reads
-above quality cutoffs and mean quality distribution. The results are
-written to a PDF file named `fastqReport.pdf`.
+After opening the `Rmd` file of this workflow in Vim and attaching a connected
+R session via the `F2` (or other) key, use the following command sequence to run your R
+session on a computer node. 
 
 
 ```r
-args <- systemArgs(sysma="param/tophat.param", mytargets="targets_chip.txt")
-fqlist <- seeFastq(fastq=infile1(args), batchsize=100000, klength=8)
-pdf("./results/fastqReport.pdf", height=18, width=4*length(fqlist))
-seeFastqPlot(fqlist)
-dev.off()
+q("no") # closes R session on head node
+srun --x11 --partition=short --mem=2gb --cpus-per-task 4 --ntasks 1 --time 2:00:00 --pty bash -l
+module load R/3.3.0
+R
 ```
 
-![](./pages/mydoc/systemPipeChIPseq_files/fastqReport.png)
-<div align="center">Figure 1: FASTQ quality report for 18 samples</div>
+Now check whether your R session is running on a computer node of the cluster and assess your environment.
 
+
+```r
+system("hostname") # should return name of a compute node starting with i or c 
+getwd() # checks current working directory of R session
+dir() # returns content of current working directory
+```
+
+Load `systemPipeR` package
+
+
+```r
+library(systemPipeR)
+```
+
+If applicable users can load custom functions not provided by `systemPipeR`. Skip
+this step if this is not the case.
+
+
+```r
+source("systemPipeChIPseq_Fct.R")
+```
+
+## Experiment definition provided by `targets` file
+
+The `targets` file defines all FASTQ files and sample comparisons of the analysis workflow.
+
+
+```r
+targetspath <- system.file("extdata", "targets_chip.txt", package="systemPipeR")
+targets <- read.delim(targetspath, comment.char = "#")
+targets[1:4,-c(5,6)]
+```
+
+```
+##                   FileName SampleName Factor SampleLong SampleReference
+## 1 ./data/SRR446027_1.fastq        M1A     M1  Mock.1h.A                
+## 2 ./data/SRR446028_1.fastq        M1B     M1  Mock.1h.B                
+## 3 ./data/SRR446029_1.fastq        A1A     A1   Avr.1h.A             M1A
+## 4 ./data/SRR446030_1.fastq        A1B     A1   Avr.1h.B             M1B
+```
 
 <br><br><center><a href="mydoc_systemPipeChIPseq_02.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_systemPipeChIPseq_04.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

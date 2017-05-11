@@ -1,61 +1,59 @@
 ---
-title: 12. Version Information
-last_updated: Mon May  8 19:22:59 2017
+title: 12. Motif analysis
+last_updated: Wed May 10 19:32:42 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_12.html
 ---
 
+## Parse DNA sequences of peak regions from genome
+
+Enrichment analysis of known DNA binding motifs or _de novo_ discovery
+of novel motifs requires the DNA sequences of the identified peak
+regions. To parse the corresponding sequences from the reference genome,
+the `getSeq` function from the `Biostrings` package can be used. The 
+following example parses the sequences for each peak set and saves the 
+results to separate FASTA files, one for each peak set. In addition, the 
+sequences in the FASTA files are ranked (sorted) by increasing p-values 
+as expected by some motif discovery tools, such as `BCRANK`.
+
 
 ```r
-sessionInfo()
+library(Biostrings); library(seqLogo); library(BCRANK)
+args <- systemArgs(sysma="param/annotate_peaks.param", mytargets="targets_macs.txt")
+rangefiles <- infile1(args)
+for(i in seq(along=rangefiles)) {
+    df <- read.delim(rangefiles[i], comment="#")
+    peaks <- as(df, "GRanges")
+    names(peaks) <- paste0(as.character(seqnames(peaks)), "_", start(peaks), "-", end(peaks))
+    peaks <- peaks[order(values(peaks)$X.log10.pvalue, decreasing=TRUE)]
+    pseq <- getSeq(FaFile("./data/tair10.fasta"), peaks)
+    names(pseq) <- names(peaks)
+    writeXStringSet(pseq, paste0(rangefiles[i], ".fasta")) 
+}
 ```
 
+## Motif discovery with `BCRANK`
+
+The Bioconductor package `BCRANK` is one of the many tools available for 
+_de novo_ discovery of DNA binding motifs in peak regions of ChIP-Seq
+experiments. The given example applies this method on the first peak
+sample set and plots the sequence logo of the highest ranking motif.
+
+
+```r
+set.seed(0)
+BCRANKout <- bcrank(paste0(rangefiles[1], ".fasta"), restarts=25, use.P1=TRUE, use.P2=TRUE)
+toptable(BCRANKout)
+topMotif <- toptable(BCRANKout, 1)
+weightMatrix <- pwm(topMotif, normalize = FALSE)
+weightMatrixNormalized <- pwm(topMotif, normalize = TRUE)
+pdf("results/seqlogo.pdf")
+seqLogo(weightMatrixNormalized)
+dev.off()
 ```
-## R version 3.4.0 (2017-04-21)
-## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 14.04.5 LTS
-## 
-## Matrix products: default
-## BLAS: /usr/lib/libblas/libblas.so.3.0
-## LAPACK: /usr/lib/lapack/liblapack.so.3.0
-## 
-## locale:
-##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C               LC_TIME=en_US.UTF-8       
-##  [4] LC_COLLATE=en_US.UTF-8     LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                  LC_ADDRESS=C              
-## [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
-## 
-## attached base packages:
-## [1] stats4    parallel  methods   stats     graphics  utils     datasets  grDevices base     
-## 
-## other attached packages:
-##  [1] ape_4.1                    ggplot2_2.2.1              systemPipeR_1.10.0        
-##  [4] ShortRead_1.34.0           GenomicAlignments_1.12.0   SummarizedExperiment_1.6.0
-##  [7] DelayedArray_0.2.0         matrixStats_0.52.2         Biobase_2.36.0            
-## [10] BiocParallel_1.10.0        Rsamtools_1.28.0           Biostrings_2.44.0         
-## [13] XVector_0.16.0             GenomicRanges_1.28.0       GenomeInfoDb_1.12.0       
-## [16] IRanges_2.10.0             S4Vectors_0.14.0           BiocGenerics_0.22.0       
-## [19] BiocStyle_2.4.0           
-## 
-## loaded via a namespace (and not attached):
-##  [1] edgeR_3.18.0            splines_3.4.0           latticeExtra_0.6-28     RBGL_1.52.0            
-##  [5] GenomeInfoDbData_0.99.0 yaml_2.1.14             Category_2.42.0         RSQLite_1.1-2          
-##  [9] backports_1.0.5         lattice_0.20-35         limma_3.32.0            digest_0.6.12          
-## [13] RColorBrewer_1.1-2      checkmate_1.8.2         colorspace_1.3-2        htmltools_0.3.5        
-## [17] Matrix_1.2-8            plyr_1.8.4              GSEABase_1.38.0         XML_3.98-1.6           
-## [21] pheatmap_1.0.8          biomaRt_2.32.0          genefilter_1.58.0       zlibbioc_1.22.0        
-## [25] xtable_1.8-2            GO.db_3.4.1             scales_0.4.1            brew_1.0-6             
-## [29] tibble_1.3.0            annotate_1.54.0         GenomicFeatures_1.28.0  lazyeval_0.2.0         
-## [33] survival_2.41-3         magrittr_1.5            memoise_1.1.0           evaluate_0.10          
-## [37] fail_1.3                nlme_3.1-131            hwriter_1.3.2           GOstats_2.42.0         
-## [41] graph_1.54.0            tools_3.4.0             BBmisc_1.11             stringr_1.2.0          
-## [45] sendmailR_1.2-1         munsell_0.4.3           locfit_1.5-9.1          AnnotationDbi_1.38.0   
-## [49] compiler_3.4.0          grid_3.4.0              RCurl_1.95-4.8          rjson_0.2.15           
-## [53] AnnotationForge_1.18.0  bitops_1.0-6            base64enc_0.1-3         rmarkdown_1.5          
-## [57] codetools_0.2-15        gtable_0.2.0            DBI_0.6-1               knitr_1.15.1           
-## [61] rtracklayer_1.36.0      rprojroot_1.2           stringi_1.1.5           BatchJobs_1.6          
-## [65] Rcpp_0.12.10
-```
+
+![](./pages/mydoc/systemPipeChIPseq_files/seqlogo.png)
+<div align="center">Figure 2: One of the motifs identified by `BCRANK`</div>
 
 
 <br><br><center><a href="mydoc_systemPipeChIPseq_11.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page

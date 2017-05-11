@@ -1,12 +1,12 @@
 ---
 title: ChIP-Seq Workflow Template  <br> <br> 1. Introduction
-last_updated: Mon May  8 19:22:59 2017
+last_updated: Wed May 10 19:32:42 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_01.html
 ---
 First/last name (first.last@ucr.edu)
 
-Last update: 08 May, 2017 
+Last update: 10 May, 2017 
 
 Alternative formats of this tutorial:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/systemPipeChIPseq.html){:target="_blank"} ],
@@ -29,6 +29,7 @@ Typically, users want to specify here all information relevant for the
 analysis of their NGS study. This includes detailed descriptions of
 FASTQ files, experimental design, reference genome, gene annotations,
 etc.
+
 
 <br><br><center><a href="mydoc_systemPipeChIPseq_01.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_systemPipeChIPseq_02.html"><img src="images/right_arrow.png" alt="Next page."></a></center>
