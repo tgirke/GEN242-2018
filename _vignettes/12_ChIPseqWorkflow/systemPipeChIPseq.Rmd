@@ -62,7 +62,9 @@ FASTQ files, experimental design, reference genome, gene annotations,
 etc.
 
 
-# Generate workflow environment
+# Workflow environment
+
+## Generate workflow environment
 
 Load workflow environment with sample data into your current working
 directory. The sample data are described
@@ -91,7 +93,7 @@ and substitute all test data for their own data. To rerun an established
 workflow on new data, the initial `targets` file along with the corresponding
 FASTQ files are usually the only inputs the user needs to provide.
 
-# Run workflow
+## Run workflow
 
 Now open the R markdown script `systemPipeChIPseq.Rmd`in your R IDE (_e.g._ vim-r or RStudio) and 
 run the workflow as outlined below. 

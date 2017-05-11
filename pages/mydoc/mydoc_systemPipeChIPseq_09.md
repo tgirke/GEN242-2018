@@ -1,25 +1,25 @@
 ---
-title: 9. Count reads overlapping peaks
-last_updated: Wed May 10 19:37:04 2017
+title: 9. Differential binding analysis
+last_updated: Wed May 10 19:53:34 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_09.html
 ---
 
-The `countRangeset` function is a convenience wrapper to perform read counting
-iteratively over serveral range sets, here peak range sets. Internally,
-the read counting is performed with the `summarizeOverlaps` function from the 
-`GenomicAlignments` package. The resulting count tables are directly saved to 
-files, one for each peak set.
+The `runDiff` function performs differential binding analysis in batch mode for
+several count tables using `edgeR` or `DESeq2` (Robinson et al., 2010; Love et al., 2014).
+Internally, it calls the functions `run_edgeR` and `run_DESeq2`. It also returns 
+the filtering results and plots from the downstream `filterDEGs` function using 
+the fold change and FDR cutoffs provided under the `dbrfilter` argument.
 
 
 ```r
-library(GenomicRanges)
-args <- systemArgs(sysma="param/count_rangesets.param", mytargets="targets_macs.txt")
-args_bam <- systemArgs(sysma=NULL, mytargets="targets_bam.txt")
-bfl <- BamFileList(outpaths(args_bam), yieldSize=50000, index=character())
-countDFnames <- countRangeset(bfl, args, mode="Union", ignore.strand=TRUE)
-writeTargetsout(x=args, file="targets_countDF.txt", overwrite=TRUE)
+args_diff <- systemArgs(sysma="param/rundiff.param", mytargets="targets_countDF.txt")
+cmp <- readComp(file=args_bam, format="matrix") 
+dbrlist <- runDiff(args=args_diff, diffFct=run_edgeR, targets=targetsin(args_bam), 
+                    cmp=cmp[[1]], independent=TRUE, dbrfilter=c(Fold=2, FDR=1))
+writeTargetsout(x=args_diff, file="targets_rundiff.txt", overwrite=TRUE)
 ```
+
 
 <br><br><center><a href="mydoc_systemPipeChIPseq_08.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_systemPipeChIPseq_10.html"><img src="images/right_arrow.png" alt="Next page."></a></center>
