@@ -1,6 +1,6 @@
 ---
 title: 4. Alignments
-last_updated: Wed May 10 20:16:18 2017
+last_updated: Wed May 10 21:42:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_04.html
 ---
@@ -26,6 +26,7 @@ Runs the alignments sequentially (_e.g._ on a single machine)
 moduleload(modules(args))
 system("bwa index -a bwtsw ./data/tair10.fasta")
 bampaths <- runCommandline(args=args)
+writeTargetsout(x=args, file="targets_bam.txt", overwrite=TRUE)
 ```
 
 Alternatively, the alignment jobs can be submitted to a compute cluster,
@@ -35,8 +36,8 @@ here using 72 CPU cores (18 `qsub` processes each with 4 CPU cores).
 ```r
 moduleload(modules(args))
 system("bwa index -a bwtsw ./data/tair10.fasta")
-resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
-reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01", 
+resources <- list(walltime="1:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)
 writeTargetsout(x=args, file="targets_bam.txt", overwrite=TRUE)
@@ -68,7 +69,7 @@ f <- function(x) {
     o <- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
 }
 funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
+param <- BatchJobsParam(length(args), resources=list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G"), cluster.functions=funs)
 register(param)
 d <- bplapply(seq(along=args), f)
 writeTargetsout(x=args, file="targets_gsnap_bam.txt", overwrite=TRUE)

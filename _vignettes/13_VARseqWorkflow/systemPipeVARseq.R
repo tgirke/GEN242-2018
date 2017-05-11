@@ -72,12 +72,13 @@ targets[,-c(5,6)]
 ## moduleload(modules(args))
 ## system("bwa index -a bwtsw ./data/tair10.fasta")
 ## bampaths <- runCommandline(args=args)
+## writeTargetsout(x=args, file="targets_bam.txt", overwrite=TRUE)
 
 ## ----bwa_parallel, eval=FALSE--------------------------------------------
 ## moduleload(modules(args))
 ## system("bwa index -a bwtsw ./data/tair10.fasta")
-## resources <- list(walltime="20:00:00", nodes=paste0("1:ppn=", cores(args)), memory="10gb")
-## reg <- clusterRun(args, conffile=".BatchJobs.R", template="torque.tmpl", Njobs=18, runid="01",
+## resources <- list(walltime="1:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
 ##                   resourceList=resources)
 ## waitForJobs(reg)
 ## writeTargetsout(x=args, file="targets_bam.txt", overwrite=TRUE)
@@ -97,7 +98,7 @@ targets[,-c(5,6)]
 ##     o <- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
 ## }
 ## funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
+## param <- BatchJobsParam(length(args), resources=list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G"), cluster.functions=funs)
 ## register(param)
 ## d <- bplapply(seq(along=args), f)
 ## writeTargetsout(x=args, file="targets_gsnap_bam.txt", overwrite=TRUE)
@@ -116,7 +117,7 @@ targets[,-c(5,6)]
 ## system("picard CreateSequenceDictionary R=./data/tair10.fasta O=./data/tair10.dict")
 ## system("samtools faidx data/tair10.fasta")
 ## args <- systemArgs(sysma="param/gatk.param", mytargets="targets_bam.txt")
-## resources <- list(walltime="20:00:00", ntasks=1, ncpus=1, memory="10G")
+## resources <- list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G")
 ## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
 ##                   resourceList=resources)
 ## waitForJobs(reg)
@@ -125,7 +126,7 @@ targets[,-c(5,6)]
 
 ## ----run_bcftools, eval=FALSE--------------------------------------------
 ## args <- systemArgs(sysma="param/sambcf.param", mytargets="targets_bam.txt")
-## resources <- list(walltime="20:00:00", ntasks=1, ncpus=1, memory="10G")
+## resources <- list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G")
 ## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
 ##                   resourceList=resources)
 ## waitForJobs(reg)
@@ -146,7 +147,7 @@ targets[,-c(5,6)]
 ##     writeVcf(asVCF(var), outfile1(args)[x], index = TRUE)
 ## }
 ## funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-## param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
+## param <- BatchJobsParam(length(args), resources=list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G"), cluster.functions=funs)
 ## register(param)
 ## d <- bplapply(seq(along=args), f)
 ## writeTargetsout(x=args, file="targets_vartools.txt", overwrite=TRUE)

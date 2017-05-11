@@ -365,12 +365,13 @@ sysargs(args)[1] # Command-line parameters for first FASTQ file</code></pre>
 <p>Runs the alignments sequentially (<em>e.g.</em> on a single machine)</p>
 <pre class="r"><code>moduleload(modules(args))
 system(&quot;bwa index -a bwtsw ./data/tair10.fasta&quot;)
-bampaths &lt;- runCommandline(args=args)</code></pre>
+bampaths &lt;- runCommandline(args=args)
+writeTargetsout(x=args, file=&quot;targets_bam.txt&quot;, overwrite=TRUE)</code></pre>
 <p>Alternatively, the alignment jobs can be submitted to a compute cluster, here using 72 CPU cores (18 <code>qsub</code> processes each with 4 CPU cores).</p>
 <pre class="r"><code>moduleload(modules(args))
 system(&quot;bwa index -a bwtsw ./data/tair10.fasta&quot;)
-resources &lt;- list(walltime=&quot;20:00:00&quot;, nodes=paste0(&quot;1:ppn=&quot;, cores(args)), memory=&quot;10gb&quot;)
-reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;torque.tmpl&quot;, Njobs=18, runid=&quot;01&quot;, 
+resources &lt;- list(walltime=&quot;1:00:00&quot;, ntasks=1, ncpus=cores(args), memory=&quot;10G&quot;)
+reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;slurm.tmpl&quot;, Njobs=18, runid=&quot;01&quot;,
                   resourceList=resources)
 waitForJobs(reg)
 writeTargetsout(x=args, file=&quot;targets_bam.txt&quot;, overwrite=TRUE)</code></pre>
@@ -391,7 +392,7 @@ f &lt;- function(x) {
     o &lt;- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
 }
 funs &lt;- makeClusterFunctionsSLURM(&quot;slurm.tmpl&quot;)
-param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=1, memory=&quot;6gb&quot;), cluster.functions=funs)
+param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;00:20:00&quot;, ntasks=1, ncpus=1, memory=&quot;6G&quot;), cluster.functions=funs)
 register(param)
 d &lt;- bplapply(seq(along=args), f)
 writeTargetsout(x=args, file=&quot;targets_gsnap_bam.txt&quot;, overwrite=TRUE)</code></pre>
@@ -420,7 +421,7 @@ write.table(read_statsDF, &quot;results/alignStats.xls&quot;, row.names=FALSE, q
 system(&quot;picard CreateSequenceDictionary R=./data/tair10.fasta O=./data/tair10.dict&quot;)
 system(&quot;samtools faidx data/tair10.fasta&quot;)
 args &lt;- systemArgs(sysma=&quot;param/gatk.param&quot;, mytargets=&quot;targets_bam.txt&quot;)
-resources &lt;- list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=1, memory=&quot;10G&quot;)
+resources &lt;- list(walltime=&quot;00:20:00&quot;, ntasks=1, ncpus=1, memory=&quot;6G&quot;)
 reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;slurm.tmpl&quot;, Njobs=18, runid=&quot;01&quot;,
                   resourceList=resources)
 waitForJobs(reg)
@@ -431,7 +432,7 @@ writeTargetsout(x=args, file=&quot;targets_gatk.txt&quot;, overwrite=TRUE)</code
 <h2><span class="header-section-number">5.2</span> Variant calling with <code>BCFtools</code></h2>
 <p>The following runs the variant calling with <code>BCFtools</code>. This step requires in the current working directory the parameter file <code>sambcf.param</code> and the bash script <code>sambcf_run.sh</code>.</p>
 <pre class="r"><code>args &lt;- systemArgs(sysma=&quot;param/sambcf.param&quot;, mytargets=&quot;targets_bam.txt&quot;)
-resources &lt;- list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=1, memory=&quot;10G&quot;)
+resources &lt;- list(walltime=&quot;00:20:00&quot;, ntasks=1, ncpus=1, memory=&quot;6G&quot;)
 reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;slurm.tmpl&quot;, Njobs=18, runid=&quot;01&quot;,
                   resourceList=resources)
 waitForJobs(reg)
@@ -453,7 +454,7 @@ f &lt;- function(x) {
     writeVcf(asVCF(var), outfile1(args)[x], index = TRUE)
 }
 funs &lt;- makeClusterFunctionsSLURM(&quot;slurm.tmpl&quot;)
-param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=1, memory=&quot;6gb&quot;), cluster.functions=funs)
+param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;00:20:00&quot;, ntasks=1, ncpus=1, memory=&quot;6G&quot;), cluster.functions=funs)
 register(param)
 d &lt;- bplapply(seq(along=args), f)
 writeTargetsout(x=args, file=&quot;targets_vartools.txt&quot;, overwrite=TRUE)</code></pre>

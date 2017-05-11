@@ -1,6 +1,6 @@
 ---
 title: 5. Variant calling
-last_updated: Wed May 10 20:16:18 2017
+last_updated: Wed May 10 21:42:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_05.html
 ---
@@ -31,7 +31,7 @@ moduleload("picard/1.130"); moduleload("samtools/1.3")
 system("picard CreateSequenceDictionary R=./data/tair10.fasta O=./data/tair10.dict")
 system("samtools faidx data/tair10.fasta")
 args <- systemArgs(sysma="param/gatk.param", mytargets="targets_bam.txt")
-resources <- list(walltime="20:00:00", ntasks=1, ncpus=1, memory="10G")
+resources <- list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G")
 reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)
@@ -48,7 +48,7 @@ in the current working directory the parameter file `sambcf.param` and the bash 
 
 ```r
 args <- systemArgs(sysma="param/sambcf.param", mytargets="targets_bam.txt")
-resources <- list(walltime="20:00:00", ntasks=1, ncpus=1, memory="10G")
+resources <- list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G")
 reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)
@@ -73,7 +73,7 @@ f <- function(x) {
     writeVcf(asVCF(var), outfile1(args)[x], index = TRUE)
 }
 funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="20:00:00", ntasks=1, ncpus=1, memory="6gb"), cluster.functions=funs)
+param <- BatchJobsParam(length(args), resources=list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G"), cluster.functions=funs)
 register(param)
 d <- bplapply(seq(along=args), f)
 writeTargetsout(x=args, file="targets_vartools.txt", overwrite=TRUE)
