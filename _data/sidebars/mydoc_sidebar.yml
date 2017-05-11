@@ -508,7 +508,7 @@ entries:
       url: /mydoc_systemPipeVARseq_01.html
       output: web
 
-    - title: 2. Load workflow environment
+    - title: 2. Workflow environment
       url: /mydoc_systemPipeVARseq_02.html
       output: web
 

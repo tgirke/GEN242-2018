@@ -1,6 +1,6 @@
 ---
 title: 4. Alignments
-last_updated: Sun May  7 16:47:55 2017
+last_updated: Wed May 10 20:13:20 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_04.html
 ---

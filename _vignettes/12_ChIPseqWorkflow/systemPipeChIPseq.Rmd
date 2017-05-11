@@ -61,7 +61,6 @@ analysis of their NGS study. This includes detailed descriptions of
 FASTQ files, experimental design, reference genome, gene annotations,
 etc.
 
-
 # Workflow environment
 
 ## Generate workflow environment
@@ -78,7 +77,7 @@ setwd("chipseq")
 
 Alternatively, this can be done from the command-line as follows:
 
-```{sh genRna_workflow_command_line, eval=FALSE}
+```{sh genChip_workflow_command_line, eval=FALSE}
 Rscript -e "systemPipeRdata::genWorkenvir(workflow='chipseq')"
 ```
 

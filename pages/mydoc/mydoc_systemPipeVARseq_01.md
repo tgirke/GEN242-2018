@@ -1,12 +1,12 @@
 ---
 title: VAR-Seq Workflow Template  <br> <br> 1. Introduction
-last_updated: Sun May  7 16:47:55 2017
+last_updated: Wed May 10 20:13:20 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_01.html
 ---
 First/last name (first.last@ucr.edu)
 
-Last update: 07 May, 2017 
+Last update: 10 May, 2017 
 
 Alternative formats of this tutorial:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/systemPipeVARseq.html){:target="_blank"} ],
