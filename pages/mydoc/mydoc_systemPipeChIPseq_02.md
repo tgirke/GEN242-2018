@@ -1,6 +1,6 @@
 ---
 title: 2. Workflow environment
-last_updated: Wed May 10 19:53:34 2017
+last_updated: Wed May 10 19:55:47 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_02.html
 ---
@@ -42,7 +42,7 @@ Now open the R markdown script `systemPipeChIPseq.Rmd`in your R IDE (_e.g._ vim-
 run the workflow as outlined below. 
 
 
-## Run R session on computer node
+### Run R session on computer node
 
 After opening the `Rmd` file of this workflow in Vim and attaching a connected
 R session via the `F2` (or other) key, use the following command sequence to run your R

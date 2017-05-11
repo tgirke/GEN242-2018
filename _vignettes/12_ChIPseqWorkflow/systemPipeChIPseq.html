@@ -283,9 +283,8 @@ setwd(&quot;chipseq&quot;)</code></pre>
 <div id="run-workflow" class="section level2">
 <h2><span class="header-section-number">2.2</span> Run workflow</h2>
 <p>Now open the R markdown script <code>systemPipeChIPseq.Rmd</code>in your R IDE (<em>e.g.</em> vim-r or RStudio) and run the workflow as outlined below.</p>
-</div>
-<div id="run-r-session-on-computer-node" class="section level2">
-<h2><span class="header-section-number">2.3</span> Run R session on computer node</h2>
+<div id="run-r-session-on-computer-node" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Run R session on computer node</h3>
 <p>After opening the <code>Rmd</code> file of this workflow in Vim and attaching a connected R session via the <code>F2</code> (or other) key, use the following command sequence to run your R session on a computer node.</p>
 <pre class="r"><code>q(&quot;no&quot;) # closes R session on head node
 srun --x11 --partition=short --mem=2gb --cpus-per-task 4 --ntasks 1 --time 2:00:00 --pty bash -l
@@ -299,6 +298,7 @@ dir() # returns content of current working directory</code></pre>
 <pre class="r"><code>library(systemPipeR)</code></pre>
 <p>If applicable users can load custom functions not provided by <code>systemPipeR</code>. Skip this step if this is not the case.</p>
 <pre class="r"><code>source(&quot;systemPipeChIPseq_Fct.R&quot;)</code></pre>
+</div>
 </div>
 </div>
 <div id="read-preprocessing" class="section level1">
