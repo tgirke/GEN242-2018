@@ -1,6 +1,6 @@
 ---
 title: 8. Homework 6
-last_updated: Fri Apr 28 09:48:25 2017
+last_updated: Sun May 14 15:12:00 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_08.html
 ---
@@ -34,7 +34,7 @@ demultiplex(x=fastq[1], barcode=c("TT", "AA", "GG"), nreads=50)
 ## HW6b - Sequence Parsing 
 
 * Download `GFF` from _Halobacterium sp_  [here](ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_genbank/Bacteria/Halobacterium_sp_uid217/AE004437.gff)
-* Download genome sequence from -Halobacterium sp_ [here](ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_genbank/Bacteria/Halobacterium_sp_uid217/AE004437.fna)
+* Download genome sequence from _Halobacterium sp_ [here](ftp://ftp.ncbi.nlm.nih.gov/genomes/archive/old_genbank/Bacteria/Halobacterium_sp_uid217/AE004437.fna)
 * __Task 1__ Extract gene ranges, parse their sequences from genome and translate them into proteins
 * __Task 2__ Reduce overlapping genes and parse their sequences from genome
 * __Task 3__ Generate intergenic ranges and parse their sequences from genome
@@ -67,7 +67,7 @@ This homework is due on Thu, May 4th at 6:00 PM.
 
 ## Homework Solutions
 
-To be added after due date.
+See [here](https://drive.google.com/open?id=0B-lLYVUOliJFZDhjMnhOMGhGLUE). 
 
 
 <br><br><center><a href="mydoc_Rsequences_07.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page

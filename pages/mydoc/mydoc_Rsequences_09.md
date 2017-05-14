@@ -1,6 +1,6 @@
 ---
 title: 9. Session Info
-last_updated: Fri Apr 28 09:48:25 2017
+last_updated: Sun May 14 15:12:00 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_09.html
 ---
