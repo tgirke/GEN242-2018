@@ -108,6 +108,14 @@ entries:
       url: /mydoc_slides_14.html
       output: web
     
+    - title: Sequence Assembly
+      url: /mydoc_slides_15.html
+      output: web
+    
+    - title: Gene Annotation and Ontologies
+      url: /mydoc_slides_16.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
