@@ -1,6 +1,6 @@
 ---
 title: 9. Operators and Calculations
-last_updated: Wed May 24 12:31:31 2017
+last_updated: Wed May 24 12:33:59 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_09.html
 ---
