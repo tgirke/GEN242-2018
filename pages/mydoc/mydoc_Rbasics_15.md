@@ -1,239 +1,207 @@
 ---
-title: 15. R Markdown
-last_updated: Thu Apr 13 13:32:39 2017
+title: 15. Analysis Routine
+last_updated: Tue May 23 21:43:13 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_15.html
 ---
 
 ## Overview
 
-R Markdown combines markdown (an easy to write plain text format) with embedded
-R code chunks. When compiling R Markdown documents, the code components can be
-evaluated so that both the code and its output can be included in the final
-document. This makes analysis reports highly reproducible by allowing to automatically
-regenerate them when the underlying R code or data changes. R Markdown
-documents (`.Rmd` files) can be rendered to various formats including HTML and
-PDF. The R code in an `.Rmd` document is processed by `knitr`, while the
-resulting `.md` file is rendered by `pandoc` to the final output formats
-(_e.g._ HTML or PDF). Historically, R Markdown is an extension of the older
-`Sweave/Latex` environment. Rendering of mathematical expressions and reference
-management is also supported by R Markdown using embedded Latex syntax and
-Bibtex, respectively.
+The following exercise introduces a variety of useful data analysis utilities in R. 
 
-## Quick Start
+## Analysis Routine: Data Import
 
-### Install R Markdown
+- __Step 1__: To get started with this exercise, direct your R session to a dedicated workshop directory and download into this directory the following sample tables. Then import the files into Excel and save them as tab delimited text files.
+
+    - [MolecularWeight_tair7.xls](http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/MolecularWeight_tair7.xls)
+    - [TargetP_analysis_tair7.xls](http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/TargetP_analysis_tair7.xls)
+
+__Import the tables into R__
+
+Import molecular weight table
 
 
 ```r
-install.packages("rmarkdown")
+my_mw <- read.delim(file="MolecularWeight_tair7.xls", header=T, sep="\t") 
+my_mw[1:2,]
 ```
 
-### Initialize a new R Markdown (`Rmd`) script
+Import subcelluar targeting table
 
-To minimize typing, it can be helful to start with an R Markdown template and
-then modify it as needed. Note the file name of an R Markdown scirpt needs to
-have the extension `.Rmd`. Template files for the following examples are available 
-here:
-
-+ R Markdown sample script: [`sample.Rmd`](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/sample.Rmd)
-+ Bibtex file for handling citations and reference section: [`bibtex.bib`](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/bibtex.bib)
-
-Users want to download these files, open the `sample.Rmd` file with their preferred R IDE 
-(_e.g._ RStudio, vim or emacs), initilize an R session and then direct their R session to 
-the location of these two files.
-
-
-### Metadata section
-
-The metadata section (YAML header) in an R Markdown script defines how it will be processed and 
-rendered. The metadata section also includes both title, author, and date information as well as 
-options for customizing the output format. For instance, PDF and HTML output can be defined 
-with `pdf_document` and `html_document`, respectively. The `BiocStyle::` prefix will use the
-formatting style of the [`BiocStyle`](http://bioconductor.org/packages/release/bioc/html/BiocStyle.html) 
-package from Bioconductor.
-
-```
- ---
-title: "My First R Markdown Document"
-author: "Author: First Last"
-date: "Last update: 13 April, 2017"
-output:
-  BiocStyle::html_document:
-    toc: true
-    toc_depth: 3
-    fig_caption: yes
-
-fontsize: 14pt
-bibliography: bibtex.bib
- ---
+```r
+my_target <- read.delim(file="TargetP_analysis_tair7.xls", header=T, sep="\t") 
+my_target[1:2,]
 ```
 
-### Render `Rmd` script
+Online import of molecular weight table
 
-An R Markdown script can be evaluated and rendered with the following `render` command or by pressing the `knit` button in RStudio.
-The `output_format` argument defines the format of the output (_e.g._ `html_document`). The setting `output_format="all"` will generate 
-all supported output formats. Alternatively, one can specify several output formats in the metadata section as shown in the above example.
+```r
+my_mw <- read.delim(file="http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/MolecularWeight_tair7.xls", header=T, sep="\t") 
+my_mw[1:2,]
+```
+
+```
+##   Sequence.id Molecular.Weight.Da. Residues
+## 1 AT1G08520.1                83285      760
+## 2 AT1G08530.1                27015      257
+```
+
+Online import of subcelluar targeting table
+
+```r
+my_target <- read.delim(file="http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/TargetP_analysis_tair7.xls", header=T, sep="\t") 
+my_target[1:2,]
+```
+
+```
+##      GeneName Loc   cTP   mTP    SP other
+## 1 AT1G08520.1   C 0.822 0.137 0.029 0.039
+## 2 AT1G08530.1   C 0.817 0.058 0.010 0.100
+```
+
+## Merging Data Frames
+
+- __Step 2__: Assign uniform gene ID column titles
 
 
 ```r
-rmarkdown::render("sample.Rmd", clean=TRUE, output_format="html_document")
+colnames(my_target)[1] <- "ID"
+colnames(my_mw)[1] <- "ID" 
 ```
 
-The following shows two options how to run the rendering from the command-line.
-
-
-```sh
-$ echo "rmarkdown::render('sample.Rmd', clean=TRUE)" | R --slave
-$ Rscript -e "rmarkdown::render('sample.Rmd', clean=TRUE)"
-```
-
-Alternatively, one can use a Makefile to evaluate and render an R Markdown
-script. A sample Makefile for rendering the above `sample.Rmd` can be
-downloaded [`here`](https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/07_Rbasics/Makefile).
-To apply it to a custom `Rmd` file, one needs open the Makefile in a text
-editor and change the value assigned to `MAIN` (line 13) to the base name of
-the corresponding `.Rmd` file (_e.g._ assign `systemPipeRNAseq` if the file
-name is `systemPipeRNAseq.Rmd`).  To execute the `Makefile`, run the following
-command from the command-line.
-
-
-```sh
-$ make -B
-```
-
-### R code chunks
-
-R Code Chunks can be embedded in an R Markdown script by using three backticks
-at the beginning of a new line along with arguments enclosed in curly braces
-controlling the behavior of the code. The following lines contain the
-plain R code. A code chunk is terminated by a new line starting with three backticks.
-The following shows an example of such a code chunk. Note the backslashes are
-not part of it. They have been added to print the code chunk syntax in this document.
-
-```
-	```\{r code_chunk_name, eval=FALSE\}
-	x <- 1:10
-	```
-```
-
-The following lists the most important arguments to control the behavior of R code chunks:
-
-+ `r`: specifies language for code chunk, here R
-+ `chode_chunk_name`: name of code chunk; this name needs to be unique
-+ `eval`: if assigned `TRUE` the code will be evaluated
-+ `warning`: if assigned `FALSE` warnings will not be shown
-+ `message`: if assigned `FALSE` messages will not be shown
-+ `cache`: if assigned `TRUE` results will be cached to reuse in future rendering instances
-+ `fig.height`: allows to specify height of figures in inches
-+ `fig.width`: allows to specify width of figures in inches
-
-For more details on code chunk options see [here](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
-
-
-### Learning Markdown
-
-The basic syntax of Markdown and derivatives like kramdown is extremely easy to learn. Rather
-than providing another introduction on this topic, here are some useful sites for learning Markdown:
-
-+ [Markdown Intro on GitHub](https://guides.github.com/features/mastering-markdown/)
-+ [Markdown Cheet Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-+ [Markdown Basics from RStudio](http://rmarkdown.rstudio.com/authoring_basics.html) 
-+ [R Markdown Cheat Sheet](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-+ [kramdown Syntax](http://kramdown.gettalong.org/syntax.html)
-
-### Tables
-
-There are several ways to render tables. First, they can be printed within the R code chunks. Second, 
-much nicer formatted tables can be generated with the functions `kable`, `pander` or `xtable`. The following
-example uses `kable` from the `knitr` package.
+- __Step 3__: Merge the two tables based on common ID field
 
 
 ```r
-library(knitr)
-kable(iris[1:12,])
+my_mw_target <- merge(my_mw, my_target, by.x="ID", by.y="ID", all.x=T)
 ```
 
-| Sepal.Length |  Sepal.Width |  Petal.Length |  Petal.Width |  Species |
-| ------------ |  ----------- |  ------------ |  ----------- |  ------- |
- | 5.1 | 3.5 | 1.4 | 0.2 | setosa | 
- | 4.9 | 3.0 | 1.4 | 0.2 | setosa | 
- | 4.7 | 3.2 | 1.3 | 0.2 | setosa | 
- | 4.6 | 3.1 | 1.5 | 0.2 | setosa | 
- | 5.0 | 3.6 | 1.4 | 0.2 | setosa | 
- | 5.4 | 3.9 | 1.7 | 0.4 | setosa | 
- | 4.6 | 3.4 | 1.4 | 0.3 | setosa | 
- | 5.0 | 3.4 | 1.5 | 0.2 | setosa | 
- | 4.4 | 2.9 | 1.4 | 0.2 | setosa | 
- | 4.9 | 3.1 | 1.5 | 0.1 | setosa | 
- | 5.4 | 3.7 | 1.5 | 0.2 | setosa | 
- | 4.8 | 3.4 | 1.6 | 0.2 | setosa | 
-
-### Figures
-
-Plots generated by the R code chunks in an R Markdown document can be automatically 
-inserted in the output file. The size of the figure can be controlled with the `fig.height`
-and `fig.width` arguments.
+- __Step 4__: Shorten one table before the merge and then remove the non-matching rows (NAs) in the merged file
 
 
 ```r
-library(ggplot2)
-dsmall <- diamonds[sample(nrow(diamonds), 1000), ]
-ggplot(dsmall, aes(color, price/carat)) + geom_jitter(alpha = I(1 / 2), aes(color=color))
+my_mw_target2a <- merge(my_mw, my_target[1:40,], by.x="ID", by.y="ID", all.x=T)  # To remove non-matching rows, use the argument setting 'all=F'.
+my_mw_target2 <- na.omit(my_mw_target2a) # Removes rows containing "NAs" (non-matching rows).
 ```
 
-<img src="./pages/mydoc/Rbasics_files/some_jitter_plot-1.png" width="672" />
+- __Homework 3D__: How can the merge function in the previous step be executed so that only the common rows among the two data frames are returned? Prove that both methods - the two step version with `na.omit` and your method - return identical results. 
+- __Homework 3E__: Replace all `NAs` in the data frame `my_mw_target2a` with zeros.
 
-Sometimes it can be useful to explicitly write an image to a file and then insert that 
-image into the final document by referencing its file name in the R Markdown source. For 
-instance, this can be useful for time consuming analyses. The following code will generate a 
-file named `myplot.png`. To insert the file  in the final document, one can use standard 
-Markdown or HTML syntax, _e.g._: `<img src="./pages/mydoc/Rbasics_files/myplot.png"/>`.  
+
+
+## Filtering Data
+
+- __Step 5__: Retrieve all records with a value of greater than 100,000 in 'MW' column and 'C' value in 'Loc' column (targeted to chloroplast).
 
 
 ```r
-png("myplot.png")
-ggplot(dsmall, aes(color, price/carat)) + geom_jitter(alpha = I(1 / 2), aes(color=color))
-dev.off()
+query <- my_mw_target[my_mw_target[, 2] > 100000 & my_mw_target[, 4] == "C", ] 
+query[1:4, ]
 ```
 
 ```
-## png 
-##   2
+##              ID Molecular.Weight.Da. Residues Loc   cTP   mTP    SP other
+## 219 AT1G02730.1               132588     1181   C 0.972 0.038 0.008 0.045
+## 243 AT1G02890.1               136825     1252   C 0.748 0.529 0.011 0.013
+## 281 AT1G03160.1               100732      912   C 0.871 0.235 0.011 0.007
+## 547 AT1G05380.1               126360     1138   C 0.740 0.099 0.016 0.358
 ```
-<center><img title="some_title" src="./pages/mydoc/Rbasics_files/myplot.png"/></center>
 
-### Inline R code
+```r
+dim(query)
+```
 
-To evaluate R code inline, one can enclose an R expression with a single back-tick
-followed by `r` and then the actual expression.  For instance, the back-ticked version 
-of 'r 1 + 1' evaluates to 2 and 'r pi' evaluates to 3.1415927.
+```
+## [1] 170   8
+```
 
-### Mathematical equations
+- __Homework 3F__: How many protein entries in the `my`_mw`_target` data frame have a MW of greater then 4,000 and less then 5,000. Subset the data frame accordingly and sort it by MW to check that your result is correct.
 
-To render mathematical equations, one can use standard Latex syntax. When expressions are 
-enclosed with single `$` signs then they will be shown inline, while 
-enclosing them with double `$$` signs will show them in display mode. For instance, the following 
-Latex syntax `d(X,Y) = \sqrt[]{ \sum_{i=1}^{n}{(x_{i}-y_{i})^2} }` renders in display mode as follows:
 
-$$d(X,Y) = \sqrt[]{ \sum_{i=1}^{n}{(x_{i}-y_{i})^2} }$$
+## String Substitutions
 
-### Citations and bibliographies
+- __Step 6__: Use a regular expression in a substitute function to generate a separate ID column that lacks the gene model extensions.
+<<label=Exercise 4.7, eval=TRUE, echo=TRUE, keep.source=TRUE>>=
 
-Citations and bibliographies can be autogenerated in R Markdown in a similar
-way as in Latex/Bibtex. Reference collections should be stored in a separate
-file in Bibtex or other supported formats. To cite a publication in an R Markdown 
-script, one uses the syntax `(@<id1>)` where `<id1>` needs to be replaced with a 
-reference identifier present in the Bibtex database listed in the metadata section 
-of the R Markdown script  (_e.g._ `bibtex.bib`). For instance, to cite Lawrence et al. 
-(2013), one  uses its reference identifier (_e.g._ `Lawrence2013-kt`) as `<id1>` (Lawrence et al., 2013). 
-This will place the citation inline in the text and add the corresponding
-reference to a reference list at the end of the output document. For the latter a 
-special section called `References` needs to be specified at the end of the R Markdown script.
-To fine control the formatting of citations and reference lists, users want to consult this 
-the corresponding [R Markdown page](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
-Also, for general reference management and outputting references in Bibtex format [Paperpile](https://paperpile.com/features) 
-can be very helpful.
+
+```r
+my_mw_target3 <- data.frame(loci=gsub("\\..*", "", as.character(my_mw_target[,1]), perl = TRUE), my_mw_target)
+my_mw_target3[1:3,1:8]
+```
+
+```
+##        loci          ID Molecular.Weight.Da. Residues Loc  cTP   mTP    SP
+## 1 AT1G01010 AT1G01010.1                49426      429   _ 0.10 0.090 0.075
+## 2 AT1G01020 AT1G01020.1                28092      245   * 0.01 0.636 0.158
+## 3 AT1G01020 AT1G01020.2                21711      191   * 0.01 0.636 0.158
+```
+
+- __Homework 3G__: Retrieve those rows in `my_mw_target3` where the second column contains the following identifiers: `c("AT5G52930.1", "AT4G18950.1", "AT1G15385.1", "AT4G36500.1", "AT1G67530.1")`. Use the `%in%` function for this query. As an alternative approach, assign the second column to the row index of the data frame and then perform the same query again using the row index. Explain the difference of the two methods.
+
+## Calculations on Data Frames
+
+- __Step 7__: Count the number of duplicates in the loci column with the `table` function and append the result to the data frame with the `cbind` function.
+
+
+```r
+mycounts <- table(my_mw_target3[,1])[my_mw_target3[,1]]
+my_mw_target4 <- cbind(my_mw_target3, Freq=mycounts[as.character(my_mw_target3[,1])]) 
+```
+
+- __Step 8__: Perform a vectorized devision of columns 3 and 4 (average AA weight per protein)
+
+
+```r
+data.frame(my_mw_target4, avg_AA_WT=(my_mw_target4[,3] / my_mw_target4[,4]))[1:2,5:11] 
+```
+
+```
+##   Loc  cTP   mTP    SP other Freq.Var1 Freq.Freq
+## 1   _ 0.10 0.090 0.075 0.925 AT1G01010         1
+## 2   * 0.01 0.636 0.158 0.448 AT1G01020         2
+```
+
+- __Step 9__: Calculate for each row the mean and standard deviation across several columns
+
+
+```r
+mymean <- apply(my_mw_target4[,6:9], 1, mean)
+mystdev <- apply(my_mw_target4[,6:9], 1, sd, na.rm=TRUE)
+data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12] 
+```
+
+```
+##   Loc  cTP   mTP    SP other Freq.Var1 Freq.Freq   mean
+## 1   _ 0.10 0.090 0.075 0.925 AT1G01010         1 0.2975
+## 2   * 0.01 0.636 0.158 0.448 AT1G01020         2 0.3130
+```
+
+## Plotting Example
+
+- __Step 10__: Generate scatter plot columns: 'MW' and 'Residues' 
+
+
+```r
+plot(my_mw_target4[1:500,3:4], col="red")
+```
+
+<img src="./pages/mydoc/Rbasics_files/plot_example-1.png" width="672" />
+
+## Export Results and Run Entire Exercise as Script
+
+- __Step 11__: Write the data frame `my_mw_target4` into a tab-delimited text file and inspect it in Excel.
+
+
+```r
+write.table(my_mw_target4, file="my_file.xls", quote=F, sep="\t", col.names = NA) 
+```
+
+- __Homework 3H__: Write all commands from this exercise into an R script named `exerciseRbasics.R`, or download it from [here](http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/exerciseRbasics.R). Then execute the script with the `source` function like this: `source("exerciseRbasics.R")`. This will run all commands of this exercise and generate the corresponding output files in the current working directory.
+
+
+```r
+source("exerciseRbasics.R")
+```
 
 <br><br><center><a href="mydoc_Rbasics_14.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_16.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

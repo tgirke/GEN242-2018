@@ -1,207 +1,375 @@
 ---
-title: 14. Analysis Routine
-last_updated: Thu Apr 13 13:32:39 2017
+title: 14. Graphics in R
+last_updated: Tue May 23 21:43:13 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_14.html
 ---
 
-## Overview
+## Advantages
 
-The following exercise introduces a variety of useful data analysis utilities in R. 
+- Powerful environment for visualizing scientific data
+- Integrated graphics and statistics infrastructure
+- Publication quality graphics
+- Fully programmable 
+- Highly reproducible
+- Full [LaTeX](http://www.latex-project.org/) and Markdown support via `knitr` and `R markdown`
+- Vast number of R packages with graphics utilities
 
-## Analysis Routine: Data Import
+## Documentation for R Graphics
 
-- __Step 1__: To get started with this exercise, direct your R session to a dedicated workshop directory and download into this directory the following sample tables. Then import the files into Excel and save them as tab delimited text files.
+__General__
 
-    - [MolecularWeight_tair7.xls](http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/MolecularWeight_tair7.xls)
-    - [TargetP_analysis_tair7.xls](http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/TargetP_analysis_tair7.xls)
+- Graphics Task Page - [URL](http://cran.r-project.org/web/views/Graphics.html)
+- R Graph Gallery - [URL](http://addictedtor.free.fr/graphiques/allgraph.php)
+- R Graphical Manual - [URL](http://cged.genes.nig.ac.jp/RGM2/index.php)
+- Paul Murrell's book R (Grid) Graphics - [URL](http://www.stat.auckland.ac.nz/~paul/RGraphics/rgraphics.html)
 
-__Import the tables into R__
+__Interactive graphics__
 
-Import molecular weight table
+- rggobi` (GGobi) - [URL](http://www.ggobi.org/)
+- `iplots` - [URL](http://www.rosuda.org/iplots/)
+- Open GL (`rgl`) - [URL](http://rgl.neoscientists.org/gallery.shtml)
 
+## Graphics Environments
 
-```r
-my_mw <- read.delim(file="MolecularWeight_tair7.xls", header=T, sep="\t") 
-my_mw[1:2,]
-```
+__Viewing and saving graphics in R__
 
-Import subcelluar targeting table
+- On-screen graphics
+- postscript, pdf, svg
+- jpeg, png, wmf, tiff, ...
 
-```r
-my_target <- read.delim(file="TargetP_analysis_tair7.xls", header=T, sep="\t") 
-my_target[1:2,]
-```
+__Four major graphic environments__
 
-Online import of molecular weight table
+(a) Low-level infrastructure
 
-```r
-my_mw <- read.delim(file="http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/MolecularWeight_tair7.xls", header=T, sep="\t") 
-my_mw[1:2,]
-```
+- R Base Graphics (low- and high-level)
+- `grid`: [Manual](http://www.stat.auckland.ac.nz/~paul/grid/grid.html)
+        
+(b) High-level infrastructure
+        \begin{itemize}
+- `lattice`: [Manual](http://lmdvr.r-forge.r-project.org), [Intro](http://www.his.sunderland.ac.uk/~cs0her/Statistics/UsingLatticeGraphicsInR.htm), [Book](http://www.amazon.com/Lattice-Multivariate-Data-Visualization-Use/dp/0387759689)
+- `ggplot2`: [Manual](http://had.co.nz/ggplot2/), [Intro](http://www.ling.upenn.edu/~joseff/rstudy/summer2010_ggplot2_intro.html), [Book](http://had.co.nz/ggplot2/book/)
 
-```
-##   Sequence.id Molecular.Weight.Da. Residues
-## 1 AT1G08520.1                83285      760
-## 2 AT1G08530.1                27015      257
-```
+## Base Graphics: Overview
 
-Online import of subcelluar targeting table
+__Important high-level plotting functions__
 
-```r
-my_target <- read.delim(file="http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/TargetP_analysis_tair7.xls", header=T, sep="\t") 
-my_target[1:2,]
-```
+- `plot`: generic x-y plotting
+- `barplot`: bar plots
+- `boxplot`: box-and-whisker plot
+- `hist`: histograms
+- `pie`: pie charts
+- `dotchart`: cleveland dot plots
+- `image, heatmap, contour, persp`: functions to generate image-like plots
+- `qqnorm, qqline, qqplot`: distribution comparison plots
+- `pairs, coplot`: display of multivariant data
 
-```
-##      GeneName Loc   cTP   mTP    SP other
-## 1 AT1G08520.1   C 0.822 0.137 0.029 0.039
-## 2 AT1G08530.1   C 0.817 0.058 0.010 0.100
-```
+__Help on graphics functions__
 
-## Merging Data Frames
+- `?myfct`
+- `?plot`
+- `?par`
 
-- __Step 2__: Assign uniform gene ID column titles
+### Preferred Object Types
 
+- Matrices and data frames
+- Vectors
+- Named vectors
 
-```r
-colnames(my_target)[1] <- "ID"
-colnames(my_mw)[1] <- "ID" 
-```
+## Scatter Plots
 
-- __Step 3__: Merge the two tables based on common ID field
+### Basic Scatter Plot
 
-
-```r
-my_mw_target <- merge(my_mw, my_target, by.x="ID", by.y="ID", all.x=T)
-```
-
-- __Step 4__: Shorten one table before the merge and then remove the non-matching rows (NAs) in the merged file
-
-
-```r
-my_mw_target2a <- merge(my_mw, my_target[1:40,], by.x="ID", by.y="ID", all.x=T)  # To remove non-matching rows, use the argument setting 'all=F'.
-my_mw_target2 <- na.omit(my_mw_target2a) # Removes rows containing "NAs" (non-matching rows).
-```
-
-- __Homework 3D__: How can the merge function in the previous step be executed so that only the common rows among the two data frames are returned? Prove that both methods - the two step version with `na.omit` and your method - return identical results. 
-- __Homework 3E__: Replace all `NAs` in the data frame `my_mw_target2a` with zeros.
-
-
-
-## Filtering Data
-
-- __Step 5__: Retrieve all records with a value of greater than 100,000 in 'MW' column and 'C' value in 'Loc' column (targeted to chloroplast).
+Sample data set for subsequent plots
 
 
 ```r
-query <- my_mw_target[my_mw_target[, 2] > 100000 & my_mw_target[, 4] == "C", ] 
-query[1:4, ]
+set.seed(1410)
+y <- matrix(runif(30), ncol=3, dimnames=list(letters[1:10], LETTERS[1:3]))
 ```
 
-```
-##              ID Molecular.Weight.Da. Residues Loc   cTP   mTP    SP other
-## 219 AT1G02730.1               132588     1181   C 0.972 0.038 0.008 0.045
-## 243 AT1G02890.1               136825     1252   C 0.748 0.529 0.011 0.013
-## 281 AT1G03160.1               100732      912   C 0.871 0.235 0.011 0.007
-## 547 AT1G05380.1               126360     1138   C 0.740 0.099 0.016 0.358
-```
+Plot data
 
 ```r
-dim(query)
+plot(y[,1], y[,2]) 
 ```
 
-```
-## [1] 170   8
-```
+<img src="./pages/mydoc/Rbasics_files/basic_scatter_plot-1.png" width="672" />
 
-- __Homework 3F__: How many protein entries in the `my`_mw`_target` data frame have a MW of greater then 4,000 and less then 5,000. Subset the data frame accordingly and sort it by MW to check that your result is correct.
-
-
-## String Substitutions
-
-- __Step 6__: Use a regular expression in a substitute function to generate a separate ID column that lacks the gene model extensions.
-<<label=Exercise 4.7, eval=TRUE, echo=TRUE, keep.source=TRUE>>=
+### All pairs
 
 
 ```r
-my_mw_target3 <- data.frame(loci=gsub("\\..*", "", as.character(my_mw_target[,1]), perl = TRUE), my_mw_target)
-my_mw_target3[1:3,1:8]
+pairs(y) 
 ```
 
-```
-##        loci          ID Molecular.Weight.Da. Residues Loc  cTP   mTP    SP
-## 1 AT1G01010 AT1G01010.1                49426      429   _ 0.10 0.090 0.075
-## 2 AT1G01020 AT1G01020.1                28092      245   * 0.01 0.636 0.158
-## 3 AT1G01020 AT1G01020.2                21711      191   * 0.01 0.636 0.158
-```
+<img src="./pages/mydoc/Rbasics_files/pairs_scatter_plot-1.png" width="672" />
 
-- __Homework 3G__: Retrieve those rows in `my_mw_target3` where the second column contains the following identifiers: `c("AT5G52930.1", "AT4G18950.1", "AT1G15385.1", "AT4G36500.1", "AT1G67530.1")`. Use the `%in%` function for this query. As an alternative approach, assign the second column to the row index of the data frame and then perform the same query again using the row index. Explain the difference of the two methods.
-
-## Calculations on Data Frames
-
-- __Step 7__: Count the number of duplicates in the loci column with the `table` function and append the result to the data frame with the `cbind` function.
+### With labels
 
 
 ```r
-mycounts <- table(my_mw_target3[,1])[my_mw_target3[,1]]
-my_mw_target4 <- cbind(my_mw_target3, Freq=mycounts[as.character(my_mw_target3[,1])]) 
+plot(y[,1], y[,2], pch=20, col="red", main="Symbols and Labels")
+text(y[,1]+0.03, y[,2], rownames(y))
 ```
 
-- __Step 8__: Perform a vectorized devision of columns 3 and 4 (average AA weight per protein)
+<img src="./pages/mydoc/Rbasics_files/labels_scatter_plot-1.png" width="672" />
+
+## More examples
+
+__Print instead of symbols the row names__
 
 
 ```r
-data.frame(my_mw_target4, avg_AA_WT=(my_mw_target4[,3] / my_mw_target4[,4]))[1:2,5:11] 
+plot(y[,1], y[,2], type="n", main="Plot of Labels")
+text(y[,1], y[,2], rownames(y)) 
 ```
 
-```
-##   Loc  cTP   mTP    SP other Freq.Var1 Freq.Freq
-## 1   _ 0.10 0.090 0.075 0.925 AT1G01010         1
-## 2   * 0.01 0.636 0.158 0.448 AT1G01020         2
-```
+<img src="./pages/mydoc/Rbasics_files/row_scatter_plot-1.png" width="672" />
 
-- __Step 9__: Calculate for each row the mean and standard deviation across several columns
+__Usage of important plotting parameters__
 
 
 ```r
-mymean <- apply(my_mw_target4[,6:9], 1, mean)
-mystdev <- apply(my_mw_target4[,6:9], 1, sd, na.rm=TRUE)
-data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12] 
+grid(5, 5, lwd = 2) 
+op <- par(mar=c(8,8,8,8), bg="lightblue")
+plot(y[,1], y[,2], type="p", col="red", cex.lab=1.2, cex.axis=1.2, 
+     cex.main=1.2, cex.sub=1, lwd=4, pch=20, xlab="x label", 
+     ylab="y label", main="My Main", sub="My Sub")
+par(op)
 ```
+__Important arguments_
 
-```
-##   Loc  cTP   mTP    SP other Freq.Var1 Freq.Freq   mean
-## 1   _ 0.10 0.090 0.075 0.925 AT1G01010         1 0.2975
-## 2   * 0.01 0.636 0.158 0.448 AT1G01020         2 0.3130
-```
+- `mar`: specifies the margin sizes around the plotting area in order: `c(bottom, left, top, right)` 
+- `col`: color of symbols
+- `pch`: type of symbols, samples: `example(points)`
+- `lwd`: size of symbols
+- `cex.*`: control font sizes
+- For details see `?par`
 
-## Plotting Example
 
-- __Step 10__: Generate scatter plot columns: 'MW' and 'Residues' 
+### Add regression line 
 
 
 ```r
-plot(my_mw_target4[1:500,3:4], col="red")
+plot(y[,1], y[,2])
+myline <- lm(y[,2]~y[,1]); abline(myline, lwd=2) 
 ```
 
-<img src="./pages/mydoc/Rbasics_files/plot_example-1.png" width="672" />
+<img src="./pages/mydoc/Rbasics_files/plot_regression-1.png" width="672" />
 
-## Export Results and Run Entire Exercise as Script
+```r
+summary(myline) 
+```
 
-- __Step 11__: Write the data frame `my_mw_target4` into a tab-delimited text file and inspect it in Excel.
+```
+## 
+## Call:
+## lm(formula = y[, 2] ~ y[, 1])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.40357 -0.17912 -0.04299  0.22147  0.46623 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)  
+## (Intercept)   0.5764     0.2110   2.732   0.0258 *
+## y[, 1]       -0.3647     0.3959  -0.921   0.3839  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.3095 on 8 degrees of freedom
+## Multiple R-squared:  0.09589,	Adjusted R-squared:  -0.01712 
+## F-statistic: 0.8485 on 1 and 8 DF,  p-value: 0.3839
+```
+
+### Log scale
+
+Same plot as above, but on log scale
 
 
 ```r
-write.table(my_mw_target4, file="my_file.xls", quote=F, sep="\t", col.names = NA) 
+plot(y[,1], y[,2], log="xy") 
 ```
 
-- __Homework 3H__: Write all commands from this exercise into an R script named `exerciseRbasics.R`, or download it from [here](http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/exerciseRbasics.R). Then execute the script with the `source` function like this: `source("exerciseRbasics.R")`. This will run all commands of this exercise and generate the corresponding output files in the current working directory.
+<img src="./pages/mydoc/Rbasics_files/plot_regression_log-1.png" width="672" />
+
+### Add a mathematical expression
 
 
 ```r
-source("exerciseRbasics.R")
+plot(y[,1], y[,2]); text(y[1,1], y[1,2], expression(sum(frac(1,sqrt(x^2*pi)))), cex=1.3) 
 ```
+
+<img src="./pages/mydoc/Rbasics_files/plot_regression_math-1.png" width="672" />
+
+## Homework 3B 
+
+Homework 3B: [Scatter Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
+
+
+## Line Plots
+
+### Single data set
+
+
+```r
+plot(y[,1], type="l", lwd=2, col="blue") 
+```
+
+<img src="./pages/mydoc/Rbasics_files/plot_line_single-1.png" width="672" />
+
+### Many Data Sets
+
+Plots line graph for all columns in data frame `y`. The `split.screen` function is used in this example in a for loop to overlay several line graphs in the same plot. 
+
+
+```r
+split.screen(c(1,1)) 
+```
+
+```
+## [1] 1
+```
+
+```r
+plot(y[,1], ylim=c(0,1), xlab="Measurement", ylab="Intensity", type="l", lwd=2, col=1)
+for(i in 2:length(y[1,])) { 
+	screen(1, new=FALSE)
+	plot(y[,i], ylim=c(0,1), type="l", lwd=2, col=i, xaxt="n", yaxt="n", ylab="", xlab="", main="", bty="n") 
+}
+```
+
+<img src="./pages/mydoc/Rbasics_files/plot_line_many-1.png" width="672" />
+
+```r
+close.screen(all=TRUE) 
+```
+
+## Bar Plots 
+
+### Basics
+
+
+```r
+barplot(y[1:4,], ylim=c(0, max(y[1:4,])+0.3), beside=TRUE, legend=letters[1:4]) 
+text(labels=round(as.vector(as.matrix(y[1:4,])),2), x=seq(1.5, 13, by=1) + sort(rep(c(0,1,2), 4)), y=as.vector(as.matrix(y[1:4,]))+0.04) 
+```
+
+<img src="./pages/mydoc/Rbasics_files/plot_bar_simple-1.png" width="672" />
+    
+### Error Bars
+
+
+```r
+bar <- barplot(m <- rowMeans(y) * 10, ylim=c(0, 10))
+stdev <- sd(t(y))
+arrows(bar, m, bar, m + stdev, length=0.15, angle = 90)
+```
+
+<img src="./pages/mydoc/Rbasics_files/plot_bar_error-1.png" width="672" />
+
+## Histograms
+
+
+```r
+hist(y, freq=TRUE, breaks=10)
+```
+
+<img src="./pages/mydoc/Rbasics_files/plot_hist-1.png" width="672" />
+
+## Density Plots
+
+
+```r
+plot(density(y), col="red")
+```
+
+<img src="./pages/mydoc/Rbasics_files/plot_dens-1.png" width="672" />
+
+## Pie Charts
+
+
+```r
+pie(y[,1], col=rainbow(length(y[,1]), start=0.1, end=0.8), clockwise=TRUE)
+legend("topright", legend=row.names(y), cex=1.3, bty="n", pch=15, pt.cex=1.8, 
+col=rainbow(length(y[,1]), start=0.1, end=0.8), ncol=1) 
+```
+
+<img src="./pages/mydoc/Rbasics_files/plot_pie-1.png" width="672" />
+
+## Color Selection Utilities
+
+Default color palette and how to change it
+
+
+```r
+palette()
+```
+
+```
+## [1] "black"   "red"     "green3"  "blue"    "cyan"    "magenta" "yellow"  "gray"
+```
+
+```r
+palette(rainbow(5, start=0.1, end=0.2))
+palette()
+```
+
+```
+## [1] "#FF9900" "#FFBF00" "#FFE600" "#F2FF00" "#CCFF00"
+```
+
+```r
+palette("default")
+```
+
+The `gray` function allows to select any type of gray shades by providing values from 0 to 1
+
+```r
+gray(seq(0.1, 1, by= 0.2))
+```
+
+```
+## [1] "#1A1A1A" "#4D4D4D" "#808080" "#B3B3B3" "#E6E6E6"
+```
+
+Color gradients with `colorpanel` function from `gplots` library`
+
+```r
+library(gplots)
+colorpanel(5, "darkblue", "yellow", "white")
+```
+
+```
+## [1] "#00008B" "#808046" "#FFFF00" "#FFFF80" "#FFFFFF"
+```
+Much more on colors in R see Earl Glynn's color chart [here](http://research.stowers-institute.org/efg/R/Color/Chart/)
+
+
+## Saving Graphics to File
+
+After the `pdf()` command all graphs are redirected to file `test.pdf`. Works for all common formats similarly: jpeg, png, ps, tiff, ...
+
+```r
+pdf("test.pdf")
+plot(1:10, 1:10)
+dev.off() 
+```
+
+Generates Scalable Vector Graphics (SVG) files that can be edited in vector graphics programs, such as InkScape.
+
+
+```r
+library("RSvgDevice")
+devSVG("test.svg")
+plot(1:10, 1:10)
+dev.off() 
+```
+
+## Homework 3C
+
+Homework 3C: [Bar Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
 
 <br><br><center><a href="mydoc_Rbasics_13.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_15.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

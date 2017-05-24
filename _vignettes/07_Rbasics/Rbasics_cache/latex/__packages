@@ -6,3 +6,6 @@ DBI
 RSQLite
 gplots
 knitr
+dplyr
+data.table
+nycflights13

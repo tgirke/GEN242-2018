@@ -108,6 +108,14 @@ entries:
       url: /mydoc_slides_14.html
       output: web
     
+    - title: Sequence Assembly
+      url: /mydoc_slides_15.html
+      output: web
+    
+    - title: Gene Annotation and Ontologies
+      url: /mydoc_slides_16.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
@@ -248,28 +256,32 @@ entries:
       url: /mydoc_Rbasics_11.html
       output: web
 
-    - title: 12. SQLite Databases
+    - title: 12. Modern data frames
       url: /mydoc_Rbasics_12.html
       output: web
 
-    - title: 13. Graphics in R
+    - title: 13. SQLite Databases
       url: /mydoc_Rbasics_13.html
       output: web
 
-    - title: 14. Analysis Routine
+    - title: 14. Graphics in R
       url: /mydoc_Rbasics_14.html
       output: web
 
-    - title: 15. R Markdown
+    - title: 15. Analysis Routine
       url: /mydoc_Rbasics_15.html
       output: web
 
-    - title: 16. Session Info
+    - title: 16. R Markdown
       url: /mydoc_Rbasics_16.html
       output: web
 
-    - title: 17. References
+    - title: 17. Session Info
       url: /mydoc_Rbasics_17.html
+      output: web
+
+    - title: 18. References
+      url: /mydoc_Rbasics_18.html
       output: web
 
   - title: Programming in R

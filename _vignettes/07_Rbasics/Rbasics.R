@@ -236,6 +236,55 @@ dim(frame1)
 my_result <- merge(frame1, iris, by.x = 0, by.y = 0, all = TRUE)
 dim(my_result)
 
+## ----data_frame_tbl, eval=TRUE-------------------------------------------
+library(dplyr); library(data.table)
+as_data_frame(iris) # coerce data.frame to data frame tbl
+tbl_df(iris) # gives same result; this alternative exists for historical reasons
+
+## ----tabular_import, eval=TRUE-------------------------------------------
+write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
+tbl_df(fread("iris.txt")) # Import with fread and conversion to tibble
+unlink("iris.txt")
+
+## ----flight_data, eval=TRUE----------------------------------------------
+library(nycflights13)
+dim(flights)
+flights
+
+## ----plyr_filter, eval=TRUE----------------------------------------------
+filter(flights, month == 1, day == 1)
+
+## ----plyr_filter_base, eval=TRUE-----------------------------------------
+flights[flights[,"month"]==1 & flights[,"day"]==1,]
+
+## ----plyr_filter_boolean, eval=TRUE--------------------------------------
+filter(flights, month == 1 | month == 2)
+
+## ----plyr_subset, eval=TRUE----------------------------------------------
+slice(flights, 1:10)
+
+## ----plyr_subset_base, eval=TRUE-----------------------------------------
+flights[1:10]
+
+## ----plyr_order1, eval=TRUE----------------------------------------------
+arrange(flights, year, month, day)
+
+## ----plyr_order2, eval=TRUE----------------------------------------------
+arrange(flights, desc(month))
+
+## ----plyr_order_base, eval=TRUE------------------------------------------
+flights[order(flights$year, flights$month, flights$day), ]
+flights[order(flights$month, decreasing = TRUE), ] # or flights[order(-flights$month), ]
+
+## ----plyr_col_select1, eval=TRUE-----------------------------------------
+select(flights, year, month, day)
+
+## ----plyr_col_select2, eval=TRUE-----------------------------------------
+select(flights, year:day)
+
+## ----plyr_col_drop, eval=TRUE--------------------------------------------
+select(flights, -(year:day))
+
 ## ----load_sqlite, eval=TRUE----------------------------------------------
 library(RSQLite)
 mydb <- dbConnect(SQLite(), "test.db") # Creates database file test.db
