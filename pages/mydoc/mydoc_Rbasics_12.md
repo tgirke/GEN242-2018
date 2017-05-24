@@ -1,6 +1,6 @@
 ---
 title: 12. Modern Data Frames
-last_updated: Wed May 24 12:33:59 2017
+last_updated: Wed May 24 12:36:48 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -68,7 +68,7 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
 ```r
 write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
-tbl_df(fread("iris.txt")) # Import with fread and conversion to tibble
+as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
 ```
 
 ```

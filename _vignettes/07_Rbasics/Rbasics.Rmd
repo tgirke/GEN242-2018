@@ -595,7 +595,7 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
 ```{r tabular_import, eval=TRUE}
 write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
-tbl_df(fread("iris.txt")) # Import with fread and conversion to tibble
+as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
 unlink("iris.txt") # Deletes temp file
 ```
 

@@ -782,7 +782,7 @@ as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
 <div id="fast-table-import-with-fread" class="section level2">
 <h2><span class="header-section-number">12.2</span> Fast table import with <code>fread</code></h2>
 <pre class="r"><code>write.table(iris, &quot;iris.txt&quot;, row.names=FALSE, quote=FALSE, sep=&quot;\t&quot;) # Creates sample file
-tbl_df(fread(&quot;iris.txt&quot;)) # Import with fread and conversion to tibble</code></pre>
+as_data_frame(fread(&quot;iris.txt&quot;)) # Import with fread and conversion to tibble</code></pre>
 <pre><code>## # A tibble: 150 × 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;   &lt;chr&gt;

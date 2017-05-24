@@ -1,6 +1,6 @@
 ---
 title: 4. Getting Around
-last_updated: Wed May 24 12:33:59 2017
+last_updated: Wed May 24 12:36:48 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_04.html
 ---
