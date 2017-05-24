@@ -1,6 +1,6 @@
 ---
 title: 17. Session Info
-last_updated: Wed May 24 12:00:59 2017
+last_updated: Wed May 24 12:20:14 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_17.html
 ---
