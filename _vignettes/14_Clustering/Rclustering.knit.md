@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
 - Useful Links
     - [Cluster Task Views](http://cran.cnr.berkeley.edu/web/views/Cluster.html)
     - [Machine Learning Task Views](http://cran.cnr.berkeley.edu/web/views/MachineLearning.html)
-    - [UCR Manual](http://manuals.bioinformatics.ucr.edu/home/R\_BioCondManual\#TOC-Clustering-and-Data-Mining-in-R)
+    - [UCR Manual](http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual#TOC-Clustering-and-Data-Mining-in-R)
 
 # Data Preprocessing
 
@@ -670,7 +670,7 @@ scatterplot3d(pca$x[,1:3], pch=20, color="blue")
 
 ## Additional Exercises
 
-See [here](http://manuals.bioinformatics.ucr.edu/home/R\_BioCondManual\#TOC-Clustering-Exercises)
+See [here](http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual#TOC-Clustering-Exercises)
 
 # Version Information
 

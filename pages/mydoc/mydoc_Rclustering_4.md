@@ -1,6 +1,6 @@
 ---
 title: 4. Clustering Exercises
-last_updated: Wed May 24 13:40:12 2017
+last_updated: Wed May 24 16:24:26 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rclustering_4.html
 ---
@@ -313,7 +313,7 @@ scatterplot3d(pca$x[,1:3], pch=20, color="blue")
 
 ## Additional Exercises
 
-See [here](http://manuals.bioinformatics.ucr.edu/home/R\_BioCondManual\#TOC-Clustering-Exercises)
+See [here](http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual#TOC-Clustering-Exercises)
 
 <br><br><center><a href="mydoc_Rclustering_3.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rclustering_5.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

@@ -1,6 +1,6 @@
 ---
 title: Cluster Analysis in R  <br> <br> 1. Introduction
-last_updated: Wed May 24 13:40:12 2017
+last_updated: Wed May 24 16:24:26 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rclustering_1.html
 ---
@@ -29,7 +29,7 @@ Alternative formats of this tutorial:
 - Useful Links
     - [Cluster Task Views](http://cran.cnr.berkeley.edu/web/views/Cluster.html)
     - [Machine Learning Task Views](http://cran.cnr.berkeley.edu/web/views/MachineLearning.html)
-    - [UCR Manual](http://manuals.bioinformatics.ucr.edu/home/R\_BioCondManual\#TOC-Clustering-and-Data-Mining-in-R)
+    - [UCR Manual](http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual#TOC-Clustering-and-Data-Mining-in-R)
 
 <br><br><center><a href="mydoc_Rclustering_1.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rclustering_2.html"><img src="images/right_arrow.png" alt="Next page."></a></center>
