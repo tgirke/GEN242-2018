@@ -1,19 +1,21 @@
 ---
 title: 12. Modern Data Frames
-last_updated: Tue May 23 21:57:26 2017
+last_updated: Wed May 24 10:47:02 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
 
-Modern day object classes and methods for handling `data.frame` like structures are provided by the `data.table` and `dplyr` packages. 
-The following provides a short introduction to their usage and functionalities. More detailed tutorials on this topic can be found here:
+Modern day object classes and methods for handling `data.frame` like structures
+are provided by the `data.table` and `dplyr` packages. The following gives a
+short introduction to their usage and functionalities. More detailed tutorials
+on this topic can be found here:
 
-* [`dplyr` Introduction](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
-* [`dplyr` Tutorial](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
+* [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+* [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
 * [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)
 * [Intro to `data.table` package](https://www.r-bloggers.com/intro-to-the-data-table-package/)
-* [Working with large datasets using `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
-* [Fast data lookups: `dplyr` vs `data.table`](https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/)
+* [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
+* [Fast lookups with `dplyr` and `data.table`](https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/)
 
 ## Construct a `data frame tbl`
 
@@ -61,7 +63,7 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 ## # ... with 140 more rows
 ```
 
-## Fast data import from file via fread from data.table package
+## Fast table import with `fread` 
 
 
 ```r
@@ -90,15 +92,15 @@ tbl_df(fread("iris.txt")) # Import with fread and conversion to tibble
 unlink("iris.txt")
 ```
 
-## Basic `dplyr` functions for data manipulation
+## Important `dplyr` functions
 
-A. `filter()` (and `slice()`)
-B. `arrange()`
-C. `select()` (and `rename()`)
-D. `distinct()`
-E. `mutate()` (and `transmute()`)
-F. `summarise()`
-G. `sample_n()` (and `sample_frac()`)
+1. `filter()` and `slice()`
+2. `arrange()`
+3. `select()` and `rename()`
+4. `distinct()`
+5. `mutate()` and `transmute()`
+6. `summarise()`
+7. `sample_n()` and `sample_frac()`
 
 
 ```r
@@ -261,7 +263,7 @@ flights[1:10,]
 ## #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
-## Order/sort with arrange 
+## Sorting with `arrange`
 
 Row-wise ordering based on specific columns
 

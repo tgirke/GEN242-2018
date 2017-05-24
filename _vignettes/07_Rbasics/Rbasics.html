@@ -233,7 +233,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Introduction to R</h1>
 <h4 class="author"><em>Author: Thomas Girke</em></h4>
-<h4 class="date"><em>Last update: 23 May, 2017</em></h4>
+<h4 class="date"><em>Last update: 24 May, 2017</em></h4>
 
 </div>
 
@@ -736,14 +736,14 @@ dim(my_result)</code></pre>
 </div>
 <div id="modern-data-frames" class="section level1">
 <h1><span class="header-section-number">12</span> Modern Data Frames</h1>
-<p>Modern day object classes and methods for handling <code>data.frame</code> like structures are provided by the <code>data.table</code> and <code>dplyr</code> packages. The following provides a short introduction to their usage and functionalities. More detailed tutorials on this topic can be found here:</p>
+<p>Modern day object classes and methods for handling <code>data.frame</code> like structures are provided by the <code>data.table</code> and <code>dplyr</code> packages. The following gives a short introduction to their usage and functionalities. More detailed tutorials on this topic can be found here:</p>
 <ul>
-<li><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html"><code>dplyr</code> Introduction</a></li>
-<li><a href="http://genomicsclass.github.io/book/pages/dplyr_tutorial.html"><code>dplyr</code> Tutorial</a></li>
+<li><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">Introduction to <code>dplyr</code></a></li>
+<li><a href="http://genomicsclass.github.io/book/pages/dplyr_tutorial.html">Tutorial on <code>dplyr</code></a></li>
 <li><a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">Tibbles</a></li>
 <li><a href="https://www.r-bloggers.com/intro-to-the-data-table-package/">Intro to <code>data.table</code> package</a></li>
-<li><a href="https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/">Working with large datasets using <code>dplyr</code> and <code>data.table</code></a></li>
-<li><a href="https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/">Fast data lookups: <code>dplyr</code> vs <code>data.table</code></a></li>
+<li><a href="https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/">Big data with <code>dplyr</code> and <code>data.table</code></a></li>
+<li><a href="https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/">Fast lookups with <code>dplyr</code> and <code>data.table</code></a></li>
 </ul>
 <div id="construct-a-data-frame-tbl" class="section level2">
 <h2><span class="header-section-number">12.1</span> Construct a <code>data frame tbl</code></h2>
@@ -779,8 +779,8 @@ as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
 ## 10          4.9         3.1          1.5         0.1  setosa
 ## # ... with 140 more rows</code></pre>
 </div>
-<div id="fast-data-import-from-file-via-fread-from-data.table-package" class="section level2">
-<h2><span class="header-section-number">12.2</span> Fast data import from file via fread from data.table package</h2>
+<div id="fast-table-import-with-fread" class="section level2">
+<h2><span class="header-section-number">12.2</span> Fast table import with <code>fread</code></h2>
 <pre class="r"><code>write.table(iris, &quot;iris.txt&quot;, row.names=FALSE, quote=FALSE, sep=&quot;\t&quot;) # Creates sample file
 tbl_df(fread(&quot;iris.txt&quot;)) # Import with fread and conversion to tibble</code></pre>
 <pre><code>## # A tibble: 150 × 5
@@ -799,9 +799,17 @@ tbl_df(fread(&quot;iris.txt&quot;)) # Import with fread and conversion to tibble
 ## # ... with 140 more rows</code></pre>
 <pre class="r"><code>unlink(&quot;iris.txt&quot;)</code></pre>
 </div>
-<div id="basic-dplyr-functions-for-data-manipulation" class="section level2">
-<h2><span class="header-section-number">12.3</span> Basic <code>dplyr</code> functions for data manipulation</h2>
-<p>A. <code>filter()</code> (and <code>slice()</code>) B. <code>arrange()</code> C. <code>select()</code> (and <code>rename()</code>) D. <code>distinct()</code> E. <code>mutate()</code> (and <code>transmute()</code>) F. <code>summarise()</code> G. <code>sample_n()</code> (and <code>sample_frac()</code>)</p>
+<div id="important-dplyr-functions" class="section level2">
+<h2><span class="header-section-number">12.3</span> Important <code>dplyr</code> functions</h2>
+<ol style="list-style-type: decimal">
+<li><code>filter()</code> and <code>slice()</code></li>
+<li><code>arrange()</code></li>
+<li><code>select()</code> and <code>rename()</code></li>
+<li><code>distinct()</code></li>
+<li><code>mutate()</code> and <code>transmute()</code></li>
+<li><code>summarise()</code></li>
+<li><code>sample_n()</code> and <code>sample_frac()</code></li>
+</ol>
 <pre class="r"><code>library(nycflights13)
 dim(flights)</code></pre>
 <pre><code>## [1] 336776     19</code></pre>
@@ -919,8 +927,8 @@ dim(flights)</code></pre>
 ## #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
 </div>
-<div id="ordersort-with-arrange" class="section level2">
-<h2><span class="header-section-number">12.5</span> Order/sort with arrange</h2>
+<div id="sorting-with-arrange" class="section level2">
+<h2><span class="header-section-number">12.5</span> Sorting with <code>arrange</code></h2>
 <p>Row-wise ordering based on specific columns</p>
 <p><code>dplyr</code> version</p>
 <pre class="r"><code>arrange(flights, year, month, day)</code></pre>
@@ -1534,7 +1542,7 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12] </code></pre>
 <pre><code> ---
 title: &quot;My First R Markdown Document&quot;
 author: &quot;Author: First Last&quot;
-date: &quot;Last update: 23 May, 2017&quot;
+date: &quot;Last update: 24 May, 2017&quot;
 output:
   BiocStyle::html_document:
     toc: true
