@@ -1,37 +1,25 @@
 ---
 title: Cluster Analysis in R 
-author: "Thomas Girke (thomas.girke@ucr.edu)"
+author: "First/last name (first.last@ucr.edu)"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
 output:
-  BiocStyle::html_document:
+  html_document:
     toc: true
-    toc_depth: 4
+    toc_float:
+        collapsed: true
+        smooth_scroll: true
+    toc_depth: 3
     fig_caption: yes
+    code_folding: show
+    number_sections: true
 
 fontsize: 14pt
 bibliography: bibtex.bib
 ---
+
 <!--
-%% \VignetteEngine{knitr::rmarkdown}
-%\VignetteIndexEntry{Graphics in R}
-%% \VignetteDepends{methods}
-%% \VignetteKeywords{compute cluster, pipeline, reports}
--->
-
-<!---
-- Conversion from Rnw/tex to Rmd
-    - Build vignette from Rnw 
-    - Then run: pandoc -s Rgraphics.tex -o Rgraphics.text
-    - Then fix things, usually a lot...
-
 - Compile from command-line
-echo "rmarkdown::render('Rclustering.Rmd', clean=F)" | R -slave; R CMD Stangle Rclustering.Rmd; Rscript ../md2jekyll.R Rclustering.knit.md 16
-
-- Commit to github
-git commit -am "some edits"; git push -u origin master
-
-- To customize font size and other style features, add this line to output section in preamble:  
-    css: style.css
+Rscript -e "rmarkdown::render('Rclustering.Rmd', c('html_document'), clean=F); knitr::knit('Rclustering.Rmd', tangle=TRUE)"; Rscript ../md2jekyll.R Rclustering.knit.md 16; Rscript -e "rmarkdown::render('Rclustering.Rmd', c('pdf_document'))"
 -->
 
 ```{r style, echo = FALSE, results = 'asis'}
@@ -42,7 +30,13 @@ knitr::opts_chunk$set(
     cache=as.logical(Sys.getenv("KNITR_CACHE", "TRUE")))
 ```
 
-Note: the most recent version of this tutorial can be found <a href="http://girke.bioinformatics.ucr.edu/GEN242/vignettes/14_Clustering/Rclustering.html">here</a> and a slide show [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_slides_17.html).
+```{r setup, echo=FALSE, messages=FALSE, warnings=FALSE}
+suppressPackageStartupMessages({
+    library(ggplot2)
+    library(ape)
+})
+```
+
 
 # Introduction
 
@@ -278,7 +272,7 @@ ci[2:3] # Returns Jaccard index and variables used to compute it
 
 #### Clustering cluster sets with Jaccard index
 
-The following example shows how one can cluster entire cluster result sets. First, 10 sample cluster results are created with Clara using k-values from 3 to 12. The results are stored as named clustering vectors in a list object. Then a nested sapply loop is used to generate a similarity matrix of Jaccard Indices for the clustering results. After converting the result into a distance matrix, hierarchical clustering is performed with \Rfunction{hclust}.}
+The following example shows how one can cluster entire cluster result sets. First, 10 sample cluster results are created with Clara using k-values from 3 to 12. The results are stored as named clustering vectors in a list object. Then a nested sapply loop is used to generate a similarity matrix of Jaccard Indices for the clustering results. After converting the result into a distance matrix, hierarchical clustering is performed with `hclust`.}
 
 ```{r jaccard_index_clustering, eval=TRUE, warning=FALSE, message=FALSE}
 clVlist <- lapply(3:12, function(x) clara(y[1:30, ], k=x)$clustering); names(clVlist) <- paste("k", "=", 3:12)

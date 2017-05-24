@@ -1,37 +1,25 @@
 ---
 title: Cluster Analysis in R 
-author: "Thomas Girke (thomas.girke@ucr.edu)"
-date: "Last update: 18 May, 2016" 
+author: "First/last name (first.last@ucr.edu)"
+date: "Last update: 24 May, 2017" 
 output:
-  BiocStyle::html_document:
+  html_document:
     toc: true
-    toc_depth: 4
+    toc_float:
+        collapsed: true
+        smooth_scroll: true
+    toc_depth: 3
     fig_caption: yes
+    code_folding: show
+    number_sections: true
 
 fontsize: 14pt
 bibliography: bibtex.bib
 ---
+
 <!--
-%% \VignetteEngine{knitr::rmarkdown}
-%\VignetteIndexEntry{Graphics in R}
-%% \VignetteDepends{methods}
-%% \VignetteKeywords{compute cluster, pipeline, reports}
--->
-
-<!---
-- Conversion from Rnw/tex to Rmd
-    - Build vignette from Rnw 
-    - Then run: pandoc -s Rgraphics.tex -o Rgraphics.text
-    - Then fix things, usually a lot...
-
 - Compile from command-line
-echo "rmarkdown::render('Rclustering.Rmd', clean=F)" | R -slave; R CMD Stangle Rclustering.Rmd; Rscript ../md2jekyll.R Rclustering.knit.md 16
-
-- Commit to github
-git commit -am "some edits"; git push -u origin master
-
-- To customize font size and other style features, add this line to output section in preamble:  
-    css: style.css
+Rscript -e "rmarkdown::render('Rclustering.Rmd', c('html_document'), clean=F); knitr::knit('Rclustering.Rmd', tangle=TRUE)"; Rscript ../md2jekyll.R Rclustering.knit.md 16; Rscript -e "rmarkdown::render('Rclustering.Rmd', c('pdf_document'))"
 -->
 
 <script type="text/javascript">
@@ -48,7 +36,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-Note: the most recent version of this tutorial can be found <a href="http://girke.bioinformatics.ucr.edu/GEN242/vignettes/14_Clustering/Rclustering.html">here</a> and a slide show [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc/mydoc_slides_17.html).
+
+
 
 # Introduction
 
@@ -160,7 +149,7 @@ y <- matrix(rnorm(500), 100, 5, dimnames=list(paste("g", 1:100, sep=""), paste("
 heatmap.2(y) # Shortcut to final result
 ```
 
-![](Rclustering_files/figure-html/hclust_heatmap_example-1.png)<!-- -->
+![](Rclustering_files/figure-latex/hclust_heatmap_example-1.pdf)<!-- --> 
 
 #### Stepwise Approach with Tree Cutting
 
@@ -176,7 +165,7 @@ mycol <- colorpanel(40, "darkblue", "yellow", "white") # or try redgreen(75)
 heatmap.2(y, Rowv=as.dendrogram(hr), Colv=as.dendrogram(hc), col=mycol, scale="row", density.info="none", trace="none", RowSideColors=mycolhc) 
 ```
 
-![](Rclustering_files/figure-html/hclust_heatmap_example_setpwise-1.png)<!-- -->
+![](Rclustering_files/figure-latex/hclust_heatmap_example_setpwise-1.pdf)<!-- --> 
 
 ## K-Means Clustering
 
@@ -201,15 +190,15 @@ km$cluster
 
 ```
 ##   g1   g2   g3   g4   g5   g6   g7   g8   g9  g10  g11  g12  g13  g14  g15  g16  g17  g18  g19  g20 
-##    2    2    2    2    3    1    2    1    2    2    1    1    2    3    2    2    1    3    2    1 
+##    1    3    3    1    1    2    3    2    3    1    2    3    3    1    2    2    1    3    2    2 
 ##  g21  g22  g23  g24  g25  g26  g27  g28  g29  g30  g31  g32  g33  g34  g35  g36  g37  g38  g39  g40 
-##    3    2    1    2    1    1    3    1    2    2    3    3    2    1    3    2    2    2    1    1 
+##    1    3    1    2    3    2    1    1    2    2    2    1    3    3    3    2    1    2    1    1 
 ##  g41  g42  g43  g44  g45  g46  g47  g48  g49  g50  g51  g52  g53  g54  g55  g56  g57  g58  g59  g60 
-##    1    1    2    1    2    1    3    1    2    3    3    3    2    2    1    1    2    2    2    3 
+##    1    1    3    3    3    2    3    3    2    3    3    1    3    1    2    2    3    2    2    3 
 ##  g61  g62  g63  g64  g65  g66  g67  g68  g69  g70  g71  g72  g73  g74  g75  g76  g77  g78  g79  g80 
-##    1    2    1    1    1    2    2    2    2    3    2    2    1    2    3    2    3    2    1    3 
+##    1    3    2    2    2    3    3    3    1    1    3    1    1    3    2    3    3    3    3    3 
 ##  g81  g82  g83  g84  g85  g86  g87  g88  g89  g90  g91  g92  g93  g94  g95  g96  g97  g98  g99 g100 
-##    2    2    2    2    1    2    3    1    1    2    1    2    2    3    1    1    2    3    2    2
+##    2    3    3    1    1    1    1    2    1    2    2    1    3    1    1    1    2    1    1    2
 ```
 
 ## Fuzzy C-Means Clustering
@@ -232,10 +221,10 @@ round(fannyy$membership, 2)[1:4,]
 
 ```
 ##    [,1] [,2] [,3] [,4]
-## g1 0.81 0.05 0.04 0.10
-## g2 0.92 0.02 0.01 0.04
-## g3 0.72 0.11 0.03 0.14
-## g4 0.01 0.95 0.01 0.02
+## g1 0.78 0.03 0.08 0.11
+## g2 0.03 0.91 0.03 0.03
+## g3 0.07 0.89 0.02 0.02
+## g4 0.03 0.02 0.88 0.07
 ```
 
 ```r
@@ -244,15 +233,15 @@ fannyy$clustering
 
 ```
 ##   g1   g2   g3   g4   g5   g6   g7   g8   g9  g10  g11  g12  g13  g14  g15  g16  g17  g18  g19  g20 
-##    1    1    1    2    2    3    2    3    2    2    4    3    4    4    2    2    3    1    1    1 
+##    1    2    2    3    1    4    1    4    1    3    4    2    2    1    3    4    1    2    4    4 
 ##  g21  g22  g23  g24  g25  g26  g27  g28  g29  g30  g31  g32  g33  g34  g35  g36  g37  g38  g39  g40 
-##    3    2    3    1    2    3    3    4    4    4    3    2    1    1    4    2    1    2    3    2 
+##    3    1    3    4    2    4    3    1    4    3    4    1    2    2    2    3    1    4    3    3 
 ##  g41  g42  g43  g44  g45  g46  g47  g48  g49  g50  g51  g52  g53  g54  g55  g56  g57  g58  g59  g60 
-##    3    4    2    3    1    2    2    3    2    3    3    3    4    2    3    2    4    4    1    4 
+##    2    3    2    1    1    2    4    2    4    1    2    1    2    3    4    4    4    4    4    4 
 ##  g61  g62  g63  g64  g65  g66  g67  g68  g69  g70  g71  g72  g73  g74  g75  g76  g77  g78  g79  g80 
-##    1    1    4    3    1    4    2    2    2    4    2    1    3    1    3    4    1    1    3    3 
+##    1    2    4    4    4    2    4    2    1    3    2    3    1    4    4    1    4    1    2    1 
 ##  g81  g82  g83  g84  g85  g86  g87  g88  g89  g90  g91  g92  g93  g94  g95  g96  g97  g98  g99 g100 
-##    2    1    2    4    4    1    3    2    4    4    3    4    1    3    3    2    1    3    2    1
+##    4    2    2    3    1    1    3    4    1    4    1    3    2    3    1    3    3    3    3    4
 ```
 	
 ## Principal Component Analysis (PCA)
@@ -282,11 +271,11 @@ summary(pca) # Prints variance summary for all principal components
 ```
 
 ```
-## Importance of components:
-##                          PC1    PC2    PC3    PC4    PC5
-## Standard deviation     1.098 1.0351 1.0023 0.9646 0.8879
-## Proportion of Variance 0.241 0.2143 0.2009 0.1861 0.1577
-## Cumulative Proportion  0.241 0.4553 0.6562 0.8423 1.0000
+## Importance of components%s:
+##                           PC1    PC2    PC3    PC4    PC5
+## Standard deviation     1.1055 1.0346 1.0148 0.9312 0.9003
+## Proportion of Variance 0.2444 0.2141 0.2059 0.1734 0.1621
+## Cumulative Proportion  0.2444 0.4585 0.6644 0.8379 1.0000
 ```
 
 ```r
@@ -294,7 +283,7 @@ plot(pca$x, pch=20, col="blue", type="n") # To plot dots, drop type="n"
 text(pca$x, rownames(pca$x), cex=0.8)
 ```
 
-![](Rclustering_files/figure-html/pca_example-1.png)<!-- -->
+![](Rclustering_files/figure-latex/pca_example-1.pdf)<!-- --> 
 1st and 2nd principal components explain x% of variance in data.
 
 ## Multidimensional Scaling (MDS)
@@ -314,7 +303,7 @@ plot(loc[,1], -loc[,2], type="n", xlab="", ylab="", main="cmdscale(eurodist)")
 text(loc[,1], -loc[,2], rownames(loc), cex=0.8) 
 ```
 
-![](Rclustering_files/figure-html/mds_example-1.png)<!-- -->
+![](Rclustering_files/figure-latex/mds_example-1.pdf)<!-- --> 
 
 ## Biclustering
 
@@ -347,16 +336,16 @@ ci[2:3] # Returns Jaccard index and variables used to compute it
 
 ```
 ## $variables
-##     a     b     c 
-##  3888  9559 10128 
+##    a    b    c 
+## 5073 8762 8423 
 ## 
 ## $Jaccard_Index
-## [1] 0.1649205
+## [1] 0.2279181
 ```
 
 #### Clustering cluster sets with Jaccard index
 
-The following example shows how one can cluster entire cluster result sets. First, 10 sample cluster results are created with Clara using k-values from 3 to 12. The results are stored as named clustering vectors in a list object. Then a nested sapply loop is used to generate a similarity matrix of Jaccard Indices for the clustering results. After converting the result into a distance matrix, hierarchical clustering is performed with \Rfunction{hclust}.}
+The following example shows how one can cluster entire cluster result sets. First, 10 sample cluster results are created with Clara using k-values from 3 to 12. The results are stored as named clustering vectors in a list object. Then a nested sapply loop is used to generate a similarity matrix of Jaccard Indices for the clustering results. After converting the result into a distance matrix, hierarchical clustering is performed with `hclust`.}
 
 
 ```r
@@ -366,7 +355,7 @@ hv <- hclust(as.dist(1-d))
 plot(as.dendrogram(hv), edgePar=list(col=3, lwd=4), horiz=T, main="Similarities of 10 Clara Clustering Results for k: 3-12") 
 ```
 
-![](Rclustering_files/figure-html/jaccard_index_clustering-1.png)<!-- -->
+![](Rclustering_files/figure-latex/jaccard_index_clustering-1.pdf)<!-- --> 
 
 - Remember: there are many additional clustering algorithms.
 - Additional details can be found in the Clustering Section of the [R/Bioconductor Manual](http://manuals.bioinformatics.ucr.edu/home/R_BioCondManual\#TOC-Clustering-and-Data-Mining-in-R).
@@ -467,7 +456,7 @@ names(hr)
 par(mfrow = c(1, 2)); plot(hr, hang = 0.1); plot(hr, hang = -1) 
 ```
 
-![](Rclustering_files/figure-html/hclust1-1.png)<!-- -->
+![](Rclustering_files/figure-latex/hclust1-1.pdf)<!-- --> 
 
 ### Tree plotting I
 
@@ -476,7 +465,7 @@ par(mfrow = c(1, 2)); plot(hr, hang = 0.1); plot(hr, hang = -1)
 plot(as.dendrogram(hr), edgePar=list(col=3, lwd=4), horiz=T) 
 ```
 
-![](Rclustering_files/figure-html/hclust_plot_tree1-1.png)<!-- -->
+![](Rclustering_files/figure-latex/hclust_plot_tree1-1.pdf)<!-- --> 
 
 ### Tree plotting II
 
@@ -489,7 +478,7 @@ plot.phylo(as.phylo(hr), type="p", edge.col=4, edge.width=2,
            show.node.label=TRUE, no.margin=TRUE)
 ```
 
-![](Rclustering_files/figure-html/hclust_plot_tree2-1.png)<!-- -->
+![](Rclustering_files/figure-latex/hclust_plot_tree2-1.pdf)<!-- --> 
 
 ## Tree Cutting
 
@@ -541,7 +530,7 @@ library(gplots)
 heatmap.2(y, col=redgreen(75))
 ```
 
-![](Rclustering_files/figure-html/heatmap2a-1.png)<!-- -->
+![](Rclustering_files/figure-latex/heatmap2a-1.pdf)<!-- --> 
 
 ### With `pheatmap`
 
@@ -552,7 +541,7 @@ library(pheatmap); library("RColorBrewer")
 pheatmap(y, color=brewer.pal(9,"Blues"))
 ```
 
-![](Rclustering_files/figure-html/pheatmap-1.png)<!-- -->
+![](Rclustering_files/figure-latex/pheatmap-1.pdf)<!-- --> 
 
 ### Customizing heatmaps
 
@@ -567,7 +556,7 @@ heatmap.2(y, Rowv=as.dendrogram(hr), Colv=as.dendrogram(hc), col=mycol,
           RowSideColors=as.character(mycl))
 ```
 
-![](Rclustering_files/figure-html/heatmap2_custom-1.png)<!-- -->
+![](Rclustering_files/figure-latex/heatmap2_custom-1.pdf)<!-- --> 
 	
 ## K-Means Clustering with PAM
 
@@ -591,7 +580,7 @@ heatmap.2(y, Rowv=as.dendrogram(hr), Colv=as.dendrogram(hc), col=mycol,
           RowSideColors=as.character(kmcol))
 ```
 
-![](Rclustering_files/figure-html/kmeans2-1.png)<!-- -->
+![](Rclustering_files/figure-latex/kmeans2-1.pdf)<!-- --> 
 
 ## K-Means Fuzzy Clustering
 
@@ -645,7 +634,7 @@ plot(loc[,1], -loc[,2], type="n", xlab="", ylab="", main="cmdscale(eurodist)")
 text(loc[,1], -loc[,2], rownames(loc), cex=0.8) 
 ```
 
-![](Rclustering_files/figure-html/cmdscale2-1.png)<!-- -->
+![](Rclustering_files/figure-latex/cmdscale2-1.pdf)<!-- --> 
 
 ## Principal Component Analysis (PCA)
 
@@ -666,7 +655,7 @@ summary(pca) # Prints variance summary for all principal components.
 ```
 
 ```
-## Importance of components:
+## Importance of components%s:
 ##                           PC1    PC2    PC3     PC4    PC5
 ## Standard deviation     1.3611 1.1777 1.0420 0.69264 0.4416
 ## Proportion of Variance 0.3705 0.2774 0.2172 0.09595 0.0390
@@ -677,7 +666,7 @@ summary(pca) # Prints variance summary for all principal components.
 scatterplot3d(pca$x[,1:3], pch=20, color="blue") 
 ```
 
-![](Rclustering_files/figure-html/pca2-1.png)<!-- -->
+![](Rclustering_files/figure-latex/pca2-1.pdf)<!-- --> 
 
 ## Additional Exercises
 
@@ -691,9 +680,13 @@ sessionInfo()
 ```
 
 ```
-## R version 3.3.0 (2016-05-03)
+## R version 3.4.0 (2017-04-21)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 14.04.4 LTS
+## Running under: Ubuntu 14.04.5 LTS
+## 
+## Matrix products: default
+## BLAS: /usr/lib/libblas/libblas.so.3.0
+## LAPACK: /usr/lib/lapack/liblapack.so.3.0
 ## 
 ## locale:
 ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C               LC_TIME=en_US.UTF-8       
@@ -702,18 +695,20 @@ sessionInfo()
 ## [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## attached base packages:
-## [1] stats     graphics  utils     datasets  grDevices methods   base     
+## [1] stats     graphics  utils     datasets  grDevices base     
 ## 
 ## other attached packages:
-## [1] scatterplot3d_0.3-36 RColorBrewer_1.1-2   pheatmap_1.0.8       ape_3.4             
-## [5] cluster_2.0.4        gplots_3.0.1         BiocStyle_2.0.0     
+## [1] scatterplot3d_0.3-40 RColorBrewer_1.1-2   pheatmap_1.0.8       cluster_2.0.6       
+## [5] gplots_3.0.1         ape_4.1              ggplot2_2.2.1        BiocStyle_2.4.0     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.4.5      knitr_1.12.3       magrittr_1.5       munsell_0.4.3      colorspace_1.2-6  
-##  [6] lattice_0.20-33    plyr_1.8.3         stringr_1.0.0      caTools_1.17.1     tools_3.3.0       
-## [11] grid_3.3.0         nlme_3.1-127       gtable_0.2.0       KernSmooth_2.23-15 htmltools_0.3.5   
-## [16] gtools_3.5.0       yaml_2.1.13        digest_0.6.9       formatR_1.3        bitops_1.0-6      
-## [21] evaluate_0.9       rmarkdown_0.9.6    gdata_2.17.0       stringi_1.0-1      scales_0.4.0
+##  [1] Rcpp_0.12.10       knitr_1.15.1       magrittr_1.5       munsell_0.4.3      colorspace_1.3-2  
+##  [6] lattice_0.20-35    stringr_1.2.0      plyr_1.8.4         caTools_1.17.1     tools_3.4.0       
+## [11] parallel_3.4.0     grid_3.4.0         gtable_0.2.0       nlme_3.1-131       KernSmooth_2.23-15
+## [16] gtools_3.5.0       htmltools_0.3.5    yaml_2.1.14        lazyeval_0.2.0     rprojroot_1.2     
+## [21] digest_0.6.12      tibble_1.3.0       bitops_1.0-6       codetools_0.2-15   evaluate_0.10     
+## [26] rmarkdown_1.5      gdata_2.17.0       stringi_1.1.5      compiler_3.4.0     methods_3.4.0     
+## [31] scales_0.4.1       backports_1.0.5
 ```
 
 # References
