@@ -901,8 +901,8 @@ dim(flights)</code></pre>
 ## # ... with 9 more variables: flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,
 ## #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 <p>Base R code equivalent</p>
-<pre class="r"><code>flights[1:10]</code></pre>
-<pre><code>## # A tibble: 336,776 × 10
+<pre class="r"><code>flights[1:10,]</code></pre>
+<pre><code>## # A tibble: 10 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;   &lt;chr&gt;
 ## 1   2013     1     1      517            515         2      830            819        11      UA
@@ -915,7 +915,8 @@ dim(flights)</code></pre>
 ## 8   2013     1     1      557            600        -3      709            723       -14      EV
 ## 9   2013     1     1      557            600        -3      838            846        -8      B6
 ## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 336,766 more rows</code></pre>
+## # ... with 9 more variables: flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,
+## #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
 </div>
 <div id="ordersort-with-arrange" class="section level2">

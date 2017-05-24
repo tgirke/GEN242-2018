@@ -264,7 +264,7 @@ filter(flights, month == 1 | month == 2)
 slice(flights, 1:10)
 
 ## ----plyr_subset_base, eval=TRUE-----------------------------------------
-flights[1:10]
+flights[1:10,]
 
 ## ----plyr_order1, eval=TRUE----------------------------------------------
 arrange(flights, year, month, day)

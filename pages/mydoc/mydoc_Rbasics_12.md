@@ -1,6 +1,6 @@
 ---
 title: 12. Modern Data Frames
-last_updated: Tue May 23 21:55:10 2017
+last_updated: Tue May 23 21:57:26 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -240,11 +240,11 @@ Base R code equivalent
 
 
 ```r
-flights[1:10]
+flights[1:10,]
 ```
 
 ```
-## # A tibble: 336,776 × 10
+## # A tibble: 10 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
 ##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
 ## 1   2013     1     1      517            515         2      830            819        11      UA
@@ -257,7 +257,8 @@ flights[1:10]
 ## 8   2013     1     1      557            600        -3      709            723       -14      EV
 ## 9   2013     1     1      557            600        -3      838            846        -8      B6
 ## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 336,766 more rows
+## # ... with 9 more variables: flight <int>, tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
+## #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
 ## Order/sort with arrange 

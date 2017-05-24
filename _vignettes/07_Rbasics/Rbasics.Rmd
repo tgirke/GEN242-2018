@@ -644,7 +644,7 @@ slice(flights, 1:10)
 Base R code equivalent
 
 ```{r plyr_subset_base, eval=TRUE}
-flights[1:10]
+flights[1:10,]
 ```
 
 ## Order/sort with arrange 

@@ -1,6 +1,6 @@
 ---
 title: 6. Data Types 
-last_updated: Tue May 23 21:55:10 2017
+last_updated: Tue May 23 21:57:26 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_06.html
 ---
