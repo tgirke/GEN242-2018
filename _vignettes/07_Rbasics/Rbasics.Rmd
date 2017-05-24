@@ -569,7 +569,7 @@ my_result <- merge(frame1, iris, by.x = 0, by.y = 0, all = TRUE)
 dim(my_result)
 ```
 
-# Modern data frames
+# Modern `data frames`
 
 Modern day object classes and methods for handling `data.frame` like structures are provided by the `data.table` and `dplyr` packages. 
 The following provides a short introduction to their usage and functionalities. More detailed tutorials on this topic can be found here:
@@ -635,11 +635,13 @@ filter(flights, month == 1 | month == 2)
 
 ### Subset rows by position
 
+`dplyr` version
+
 ```{r plyr_subset, eval=TRUE}
 slice(flights, 1:10)
 ```
 
-### Base R code equivalent
+Base R code equivalent
 
 ```{r plyr_subset_base, eval=TRUE}
 flights[1:10]
@@ -647,19 +649,21 @@ flights[1:10]
 
 ## Order/sort with arrange 
 
-### Row-wise ordering based on specific columns
+Row-wise ordering based on specific columns
+
+`dplyr` version
 
 ```{r plyr_order1, eval=TRUE}
 arrange(flights, year, month, day)
 ```
 
-### For ordering descendingly use desc() function
+For ordering descendingly use desc() function
 
 ```{r plyr_order2, eval=TRUE}
 arrange(flights, desc(month))
 ```
 
-### Classical R equivalent
+Base R code equivalent
 
 ```{r plyr_order_base, eval=TRUE}
 flights[order(flights$year, flights$month, flights$day), ]
@@ -668,18 +672,19 @@ flights[order(flights$month, decreasing = TRUE), ] # or flights[order(-flights$m
 
 ## Select columns with select 
 
-### Select specific columns
+Select specific columns
+
 ```{r plyr_col_select1, eval=TRUE}
 select(flights, year, month, day)
 ```
 
-### Select range of columns by name
+Select range of columns by name
 
 ```{r plyr_col_select2, eval=TRUE}
 select(flights, year:day)
 ```
 
-### Drop specific columns (here range)
+Drop specific columns (here range)
 
 ```{r plyr_col_drop, eval=TRUE}
 select(flights, -(year:day))

@@ -1,6 +1,6 @@
 ---
-title: 12. Modern data frames
-last_updated: Tue May 23 21:43:13 2017
+title: 12. Modern `data frames`
+last_updated: Tue May 23 21:52:52 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -211,6 +211,8 @@ filter(flights, month == 1 | month == 2)
 
 ### Subset rows by position
 
+`dplyr` version
+
 
 ```r
 slice(flights, 1:10)
@@ -234,7 +236,7 @@ slice(flights, 1:10)
 ## #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
-### Base R code equivalent
+Base R code equivalent
 
 
 ```r
@@ -260,7 +262,9 @@ flights[1:10]
 
 ## Order/sort with arrange 
 
-### Row-wise ordering based on specific columns
+Row-wise ordering based on specific columns
+
+`dplyr` version
 
 
 ```r
@@ -285,7 +289,7 @@ arrange(flights, year, month, day)
 ## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
-### For ordering descendingly use desc() function
+For ordering descendingly use desc() function
 
 
 ```r
@@ -310,7 +314,7 @@ arrange(flights, desc(month))
 ## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
-### Classical R equivalent
+Base R code equivalent
 
 
 ```r
@@ -359,7 +363,8 @@ flights[order(flights$month, decreasing = TRUE), ] # or flights[order(-flights$m
 
 ## Select columns with select 
 
-### Select specific columns
+Select specific columns
+
 
 ```r
 select(flights, year, month, day)
@@ -382,7 +387,7 @@ select(flights, year, month, day)
 ## # ... with 336,766 more rows
 ```
 
-### Select range of columns by name
+Select range of columns by name
 
 
 ```r
@@ -406,7 +411,7 @@ select(flights, year:day)
 ## # ... with 336,766 more rows
 ```
 
-### Drop specific columns (here range)
+Drop specific columns (here range)
 
 
 ```r

@@ -735,7 +735,7 @@ dim(my_result)</code></pre>
 </div>
 </div>
 <div id="modern-data-frames" class="section level1">
-<h1><span class="header-section-number">12</span> Modern data frames</h1>
+<h1><span class="header-section-number">12</span> Modern <code>data frames</code></h1>
 <p>Modern day object classes and methods for handling <code>data.frame</code> like structures are provided by the <code>data.table</code> and <code>dplyr</code> packages. The following provides a short introduction to their usage and functionalities. More detailed tutorials on this topic can be found here:</p>
 <ul>
 <li><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html"><code>dplyr</code> Introduction</a></li>
@@ -883,6 +883,7 @@ dim(flights)</code></pre>
 </div>
 <div id="subset-rows-by-position" class="section level3">
 <h3><span class="header-section-number">12.4.4</span> Subset rows by position</h3>
+<p><code>dplyr</code> version</p>
 <pre class="r"><code>slice(flights, 1:10)</code></pre>
 <pre><code>## # A tibble: 10 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
@@ -899,9 +900,7 @@ dim(flights)</code></pre>
 ## 10  2013     1     1      558            600        -2      753            745         8      AA
 ## # ... with 9 more variables: flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,
 ## #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-<div id="base-r-code-equivalent-1" class="section level3">
-<h3><span class="header-section-number">12.4.5</span> Base R code equivalent</h3>
+<p>Base R code equivalent</p>
 <pre class="r"><code>flights[1:10]</code></pre>
 <pre><code>## # A tibble: 336,776 × 10
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
@@ -921,8 +920,8 @@ dim(flights)</code></pre>
 </div>
 <div id="ordersort-with-arrange" class="section level2">
 <h2><span class="header-section-number">12.5</span> Order/sort with arrange</h2>
-<div id="row-wise-ordering-based-on-specific-columns" class="section level3">
-<h3><span class="header-section-number">12.5.1</span> Row-wise ordering based on specific columns</h3>
+<p>Row-wise ordering based on specific columns</p>
+<p><code>dplyr</code> version</p>
 <pre class="r"><code>arrange(flights, year, month, day)</code></pre>
 <pre><code>## # A tibble: 336,776 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
@@ -939,9 +938,7 @@ dim(flights)</code></pre>
 ## 10  2013     1     1      558            600        -2      753            745         8      AA
 ## # ... with 336,766 more rows, and 9 more variables: flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;,
 ## #   dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-<div id="for-ordering-descendingly-use-desc-function" class="section level3">
-<h3><span class="header-section-number">12.5.2</span> For ordering descendingly use desc() function</h3>
+<p>For ordering descendingly use desc() function</p>
 <pre class="r"><code>arrange(flights, desc(month))</code></pre>
 <pre><code>## # A tibble: 336,776 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
@@ -958,9 +955,7 @@ dim(flights)</code></pre>
 ## 10  2013    12     1      550            600       -10      825            854       -29      B6
 ## # ... with 336,766 more rows, and 9 more variables: flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;,
 ## #   dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
-<div id="classical-r-equivalent" class="section level3">
-<h3><span class="header-section-number">12.5.3</span> Classical R equivalent</h3>
+<p>Base R code equivalent</p>
 <pre class="r"><code>flights[order(flights$year, flights$month, flights$day), ]</code></pre>
 <pre><code>## # A tibble: 336,776 × 19
 ##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
@@ -994,11 +989,9 @@ dim(flights)</code></pre>
 ## # ... with 336,766 more rows, and 9 more variables: flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;,
 ## #   dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
 </div>
-</div>
 <div id="select-columns-with-select" class="section level2">
 <h2><span class="header-section-number">12.6</span> Select columns with select</h2>
-<div id="select-specific-columns" class="section level3">
-<h3><span class="header-section-number">12.6.1</span> Select specific columns</h3>
+<p>Select specific columns</p>
 <pre class="r"><code>select(flights, year, month, day)</code></pre>
 <pre><code>## # A tibble: 336,776 × 3
 ##     year month   day
@@ -1014,9 +1007,7 @@ dim(flights)</code></pre>
 ## 9   2013     1     1
 ## 10  2013     1     1
 ## # ... with 336,766 more rows</code></pre>
-</div>
-<div id="select-range-of-columns-by-name" class="section level3">
-<h3><span class="header-section-number">12.6.2</span> Select range of columns by name</h3>
+<p>Select range of columns by name</p>
 <pre class="r"><code>select(flights, year:day)</code></pre>
 <pre><code>## # A tibble: 336,776 × 3
 ##     year month   day
@@ -1032,9 +1023,7 @@ dim(flights)</code></pre>
 ## 9   2013     1     1
 ## 10  2013     1     1
 ## # ... with 336,766 more rows</code></pre>
-</div>
-<div id="drop-specific-columns-here-range" class="section level3">
-<h3><span class="header-section-number">12.6.3</span> Drop specific columns (here range)</h3>
+<p>Drop specific columns (here range)</p>
 <pre class="r"><code>select(flights, -(year:day))</code></pre>
 <pre><code>## # A tibble: 336,776 × 16
 ##    dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
@@ -1051,7 +1040,6 @@ dim(flights)</code></pre>
 ## 10      558            600        -2      753            745         8      AA    301  N3ALAA
 ## # ... with 336,766 more rows, and 7 more variables: origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,
 ## #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;</code></pre>
-</div>
 </div>
 </div>
 <div id="sqlite-databases" class="section level1">
