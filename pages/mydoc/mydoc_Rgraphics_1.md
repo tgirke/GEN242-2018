@@ -1,6 +1,6 @@
 ---
 title: Graphics and Data Visualization in R  <br> <br> 1. Overview
-last_updated: Wed May 24 15:43:26 2017
+last_updated: Wed May 24 15:53:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_1.html
 ---
@@ -13,7 +13,7 @@ Alternative formats of this tutorial:
 [ [PDF](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Rgraphics.pdf){:target="_blank"} ],
 [ [.Rmd](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/15_Rgraphics/Rgraphics.Rmd){:target="_blank"} ],
 [ [.R](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/15_Rgraphics/Rgraphics.R){:target="_blank"} ],
-[ [`Old Slide Show`](https://drive.google.com/file/d/0B-lLYVUOliJFUmFVa0N3Y0kxOVE/view?usp=sharing){:target="_blank"} ]
+[ [Old Slides](https://drive.google.com/file/d/0B-lLYVUOliJFUmFVa0N3Y0kxOVE/view?usp=sharing){:target="_blank"} ]
 
 
 ## Graphics in R
