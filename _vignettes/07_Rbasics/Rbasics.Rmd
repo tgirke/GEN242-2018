@@ -599,7 +599,9 @@ tbl_df(fread("iris.txt")) # Import with fread and conversion to tibble
 unlink("iris.txt") # Deletes temp file
 ```
 
-Note: to ignore lines starting with comment signs one can pass on a function call to the `fread` importer as follows:
+Note: to ignore lines starting with comment signs one can pass on a shell
+command that preprocesses the file prior to the import with `fread`.  The
+following example illustrates this option.
 
 ```{r tabular_import_ignore, eval=FALSE}
 fread("grep -v '^#' iris.txt") 
