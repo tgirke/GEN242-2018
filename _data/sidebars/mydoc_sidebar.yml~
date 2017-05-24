@@ -236,7 +236,7 @@ entries:
       url: /mydoc_Rbasics_06.html
       output: web
 
-    - title: 7. Data objects
+    - title: 7. Data Objects
       url: /mydoc_Rbasics_07.html
       output: web
 
@@ -256,7 +256,7 @@ entries:
       url: /mydoc_Rbasics_11.html
       output: web
 
-    - title: 12. Modern `data frames`
+    - title: 12. Modern Data Frames
       url: /mydoc_Rbasics_12.html
       output: web
 
@@ -332,7 +332,7 @@ entries:
       url: /mydoc_Rbasics_11.html
       output: web
 
-    - title: 12. Modern data frames
+    - title: 12. Modern `data frames`
       url: /mydoc_Rbasics_12.html
       output: web
 

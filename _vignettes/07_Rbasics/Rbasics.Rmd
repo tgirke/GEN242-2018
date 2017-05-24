@@ -273,7 +273,7 @@ x
 which(x) # Returns index for the 'TRUE' values in logical vector
 ```
 
-# Data objects
+# Data Objects
 
 ## Object types
 
@@ -569,7 +569,7 @@ my_result <- merge(frame1, iris, by.x = 0, by.y = 0, all = TRUE)
 dim(my_result)
 ```
 
-# Modern `data frames`
+# Modern Data Frames
 
 Modern day object classes and methods for handling `data.frame` like structures are provided by the `data.table` and `dplyr` packages. 
 The following provides a short introduction to their usage and functionalities. More detailed tutorials on this topic can be found here:
