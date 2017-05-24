@@ -1,6 +1,6 @@
 ---
 title: 12. Modern Data Frames
-last_updated: Wed May 24 12:20:14 2017
+last_updated: Wed May 24 12:23:07 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -91,7 +91,8 @@ tbl_df(fread("iris.txt")) # Import with fread and conversion to tibble
 ```r
 unlink("iris.txt") # Deletes temp file
 ```
-Note: to ignore lines starting with comment signs one can pass on a function call to the `fread` importer.
+
+Note: to ignore lines starting with comment signs one can pass on a function call to the `fread` importer as follows:
 
 
 ```r

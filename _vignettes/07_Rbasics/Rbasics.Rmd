@@ -598,7 +598,8 @@ write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates 
 tbl_df(fread("iris.txt")) # Import with fread and conversion to tibble
 unlink("iris.txt") # Deletes temp file
 ```
-Note: to ignore lines starting with comment signs one can pass on a function call to the `fread` importer.
+
+Note: to ignore lines starting with comment signs one can pass on a function call to the `fread` importer as follows:
 
 ```{r tabular_import_ignore, eval=FALSE}
 fread("grep -v '^#' iris.txt") 
