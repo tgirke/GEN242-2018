@@ -1,6 +1,6 @@
 ---
 title: 15. Analysis Routine
-last_updated: Wed May 24 10:47:02 2017
+last_updated: Wed May 24 12:00:59 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_15.html
 ---

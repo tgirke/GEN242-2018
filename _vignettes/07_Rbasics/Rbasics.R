@@ -244,7 +244,10 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 ## ----tabular_import, eval=TRUE-------------------------------------------
 write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
 tbl_df(fread("iris.txt")) # Import with fread and conversion to tibble
-unlink("iris.txt")
+unlink("iris.txt") # Deletes temp file
+
+## ----tabular_import_ignore, eval=FALSE-----------------------------------
+## fread("grep -v '^#' iris.txt")
 
 ## ----flight_data, eval=TRUE----------------------------------------------
 library(nycflights13)

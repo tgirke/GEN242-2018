@@ -797,7 +797,9 @@ tbl_df(fread(&quot;iris.txt&quot;)) # Import with fread and conversion to tibble
 ## 9           4.4         2.9          1.4         0.2  setosa
 ## 10          4.9         3.1          1.5         0.1  setosa
 ## # ... with 140 more rows</code></pre>
-<pre class="r"><code>unlink(&quot;iris.txt&quot;)</code></pre>
+<pre class="r"><code>unlink(&quot;iris.txt&quot;) # Deletes temp file</code></pre>
+<p>Note: to ignore lines starting with comment signs one can pass on a function call to the <code>fread</code> importer.</p>
+<pre class="r"><code>fread(&quot;grep -v '^#' iris.txt&quot;) </code></pre>
 </div>
 <div id="important-dplyr-functions" class="section level2">
 <h2><span class="header-section-number">12.3</span> Important <code>dplyr</code> functions</h2>
