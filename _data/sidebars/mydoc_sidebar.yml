@@ -577,11 +577,39 @@ entries:
       output: web
 
   - title: Graphics and Visualization
-    output: web
+    output: web, pdf
     folderitems:
-    
-    - title: To be added
-      url:
+
+    - title: 1. Overview
+      url: /mydoc_Rgraphics_1.html
+      output: web
+
+    - title: 2. Base Graphics
+      url: /mydoc_Rgraphics_2.html
+      output: web
+
+    - title: 3. Grid Graphics
+      url: /mydoc_Rgraphics_3.html
+      output: web
+
+    - title: 4. lattice Graphics
+      url: /mydoc_Rgraphics_4.html
+      output: web
+
+    - title: 5. ggplot2 Graphics
+      url: /mydoc_Rgraphics_5.html
+      output: web
+
+    - title: 6. Specialty Graphics
+      url: /mydoc_Rgraphics_6.html
+      output: web
+
+    - title: 7. Genome Graphics
+      url: /mydoc_Rgraphics_7.html
+      output: web
+
+    - title: 8. References
+      url: /mydoc_Rgraphics_8.html
       output: web
 
   - title: Cluster Analysis

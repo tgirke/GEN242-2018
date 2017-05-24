@@ -269,10 +269,10 @@ p <- ggplot(df_mean, aes(Samples, Values, fill = Species)) +
             theme(axis.text.y=element_text(angle=0, hjust=1))
 print(p) 
 
-## ----iris_mean_bar_plot_facetting, eval=TRUE-----------------------------
-p <- ggplot(df_mean, aes(Samples, Values)) + geom_bar(aes(fill = Species), stat="identity") + 
-            facet_wrap(~Species, ncol=1)
-print(p) 
+## ----iris_mean_bar_plot_facetting, eval=FALSE----------------------------
+## p <- ggplot(df_mean, aes(Samples, Values)) + geom_bar(aes(fill = Species), stat="identity") +
+##             facet_wrap(~Species, ncol=1)
+## print(p)
 
 ## ----iris_mean_bar_plot_error, eval=TRUE---------------------------------
 p <- ggplot(df_mean, aes(Samples, Values, fill = Species)) + 

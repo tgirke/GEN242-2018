@@ -1,38 +1,27 @@
 ---
 title: Graphics and Data Visualization in R 
-author: "Thomas Girke (thomas.girke@ucr.edu)"
+author: "First/last name (first.last@ucr.edu)"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
 output:
-  BiocStyle::html_document:
+  html_document:
     toc: true
-    toc_depth: 4
+    toc_float:
+        collapsed: true
+        smooth_scroll: true
+    toc_depth: 3
     fig_caption: yes
+    code_folding: show
+    number_sections: true
 
 fontsize: 14pt
 bibliography: bibtex.bib
 ---
+
 <!--
-%% \VignetteEngine{knitr::rmarkdown}
-%\VignetteIndexEntry{Graphics in R}
-%% \VignetteDepends{methods}
-%% \VignetteKeywords{compute cluster, pipeline, reports}
--->
-
-<!---
-- Conversion from Rnw/tex to Rmd
-    - Build vignette from Rnw 
-    - Then run: pandoc -s Rgraphics.tex -o Rgraphics.text
-    - Then fix things, usually a lot...
-
 - Compile from command-line
-echo "rmarkdown::render('Rgraphics.Rmd', clean=F)" | R -slave; R CMD Stangle Rgraphics.Rmd; Rscript ../md2jekyll.R Rgraphics.knit.md 15
-
-- Commit to github
-git commit -am "some edits"; git push -u origin master
-
-- To customize font size and other style features, add this line to output section in preamble:  
-    css: style.css
+Rscript -e "rmarkdown::render('Rgraphics.Rmd', c('html_document'), clean=F); knitr::knit('Rgraphics.Rmd', tangle=TRUE)"; Rscript ../md2jekyll.R Rgraphics.knit.md 15; Rscript -e "rmarkdown::render('Rgraphics.Rmd', c('pdf_document'))"
 -->
+
 
 ```{r style, echo = FALSE, results = 'asis'}
 BiocStyle::markdown()
@@ -41,8 +30,6 @@ knitr::opts_chunk$set(
     eval=as.logical(Sys.getenv("KNITR_EVAL", "TRUE")),
     cache=as.logical(Sys.getenv("KNITR_CACHE", "TRUE")))
 ```
-
-Note: the most recent version of this tutorial can be found <a href="https://htmlpreview.github.io/?https://github.com/tgirke/GEN242/blob/master/vignettes/15_Rgraphics/Rgraphics.html">here</a> and a slide show [here](https://drive.google.com/file/d/0B-lLYVUOliJFUmFVa0N3Y0kxOVE/view?usp=sharing).
 
 
 # Overview
@@ -105,9 +92,9 @@ Note: the most recent version of this tutorial can be found <a href="https://htm
     - `pairs, coplot`: display of multivariant data
 
 - Help on these functions
-    - `?myfct`</span></span>
-    - `?plot`</span></span>
-    - `?par`</span></span>
+    - `?myfct`
+    - `?plot`
+    - `?par`
 
 ## Preferred Input Data Objects
 
@@ -341,7 +328,7 @@ svg("test.svg"); plot(1:10, 1:10); dev.off()
 
 Bar plots
         
-- __Task 1__: Calculate the mean values for the \Rfunction{Species} components of the first four columns in the \Rfunction{iris} data set. Organize the results in a matrix where the row names are the unique values from the \Rfunction{iris Species} column and the column names are the same as in the first four \Rfunction{iris} columns. 
+- __Task 1__: Calculate the mean values for the `Species` components of the first four columns in the `iris` data set. Organize the results in a matrix where the row names are the unique values from the `iris Species` column and the column names are the same as in the first four `iris` columns. 
 - __Task 2__: Generate two bar plots: one with stacked bars and one with horizontally arranged bars. 
 
 Structure of iris data set:
@@ -640,8 +627,8 @@ print(p)
 
 Scatter plots with `ggplot2`
 
-- __Task 1__: Generate scatter plot for first two columns in \Rfunction{iris} data frame and color dots by its \Rfunction{Species} column.
-- __Task 2__: Use the \Rfunarg{xlim, ylim} functionss to set limits on the x- and y-axes so that all data points are restricted to the left bottom quadrant of the plot. 
+- __Task 1__: Generate scatter plot for first two columns in `iris` data frame and color dots by its `Species` column.
+- __Task 2__: Use the `xlim` and `ylim` arguments to set limits on the x- and y-axes so that all data points are restricted to the left bottom quadrant of the plot. 
 - __Task 3__: Generate corresponding line plot with faceting show individual data sets in saparate plots. 
 
 Structure of `iris` data set
@@ -711,8 +698,8 @@ print(p)
 
 ### Faceting
 
-```{r iris_mean_bar_plot_facetting, eval=TRUE}
-p <- ggplot(df_mean, aes(Samples, Values)) + geom_bar(aes(fill = Species), stat="identity") + 
+```{r iris_mean_bar_plot_facetting, eval=FALSE}
+p <- ggplot(df_mean, aes(Samples, Values)) + geom_bar(aes(fill = Species), stat="identity") +
             facet_wrap(~Species, ncol=1)
 print(p) 
 ```

@@ -27,3 +27,5 @@ rtracklayer
 AnnotationDbi
 GenomicFeatures
 VariantAnnotation
+matrixStats
+DelayedArray
