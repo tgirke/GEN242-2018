@@ -1,6 +1,6 @@
 ---
 title: 7. Genome Graphics
-last_updated: Wed May 24 17:53:09 2017
+last_updated: Thu May 25 13:43:42 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_7.html
 ---
@@ -139,7 +139,7 @@ See `autoplot` demo [here](http://www.tengfei.name/ggbio/docs/man/autoplot-metho
 
 View genome data in IGV
 
-- Download and open [IGV](http://www.broadinstitute.org/igv/download)
+- Download and open [IGV](http://software.broadinstitute.org/software/igv/download)
 - Select in menu in top left corner _A. thaliana_ (TAIR10)
 - Upload the following indexed/sorted Bam files with `File -> Load from URL...`
 

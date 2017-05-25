@@ -1024,7 +1024,7 @@ See `autoplot` demo [here](http://www.tengfei.name/ggbio/docs/man/autoplot-metho
 
 View genome data in IGV
 
-- Download and open [IGV](http://www.broadinstitute.org/igv/download)
+- Download and open [IGV](http://software.broadinstitute.org/software/igv/download)
 - Select in menu in top left corner _A. thaliana_ (TAIR10)
 - Upload the following indexed/sorted Bam files with `File -> Load from URL...`
 
