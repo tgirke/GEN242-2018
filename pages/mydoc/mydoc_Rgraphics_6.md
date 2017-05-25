@@ -1,6 +1,6 @@
 ---
 title: 6. Specialty Graphics
-last_updated: Wed May 24 15:53:55 2017
+last_updated: Wed May 24 17:53:09 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_6.html
 ---
@@ -9,11 +9,10 @@ permalink: mydoc_Rgraphics_6.html
 
 
 ```r
-source("http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/overLapper.R")
+library(systemPipeR)
 setlist5 <- list(A=sample(letters, 18), B=sample(letters, 16), C=sample(letters, 20), D=sample(letters, 22), E=sample(letters, 18))
 OLlist5 <- overLapper(setlist=setlist5, sep="_", type="vennsets")
-counts <- sapply(OLlist5$Venn_List, length)
-vennPlot(counts=counts, ccol=c(rep(1,30),2), lcex=1.5, ccex=c(rep(1.5,5), rep(0.6,25),1.5))
+vennPlot(OLlist5, mymain="", mysub="", colmode=2, ccol=c("blue", "red"))
 ```
 
 <img src="./pages/mydoc/Rgraphics_files/specgraph_venn-1.png" width="672" />

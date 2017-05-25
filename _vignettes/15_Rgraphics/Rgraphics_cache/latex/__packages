@@ -24,3 +24,6 @@ DelayedArray
 SummarizedExperiment
 GenomicAlignments
 VariantAnnotation
+BiocParallel
+ShortRead
+systemPipeR

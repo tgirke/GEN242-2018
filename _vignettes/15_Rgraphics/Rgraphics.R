@@ -376,11 +376,10 @@ print(a)
 print(b, vp=viewport(width=0.3, height=0.3, x=0.8, y=0.8))
 
 ## ----specgraph_venn, eval=TRUE-------------------------------------------
-source("http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/overLapper.R")
+library(systemPipeR)
 setlist5 <- list(A=sample(letters, 18), B=sample(letters, 16), C=sample(letters, 20), D=sample(letters, 22), E=sample(letters, 18))
 OLlist5 <- overLapper(setlist=setlist5, sep="_", type="vennsets")
-counts <- sapply(OLlist5$Venn_List, length)
-vennPlot(counts=counts, ccol=c(rep(1,30),2), lcex=1.5, ccex=c(rep(1.5,5), rep(0.6,25),1.5))
+vennPlot(OLlist5, mymain="", mysub="", colmode=2, ccol=c("blue", "red"))
 
 ## ----specgraph_structure, eval=TRUE--------------------------------------
 library(ChemmineR)
