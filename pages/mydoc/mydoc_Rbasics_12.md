@@ -1,6 +1,6 @@
 ---
-title: 12. Modern Data Frames
-last_updated: Fri May 26 19:13:34 2017
+title: 12. dplyr and data.table 
+last_updated: Sat May 27 12:41:44 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -70,8 +70,8 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
 ```r
 write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
-df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
-df
+iris_df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
+iris_df
 ```
 
 ```
@@ -108,7 +108,7 @@ The equivalents to base R's `rbind` and `cbind` are `bind_rows` and `bind_cols`,
 
 
 ```r
-bind_cols(df, df)
+bind_cols(iris_df, iris_df)
 ```
 
 ```
@@ -129,7 +129,7 @@ bind_cols(df, df)
 ```
 
 ```r
-bind_rows(df, df)
+bind_rows(iris_df, iris_df)
 ```
 
 ```
@@ -159,266 +159,193 @@ bind_rows(df, df)
 6. `summarise()`
 7. `sample_n()` and `sample_frac()`
 
-
-```r
-library(nycflights13)
-dim(flights)
-```
-
-```
-## [1] 336776     19
-```
-
-```r
-flights
-```
-
-```
-## # A tibble: 336,776 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013     1     1      517            515         2      830            819        11      UA
-## 2   2013     1     1      533            529         4      850            830        20      UA
-## 3   2013     1     1      542            540         2      923            850        33      AA
-## 4   2013     1     1      544            545        -1     1004           1022       -18      B6
-## 5   2013     1     1      554            600        -6      812            837       -25      DL
-## 6   2013     1     1      554            558        -4      740            728        12      UA
-## 7   2013     1     1      555            600        -5      913            854        19      B6
-## 8   2013     1     1      557            600        -3      709            723       -14      EV
-## 9   2013     1     1      557            600        -3      838            846        -8      B6
-## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 336,766 more rows, and 9 more variables: flight <int>, tailnum <chr>, origin <chr>,
-## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
-```
-
 ## Slice and filter functions 
 
 ### Filter function
 
 
 ```r
-filter(flights, month == 1, day == 1)
+filter(iris_df, Sepal.Length > 7.5, Species=="virginica")
 ```
 
 ```
-## # A tibble: 842 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013     1     1      517            515         2      830            819        11      UA
-## 2   2013     1     1      533            529         4      850            830        20      UA
-## 3   2013     1     1      542            540         2      923            850        33      AA
-## 4   2013     1     1      544            545        -1     1004           1022       -18      B6
-## 5   2013     1     1      554            600        -6      812            837       -25      DL
-## 6   2013     1     1      554            558        -4      740            728        12      UA
-## 7   2013     1     1      555            600        -5      913            854        19      B6
-## 8   2013     1     1      557            600        -3      709            723       -14      EV
-## 9   2013     1     1      557            600        -3      838            846        -8      B6
-## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 832 more rows, and 9 more variables: flight <int>, tailnum <chr>, origin <chr>,
-## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 6 × 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+##          <dbl>       <dbl>        <dbl>       <dbl>     <chr>
+## 1          7.6         3.0          6.6         2.1 virginica
+## 2          7.7         3.8          6.7         2.2 virginica
+## 3          7.7         2.6          6.9         2.3 virginica
+## 4          7.7         2.8          6.7         2.0 virginica
+## 5          7.9         3.8          6.4         2.0 virginica
+## 6          7.7         3.0          6.1         2.3 virginica
 ```
 
 ### Base R code equivalent
 
 
 ```r
-flights[flights[,"month"]==1 & flights[,"day"]==1,]
+iris_df[iris_df[, "Sepal.Length"] > 7.5 & iris_df[, "Species"]=="virginica", ]
 ```
 
 ```
-## # A tibble: 842 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013     1     1      517            515         2      830            819        11      UA
-## 2   2013     1     1      533            529         4      850            830        20      UA
-## 3   2013     1     1      542            540         2      923            850        33      AA
-## 4   2013     1     1      544            545        -1     1004           1022       -18      B6
-## 5   2013     1     1      554            600        -6      812            837       -25      DL
-## 6   2013     1     1      554            558        -4      740            728        12      UA
-## 7   2013     1     1      555            600        -5      913            854        19      B6
-## 8   2013     1     1      557            600        -3      709            723       -14      EV
-## 9   2013     1     1      557            600        -3      838            846        -8      B6
-## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 832 more rows, and 9 more variables: flight <int>, tailnum <chr>, origin <chr>,
-## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 6 × 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+##          <dbl>       <dbl>        <dbl>       <dbl>     <chr>
+## 1          7.6         3.0          6.6         2.1 virginica
+## 2          7.7         3.8          6.7         2.2 virginica
+## 3          7.7         2.6          6.9         2.3 virginica
+## 4          7.7         2.8          6.7         2.0 virginica
+## 5          7.9         3.8          6.4         2.0 virginica
+## 6          7.7         3.0          6.1         2.3 virginica
 ```
 
 ### Including boolean operators
 
 
 ```r
-filter(flights, month == 1 | month == 2)
+filter(iris_df, Sepal.Length > 7.5 | Sepal.Length < 5.5, Species=="virginica")
 ```
 
 ```
-## # A tibble: 51,955 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013     1     1      517            515         2      830            819        11      UA
-## 2   2013     1     1      533            529         4      850            830        20      UA
-## 3   2013     1     1      542            540         2      923            850        33      AA
-## 4   2013     1     1      544            545        -1     1004           1022       -18      B6
-## 5   2013     1     1      554            600        -6      812            837       -25      DL
-## 6   2013     1     1      554            558        -4      740            728        12      UA
-## 7   2013     1     1      555            600        -5      913            854        19      B6
-## 8   2013     1     1      557            600        -3      709            723       -14      EV
-## 9   2013     1     1      557            600        -3      838            846        -8      B6
-## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 51,945 more rows, and 9 more variables: flight <int>, tailnum <chr>, origin <chr>,
-## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 7 × 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+##          <dbl>       <dbl>        <dbl>       <dbl>     <chr>
+## 1          7.6         3.0          6.6         2.1 virginica
+## 2          4.9         2.5          4.5         1.7 virginica
+## 3          7.7         3.8          6.7         2.2 virginica
+## 4          7.7         2.6          6.9         2.3 virginica
+## 5          7.7         2.8          6.7         2.0 virginica
+## 6          7.9         3.8          6.4         2.0 virginica
+## 7          7.7         3.0          6.1         2.3 virginica
 ```
 
 ### Subset rows by position
 
-`dplyr` version
+`dplyr` approach
 
 
 ```r
-slice(flights, 1:10)
+slice(iris_df, 1:2)
 ```
 
 ```
-## # A tibble: 10 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013     1     1      517            515         2      830            819        11      UA
-## 2   2013     1     1      533            529         4      850            830        20      UA
-## 3   2013     1     1      542            540         2      923            850        33      AA
-## 4   2013     1     1      544            545        -1     1004           1022       -18      B6
-## 5   2013     1     1      554            600        -6      812            837       -25      DL
-## 6   2013     1     1      554            558        -4      740            728        12      UA
-## 7   2013     1     1      555            600        -5      913            854        19      B6
-## 8   2013     1     1      557            600        -3      709            723       -14      EV
-## 9   2013     1     1      557            600        -3      838            846        -8      B6
-## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 9 more variables: flight <int>, tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
-## #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 2 × 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##          <dbl>       <dbl>        <dbl>       <dbl>   <chr>
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
 ```
 
 Base R code equivalent
 
 
 ```r
-flights[1:10,]
+iris_df[1:2,]
 ```
 
 ```
-## # A tibble: 10 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013     1     1      517            515         2      830            819        11      UA
-## 2   2013     1     1      533            529         4      850            830        20      UA
-## 3   2013     1     1      542            540         2      923            850        33      AA
-## 4   2013     1     1      544            545        -1     1004           1022       -18      B6
-## 5   2013     1     1      554            600        -6      812            837       -25      DL
-## 6   2013     1     1      554            558        -4      740            728        12      UA
-## 7   2013     1     1      555            600        -5      913            854        19      B6
-## 8   2013     1     1      557            600        -3      709            723       -14      EV
-## 9   2013     1     1      557            600        -3      838            846        -8      B6
-## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 9 more variables: flight <int>, tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
-## #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 2 × 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##          <dbl>       <dbl>        <dbl>       <dbl>   <chr>
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
 ```
 
 ## Sorting with `arrange`
 
 Row-wise ordering based on specific columns
 
-`dplyr` version
+`dplyr` approach
 
 
 ```r
-arrange(flights, year, month, day)
+arrange(iris_df, Species, Sepal.Length, Sepal.Width)
 ```
 
 ```
-## # A tibble: 336,776 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013     1     1      517            515         2      830            819        11      UA
-## 2   2013     1     1      533            529         4      850            830        20      UA
-## 3   2013     1     1      542            540         2      923            850        33      AA
-## 4   2013     1     1      544            545        -1     1004           1022       -18      B6
-## 5   2013     1     1      554            600        -6      812            837       -25      DL
-## 6   2013     1     1      554            558        -4      740            728        12      UA
-## 7   2013     1     1      555            600        -5      913            854        19      B6
-## 8   2013     1     1      557            600        -3      709            723       -14      EV
-## 9   2013     1     1      557            600        -3      838            846        -8      B6
-## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 336,766 more rows, and 9 more variables: flight <int>, tailnum <chr>, origin <chr>,
-## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 150 × 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
+## 1           4.3         3.0          1.1         0.1  setosa
+## 2           4.4         2.9          1.4         0.2  setosa
+## 3           4.4         3.0          1.3         0.2  setosa
+## 4           4.4         3.2          1.3         0.2  setosa
+## 5           4.5         2.3          1.3         0.3  setosa
+## 6           4.6         3.1          1.5         0.2  setosa
+## 7           4.6         3.2          1.4         0.2  setosa
+## 8           4.6         3.4          1.4         0.3  setosa
+## 9           4.6         3.6          1.0         0.2  setosa
+## 10          4.7         3.2          1.3         0.2  setosa
+## # ... with 140 more rows
 ```
 
-For ordering descendingly use desc() function
+For ordering descendingly use `desc()` function
 
 
 ```r
-arrange(flights, desc(month))
+arrange(iris_df, desc(Species), Sepal.Length, Sepal.Width)
 ```
 
 ```
-## # A tibble: 336,776 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013    12     1       13           2359        14      446            445         1      B6
-## 2   2013    12     1       17           2359        18      443            437         6      B6
-## 3   2013    12     1      453            500        -7      636            651       -15      US
-## 4   2013    12     1      520            515         5      749            808       -19      UA
-## 5   2013    12     1      536            540        -4      845            850        -5      AA
-## 6   2013    12     1      540            550       -10     1005           1027       -22      B6
-## 7   2013    12     1      541            545        -4      734            755       -21      EV
-## 8   2013    12     1      546            545         1      826            835        -9      UA
-## 9   2013    12     1      549            600       -11      648            659       -11      US
-## 10  2013    12     1      550            600       -10      825            854       -29      B6
-## # ... with 336,766 more rows, and 9 more variables: flight <int>, tailnum <chr>, origin <chr>,
-## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 150 × 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+##           <dbl>       <dbl>        <dbl>       <dbl>     <chr>
+## 1           4.9         2.5          4.5         1.7 virginica
+## 2           5.6         2.8          4.9         2.0 virginica
+## 3           5.7         2.5          5.0         2.0 virginica
+## 4           5.8         2.7          5.1         1.9 virginica
+## 5           5.8         2.7          5.1         1.9 virginica
+## 6           5.8         2.8          5.1         2.4 virginica
+## 7           5.9         3.0          5.1         1.8 virginica
+## 8           6.0         2.2          5.0         1.5 virginica
+## 9           6.0         3.0          4.8         1.8 virginica
+## 10          6.1         2.6          5.6         1.4 virginica
+## # ... with 140 more rows
 ```
 
 Base R code equivalent
 
 
 ```r
-flights[order(flights$year, flights$month, flights$day), ]
+iris_df[order(iris_df$Species, iris_df$Sepal.Length, iris_df$Sepal.Width), ]
 ```
 
 ```
-## # A tibble: 336,776 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013     1     1      517            515         2      830            819        11      UA
-## 2   2013     1     1      533            529         4      850            830        20      UA
-## 3   2013     1     1      542            540         2      923            850        33      AA
-## 4   2013     1     1      544            545        -1     1004           1022       -18      B6
-## 5   2013     1     1      554            600        -6      812            837       -25      DL
-## 6   2013     1     1      554            558        -4      740            728        12      UA
-## 7   2013     1     1      555            600        -5      913            854        19      B6
-## 8   2013     1     1      557            600        -3      709            723       -14      EV
-## 9   2013     1     1      557            600        -3      838            846        -8      B6
-## 10  2013     1     1      558            600        -2      753            745         8      AA
-## # ... with 336,766 more rows, and 9 more variables: flight <int>, tailnum <chr>, origin <chr>,
-## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 150 × 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
+## 1           4.3         3.0          1.1         0.1  setosa
+## 2           4.4         2.9          1.4         0.2  setosa
+## 3           4.4         3.0          1.3         0.2  setosa
+## 4           4.4         3.2          1.3         0.2  setosa
+## 5           4.5         2.3          1.3         0.3  setosa
+## 6           4.6         3.1          1.5         0.2  setosa
+## 7           4.6         3.2          1.4         0.2  setosa
+## 8           4.6         3.4          1.4         0.3  setosa
+## 9           4.6         3.6          1.0         0.2  setosa
+## 10          4.7         3.2          1.3         0.2  setosa
+## # ... with 140 more rows
 ```
 
 ```r
-flights[order(flights$month, decreasing = TRUE), ] # or flights[order(-flights$month), ]
+iris_df[order(iris_df$Species, decreasing=TRUE), ] 
 ```
 
 ```
-## # A tibble: 336,776 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier
-##    <int> <int> <int>    <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>
-## 1   2013    12     1       13           2359        14      446            445         1      B6
-## 2   2013    12     1       17           2359        18      443            437         6      B6
-## 3   2013    12     1      453            500        -7      636            651       -15      US
-## 4   2013    12     1      520            515         5      749            808       -19      UA
-## 5   2013    12     1      536            540        -4      845            850        -5      AA
-## 6   2013    12     1      540            550       -10     1005           1027       -22      B6
-## 7   2013    12     1      541            545        -4      734            755       -21      EV
-## 8   2013    12     1      546            545         1      826            835        -9      UA
-## 9   2013    12     1      549            600       -11      648            659       -11      US
-## 10  2013    12     1      550            600       -10      825            854       -29      B6
-## # ... with 336,766 more rows, and 9 more variables: flight <int>, tailnum <chr>, origin <chr>,
-## #   dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 150 × 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+##           <dbl>       <dbl>        <dbl>       <dbl>     <chr>
+## 1           6.3         3.3          6.0         2.5 virginica
+## 2           5.8         2.7          5.1         1.9 virginica
+## 3           7.1         3.0          5.9         2.1 virginica
+## 4           6.3         2.9          5.6         1.8 virginica
+## 5           6.5         3.0          5.8         2.2 virginica
+## 6           7.6         3.0          6.6         2.1 virginica
+## 7           4.9         2.5          4.5         1.7 virginica
+## 8           7.3         2.9          6.3         1.8 virginica
+## 9           6.7         2.5          5.8         1.8 virginica
+## 10          7.2         3.6          6.1         2.5 virginica
+## # ... with 140 more rows
 ```
 
 ## Select columns with select 
@@ -427,73 +354,72 @@ Select specific columns
 
 
 ```r
-select(flights, year, month, day)
+select(iris_df, Species, Petal.Length, Sepal.Length)
 ```
 
 ```
-## # A tibble: 336,776 × 3
-##     year month   day
-##    <int> <int> <int>
-## 1   2013     1     1
-## 2   2013     1     1
-## 3   2013     1     1
-## 4   2013     1     1
-## 5   2013     1     1
-## 6   2013     1     1
-## 7   2013     1     1
-## 8   2013     1     1
-## 9   2013     1     1
-## 10  2013     1     1
-## # ... with 336,766 more rows
+## # A tibble: 150 × 3
+##    Species Petal.Length Sepal.Length
+##      <chr>        <dbl>        <dbl>
+## 1   setosa          1.4          5.1
+## 2   setosa          1.4          4.9
+## 3   setosa          1.3          4.7
+## 4   setosa          1.5          4.6
+## 5   setosa          1.4          5.0
+## 6   setosa          1.7          5.4
+## 7   setosa          1.4          4.6
+## 8   setosa          1.5          5.0
+## 9   setosa          1.4          4.4
+## 10  setosa          1.5          4.9
+## # ... with 140 more rows
 ```
 
 Select range of columns by name
 
 
 ```r
-select(flights, year:day)
+select(iris_df, Sepal.Length : Petal.Width)
 ```
 
 ```
-## # A tibble: 336,776 × 3
-##     year month   day
-##    <int> <int> <int>
-## 1   2013     1     1
-## 2   2013     1     1
-## 3   2013     1     1
-## 4   2013     1     1
-## 5   2013     1     1
-## 6   2013     1     1
-## 7   2013     1     1
-## 8   2013     1     1
-## 9   2013     1     1
-## 10  2013     1     1
-## # ... with 336,766 more rows
+## # A tibble: 150 × 4
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width
+##           <dbl>       <dbl>        <dbl>       <dbl>
+## 1           5.1         3.5          1.4         0.2
+## 2           4.9         3.0          1.4         0.2
+## 3           4.7         3.2          1.3         0.2
+## 4           4.6         3.1          1.5         0.2
+## 5           5.0         3.6          1.4         0.2
+## 6           5.4         3.9          1.7         0.4
+## 7           4.6         3.4          1.4         0.3
+## 8           5.0         3.4          1.5         0.2
+## 9           4.4         2.9          1.4         0.2
+## 10          4.9         3.1          1.5         0.1
+## # ... with 140 more rows
 ```
 
 Drop specific columns (here range)
 
 
 ```r
-select(flights, -(year:day))
+select(iris_df, -(Sepal.Length : Petal.Width))
 ```
 
 ```
-## # A tibble: 336,776 × 16
-##    dep_time sched_dep_time dep_delay arr_time sched_arr_time arr_delay carrier flight tailnum
-##       <int>          <int>     <dbl>    <int>          <int>     <dbl>   <chr>  <int>   <chr>
-## 1       517            515         2      830            819        11      UA   1545  N14228
-## 2       533            529         4      850            830        20      UA   1714  N24211
-## 3       542            540         2      923            850        33      AA   1141  N619AA
-## 4       544            545        -1     1004           1022       -18      B6    725  N804JB
-## 5       554            600        -6      812            837       -25      DL    461  N668DN
-## 6       554            558        -4      740            728        12      UA   1696  N39463
-## 7       555            600        -5      913            854        19      B6    507  N516JB
-## 8       557            600        -3      709            723       -14      EV   5708  N829AS
-## 9       557            600        -3      838            846        -8      B6     79  N593JB
-## 10      558            600        -2      753            745         8      AA    301  N3ALAA
-## # ... with 336,766 more rows, and 7 more variables: origin <chr>, dest <chr>, air_time <dbl>,
-## #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+## # A tibble: 150 × 1
+##    Species
+##      <chr>
+## 1   setosa
+## 2   setosa
+## 3   setosa
+## 4   setosa
+## 5   setosa
+## 6   setosa
+## 7   setosa
+## 8   setosa
+## 9   setosa
+## 10  setosa
+## # ... with 140 more rows
 ```
 
 ## Chaining

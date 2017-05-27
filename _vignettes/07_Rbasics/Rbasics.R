@@ -243,55 +243,50 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
 ## ----tabular_import, eval=TRUE-------------------------------------------
 write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
-df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
-df
+iris_df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
+iris_df
 unlink("iris.txt") # Deletes temp file
 
 ## ----tabular_import_ignore, eval=FALSE-----------------------------------
 ## fread("grep -v '^#' iris.txt")
 
 ## ----dplyr_bind, eval=TRUE-----------------------------------------------
-bind_cols(df, df)
-bind_rows(df, df)
-
-## ----flight_data, eval=TRUE----------------------------------------------
-library(nycflights13)
-dim(flights)
-flights
+bind_cols(iris_df, iris_df)
+bind_rows(iris_df, iris_df)
 
 ## ----plyr_filter, eval=TRUE----------------------------------------------
-filter(flights, month == 1, day == 1)
+filter(iris_df, Sepal.Length > 7.5, Species=="virginica")
 
 ## ----plyr_filter_base, eval=TRUE-----------------------------------------
-flights[flights[,"month"]==1 & flights[,"day"]==1,]
+iris_df[iris_df[, "Sepal.Length"] > 7.5 & iris_df[, "Species"]=="virginica", ]
 
 ## ----plyr_filter_boolean, eval=TRUE--------------------------------------
-filter(flights, month == 1 | month == 2)
+filter(iris_df, Sepal.Length > 7.5 | Sepal.Length < 5.5, Species=="virginica")
 
 ## ----plyr_subset, eval=TRUE----------------------------------------------
-slice(flights, 1:10)
+slice(iris_df, 1:2)
 
 ## ----plyr_subset_base, eval=TRUE-----------------------------------------
-flights[1:10,]
+iris_df[1:2,]
 
 ## ----plyr_order1, eval=TRUE----------------------------------------------
-arrange(flights, year, month, day)
+arrange(iris_df, Species, Sepal.Length, Sepal.Width)
 
 ## ----plyr_order2, eval=TRUE----------------------------------------------
-arrange(flights, desc(month))
+arrange(iris_df, desc(Species), Sepal.Length, Sepal.Width)
 
 ## ----plyr_order_base, eval=TRUE------------------------------------------
-flights[order(flights$year, flights$month, flights$day), ]
-flights[order(flights$month, decreasing = TRUE), ] # or flights[order(-flights$month), ]
+iris_df[order(iris_df$Species, iris_df$Sepal.Length, iris_df$Sepal.Width), ]
+iris_df[order(iris_df$Species, decreasing=TRUE), ] 
 
 ## ----plyr_col_select1, eval=TRUE-----------------------------------------
-select(flights, year, month, day)
+select(iris_df, Species, Petal.Length, Sepal.Length)
 
 ## ----plyr_col_select2, eval=TRUE-----------------------------------------
-select(flights, year:day)
+select(iris_df, Sepal.Length : Petal.Width)
 
 ## ----plyr_col_drop, eval=TRUE--------------------------------------------
-select(flights, -(year:day))
+select(iris_df, -(Sepal.Length : Petal.Width))
 
 ## ----plyr_chaining, eval=TRUE--------------------------------------------
 df <- as_data_frame(iris)

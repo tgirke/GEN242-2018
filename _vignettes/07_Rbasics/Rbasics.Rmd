@@ -569,7 +569,7 @@ my_result <- merge(frame1, iris, by.x = 0, by.y = 0, all = TRUE)
 dim(my_result)
 ```
 
-# Modern Data Frames
+# dplyr and data.table 
 
 Modern day object classes and methods for handling `data.frame` like structures
 are provided by the `data.table` and `dplyr` packages. The following gives a
@@ -597,8 +597,8 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
 ```{r tabular_import, eval=TRUE}
 write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
-df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
-df
+iris_df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
+iris_df
 unlink("iris.txt") # Deletes temp file
 ```
 
@@ -613,8 +613,8 @@ fread("grep -v '^#' iris.txt")
 The equivalents to base R's `rbind` and `cbind` are `bind_rows` and `bind_cols`, respectively.
 
 ```{r dplyr_bind, eval=TRUE}
-bind_cols(df, df)
-bind_rows(df, df)
+bind_cols(iris_df, iris_df)
+bind_rows(iris_df, iris_df)
 ```
 
 ## Important `dplyr` functions
@@ -627,67 +627,61 @@ bind_rows(df, df)
 6. `summarise()`
 7. `sample_n()` and `sample_frac()`
 
-```{r flight_data, eval=TRUE}
-library(nycflights13)
-dim(flights)
-flights
-```
-
 ## Slice and filter functions 
 
 ### Filter function
 
 ```{r plyr_filter, eval=TRUE}
-filter(flights, month == 1, day == 1)
+filter(iris_df, Sepal.Length > 7.5, Species=="virginica")
 ```
 
 ### Base R code equivalent
 
 ```{r plyr_filter_base, eval=TRUE}
-flights[flights[,"month"]==1 & flights[,"day"]==1,]
+iris_df[iris_df[, "Sepal.Length"] > 7.5 & iris_df[, "Species"]=="virginica", ]
 ```
 
 ### Including boolean operators
 
 ```{r plyr_filter_boolean, eval=TRUE}
-filter(flights, month == 1 | month == 2)
+filter(iris_df, Sepal.Length > 7.5 | Sepal.Length < 5.5, Species=="virginica")
 ```
 
 ### Subset rows by position
 
-`dplyr` version
+`dplyr` approach
 
 ```{r plyr_subset, eval=TRUE}
-slice(flights, 1:10)
+slice(iris_df, 1:2)
 ```
 
 Base R code equivalent
 
 ```{r plyr_subset_base, eval=TRUE}
-flights[1:10,]
+iris_df[1:2,]
 ```
 
 ## Sorting with `arrange`
 
 Row-wise ordering based on specific columns
 
-`dplyr` version
+`dplyr` approach
 
 ```{r plyr_order1, eval=TRUE}
-arrange(flights, year, month, day)
+arrange(iris_df, Species, Sepal.Length, Sepal.Width)
 ```
 
-For ordering descendingly use desc() function
+For ordering descendingly use `desc()` function
 
 ```{r plyr_order2, eval=TRUE}
-arrange(flights, desc(month))
+arrange(iris_df, desc(Species), Sepal.Length, Sepal.Width)
 ```
 
 Base R code equivalent
 
 ```{r plyr_order_base, eval=TRUE}
-flights[order(flights$year, flights$month, flights$day), ]
-flights[order(flights$month, decreasing = TRUE), ] # or flights[order(-flights$month), ]
+iris_df[order(iris_df$Species, iris_df$Sepal.Length, iris_df$Sepal.Width), ]
+iris_df[order(iris_df$Species, decreasing=TRUE), ] 
 ```
 
 ## Select columns with select 
@@ -695,19 +689,19 @@ flights[order(flights$month, decreasing = TRUE), ] # or flights[order(-flights$m
 Select specific columns
 
 ```{r plyr_col_select1, eval=TRUE}
-select(flights, year, month, day)
+select(iris_df, Species, Petal.Length, Sepal.Length)
 ```
 
 Select range of columns by name
 
 ```{r plyr_col_select2, eval=TRUE}
-select(flights, year:day)
+select(iris_df, Sepal.Length : Petal.Width)
 ```
 
 Drop specific columns (here range)
 
 ```{r plyr_col_drop, eval=TRUE}
-select(flights, -(year:day))
+select(iris_df, -(Sepal.Length : Petal.Width))
 ```
 
 ## Chaining
