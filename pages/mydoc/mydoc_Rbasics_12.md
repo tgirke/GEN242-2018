@@ -1,6 +1,6 @@
 ---
 title: 12. Modern Data Frames
-last_updated: Fri May 26 18:53:55 2017
+last_updated: Fri May 26 19:02:08 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -12,6 +12,8 @@ on this topic can be found here:
 
 * [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
 * [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
+* [dplyr: A Grammar of Data Manipulation](https://rdrr.io/cran/dplyr/)
+* [Cheatsheet](http://stat545.com/bit001_dplyr-cheatsheet.html)
 * [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)
 * [Intro to `data.table` package](https://www.r-bloggers.com/intro-to-the-data-table-package/)
 * [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
