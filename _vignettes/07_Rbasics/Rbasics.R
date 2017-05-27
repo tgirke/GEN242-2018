@@ -243,11 +243,16 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
 ## ----tabular_import, eval=TRUE-------------------------------------------
 write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
-as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
+df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
+df
 unlink("iris.txt") # Deletes temp file
 
 ## ----tabular_import_ignore, eval=FALSE-----------------------------------
 ## fread("grep -v '^#' iris.txt")
+
+## ----dplyr_bind, eval=TRUE-----------------------------------------------
+bind_cols(df, df)
+bind_rows(df, df)
 
 ## ----flight_data, eval=TRUE----------------------------------------------
 library(nycflights13)
@@ -287,6 +292,14 @@ select(flights, year:day)
 
 ## ----plyr_col_drop, eval=TRUE--------------------------------------------
 select(flights, -(year:day))
+
+## ----plyr_chaining, eval=TRUE--------------------------------------------
+df <- as_data_frame(iris)
+df %>% 
+	select(Sepal.Length:Species) %>% # Select columns
+	filter(Species=="setosa") %>% # Filter rows by some value
+	arrange(Sepal.Length) %>% # Sort by some column
+	mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append
 
 ## ----load_sqlite, eval=TRUE----------------------------------------------
 library(RSQLite)

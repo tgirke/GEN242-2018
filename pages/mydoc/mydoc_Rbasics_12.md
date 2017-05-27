@@ -1,6 +1,6 @@
 ---
 title: 12. Modern Data Frames
-last_updated: Wed May 24 12:36:48 2017
+last_updated: Fri May 26 18:53:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -68,7 +68,8 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
 ```r
 write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
-as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
+df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
+df
 ```
 
 ```
@@ -98,6 +99,52 @@ command for preprocessing the file. The following example illustrates this optio
 
 ```r
 fread("grep -v '^#' iris.txt") 
+```
+## Column and row binds
+
+The equivalents to base R's `rbind` and `cbind` are `bind_rows` and `bind_cols`, respectively.
+
+
+```r
+bind_cols(df, df)
+```
+
+```
+## # A tibble: 150 × 10
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length Sepal.Width Petal.Length
+##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>        <dbl>       <dbl>        <dbl>
+## 1           5.1         3.5          1.4         0.2  setosa          5.1         3.5          1.4
+## 2           4.9         3.0          1.4         0.2  setosa          4.9         3.0          1.4
+## 3           4.7         3.2          1.3         0.2  setosa          4.7         3.2          1.3
+## 4           4.6         3.1          1.5         0.2  setosa          4.6         3.1          1.5
+## 5           5.0         3.6          1.4         0.2  setosa          5.0         3.6          1.4
+## 6           5.4         3.9          1.7         0.4  setosa          5.4         3.9          1.7
+## 7           4.6         3.4          1.4         0.3  setosa          4.6         3.4          1.4
+## 8           5.0         3.4          1.5         0.2  setosa          5.0         3.4          1.5
+## 9           4.4         2.9          1.4         0.2  setosa          4.4         2.9          1.4
+## 10          4.9         3.1          1.5         0.1  setosa          4.9         3.1          1.5
+## # ... with 140 more rows, and 2 more variables: Petal.Width <dbl>, Species <chr>
+```
+
+```r
+bind_rows(df, df)
+```
+
+```
+## # A tibble: 300 × 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+## # ... with 290 more rows
 ```
 
 ## Important `dplyr` functions
@@ -447,6 +494,38 @@ select(flights, -(year:day))
 ## #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
 
+## Chaining
+
+To simplify chaining of serveral operations (pipes), `dplyr` provides the `%>%` operator. where `x %>% f(y)`
+turns into `f(x, y)`. This way one can write multiple operations that can read left-to-right or 
+top-to-bottom. This makes for easy type and readable code.
+
+
+```r
+df <- as_data_frame(iris)
+df %>% 
+	select(Sepal.Length:Species) %>% # Select columns
+	filter(Species=="setosa") %>% # Filter rows by some value
+	arrange(Sepal.Length) %>% # Sort by some column
+	mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append
+```
+
+```
+## # A tibble: 50 × 6
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Subtract
+##           <dbl>       <dbl>        <dbl>       <dbl>  <fctr>    <dbl>
+## 1           4.3         3.0          1.1         0.1  setosa      1.0
+## 2           4.4         2.9          1.4         0.2  setosa      1.2
+## 3           4.4         3.0          1.3         0.2  setosa      1.1
+## 4           4.4         3.2          1.3         0.2  setosa      1.1
+## 5           4.5         2.3          1.3         0.3  setosa      1.0
+## 6           4.6         3.1          1.5         0.2  setosa      1.3
+## 7           4.6         3.4          1.4         0.3  setosa      1.1
+## 8           4.6         3.6          1.0         0.2  setosa      0.8
+## 9           4.6         3.2          1.4         0.2  setosa      1.2
+## 10          4.7         3.2          1.3         0.2  setosa      1.1
+## # ... with 40 more rows
+```
 
 <br><br><center><a href="mydoc_Rbasics_11.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_13.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

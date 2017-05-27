@@ -595,7 +595,8 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
 ```{r tabular_import, eval=TRUE}
 write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
-as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
+df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
+df
 unlink("iris.txt") # Deletes temp file
 ```
 
@@ -604,6 +605,14 @@ command for preprocessing the file. The following example illustrates this optio
 
 ```{r tabular_import_ignore, eval=FALSE}
 fread("grep -v '^#' iris.txt") 
+```
+## Column and row binds
+
+The equivalents to base R's `rbind` and `cbind` are `bind_rows` and `bind_cols`, respectively.
+
+```{r dplyr_bind, eval=TRUE}
+bind_cols(df, df)
+bind_rows(df, df)
 ```
 
 ## Important `dplyr` functions
@@ -699,6 +708,20 @@ Drop specific columns (here range)
 select(flights, -(year:day))
 ```
 
+## Chaining
+
+To simplify chaining of serveral operations (pipes), `dplyr` provides the `%>%` operator. where `x %>% f(y)`
+turns into `f(x, y)`. This way one can write multiple operations that can read left-to-right or 
+top-to-bottom. This makes for easy type and readable code.
+
+```{r plyr_chaining, eval=TRUE}
+df <- as_data_frame(iris)
+df %>% 
+	select(Sepal.Length:Species) %>% # Select columns
+	filter(Species=="setosa") %>% # Filter rows by some value
+	arrange(Sepal.Length) %>% # Sort by some column
+	mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append
+```
 
 # SQLite Databases
 
