@@ -237,8 +237,9 @@ my_result <- merge(frame1, iris, by.x = 0, by.y = 0, all = TRUE)
 dim(my_result)
 
 ## ----data_frame_tbl, eval=TRUE-------------------------------------------
-library(dplyr); library(data.table)
+library(dplyr); library(tibble); library(data.table)
 as_data_frame(iris) # coerce data.frame to data frame tbl
+as_tibble(iris) # newer function provided by tibble package
 tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
 ## ----tabular_import, eval=TRUE-------------------------------------------
@@ -287,6 +288,12 @@ select(iris_df, Sepal.Length : Petal.Width)
 
 ## ----plyr_col_drop, eval=TRUE--------------------------------------------
 select(iris_df, -(Sepal.Length : Petal.Width))
+
+## ----plyr_col_rename, eval=TRUE------------------------------------------
+rename(iris_df, new_col_name = Species)
+
+## ----baser_col_rename, eval=TRUE-----------------------------------------
+colnames(iris_df)[colnames(iris_df)=="Species"] <- "new_col_names"
 
 ## ----plyr_chaining, eval=TRUE--------------------------------------------
 df <- as_data_frame(iris)

@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sat May 27 12:41:44 2017
+last_updated: Sat May 27 13:32:19 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -19,12 +19,33 @@ More detailed tutorials on this topic can be found here:
 * [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
 * [Fast lookups with `dplyr` and `data.table`](https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/)
 
-## Construct a `data frame`
+## Construct a `data frame` (`tibble`)
 
 
 ```r
-library(dplyr); library(data.table)
+library(dplyr); library(tibble); library(data.table)
 as_data_frame(iris) # coerce data.frame to data frame tbl
+```
+
+```
+## # A tibble: 150 × 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl>  <fctr>
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+## # ... with 140 more rows
+```
+
+```r
+as_tibble(iris) # newer function provided by tibble package
 ```
 
 ```
@@ -420,6 +441,40 @@ select(iris_df, -(Sepal.Length : Petal.Width))
 ## 9   setosa
 ## 10  setosa
 ## # ... with 140 more rows
+```
+
+## Renaming columns with rename
+
+
+`dplyr` approach
+
+
+```r
+rename(iris_df, new_col_name = Species)
+```
+
+```
+## # A tibble: 150 × 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width new_col_name
+##           <dbl>       <dbl>        <dbl>       <dbl>        <chr>
+## 1           5.1         3.5          1.4         0.2       setosa
+## 2           4.9         3.0          1.4         0.2       setosa
+## 3           4.7         3.2          1.3         0.2       setosa
+## 4           4.6         3.1          1.5         0.2       setosa
+## 5           5.0         3.6          1.4         0.2       setosa
+## 6           5.4         3.9          1.7         0.4       setosa
+## 7           4.6         3.4          1.4         0.3       setosa
+## 8           5.0         3.4          1.5         0.2       setosa
+## 9           4.4         2.9          1.4         0.2       setosa
+## 10          4.9         3.1          1.5         0.1       setosa
+## # ... with 140 more rows
+```
+
+Base R code approach
+
+
+```r
+colnames(iris_df)[colnames(iris_df)=="Species"] <- "new_col_names"
 ```
 
 ## Chaining
