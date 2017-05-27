@@ -1,6 +1,6 @@
 ---
 title: 11. Useful R Functions
-last_updated: Fri May 26 19:02:08 2017
+last_updated: Fri May 26 19:09:35 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_11.html
 ---

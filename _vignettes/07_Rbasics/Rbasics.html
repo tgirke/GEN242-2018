@@ -1091,7 +1091,7 @@ dim(flights)</code></pre>
 </div>
 <div id="chaining" class="section level2">
 <h2><span class="header-section-number">12.8</span> Chaining</h2>
-<p>To simplify chaining of serveral operations (pipes), <code>dplyr</code> provides the <code>%&gt;%</code> operator. where <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. This way one can write multiple operations that can read left-to-right or top-to-bottom. This makes for easy type and readable code.</p>
+<p>To simplify chaining of serveral operations (pipes), <code>dplyr</code> provides the <code>%&gt;%</code> operator. where <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. This way one can write multiple operations that can read left-to-right or top-to-bottom. This makes for easy to type and readable code.</p>
 <pre class="r"><code>df &lt;- as_data_frame(iris)
 df %&gt;% 
     select(Sepal.Length:Species) %&gt;% # Select columns

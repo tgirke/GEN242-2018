@@ -714,7 +714,7 @@ select(flights, -(year:day))
 
 To simplify chaining of serveral operations (pipes), `dplyr` provides the `%>%` operator. where `x %>% f(y)`
 turns into `f(x, y)`. This way one can write multiple operations that can read left-to-right or 
-top-to-bottom. This makes for easy type and readable code.
+top-to-bottom. This makes for easy to type and readable code.
 
 ```{r plyr_chaining, eval=TRUE}
 df <- as_data_frame(iris)

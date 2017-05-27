@@ -1,6 +1,6 @@
 ---
 title: 12. Modern Data Frames
-last_updated: Fri May 26 19:02:08 2017
+last_updated: Fri May 26 19:09:35 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -500,7 +500,7 @@ select(flights, -(year:day))
 
 To simplify chaining of serveral operations (pipes), `dplyr` provides the `%>%` operator. where `x %>% f(y)`
 turns into `f(x, y)`. This way one can write multiple operations that can read left-to-right or 
-top-to-bottom. This makes for easy type and readable code.
+top-to-bottom. This makes for easy to type and readable code.
 
 
 ```r
