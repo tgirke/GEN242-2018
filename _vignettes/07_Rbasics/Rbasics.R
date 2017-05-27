@@ -292,16 +292,35 @@ select(iris_df, -(Sepal.Length : Petal.Width))
 ## ----plyr_col_rename, eval=TRUE------------------------------------------
 rename(iris_df, new_col_name = Species)
 
-## ----baser_col_rename, eval=TRUE-----------------------------------------
-colnames(iris_df)[colnames(iris_df)=="Species"] <- "new_col_names"
+## ----baser_col_rename, eval=FALSE----------------------------------------
+## colnames(iris_df)[colnames(iris_df)=="Species"] <- "new_col_names"
+
+## ----plyr_unique, eval=TRUE----------------------------------------------
+distinct(iris_df, Species, .keep_all=TRUE)
+
+## ----baser_unique, eval=TRUE---------------------------------------------
+iris_df[!duplicated(iris_df$Species),]
+
+## ----plyr_mutate, eval=TRUE----------------------------------------------
+mutate(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)
+
+## ----plyr_transmute, eval=TRUE-------------------------------------------
+transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)
+
+## ----plyr_bind_cols, eval=TRUE-------------------------------------------
+bind_cols(iris_df, iris_df)
+
+## ----plyr_get_cols, eval=TRUE--------------------------------------------
+iris_df[[5]][1:12]
+iris_df$Species[1:12]
 
 ## ----plyr_chaining, eval=TRUE--------------------------------------------
-df <- as_data_frame(iris)
-df %>% 
+iris_df %>% # Declare data frame to use 
 	select(Sepal.Length:Species) %>% # Select columns
 	filter(Species=="setosa") %>% # Filter rows by some value
 	arrange(Sepal.Length) %>% # Sort by some column
-	mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append
+	mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
+    write.table("iris.txt", quote=FALSE, row.names=FALSE, sep="\t") # Export to file
 
 ## ----load_sqlite, eval=TRUE----------------------------------------------
 library(RSQLite)

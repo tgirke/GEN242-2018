@@ -993,7 +993,7 @@ iris_df</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="select-columns-with-select" class="section level2">
-<h2><span class="header-section-number">12.7</span> Select columns with select</h2>
+<h2><span class="header-section-number">12.7</span> Select columns with <code>select</code></h2>
 <p>Select specific columns</p>
 <pre class="r"><code>select(iris_df, Species, Petal.Length, Sepal.Length)</code></pre>
 <pre><code>## # A tibble: 150 × 3
@@ -1044,7 +1044,7 @@ iris_df</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="renaming-columns-with-rename" class="section level2">
-<h2><span class="header-section-number">12.8</span> Renaming columns with rename</h2>
+<h2><span class="header-section-number">12.8</span> Renaming columns with <code>rename</code></h2>
 <p><code>dplyr</code> approach</p>
 <pre class="r"><code>rename(iris_df, new_col_name = Species)</code></pre>
 <pre><code>## # A tibble: 150 × 5
@@ -1064,29 +1064,104 @@ iris_df</code></pre>
 <p>Base R code approach</p>
 <pre class="r"><code>colnames(iris_df)[colnames(iris_df)==&quot;Species&quot;] &lt;- &quot;new_col_names&quot;</code></pre>
 </div>
+<div id="obtain-unique-rows-with-distinct" class="section level2">
+<h2><span class="header-section-number">12.9</span> Obtain unique rows with <code>distinct</code></h2>
+<p><code>dplyr</code> approach</p>
+<pre class="r"><code>distinct(iris_df, Species, .keep_all=TRUE)</code></pre>
+<pre><code>## # A tibble: 3 × 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;chr&gt;
+## 1          5.1         3.5          1.4         0.2     setosa
+## 2          7.0         3.2          4.7         1.4 versicolor
+## 3          6.3         3.3          6.0         2.5  virginica</code></pre>
+<p>Base R code approach</p>
+<pre class="r"><code>iris_df[!duplicated(iris_df$Species),]</code></pre>
+<pre><code>## # A tibble: 3 × 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;chr&gt;
+## 1          5.1         3.5          1.4         0.2     setosa
+## 2          7.0         3.2          4.7         1.4 versicolor
+## 3          6.3         3.3          6.0         2.5  virginica</code></pre>
+</div>
+<div id="add-columns" class="section level2">
+<h2><span class="header-section-number">12.10</span> Add columns</h2>
+<div id="mutate" class="section level3">
+<h3><span class="header-section-number">12.10.1</span> <code>mutate</code></h3>
+<p>The <code>mutate</code> function allows to append columns to existing ones.</p>
+<pre class="r"><code>mutate(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)</code></pre>
+<pre><code>## # A tibble: 150 × 7
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species    Ratio   Sum
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+## 1           5.1         3.5          1.4         0.2  setosa 1.457143   8.6
+## 2           4.9         3.0          1.4         0.2  setosa 1.633333   7.9
+## 3           4.7         3.2          1.3         0.2  setosa 1.468750   7.9
+## 4           4.6         3.1          1.5         0.2  setosa 1.483871   7.7
+## 5           5.0         3.6          1.4         0.2  setosa 1.388889   8.6
+## 6           5.4         3.9          1.7         0.4  setosa 1.384615   9.3
+## 7           4.6         3.4          1.4         0.3  setosa 1.352941   8.0
+## 8           5.0         3.4          1.5         0.2  setosa 1.470588   8.4
+## 9           4.4         2.9          1.4         0.2  setosa 1.517241   7.3
+## 10          4.9         3.1          1.5         0.1  setosa 1.580645   8.0
+## # ... with 140 more rows</code></pre>
+</div>
+<div id="transmute" class="section level3">
+<h3><span class="header-section-number">12.10.2</span> <code>transmute</code></h3>
+<p>The <code>transmute</code> function does the same as above but drops existing columns</p>
+<pre class="r"><code>transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)</code></pre>
+<pre><code>## # A tibble: 150 × 2
+##       Ratio   Sum
+##       &lt;dbl&gt; &lt;dbl&gt;
+## 1  1.457143   8.6
+## 2  1.633333   7.9
+## 3  1.468750   7.9
+## 4  1.483871   7.7
+## 5  1.388889   8.6
+## 6  1.384615   9.3
+## 7  1.352941   8.0
+## 8  1.470588   8.4
+## 9  1.517241   7.3
+## 10 1.580645   8.0
+## # ... with 140 more rows</code></pre>
+</div>
+<div id="bind_cols" class="section level3">
+<h3><span class="header-section-number">12.10.3</span> <code>bind_cols</code></h3>
+<p>The <code>bind_cols</code> function is the equivalent of <code>cbind</code> in base R. To add rows, use corresponding <code>bind_rows</code> function.</p>
+<pre class="r"><code>bind_cols(iris_df, iris_df)</code></pre>
+<pre><code>## # A tibble: 150 × 10
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length Sepal.Width Petal.Length
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;   &lt;chr&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;
+## 1           5.1         3.5          1.4         0.2  setosa          5.1         3.5          1.4
+## 2           4.9         3.0          1.4         0.2  setosa          4.9         3.0          1.4
+## 3           4.7         3.2          1.3         0.2  setosa          4.7         3.2          1.3
+## 4           4.6         3.1          1.5         0.2  setosa          4.6         3.1          1.5
+## 5           5.0         3.6          1.4         0.2  setosa          5.0         3.6          1.4
+## 6           5.4         3.9          1.7         0.4  setosa          5.4         3.9          1.7
+## 7           4.6         3.4          1.4         0.3  setosa          4.6         3.4          1.4
+## 8           5.0         3.4          1.5         0.2  setosa          5.0         3.4          1.5
+## 9           4.4         2.9          1.4         0.2  setosa          4.4         2.9          1.4
+## 10          4.9         3.1          1.5         0.1  setosa          4.9         3.1          1.5
+## # ... with 140 more rows, and 2 more variables: Petal.Width &lt;dbl&gt;, Species &lt;chr&gt;</code></pre>
+</div>
+<div id="extract-column-as-vector" class="section level3">
+<h3><span class="header-section-number">12.10.4</span> Extract column as vector</h3>
+<p>The subsetting operators <code>[[</code> and <code>$</code>can be used to extract from a <code>data frame</code> single columns as vector.</p>
+<pre class="r"><code>iris_df[[5]][1:12]</code></pre>
+<pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
+## [11] &quot;setosa&quot; &quot;setosa&quot;</code></pre>
+<pre class="r"><code>iris_df$Species[1:12]</code></pre>
+<pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
+## [11] &quot;setosa&quot; &quot;setosa&quot;</code></pre>
+</div>
+</div>
 <div id="chaining" class="section level2">
-<h2><span class="header-section-number">12.9</span> Chaining</h2>
+<h2><span class="header-section-number">12.11</span> Chaining</h2>
 <p>To simplify chaining of serveral operations (pipes), <code>dplyr</code> provides the <code>%&gt;%</code> operator. where <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. This way one can write multiple operations that can read left-to-right or top-to-bottom. This makes for easy to type and readable code.</p>
-<pre class="r"><code>df &lt;- as_data_frame(iris)
-df %&gt;% 
+<pre class="r"><code>iris_df %&gt;% # Declare data frame to use 
     select(Sepal.Length:Species) %&gt;% # Select columns
     filter(Species==&quot;setosa&quot;) %&gt;% # Filter rows by some value
     arrange(Sepal.Length) %&gt;% # Sort by some column
-    mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append</code></pre>
-<pre><code>## # A tibble: 50 × 6
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Subtract
-##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;  &lt;fctr&gt;    &lt;dbl&gt;
-## 1           4.3         3.0          1.1         0.1  setosa      1.0
-## 2           4.4         2.9          1.4         0.2  setosa      1.2
-## 3           4.4         3.0          1.3         0.2  setosa      1.1
-## 4           4.4         3.2          1.3         0.2  setosa      1.1
-## 5           4.5         2.3          1.3         0.3  setosa      1.0
-## 6           4.6         3.1          1.5         0.2  setosa      1.3
-## 7           4.6         3.4          1.4         0.3  setosa      1.1
-## 8           4.6         3.6          1.0         0.2  setosa      0.8
-## 9           4.6         3.2          1.4         0.2  setosa      1.2
-## 10          4.7         3.2          1.3         0.2  setosa      1.1
-## # ... with 40 more rows</code></pre>
+    mutate(Subtract=Petal.Length - Petal.Width) %&gt;% # Calculate and append
+    write.table(&quot;iris.txt&quot;, quote=FALSE, row.names=FALSE, sep=&quot;\t&quot;) # Export to file</code></pre>
 </div>
 </div>
 <div id="sqlite-databases" class="section level1">

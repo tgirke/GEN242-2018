@@ -685,7 +685,7 @@ iris_df[order(iris_df$Species, iris_df$Sepal.Length, iris_df$Sepal.Width), ]
 iris_df[order(iris_df$Species, decreasing=TRUE), ] 
 ```
 
-## Select columns with select 
+## Select columns with `select`
 
 Select specific columns
 
@@ -705,7 +705,7 @@ Drop specific columns (here range)
 select(iris_df, -(Sepal.Length : Petal.Width))
 ```
 
-## Renaming columns with rename
+## Renaming columns with `rename`
 
 
 `dplyr` approach
@@ -716,9 +716,61 @@ rename(iris_df, new_col_name = Species)
 
 Base R code approach
 
-```{r baser_col_rename, eval=TRUE}
+```{r baser_col_rename, eval=FALSE}
 colnames(iris_df)[colnames(iris_df)=="Species"] <- "new_col_names"
 ```
+
+## Obtain unique rows with `distinct`
+
+`dplyr` approach
+
+```{r plyr_unique, eval=TRUE}
+distinct(iris_df, Species, .keep_all=TRUE)
+```
+
+Base R code approach
+
+```{r baser_unique, eval=TRUE}
+iris_df[!duplicated(iris_df$Species),]
+```
+
+## Add columns
+
+### `mutate`
+
+The `mutate` function allows to append columns to existing ones.
+
+```{r plyr_mutate, eval=TRUE}
+mutate(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)
+```
+
+### `transmute`
+
+The `transmute` function does the same as above but drops existing columns
+
+```{r plyr_transmute, eval=TRUE}
+transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)
+```
+
+### `bind_cols`
+
+The `bind_cols` function is the equivalent of `cbind` in base R. To add rows, use corresponding 
+`bind_rows` function.
+
+```{r plyr_bind_cols, eval=TRUE}
+bind_cols(iris_df, iris_df)
+```
+
+### Extract column as vector
+
+The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
+
+```{r plyr_get_cols, eval=TRUE}
+iris_df[[5]][1:12]
+iris_df$Species[1:12]
+```
+
+
 
 ## Chaining
 
@@ -727,12 +779,12 @@ turns into `f(x, y)`. This way one can write multiple operations that can read l
 top-to-bottom. This makes for easy to type and readable code.
 
 ```{r plyr_chaining, eval=TRUE}
-df <- as_data_frame(iris)
-df %>% 
+iris_df %>% # Declare data frame to use 
 	select(Sepal.Length:Species) %>% # Select columns
 	filter(Species=="setosa") %>% # Filter rows by some value
 	arrange(Sepal.Length) %>% # Sort by some column
-	mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append
+	mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
+    write.table("iris.txt", quote=FALSE, row.names=FALSE, sep="\t") # Export to file
 ```
 
 # SQLite Databases

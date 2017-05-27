@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sat May 27 13:32:19 2017
+last_updated: Sat May 27 15:09:03 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -369,7 +369,7 @@ iris_df[order(iris_df$Species, decreasing=TRUE), ]
 ## # ... with 140 more rows
 ```
 
-## Select columns with select 
+## Select columns with `select`
 
 Select specific columns
 
@@ -443,7 +443,7 @@ select(iris_df, -(Sepal.Length : Petal.Width))
 ## # ... with 140 more rows
 ```
 
-## Renaming columns with rename
+## Renaming columns with `rename`
 
 
 `dplyr` approach
@@ -477,6 +477,146 @@ Base R code approach
 colnames(iris_df)[colnames(iris_df)=="Species"] <- "new_col_names"
 ```
 
+## Obtain unique rows with `distinct`
+
+`dplyr` approach
+
+
+```r
+distinct(iris_df, Species, .keep_all=TRUE)
+```
+
+```
+## # A tibble: 3 × 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+##          <dbl>       <dbl>        <dbl>       <dbl>      <chr>
+## 1          5.1         3.5          1.4         0.2     setosa
+## 2          7.0         3.2          4.7         1.4 versicolor
+## 3          6.3         3.3          6.0         2.5  virginica
+```
+
+Base R code approach
+
+
+```r
+iris_df[!duplicated(iris_df$Species),]
+```
+
+```
+## # A tibble: 3 × 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+##          <dbl>       <dbl>        <dbl>       <dbl>      <chr>
+## 1          5.1         3.5          1.4         0.2     setosa
+## 2          7.0         3.2          4.7         1.4 versicolor
+## 3          6.3         3.3          6.0         2.5  virginica
+```
+
+## Add columns
+
+### `mutate`
+
+The `mutate` function allows to append columns to existing ones.
+
+
+```r
+mutate(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)
+```
+
+```
+## # A tibble: 150 × 7
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species    Ratio   Sum
+##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>    <dbl> <dbl>
+## 1           5.1         3.5          1.4         0.2  setosa 1.457143   8.6
+## 2           4.9         3.0          1.4         0.2  setosa 1.633333   7.9
+## 3           4.7         3.2          1.3         0.2  setosa 1.468750   7.9
+## 4           4.6         3.1          1.5         0.2  setosa 1.483871   7.7
+## 5           5.0         3.6          1.4         0.2  setosa 1.388889   8.6
+## 6           5.4         3.9          1.7         0.4  setosa 1.384615   9.3
+## 7           4.6         3.4          1.4         0.3  setosa 1.352941   8.0
+## 8           5.0         3.4          1.5         0.2  setosa 1.470588   8.4
+## 9           4.4         2.9          1.4         0.2  setosa 1.517241   7.3
+## 10          4.9         3.1          1.5         0.1  setosa 1.580645   8.0
+## # ... with 140 more rows
+```
+
+### `transmute`
+
+The `transmute` function does the same as above but drops existing columns
+
+
+```r
+transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)
+```
+
+```
+## # A tibble: 150 × 2
+##       Ratio   Sum
+##       <dbl> <dbl>
+## 1  1.457143   8.6
+## 2  1.633333   7.9
+## 3  1.468750   7.9
+## 4  1.483871   7.7
+## 5  1.388889   8.6
+## 6  1.384615   9.3
+## 7  1.352941   8.0
+## 8  1.470588   8.4
+## 9  1.517241   7.3
+## 10 1.580645   8.0
+## # ... with 140 more rows
+```
+
+### `bind_cols`
+
+The `bind_cols` function is the equivalent of `cbind` in base R. To add rows, use corresponding 
+`bind_rows` function.
+
+
+```r
+bind_cols(iris_df, iris_df)
+```
+
+```
+## # A tibble: 150 × 10
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length Sepal.Width Petal.Length
+##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>        <dbl>       <dbl>        <dbl>
+## 1           5.1         3.5          1.4         0.2  setosa          5.1         3.5          1.4
+## 2           4.9         3.0          1.4         0.2  setosa          4.9         3.0          1.4
+## 3           4.7         3.2          1.3         0.2  setosa          4.7         3.2          1.3
+## 4           4.6         3.1          1.5         0.2  setosa          4.6         3.1          1.5
+## 5           5.0         3.6          1.4         0.2  setosa          5.0         3.6          1.4
+## 6           5.4         3.9          1.7         0.4  setosa          5.4         3.9          1.7
+## 7           4.6         3.4          1.4         0.3  setosa          4.6         3.4          1.4
+## 8           5.0         3.4          1.5         0.2  setosa          5.0         3.4          1.5
+## 9           4.4         2.9          1.4         0.2  setosa          4.4         2.9          1.4
+## 10          4.9         3.1          1.5         0.1  setosa          4.9         3.1          1.5
+## # ... with 140 more rows, and 2 more variables: Petal.Width <dbl>, Species <chr>
+```
+
+### Extract column as vector
+
+The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
+
+
+```r
+iris_df[[5]][1:12]
+```
+
+```
+##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
+## [11] "setosa" "setosa"
+```
+
+```r
+iris_df$Species[1:12]
+```
+
+```
+##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
+## [11] "setosa" "setosa"
+```
+
+
+
 ## Chaining
 
 To simplify chaining of serveral operations (pipes), `dplyr` provides the `%>%` operator. where `x %>% f(y)`
@@ -485,29 +625,12 @@ top-to-bottom. This makes for easy to type and readable code.
 
 
 ```r
-df <- as_data_frame(iris)
-df %>% 
+iris_df %>% # Declare data frame to use 
 	select(Sepal.Length:Species) %>% # Select columns
 	filter(Species=="setosa") %>% # Filter rows by some value
 	arrange(Sepal.Length) %>% # Sort by some column
-	mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append
-```
-
-```
-## # A tibble: 50 × 6
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Subtract
-##           <dbl>       <dbl>        <dbl>       <dbl>  <fctr>    <dbl>
-## 1           4.3         3.0          1.1         0.1  setosa      1.0
-## 2           4.4         2.9          1.4         0.2  setosa      1.2
-## 3           4.4         3.0          1.3         0.2  setosa      1.1
-## 4           4.4         3.2          1.3         0.2  setosa      1.1
-## 5           4.5         2.3          1.3         0.3  setosa      1.0
-## 6           4.6         3.1          1.5         0.2  setosa      1.3
-## 7           4.6         3.4          1.4         0.3  setosa      1.1
-## 8           4.6         3.6          1.0         0.2  setosa      0.8
-## 9           4.6         3.2          1.4         0.2  setosa      1.2
-## 10          4.7         3.2          1.3         0.2  setosa      1.1
-## # ... with 40 more rows
+	mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
+    write.table("iris.txt", quote=FALSE, row.names=FALSE, sep="\t") # Export to file
 ```
 
 <br><br><center><a href="mydoc_Rbasics_11.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
