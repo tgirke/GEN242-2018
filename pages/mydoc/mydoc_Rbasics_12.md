@@ -1,25 +1,25 @@
 ---
 title: 12. Modern Data Frames
-last_updated: Fri May 26 19:09:35 2017
+last_updated: Fri May 26 19:13:34 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
 
 Modern day object classes and methods for handling `data.frame` like structures
 are provided by the `data.table` and `dplyr` packages. The following gives a
-short introduction to their usage and functionalities. More detailed tutorials
-on this topic can be found here:
+short introduction to the usage and functionalities of the `dplyr` package. 
+More detailed tutorials on this topic can be found here:
 
-* [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
-* [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
 * [dplyr: A Grammar of Data Manipulation](https://rdrr.io/cran/dplyr/)
 * [Cheatsheet](http://stat545.com/bit001_dplyr-cheatsheet.html)
+* [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+* [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
 * [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)
 * [Intro to `data.table` package](https://www.r-bloggers.com/intro-to-the-data-table-package/)
 * [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
 * [Fast lookups with `dplyr` and `data.table`](https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/)
 
-## Construct a `data frame tbl`
+## Construct a `data frame`
 
 
 ```r
