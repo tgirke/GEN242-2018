@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sun May 28 13:18:17 2017
+last_updated: Sun May 28 13:27:47 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -850,6 +850,35 @@ anti_join(df1, df2, by=c("ids1"="ids2"))
 For additional join options users want to cosult the `*_join` help pages.
 
 ## Subset rows by names
+
+Since `data frames` do not contain row names, row wise subsetting via the `[,]` operator cannot be used.
+However, one can obtain this behavior by obtaining a row position intex via the `match` function and passing
+it on to the `slice` function.
+
+
+Create a suitable test `data frame`
+
+
+```r
+df1 <- bind_cols(data_frame(ids1=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("CA", 1:4)))))
+df1
+```
+
+```
+## # A tibble: 10 × 5
+##     ids1   CA1   CA2   CA3   CA4
+##    <chr> <int> <int> <int> <int>
+## 1     g1     1    11    21    31
+## 2     g2     2    12    22    32
+## 3     g3     3    13    23    33
+## 4     g4     4    14    24    34
+## 5     g5     5    15    25    35
+## 6     g6     6    16    26    36
+## 7     g7     7    17    27    37
+## 8     g8     8    18    28    38
+## 9     g9     9    19    29    39
+## 10   g10    10    20    30    40
+```
 
 `dplyr` approach
 

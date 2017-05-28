@@ -901,6 +901,18 @@ For additional join options users want to cosult the `*_join` help pages.
 
 ## Subset rows by names
 
+Since `data frames` do not contain row names, row wise subsetting via the `[,]` operator cannot be used.
+However, one can obtain this behavior by obtaining a row position intex via the `match` function and passing
+it on to the `slice` function.
+
+
+Create a suitable test `data frame`
+
+```{r plyr_sample_set2, eval=TRUE}
+df1 <- bind_cols(data_frame(ids1=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("CA", 1:4)))))
+df1
+```
+
 `dplyr` approach
 
 ```{r plyr_subset_names, eval=TRUE}

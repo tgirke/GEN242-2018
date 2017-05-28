@@ -1307,6 +1307,23 @@ df2</code></pre>
 </div>
 <div id="subset-rows-by-names" class="section level2">
 <h2><span class="header-section-number">12.13</span> Subset rows by names</h2>
+<p>Since <code>data frames</code> do not contain row names, row wise subsetting via the <code>[,]</code> operator cannot be used. However, one can obtain this behavior by obtaining a row position intex via the <code>match</code> function and passing it on to the <code>slice</code> function.</p>
+<p>Create a suitable test <code>data frame</code></p>
+<pre class="r"><code>df1 &lt;- bind_cols(data_frame(ids1=paste0(&quot;g&quot;, 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0(&quot;CA&quot;, 1:4)))))
+df1</code></pre>
+<pre><code>## # A tibble: 10 × 5
+##     ids1   CA1   CA2   CA3   CA4
+##    &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1     g1     1    11    21    31
+## 2     g2     2    12    22    32
+## 3     g3     3    13    23    33
+## 4     g4     4    14    24    34
+## 5     g5     5    15    25    35
+## 6     g6     6    16    26    36
+## 7     g7     7    17    27    37
+## 8     g8     8    18    28    38
+## 9     g9     9    19    29    39
+## 10   g10    10    20    30    40</code></pre>
 <p><code>dplyr</code> approach</p>
 <pre class="r"><code>slice(df1, match(c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;), df1$ids1))</code></pre>
 <pre><code>## # A tibble: 3 × 5
