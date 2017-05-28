@@ -263,8 +263,8 @@ p <- ggplot(df_mean, aes(Samples, Values, fill = Species)) +
 	    geom_bar(position="dodge", stat="identity")
 print(p) 
 
-## ----iris_factor_order, eval=TRUE----------------------------------------
-df_mean$Species <- factor(df_mean$Species, levels=unique(df_mean$Species), ordered=TRUE)
+## ----iris_factor_order, eval=FALSE---------------------------------------
+## df_mean$Species <- factor(df_mean$Species, levels=unique(df_mean$Species), ordered=TRUE)
 
 ## ----iris_mean_bar_plot_sideways, eval=TRUE------------------------------
 p <- ggplot(df_mean, aes(Samples, Values, fill = Species)) + 

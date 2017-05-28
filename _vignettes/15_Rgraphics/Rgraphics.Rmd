@@ -691,7 +691,7 @@ To enforce that the bars are plotted in the order specified in the input data, o
 to do so by turning the corresponding column (here `Species`) into an ordered factor as follows. 
 
 
-```{r iris_factor_order, eval=TRUE}
+```{r iris_factor_order, eval=FALSE}
 df_mean$Species <- factor(df_mean$Species, levels=unique(df_mean$Species), ordered=TRUE)
 ```
 
