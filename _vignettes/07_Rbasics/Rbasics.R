@@ -261,7 +261,7 @@ iris_df
 ## fread("grep -v '^#' iris.txt")
 
 ## ----tabular_export_readr, eval=FALSE------------------------------------
-## iris_df <- read_tsv("iris.txt")
+## iris_df <- write_tsv("iris.txt")
 
 ## ----dplyr_bind, eval=TRUE-----------------------------------------------
 bind_cols(iris_df, iris_df)

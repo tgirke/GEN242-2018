@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sun May 28 13:35:55 2017
+last_updated: Sun May 28 13:39:29 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -155,7 +155,7 @@ default settings than the base R `write.table` function.
 
 
 ```r
-iris_df <- read_tsv("iris.txt")
+iris_df <- write_tsv("iris.txt")
 ```
 
 ## Column and row binds
