@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sun May 28 12:42:20 2017
+last_updated: Sun May 28 12:46:11 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -745,7 +745,7 @@ df2
 ## 3   g11     3     7    11    15
 ## 4   g12     4     8    12    16
 ```
-#### Inner join
+### Inner join
 
 
 ```r
@@ -760,7 +760,7 @@ inner_join(df1, df2, by=c("ids1"="ids2"))
 ## 2    g5     5    15    25    35     2     6    10    14
 ```
 
-#### Left join
+### Left join
 
 
 ```r
@@ -783,7 +783,7 @@ left_join(df1, df2, by=c("ids1"="ids2"))
 ## 10   g10    10    20    30    40    NA    NA    NA    NA
 ```
 
-#### Rigth join
+### Right join
 
 
 ```r
@@ -800,7 +800,7 @@ right_join(df1, df2, by=c("ids1"="ids2"))
 ## 4   g12    NA    NA    NA    NA     4     8    12    16
 ```
 
-#### Full join
+### Full join
 
 
 ```r
@@ -825,7 +825,7 @@ full_join(df1, df2, by=c("ids1"="ids2"))
 ## 12   g12    NA    NA    NA    NA     4     8    12    16
 ```
 
-#### Anti join
+### Anti join
 
 
 ```r
@@ -845,6 +845,8 @@ anti_join(df1, df2, by=c("ids1"="ids2"))
 ## 7    g3     3    13    23    33
 ## 8    g1     1    11    21    31
 ```
+
+For additional join options users want to cosult the `*_join` help pages.
 
 ## Chaining
 

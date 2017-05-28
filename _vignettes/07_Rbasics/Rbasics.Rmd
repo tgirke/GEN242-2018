@@ -866,35 +866,37 @@ df1
 df2 <- bind_cols(data_frame(ids2=paste0("g", c(2,5,11,12))), as_data_frame(matrix(1:16, 4, 4, dimnames=list(1:4, paste0("CB", 1:4)))))
 df2
 ```
-#### Inner join
+### Inner join
 
 ```{r plyr_inner_join, eval=TRUE}
 inner_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
-#### Left join
+### Left join
 
 ```{r plyr_left_join, eval=TRUE}
 left_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
-#### Rigth join
+### Right join
 
 ```{r plyr_right_join, eval=TRUE}
 right_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
-#### Full join
+### Full join
 
 ```{r plyr_full_join, eval=TRUE}
 full_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
-#### Anti join
+### Anti join
 
 ```{r plyr_anti_join, eval=TRUE}
 anti_join(df1, df2, by=c("ids1"="ids2"))
 ```
+
+For additional join options users want to cosult the `*_join` help pages.
 
 ## Chaining
 
