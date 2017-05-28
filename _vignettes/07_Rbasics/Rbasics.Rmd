@@ -571,7 +571,7 @@ dim(my_result)
 
 # dplyr and data.table 
 
-Modern day object classes and methods for handling `data.frame` like structures
+Modern object classes and methods for handling `data.frame` like structures
 are provided by the `data.table` and `dplyr` packages. The following gives a
 short introduction to the usage and functionalities of the `dplyr` package. 
 More detailed tutorials on this topic can be found here:
@@ -746,7 +746,7 @@ mutate(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.W
 
 ### `transmute`
 
-The `transmute` function does the same as above but drops existing columns
+The `transmute` function does the same as `mutate` but drops existing columns
 
 ```{r plyr_transmute, eval=TRUE}
 transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)
@@ -754,11 +754,31 @@ transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepa
 
 ### `bind_cols`
 
-The `bind_cols` function is the equivalent of `cbind` in base R. To add rows, use corresponding 
+The `bind_cols` function is the equivalent of `cbind` in base R. To add rows, use the corresponding 
 `bind_rows` function.
 
 ```{r plyr_bind_cols, eval=TRUE}
 bind_cols(iris_df, iris_df)
+```
+
+## Summarize data
+
+Summary calculation on single column
+
+```{r plyr_summarize1, eval=TRUE}
+summarize(iris_df, mean(Petal.Length))
+```
+
+Summary calculation on many columns
+
+```{r plyr_summarize2, eval=TRUE}
+summarize_all(iris_df[,1:4], mean)
+```
+
+Summarize by grouping column
+
+```{r plyr_summarize, eval=TRUE}
+summarize(group_by(iris_df, Species), mean(Petal.Length))
 ```
 
 ### Extract column as vector
@@ -780,10 +800,10 @@ top-to-bottom. This makes for easy to type and readable code.
 
 ```{r plyr_chaining, eval=TRUE}
 iris_df %>% # Declare data frame to use 
-	select(Sepal.Length:Species) %>% # Select columns
-	filter(Species=="setosa") %>% # Filter rows by some value
-	arrange(Sepal.Length) %>% # Sort by some column
-	mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
+    select(Sepal.Length:Species) %>% # Select columns
+    filter(Species=="setosa") %>% # Filter rows by some value
+    arrange(Sepal.Length) %>% # Sort by some column
+    mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
     write.table("iris.txt", quote=FALSE, row.names=FALSE, sep="\t") # Export to file
 ```
 

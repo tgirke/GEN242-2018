@@ -233,7 +233,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Introduction to R</h1>
 <h4 class="author"><em>Author: Thomas Girke</em></h4>
-<h4 class="date"><em>Last update: 27 May, 2017</em></h4>
+<h4 class="date"><em>Last update: 28 May, 2017</em></h4>
 
 </div>
 
@@ -736,7 +736,7 @@ dim(my_result)</code></pre>
 </div>
 <div id="dplyr-and-data.table" class="section level1">
 <h1><span class="header-section-number">12</span> dplyr and data.table</h1>
-<p>Modern day object classes and methods for handling <code>data.frame</code> like structures are provided by the <code>data.table</code> and <code>dplyr</code> packages. The following gives a short introduction to the usage and functionalities of the <code>dplyr</code> package. More detailed tutorials on this topic can be found here:</p>
+<p>Modern object classes and methods for handling <code>data.frame</code> like structures are provided by the <code>data.table</code> and <code>dplyr</code> packages. The following gives a short introduction to the usage and functionalities of the <code>dplyr</code> package. More detailed tutorials on this topic can be found here:</p>
 <ul>
 <li><a href="https://rdrr.io/cran/dplyr/">dplyr: A Grammar of Data Manipulation</a></li>
 <li><a href="http://stat545.com/bit001_dplyr-cheatsheet.html">Cheatsheet</a></li>
@@ -1106,7 +1106,7 @@ iris_df</code></pre>
 </div>
 <div id="transmute" class="section level3">
 <h3><span class="header-section-number">12.10.2</span> <code>transmute</code></h3>
-<p>The <code>transmute</code> function does the same as above but drops existing columns</p>
+<p>The <code>transmute</code> function does the same as <code>mutate</code> but drops existing columns</p>
 <pre class="r"><code>transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)</code></pre>
 <pre><code>## # A tibble: 150 × 2
 ##       Ratio   Sum
@@ -1125,7 +1125,7 @@ iris_df</code></pre>
 </div>
 <div id="bind_cols" class="section level3">
 <h3><span class="header-section-number">12.10.3</span> <code>bind_cols</code></h3>
-<p>The <code>bind_cols</code> function is the equivalent of <code>cbind</code> in base R. To add rows, use corresponding <code>bind_rows</code> function.</p>
+<p>The <code>bind_cols</code> function is the equivalent of <code>cbind</code> in base R. To add rows, use the corresponding <code>bind_rows</code> function.</p>
 <pre class="r"><code>bind_cols(iris_df, iris_df)</code></pre>
 <pre><code>## # A tibble: 150 × 10
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length Sepal.Width Petal.Length
@@ -1142,8 +1142,31 @@ iris_df</code></pre>
 ## 10          4.9         3.1          1.5         0.1  setosa          4.9         3.1          1.5
 ## # ... with 140 more rows, and 2 more variables: Petal.Width &lt;dbl&gt;, Species &lt;chr&gt;</code></pre>
 </div>
+</div>
+<div id="summarize-data" class="section level2">
+<h2><span class="header-section-number">12.11</span> Summarize data</h2>
+<p>Summary calculation on single column</p>
+<pre class="r"><code>summarize(iris_df, mean(Petal.Length))</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##   `mean(Petal.Length)`
+##                  &lt;dbl&gt;
+## 1                3.758</code></pre>
+<p>Summary calculation on many columns</p>
+<pre class="r"><code>summarize_all(iris_df[,1:4], mean)</code></pre>
+<pre><code>## # A tibble: 1 × 4
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+##          &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1     5.843333    3.057333        3.758    1.199333</code></pre>
+<p>Summarize by grouping column</p>
+<pre class="r"><code>summarize(group_by(iris_df, Species), mean(Petal.Length))</code></pre>
+<pre><code>## # A tibble: 3 × 2
+##      Species `mean(Petal.Length)`
+##        &lt;chr&gt;                &lt;dbl&gt;
+## 1     setosa                1.462
+## 2 versicolor                4.260
+## 3  virginica                5.552</code></pre>
 <div id="extract-column-as-vector" class="section level3">
-<h3><span class="header-section-number">12.10.4</span> Extract column as vector</h3>
+<h3><span class="header-section-number">12.11.1</span> Extract column as vector</h3>
 <p>The subsetting operators <code>[[</code> and <code>$</code>can be used to extract from a <code>data frame</code> single columns as vector.</p>
 <pre class="r"><code>iris_df[[5]][1:12]</code></pre>
 <pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
@@ -1154,7 +1177,7 @@ iris_df</code></pre>
 </div>
 </div>
 <div id="chaining" class="section level2">
-<h2><span class="header-section-number">12.11</span> Chaining</h2>
+<h2><span class="header-section-number">12.12</span> Chaining</h2>
 <p>To simplify chaining of serveral operations (pipes), <code>dplyr</code> provides the <code>%&gt;%</code> operator. where <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. This way one can write multiple operations that can read left-to-right or top-to-bottom. This makes for easy to type and readable code.</p>
 <pre class="r"><code>iris_df %&gt;% # Declare data frame to use 
     select(Sepal.Length:Species) %&gt;% # Select columns
@@ -1655,7 +1678,7 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12] </code></pre>
 <pre><code> ---
 title: &quot;My First R Markdown Document&quot;
 author: &quot;Author: First Last&quot;
-date: &quot;Last update: 27 May, 2017&quot;
+date: &quot;Last update: 28 May, 2017&quot;
 output:
   BiocStyle::html_document:
     toc: true

@@ -310,16 +310,25 @@ transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepa
 ## ----plyr_bind_cols, eval=TRUE-------------------------------------------
 bind_cols(iris_df, iris_df)
 
+## ----plyr_summarize1, eval=TRUE------------------------------------------
+summarize(iris_df, mean(Petal.Length))
+
+## ----plyr_summarize2, eval=TRUE------------------------------------------
+summarize_all(iris_df[,1:4], mean)
+
+## ----plyr_summarize, eval=TRUE-------------------------------------------
+summarize(group_by(iris_df, Species), mean(Petal.Length))
+
 ## ----plyr_get_cols, eval=TRUE--------------------------------------------
 iris_df[[5]][1:12]
 iris_df$Species[1:12]
 
 ## ----plyr_chaining, eval=TRUE--------------------------------------------
 iris_df %>% # Declare data frame to use 
-	select(Sepal.Length:Species) %>% # Select columns
-	filter(Species=="setosa") %>% # Filter rows by some value
-	arrange(Sepal.Length) %>% # Sort by some column
-	mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
+    select(Sepal.Length:Species) %>% # Select columns
+    filter(Species=="setosa") %>% # Filter rows by some value
+    arrange(Sepal.Length) %>% # Sort by some column
+    mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
     write.table("iris.txt", quote=FALSE, row.names=FALSE, sep="\t") # Export to file
 
 ## ----load_sqlite, eval=TRUE----------------------------------------------

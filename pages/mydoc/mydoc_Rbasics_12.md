@@ -1,11 +1,11 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sat May 27 15:09:03 2017
+last_updated: Sun May 28 08:57:39 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
 
-Modern day object classes and methods for handling `data.frame` like structures
+Modern object classes and methods for handling `data.frame` like structures
 are provided by the `data.table` and `dplyr` packages. The following gives a
 short introduction to the usage and functionalities of the `dplyr` package. 
 More detailed tutorials on this topic can be found here:
@@ -541,7 +541,7 @@ mutate(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.W
 
 ### `transmute`
 
-The `transmute` function does the same as above but drops existing columns
+The `transmute` function does the same as `mutate` but drops existing columns
 
 
 ```r
@@ -567,7 +567,7 @@ transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepa
 
 ### `bind_cols`
 
-The `bind_cols` function is the equivalent of `cbind` in base R. To add rows, use corresponding 
+The `bind_cols` function is the equivalent of `cbind` in base R. To add rows, use the corresponding 
 `bind_rows` function.
 
 
@@ -590,6 +590,52 @@ bind_cols(iris_df, iris_df)
 ## 9           4.4         2.9          1.4         0.2  setosa          4.4         2.9          1.4
 ## 10          4.9         3.1          1.5         0.1  setosa          4.9         3.1          1.5
 ## # ... with 140 more rows, and 2 more variables: Petal.Width <dbl>, Species <chr>
+```
+
+## Summarize data
+
+Summary calculation on single column
+
+
+```r
+summarize(iris_df, mean(Petal.Length))
+```
+
+```
+## # A tibble: 1 × 1
+##   `mean(Petal.Length)`
+##                  <dbl>
+## 1                3.758
+```
+
+Summary calculation on many columns
+
+
+```r
+summarize_all(iris_df[,1:4], mean)
+```
+
+```
+## # A tibble: 1 × 4
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+##          <dbl>       <dbl>        <dbl>       <dbl>
+## 1     5.843333    3.057333        3.758    1.199333
+```
+
+Summarize by grouping column
+
+
+```r
+summarize(group_by(iris_df, Species), mean(Petal.Length))
+```
+
+```
+## # A tibble: 3 × 2
+##      Species `mean(Petal.Length)`
+##        <chr>                <dbl>
+## 1     setosa                1.462
+## 2 versicolor                4.260
+## 3  virginica                5.552
 ```
 
 ### Extract column as vector
@@ -626,10 +672,10 @@ top-to-bottom. This makes for easy to type and readable code.
 
 ```r
 iris_df %>% # Declare data frame to use 
-	select(Sepal.Length:Species) %>% # Select columns
-	filter(Species=="setosa") %>% # Filter rows by some value
-	arrange(Sepal.Length) %>% # Sort by some column
-	mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
+    select(Sepal.Length:Species) %>% # Select columns
+    filter(Species=="setosa") %>% # Filter rows by some value
+    arrange(Sepal.Length) %>% # Sort by some column
+    mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
     write.table("iris.txt", quote=FALSE, row.names=FALSE, sep="\t") # Export to file
 ```
 
