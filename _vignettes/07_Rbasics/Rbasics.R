@@ -236,11 +236,13 @@ dim(frame1)
 my_result <- merge(frame1, iris, by.x = 0, by.y = 0, all = TRUE)
 dim(my_result)
 
-## ----data_frame_tbl, eval=TRUE-------------------------------------------
-library(dplyr); library(tibble); library(data.table)
+## ----data_frame_tbl1, eval=TRUE------------------------------------------
+library(dplyr); library(tibble)
 as_data_frame(iris) # coerce data.frame to data frame tbl
+
+## ----data_frame_tbl2, eval=TRUE------------------------------------------
 as_tibble(iris) # newer function provided by tibble package
-tbl_df(iris) # gives same result; this alternative exists for historical reasons
+tbl_df(iris) # this alternative exists for historical reasons
 
 ## ----tabular_sample, eval=TRUE-------------------------------------------
 library(readr)
@@ -251,6 +253,7 @@ iris_df <- read_tsv("iris.txt") # Import with read_tbv from readr package
 iris_df
 
 ## ----tabular_import2, eval=TRUE------------------------------------------
+library(data.table)
 iris_df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
 iris_df
 unlink("iris.txt") # Deletes temp file

@@ -587,18 +587,23 @@ More detailed tutorials on this topic can be found here:
 
 ## Construct a `data frame` (`tibble`)
 
-```{r data_frame_tbl, eval=TRUE}
-library(dplyr); library(tibble); library(data.table)
+```{r data_frame_tbl1, eval=TRUE}
+library(dplyr); library(tibble)
 as_data_frame(iris) # coerce data.frame to data frame tbl
+```
+
+Alternative functions producing the same result include `as_tibble` and `tbl_df`:
+
+```{r data_frame_tbl2, eval=TRUE}
 as_tibble(iris) # newer function provided by tibble package
-tbl_df(iris) # gives same result; this alternative exists for historical reasons
+tbl_df(iris) # this alternative exists for historical reasons
 ```
 ## Reading and writing tabular files
 
 While the base R read/write utilities can be used for `data frames`, best time
 performance with the least amount of typing is achieved with the export/import
 functions from the `readr` package. For very large files the `fread` function from 
-the `data.table` package achieves the best performance. 
+the `data.table` package achieves the best time performance. 
 
 
 ### Import with `readr` 
@@ -633,6 +638,7 @@ The `fread` function from the `data.table` package provides the best time perfor
 tabular files into R.
 
 ```{r tabular_import2, eval=TRUE}
+library(data.table)
 iris_df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
 iris_df
 unlink("iris.txt") # Deletes temp file

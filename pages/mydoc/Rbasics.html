@@ -749,7 +749,7 @@ dim(my_result)</code></pre>
 </ul>
 <div id="construct-a-data-frame-tibble" class="section level2">
 <h2><span class="header-section-number">12.1</span> Construct a <code>data frame</code> (<code>tibble</code>)</h2>
-<pre class="r"><code>library(dplyr); library(tibble); library(data.table)
+<pre class="r"><code>library(dplyr); library(tibble)
 as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
 <pre><code>## # A tibble: 150 × 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -765,6 +765,7 @@ as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
 ## 9           4.4         2.9          1.4         0.2  setosa
 ## 10          4.9         3.1          1.5         0.1  setosa
 ## # ... with 140 more rows</code></pre>
+<p>Alternative functions producing the same result include <code>as_tibble</code> and <code>tbl_df</code>:</p>
 <pre class="r"><code>as_tibble(iris) # newer function provided by tibble package</code></pre>
 <pre><code>## # A tibble: 150 × 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -780,7 +781,7 @@ as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
 ## 9           4.4         2.9          1.4         0.2  setosa
 ## 10          4.9         3.1          1.5         0.1  setosa
 ## # ... with 140 more rows</code></pre>
-<pre class="r"><code>tbl_df(iris) # gives same result; this alternative exists for historical reasons</code></pre>
+<pre class="r"><code>tbl_df(iris) # this alternative exists for historical reasons</code></pre>
 <pre><code>## # A tibble: 150 × 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;  &lt;fctr&gt;
@@ -798,7 +799,7 @@ as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
 </div>
 <div id="reading-and-writing-tabular-files" class="section level2">
 <h2><span class="header-section-number">12.2</span> Reading and writing tabular files</h2>
-<p>While the base R read/write utilities can be used for <code>data frames</code>, best time performance with the least amount of typing is achieved with the export/import functions from the <code>readr</code> package. For very large files the <code>fread</code> function from the <code>data.table</code> package achieves the best performance.</p>
+<p>While the base R read/write utilities can be used for <code>data frames</code>, best time performance with the least amount of typing is achieved with the export/import functions from the <code>readr</code> package. For very large files the <code>fread</code> function from the <code>data.table</code> package achieves the best time performance.</p>
 <div id="import-with-readr" class="section level3">
 <h3><span class="header-section-number">12.2.1</span> Import with <code>readr</code></h3>
 <p>Import functions provided by <code>readr</code> include:</p>
@@ -834,22 +835,23 @@ iris_df</code></pre>
 <div id="fast-table-import-with-fread" class="section level3">
 <h3><span class="header-section-number">12.2.2</span> Fast table import with <code>fread</code></h3>
 <p>The <code>fread</code> function from the <code>data.table</code> package provides the best time performance for reading large tabular files into R.</p>
-<pre class="r"><code>iris_df &lt;- as_data_frame(fread(&quot;iris.txt&quot;)) # Import with fread and conversion to tibble
+<pre class="r"><code>library(data.table)
+iris_df &lt;- as_data_frame(fread(&quot;iris.txt&quot;)) # Import with fread and conversion to tibble
 iris_df</code></pre>
-<pre><code>## # A tibble: 150 × 5
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;   &lt;chr&gt;
-## 1           5.1         3.5          1.4         0.2  setosa
-## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7         3.2          1.3         0.2  setosa
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5           5.0         3.6          1.4         0.2  setosa
-## 6           5.4         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8           5.0         3.4          1.5         0.2  setosa
-## 9           4.4         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa
-## # ... with 140 more rows</code></pre>
+<pre><code>## # A tibble: 50 × 6
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Subtract
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;   &lt;chr&gt;    &lt;dbl&gt;
+## 1           4.3         3.0          1.1         0.1  setosa      1.0
+## 2           4.4         2.9          1.4         0.2  setosa      1.2
+## 3           4.4         3.0          1.3         0.2  setosa      1.1
+## 4           4.4         3.2          1.3         0.2  setosa      1.1
+## 5           4.5         2.3          1.3         0.3  setosa      1.0
+## 6           4.6         3.1          1.5         0.2  setosa      1.3
+## 7           4.6         3.4          1.4         0.3  setosa      1.1
+## 8           4.6         3.6          1.0         0.2  setosa      0.8
+## 9           4.6         3.2          1.4         0.2  setosa      1.2
+## 10          4.7         3.2          1.3         0.2  setosa      1.1
+## # ... with 40 more rows</code></pre>
 <pre class="r"><code>unlink(&quot;iris.txt&quot;) # Deletes temp file</code></pre>
 <p>Note: to ignore lines starting with comment signs, one can pass on to <code>fread</code> a shell command for preprocessing the file. The following example illustrates this option.</p>
 <pre class="r"><code>fread(&quot;grep -v '^#' iris.txt&quot;) </code></pre>
