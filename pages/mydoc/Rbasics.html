@@ -1199,7 +1199,7 @@ iris_df</code></pre>
 </div>
 <div id="merging-data-frames" class="section level2">
 <h2><span class="header-section-number">12.12</span> Merging data frames</h2>
-<p>The <code>dplyr</code> package provides several join functions for merging <code>data frames</code> by a common key column similar to the <code>merge</code> function in base R. These include:</p>
+<p>The <code>dplyr</code> package provides several join functions for merging <code>data frames</code> by a common key column similar to the <code>merge</code> function in base R. These <code>*_join</code> functions include:</p>
 <ul>
 <li><code>inner_join()</code>: returns join only for rows matching among both <code>data tables</code></li>
 <li><code>full_join()</code>: returns join for all (matching and non-matching) rows of two <code>data tables</code></li>
@@ -1305,8 +1305,27 @@ df2</code></pre>
 <p>For additional join options users want to cosult the <code>*_join</code> help pages.</p>
 </div>
 </div>
+<div id="subset-rows-by-names" class="section level2">
+<h2><span class="header-section-number">12.13</span> Subset rows by names</h2>
+<p><code>dplyr</code> approach</p>
+<pre class="r"><code>slice(df1, match(c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;), df1$ids1))</code></pre>
+<pre><code>## # A tibble: 3 × 5
+##    ids1   CA1   CA2   CA3   CA4
+##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1   g10    10    20    30    40
+## 2    g4     4    14    24    34
+## 3    g4     4    14    24    34</code></pre>
+<p>Base R equivalent</p>
+<pre class="r"><code>df1_old &lt;- as.data.frame(df1)
+rownames(df1_old) &lt;- df1_old[,1]
+df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
+<pre><code>##      ids1 CA1 CA2 CA3 CA4
+## g10   g10  10  20  30  40
+## g4     g4   4  14  24  34
+## g4.1   g4   4  14  24  34</code></pre>
+</div>
 <div id="chaining" class="section level2">
-<h2><span class="header-section-number">12.13</span> Chaining</h2>
+<h2><span class="header-section-number">12.14</span> Chaining</h2>
 <p>To simplify chaining of serveral operations (pipes), <code>dplyr</code> provides the <code>%&gt;%</code> operator. where <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. This way one can write multiple operations that can read left-to-right or top-to-bottom. This makes for easy to type and readable code.</p>
 <pre class="r"><code>iris_df %&gt;% # Declare data frame to use 
     select(Sepal.Length:Species) %&gt;% # Select columns

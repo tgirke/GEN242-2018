@@ -719,6 +719,7 @@ Base R code equivalent
 iris_df[1:2,]
 ```
 
+
 ## Sorting with `arrange`
 
 Row-wise ordering based on specific columns
@@ -850,7 +851,7 @@ iris_df$Species[1:12]
 ## Merging data frames
 
 The `dplyr` package provides several join functions for merging `data frames` by a common key column
-similar to the `merge` function in base R. These include: 
+similar to the `merge` function in base R. These `*_join` functions include: 
 
 * `inner_join()`: returns join only for rows matching among both `data tables`
 * `full_join()`: returns join for all (matching and non-matching) rows of two `data tables` 
@@ -897,6 +898,22 @@ anti_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
 For additional join options users want to cosult the `*_join` help pages.
+
+## Subset rows by names
+
+`dplyr` approach
+
+```{r plyr_subset_names, eval=TRUE}
+slice(df1, match(c("g10", "g4", "g4"), df1$ids1))
+```
+
+Base R equivalent
+
+```{r plyr_subset_names_base, eval=TRUE}
+df1_old <- as.data.frame(df1)
+rownames(df1_old) <- df1_old[,1]
+df1_old[c("g10", "g4", "g4"),]
+```
 
 ## Chaining
 

@@ -356,6 +356,14 @@ full_join(df1, df2, by=c("ids1"="ids2"))
 ## ----plyr_anti_join, eval=TRUE-------------------------------------------
 anti_join(df1, df2, by=c("ids1"="ids2"))
 
+## ----plyr_subset_names, eval=TRUE----------------------------------------
+slice(df1, match(c("g10", "g4", "g4"), df1$ids1))
+
+## ----plyr_subset_names_base, eval=TRUE-----------------------------------
+df1_old <- as.data.frame(df1)
+rownames(df1_old) <- df1_old[,1]
+df1_old[c("g10", "g4", "g4"),]
+
 ## ----plyr_chaining, eval=TRUE--------------------------------------------
 iris_df %>% # Declare data frame to use 
     select(Sepal.Length:Species) %>% # Select columns

@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sun May 28 12:46:11 2017
+last_updated: Sun May 28 13:18:17 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -306,6 +306,7 @@ iris_df[1:2,]
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
 ```
+
 
 ## Sorting with `arrange`
 
@@ -699,7 +700,7 @@ iris_df$Species[1:12]
 ## Merging data frames
 
 The `dplyr` package provides several join functions for merging `data frames` by a common key column
-similar to the `merge` function in base R. These include: 
+similar to the `merge` function in base R. These `*_join` functions include: 
 
 * `inner_join()`: returns join only for rows matching among both `data tables`
 * `full_join()`: returns join for all (matching and non-matching) rows of two `data tables` 
@@ -847,6 +848,40 @@ anti_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
 For additional join options users want to cosult the `*_join` help pages.
+
+## Subset rows by names
+
+`dplyr` approach
+
+
+```r
+slice(df1, match(c("g10", "g4", "g4"), df1$ids1))
+```
+
+```
+## # A tibble: 3 × 5
+##    ids1   CA1   CA2   CA3   CA4
+##   <chr> <int> <int> <int> <int>
+## 1   g10    10    20    30    40
+## 2    g4     4    14    24    34
+## 3    g4     4    14    24    34
+```
+
+Base R equivalent
+
+
+```r
+df1_old <- as.data.frame(df1)
+rownames(df1_old) <- df1_old[,1]
+df1_old[c("g10", "g4", "g4"),]
+```
+
+```
+##      ids1 CA1 CA2 CA3 CA4
+## g10   g10  10  20  30  40
+## g4     g4   4  14  24  34
+## g4.1   g4   4  14  24  34
+```
 
 ## Chaining
 
