@@ -946,8 +946,44 @@ iris_df</code></pre>
 ## 2          4.9         3.0          1.4         0.2  setosa</code></pre>
 </div>
 </div>
+<div id="subset-rows-by-names" class="section level2">
+<h2><span class="header-section-number">12.6</span> Subset rows by names</h2>
+<p>Since <code>data frames</code> do not contain row names, row wise subsetting via the <code>[,]</code> operator cannot be used. However, one can obtain this behavior by obtaining a row position intex via the <code>match</code> function and passing it on to the <code>slice</code> function.</p>
+<p>Create a suitable test <code>data frame</code></p>
+<pre class="r"><code>df1 &lt;- bind_cols(data_frame(ids1=paste0(&quot;g&quot;, 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0(&quot;CA&quot;, 1:4)))))
+df1</code></pre>
+<pre><code>## # A tibble: 10 × 5
+##     ids1   CA1   CA2   CA3   CA4
+##    &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1     g1     1    11    21    31
+## 2     g2     2    12    22    32
+## 3     g3     3    13    23    33
+## 4     g4     4    14    24    34
+## 5     g5     5    15    25    35
+## 6     g6     6    16    26    36
+## 7     g7     7    17    27    37
+## 8     g8     8    18    28    38
+## 9     g9     9    19    29    39
+## 10   g10    10    20    30    40</code></pre>
+<p><code>dplyr</code> approach</p>
+<pre class="r"><code>slice(df1, match(c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;), df1$ids1))</code></pre>
+<pre><code>## # A tibble: 3 × 5
+##    ids1   CA1   CA2   CA3   CA4
+##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1   g10    10    20    30    40
+## 2    g4     4    14    24    34
+## 3    g4     4    14    24    34</code></pre>
+<p>Base R equivalent</p>
+<pre class="r"><code>df1_old &lt;- as.data.frame(df1)
+rownames(df1_old) &lt;- df1_old[,1]
+df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
+<pre><code>##      ids1 CA1 CA2 CA3 CA4
+## g10   g10  10  20  30  40
+## g4     g4   4  14  24  34
+## g4.1   g4   4  14  24  34</code></pre>
+</div>
 <div id="sorting-with-arrange" class="section level2">
-<h2><span class="header-section-number">12.6</span> Sorting with <code>arrange</code></h2>
+<h2><span class="header-section-number">12.7</span> Sorting with <code>arrange</code></h2>
 <p>Row-wise ordering based on specific columns</p>
 <p><code>dplyr</code> approach</p>
 <pre class="r"><code>arrange(iris_df, Species, Sepal.Length, Sepal.Width)</code></pre>
@@ -1014,7 +1050,7 @@ iris_df</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="select-columns-with-select" class="section level2">
-<h2><span class="header-section-number">12.7</span> Select columns with <code>select</code></h2>
+<h2><span class="header-section-number">12.8</span> Select columns with <code>select</code></h2>
 <p>Select specific columns</p>
 <pre class="r"><code>select(iris_df, Species, Petal.Length, Sepal.Length)</code></pre>
 <pre><code>## # A tibble: 150 × 3
@@ -1065,7 +1101,7 @@ iris_df</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="renaming-columns-with-rename" class="section level2">
-<h2><span class="header-section-number">12.8</span> Renaming columns with <code>rename</code></h2>
+<h2><span class="header-section-number">12.9</span> Renaming columns with <code>rename</code></h2>
 <p><code>dplyr</code> approach</p>
 <pre class="r"><code>rename(iris_df, new_col_name = Species)</code></pre>
 <pre><code>## # A tibble: 150 × 5
@@ -1086,7 +1122,7 @@ iris_df</code></pre>
 <pre class="r"><code>colnames(iris_df)[colnames(iris_df)==&quot;Species&quot;] &lt;- &quot;new_col_names&quot;</code></pre>
 </div>
 <div id="obtain-unique-rows-with-distinct" class="section level2">
-<h2><span class="header-section-number">12.9</span> Obtain unique rows with <code>distinct</code></h2>
+<h2><span class="header-section-number">12.10</span> Obtain unique rows with <code>distinct</code></h2>
 <p><code>dplyr</code> approach</p>
 <pre class="r"><code>distinct(iris_df, Species, .keep_all=TRUE)</code></pre>
 <pre><code>## # A tibble: 3 × 5
@@ -1105,9 +1141,9 @@ iris_df</code></pre>
 ## 3          6.3         3.3          6.0         2.5  virginica</code></pre>
 </div>
 <div id="add-columns" class="section level2">
-<h2><span class="header-section-number">12.10</span> Add columns</h2>
+<h2><span class="header-section-number">12.11</span> Add columns</h2>
 <div id="mutate" class="section level3">
-<h3><span class="header-section-number">12.10.1</span> <code>mutate</code></h3>
+<h3><span class="header-section-number">12.11.1</span> <code>mutate</code></h3>
 <p>The <code>mutate</code> function allows to append columns to existing ones.</p>
 <pre class="r"><code>mutate(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)</code></pre>
 <pre><code>## # A tibble: 150 × 7
@@ -1126,7 +1162,7 @@ iris_df</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="transmute" class="section level3">
-<h3><span class="header-section-number">12.10.2</span> <code>transmute</code></h3>
+<h3><span class="header-section-number">12.11.2</span> <code>transmute</code></h3>
 <p>The <code>transmute</code> function does the same as <code>mutate</code> but drops existing columns</p>
 <pre class="r"><code>transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)</code></pre>
 <pre><code>## # A tibble: 150 × 2
@@ -1145,7 +1181,7 @@ iris_df</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="bind_cols" class="section level3">
-<h3><span class="header-section-number">12.10.3</span> <code>bind_cols</code></h3>
+<h3><span class="header-section-number">12.11.3</span> <code>bind_cols</code></h3>
 <p>The <code>bind_cols</code> function is the equivalent of <code>cbind</code> in base R. To add rows, use the corresponding <code>bind_rows</code> function.</p>
 <pre class="r"><code>bind_cols(iris_df, iris_df)</code></pre>
 <pre><code>## # A tibble: 150 × 10
@@ -1165,7 +1201,7 @@ iris_df</code></pre>
 </div>
 </div>
 <div id="summarize-data" class="section level2">
-<h2><span class="header-section-number">12.11</span> Summarize data</h2>
+<h2><span class="header-section-number">12.12</span> Summarize data</h2>
 <p>Summary calculation on single column</p>
 <pre class="r"><code>summarize(iris_df, mean(Petal.Length))</code></pre>
 <pre><code>## # A tibble: 1 × 1
@@ -1187,7 +1223,7 @@ iris_df</code></pre>
 ## 2 versicolor                4.260
 ## 3  virginica                5.552</code></pre>
 <div id="extract-column-as-vector" class="section level3">
-<h3><span class="header-section-number">12.11.1</span> Extract column as vector</h3>
+<h3><span class="header-section-number">12.12.1</span> Extract column as vector</h3>
 <p>The subsetting operators <code>[[</code> and <code>$</code>can be used to extract from a <code>data frame</code> single columns as vector.</p>
 <pre class="r"><code>iris_df[[5]][1:12]</code></pre>
 <pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
@@ -1198,7 +1234,7 @@ iris_df</code></pre>
 </div>
 </div>
 <div id="merging-data-frames" class="section level2">
-<h2><span class="header-section-number">12.12</span> Merging data frames</h2>
+<h2><span class="header-section-number">12.13</span> Merging data frames</h2>
 <p>The <code>dplyr</code> package provides several join functions for merging <code>data frames</code> by a common key column similar to the <code>merge</code> function in base R. These <code>*_join</code> functions include:</p>
 <ul>
 <li><code>inner_join()</code>: returns join only for rows matching among both <code>data tables</code></li>
@@ -1233,7 +1269,7 @@ df2</code></pre>
 ## 3   g11     3     7    11    15
 ## 4   g12     4     8    12    16</code></pre>
 <div id="inner-join" class="section level3">
-<h3><span class="header-section-number">12.12.1</span> Inner join</h3>
+<h3><span class="header-section-number">12.13.1</span> Inner join</h3>
 <pre class="r"><code>inner_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 2 × 9
 ##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1242,7 +1278,7 @@ df2</code></pre>
 ## 2    g5     5    15    25    35     2     6    10    14</code></pre>
 </div>
 <div id="left-join" class="section level3">
-<h3><span class="header-section-number">12.12.2</span> Left join</h3>
+<h3><span class="header-section-number">12.13.2</span> Left join</h3>
 <pre class="r"><code>left_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 10 × 9
 ##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1259,7 +1295,7 @@ df2</code></pre>
 ## 10   g10    10    20    30    40    NA    NA    NA    NA</code></pre>
 </div>
 <div id="right-join" class="section level3">
-<h3><span class="header-section-number">12.12.3</span> Right join</h3>
+<h3><span class="header-section-number">12.13.3</span> Right join</h3>
 <pre class="r"><code>right_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 4 × 9
 ##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1270,7 +1306,7 @@ df2</code></pre>
 ## 4   g12    NA    NA    NA    NA     4     8    12    16</code></pre>
 </div>
 <div id="full-join" class="section level3">
-<h3><span class="header-section-number">12.12.4</span> Full join</h3>
+<h3><span class="header-section-number">12.13.4</span> Full join</h3>
 <pre class="r"><code>full_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 12 × 9
 ##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1289,7 +1325,7 @@ df2</code></pre>
 ## 12   g12    NA    NA    NA    NA     4     8    12    16</code></pre>
 </div>
 <div id="anti-join" class="section level3">
-<h3><span class="header-section-number">12.12.5</span> Anti join</h3>
+<h3><span class="header-section-number">12.13.5</span> Anti join</h3>
 <pre class="r"><code>anti_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 8 × 5
 ##    ids1   CA1   CA2   CA3   CA4
@@ -1304,42 +1340,6 @@ df2</code></pre>
 ## 8    g1     1    11    21    31</code></pre>
 <p>For additional join options users want to cosult the <code>*_join</code> help pages.</p>
 </div>
-</div>
-<div id="subset-rows-by-names" class="section level2">
-<h2><span class="header-section-number">12.13</span> Subset rows by names</h2>
-<p>Since <code>data frames</code> do not contain row names, row wise subsetting via the <code>[,]</code> operator cannot be used. However, one can obtain this behavior by obtaining a row position intex via the <code>match</code> function and passing it on to the <code>slice</code> function.</p>
-<p>Create a suitable test <code>data frame</code></p>
-<pre class="r"><code>df1 &lt;- bind_cols(data_frame(ids1=paste0(&quot;g&quot;, 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0(&quot;CA&quot;, 1:4)))))
-df1</code></pre>
-<pre><code>## # A tibble: 10 × 5
-##     ids1   CA1   CA2   CA3   CA4
-##    &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
-## 1     g1     1    11    21    31
-## 2     g2     2    12    22    32
-## 3     g3     3    13    23    33
-## 4     g4     4    14    24    34
-## 5     g5     5    15    25    35
-## 6     g6     6    16    26    36
-## 7     g7     7    17    27    37
-## 8     g8     8    18    28    38
-## 9     g9     9    19    29    39
-## 10   g10    10    20    30    40</code></pre>
-<p><code>dplyr</code> approach</p>
-<pre class="r"><code>slice(df1, match(c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;), df1$ids1))</code></pre>
-<pre><code>## # A tibble: 3 × 5
-##    ids1   CA1   CA2   CA3   CA4
-##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
-## 1   g10    10    20    30    40
-## 2    g4     4    14    24    34
-## 3    g4     4    14    24    34</code></pre>
-<p>Base R equivalent</p>
-<pre class="r"><code>df1_old &lt;- as.data.frame(df1)
-rownames(df1_old) &lt;- df1_old[,1]
-df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
-<pre><code>##      ids1 CA1 CA2 CA3 CA4
-## g10   g10  10  20  30  40
-## g4     g4   4  14  24  34
-## g4.1   g4   4  14  24  34</code></pre>
 </div>
 <div id="chaining" class="section level2">
 <h2><span class="header-section-number">12.14</span> Chaining</h2>

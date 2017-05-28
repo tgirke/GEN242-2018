@@ -282,6 +282,18 @@ slice(iris_df, 1:2)
 ## ----plyr_subset_base, eval=TRUE-----------------------------------------
 iris_df[1:2,]
 
+## ----plyr_sample_set2, eval=TRUE-----------------------------------------
+df1 <- bind_cols(data_frame(ids1=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("CA", 1:4)))))
+df1
+
+## ----plyr_subset_names, eval=TRUE----------------------------------------
+slice(df1, match(c("g10", "g4", "g4"), df1$ids1))
+
+## ----plyr_subset_names_base, eval=TRUE-----------------------------------
+df1_old <- as.data.frame(df1)
+rownames(df1_old) <- df1_old[,1]
+df1_old[c("g10", "g4", "g4"),]
+
 ## ----plyr_order1, eval=TRUE----------------------------------------------
 arrange(iris_df, Species, Sepal.Length, Sepal.Width)
 
@@ -355,18 +367,6 @@ full_join(df1, df2, by=c("ids1"="ids2"))
 
 ## ----plyr_anti_join, eval=TRUE-------------------------------------------
 anti_join(df1, df2, by=c("ids1"="ids2"))
-
-## ----plyr_sample_set2, eval=TRUE-----------------------------------------
-df1 <- bind_cols(data_frame(ids1=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("CA", 1:4)))))
-df1
-
-## ----plyr_subset_names, eval=TRUE----------------------------------------
-slice(df1, match(c("g10", "g4", "g4"), df1$ids1))
-
-## ----plyr_subset_names_base, eval=TRUE-----------------------------------
-df1_old <- as.data.frame(df1)
-rownames(df1_old) <- df1_old[,1]
-df1_old[c("g10", "g4", "g4"),]
 
 ## ----plyr_chaining, eval=TRUE--------------------------------------------
 iris_df %>% # Declare data frame to use 
