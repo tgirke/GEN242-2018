@@ -644,7 +644,7 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) + geom_point(aes(color=Species), si
 ggplot(iris, aes(Sepal.Length, Sepal.Width)) + geom_line(aes(color=Species), size=3) + ggtitle("Line Plot") + facet_wrap(~Species, ncol=1)
 ```
 
-## Bar plots
+## Bar Plots
 
 Sample Set: the following transforms the `iris` data set into a ggplot2-friendly format.
 
@@ -686,6 +686,16 @@ p <- ggplot(df_mean, aes(Samples, Values, fill = Species)) +
 	    geom_bar(position="dodge", stat="identity")
 print(p) 
 ```
+
+To enforce that the bars are plotted in the order specified in the input data, one can instruct `ggplot` 
+to do so by turning the corresponding column (here `Species`) into an ordered factor as follows. 
+
+
+```{r iris_factor_order, eval=TRUE}
+df_mean$Species <- factor(df_mean$Species, levels=unique(df_mean$Species), ordered=TRUE)
+```
+
+In the above example this is not necessary since `ggplot` uses this order already. 
 
 ### Horizontal orientation
 

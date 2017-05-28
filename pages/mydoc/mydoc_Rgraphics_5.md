@@ -1,6 +1,6 @@
 ---
 title: 5. ggplot2 Graphics
-last_updated: Thu May 25 13:43:42 2017
+last_updated: Sun May 28 16:49:36 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_5.html
 ---
@@ -322,7 +322,7 @@ table(iris$Species)
 
 
 
-## Bar plots
+## Bar Plots
 
 Sample Set: the following transforms the `iris` data set into a ggplot2-friendly format.
 
@@ -372,6 +372,17 @@ print(p)
 ```
 
 <img src="./pages/mydoc/Rgraphics_files/iris_mean_bar_plot-1.png" width="672" />
+
+To enforce that the bars are plotted in the order specified in the input data, one can instruct `ggplot` 
+to do so by turning the corresponding column (here `Species`) into an ordered factor as follows. 
+
+
+
+```r
+df_mean$Species <- factor(df_mean$Species, levels=unique(df_mean$Species), ordered=TRUE)
+```
+
+In the above example this is not necessary since `ggplot` uses this order already. 
 
 ### Horizontal orientation
 
