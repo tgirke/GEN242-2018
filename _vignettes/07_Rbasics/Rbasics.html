@@ -948,7 +948,7 @@ iris_df</code></pre>
 </div>
 <div id="subset-rows-by-names" class="section level2">
 <h2><span class="header-section-number">12.6</span> Subset rows by names</h2>
-<p>Since <code>data frames</code> do not contain row names, row wise subsetting via the <code>[,]</code> operator cannot be used. However, one can obtain this behavior by obtaining a row position intex via the <code>match</code> function and passing it on to the <code>slice</code> function.</p>
+<p>Since <code>data frames</code> do not contain row names, row wise subsetting via the <code>[,]</code> operator cannot be used. However, the corresponding behavior can be achieved by passing to <code>select</code> a row position index obtained by basic R intersect utilities such as <code>match</code>.</p>
 <p>Create a suitable test <code>data frame</code></p>
 <pre class="r"><code>df1 &lt;- bind_cols(data_frame(ids1=paste0(&quot;g&quot;, 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0(&quot;CA&quot;, 1:4)))))
 df1</code></pre>

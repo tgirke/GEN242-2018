@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sun May 28 13:30:16 2017
+last_updated: Sun May 28 13:35:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -310,8 +310,8 @@ iris_df[1:2,]
 ## Subset rows by names
 
 Since `data frames` do not contain row names, row wise subsetting via the `[,]` operator cannot be used.
-However, one can obtain this behavior by obtaining a row position intex via the `match` function and passing
-it on to the `slice` function.
+However, the corresponding behavior can be achieved by passing to `select` a row position index 
+obtained by basic R intersect utilities such as `match`.
 
 
 Create a suitable test `data frame`
