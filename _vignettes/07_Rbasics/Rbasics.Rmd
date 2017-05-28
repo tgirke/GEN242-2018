@@ -594,7 +594,7 @@ as_data_frame(iris) # coerce data.frame to data frame tbl
 
 Alternative functions producing the same result include `as_tibble` and `tbl_df`:
 
-```{r data_frame_tbl2, eval=TRUE}
+```{r data_frame_tbl2, eval=FALSE}
 as_tibble(iris) # newer function provided by tibble package
 tbl_df(iris) # this alternative exists for historical reasons
 ```
@@ -641,7 +641,6 @@ tabular files into R.
 library(data.table)
 iris_df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
 iris_df
-unlink("iris.txt") # Deletes temp file
 ```
 
 Note: to ignore lines starting with comment signs, one can pass on to `fread` a shell

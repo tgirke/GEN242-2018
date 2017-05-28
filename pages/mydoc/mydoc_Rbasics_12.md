@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sun May 28 11:56:02 2017
+last_updated: Sun May 28 12:00:34 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -49,44 +49,7 @@ Alternative functions producing the same result include `as_tibble` and `tbl_df`
 
 ```r
 as_tibble(iris) # newer function provided by tibble package
-```
-
-```
-## # A tibble: 150 × 5
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           <dbl>       <dbl>        <dbl>       <dbl>  <fctr>
-## 1           5.1         3.5          1.4         0.2  setosa
-## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7         3.2          1.3         0.2  setosa
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5           5.0         3.6          1.4         0.2  setosa
-## 6           5.4         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8           5.0         3.4          1.5         0.2  setosa
-## 9           4.4         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa
-## # ... with 140 more rows
-```
-
-```r
 tbl_df(iris) # this alternative exists for historical reasons
-```
-
-```
-## # A tibble: 150 × 5
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           <dbl>       <dbl>        <dbl>       <dbl>  <fctr>
-## 1           5.1         3.5          1.4         0.2  setosa
-## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7         3.2          1.3         0.2  setosa
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5           5.0         3.6          1.4         0.2  setosa
-## 6           5.4         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8           5.0         3.4          1.5         0.2  setosa
-## 9           4.4         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa
-## # ... with 140 more rows
 ```
 ## Reading and writing tabular files
 
@@ -154,24 +117,20 @@ iris_df
 ```
 
 ```
-## # A tibble: 50 × 6
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Subtract
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>    <dbl>
-## 1           4.3         3.0          1.1         0.1  setosa      1.0
-## 2           4.4         2.9          1.4         0.2  setosa      1.2
-## 3           4.4         3.0          1.3         0.2  setosa      1.1
-## 4           4.4         3.2          1.3         0.2  setosa      1.1
-## 5           4.5         2.3          1.3         0.3  setosa      1.0
-## 6           4.6         3.1          1.5         0.2  setosa      1.3
-## 7           4.6         3.4          1.4         0.3  setosa      1.1
-## 8           4.6         3.6          1.0         0.2  setosa      0.8
-## 9           4.6         3.2          1.4         0.2  setosa      1.2
-## 10          4.7         3.2          1.3         0.2  setosa      1.1
-## # ... with 40 more rows
-```
-
-```r
-unlink("iris.txt") # Deletes temp file
+## # A tibble: 150 × 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+## # ... with 140 more rows
 ```
 
 Note: to ignore lines starting with comment signs, one can pass on to `fread` a shell
