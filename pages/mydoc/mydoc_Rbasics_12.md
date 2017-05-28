@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Sun May 28 14:49:50 2017
+last_updated: Sun May 28 14:58:01 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -309,7 +309,7 @@ iris_df[1:2,]
 ## 2          4.9         3.0          1.4         0.2  setosa
 ```
 
-## Subset rows by names
+### Subset rows by names
 
 Since `data frames` do not contain row names, row wise subsetting via the `[,]` operator cannot be used.
 However, the corresponding behavior can be achieved by passing to `select` a row position index 
@@ -772,7 +772,7 @@ similar to the `merge` function in base R. These `*_join` functions include:
 * `right_join()`: returns join for all rows in second `data table`
 * `anti_join()`: returns for first `data table` only those rows that have no match in the second one
 
-Sample `data frames`
+Sample `data frames` to illustrate `*.join` functions.
 
 
 ```r

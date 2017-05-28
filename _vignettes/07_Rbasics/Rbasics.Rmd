@@ -721,7 +721,7 @@ Base R code equivalent
 iris_df[1:2,]
 ```
 
-## Subset rows by names
+### Subset rows by names
 
 Since `data frames` do not contain row names, row wise subsetting via the `[,]` operator cannot be used.
 However, the corresponding behavior can be achieved by passing to `select` a row position index 
@@ -888,7 +888,7 @@ similar to the `merge` function in base R. These `*_join` functions include:
 * `right_join()`: returns join for all rows in second `data table`
 * `anti_join()`: returns for first `data table` only those rows that have no match in the second one
 
-Sample `data frames`
+Sample `data frames` to illustrate `*.join` functions.
 
 ```{r plyr_join_sample, eval=TRUE}
 df1 <- bind_cols(data_frame(ids1=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("CA", 1:4)))))
