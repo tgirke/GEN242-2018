@@ -260,7 +260,7 @@ entries:
       url: /mydoc_Rbasics_11.html
       output: web
 
-    - title: 12. dplyr and data.table 
+    - title: 12. dplyr Environment
       url: /mydoc_Rbasics_12.html
       output: web
 

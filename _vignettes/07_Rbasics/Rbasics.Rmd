@@ -569,17 +569,17 @@ my_result <- merge(frame1, iris, by.x = 0, by.y = 0, all = TRUE)
 dim(my_result)
 ```
 
-# dplyr and data.table 
+# dplyr Environment
 
 Modern object classes and methods for handling `data.frame` like structures
-are provided by the `data.table` and `dplyr` packages. The following gives a
+are provided by the `dplyr` and `data.table` packages. The following gives a
 short introduction to the usage and functionalities of the `dplyr` package. 
 More detailed tutorials on this topic can be found here:
 
 * [dplyr: A Grammar of Data Manipulation](https://rdrr.io/cran/dplyr/)
-* [Cheatsheet from Jenny Bryan](http://stat545.com/bit001_dplyr-cheatsheet.html)
 * [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
 * [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
+* [Cheatsheet for Joins from Jenny Bryan](http://stat545.com/bit001_dplyr-cheatsheet.html)
 * [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)
 * [Intro to `data.table` package](https://www.r-bloggers.com/intro-to-the-data-table-package/)
 * [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
@@ -631,6 +631,8 @@ Import with `read_tsv`
 iris_df <- read_tsv("iris.txt") # Import with read_tbv from readr package
 iris_df
 ```
+
+To import Google Sheets directly into R, see [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_Rbasics_10.html).
 
 ### Fast table import with `fread` 
 

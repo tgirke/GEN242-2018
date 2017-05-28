@@ -1,19 +1,19 @@
 ---
-title: 12. dplyr and data.table 
-last_updated: Sun May 28 13:39:29 2017
+title: 12. dplyr Environment
+last_updated: Sun May 28 14:49:50 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
 
 Modern object classes and methods for handling `data.frame` like structures
-are provided by the `data.table` and `dplyr` packages. The following gives a
+are provided by the `dplyr` and `data.table` packages. The following gives a
 short introduction to the usage and functionalities of the `dplyr` package. 
 More detailed tutorials on this topic can be found here:
 
 * [dplyr: A Grammar of Data Manipulation](https://rdrr.io/cran/dplyr/)
-* [Cheatsheet from Jenny Bryan](http://stat545.com/bit001_dplyr-cheatsheet.html)
 * [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
 * [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
+* [Cheatsheet for Joins from Jenny Bryan](http://stat545.com/bit001_dplyr-cheatsheet.html)
 * [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)
 * [Intro to `data.table` package](https://www.r-bloggers.com/intro-to-the-data-table-package/)
 * [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
@@ -103,6 +103,8 @@ iris_df
 ## 10          4.9         3.1          1.5         0.1  setosa
 ## # ... with 140 more rows
 ```
+
+To import Google Sheets directly into R, see [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_Rbasics_10.html).
 
 ### Fast table import with `fread` 
 
