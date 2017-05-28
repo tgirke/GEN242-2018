@@ -747,9 +747,14 @@ dim(my_result)</code></pre>
 <li><a href="https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/">Big data with <code>dplyr</code> and <code>data.table</code></a></li>
 <li><a href="https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/">Fast lookups with <code>dplyr</code> and <code>data.table</code></a></li>
 </ul>
+<div id="installation" class="section level2">
+<h2><span class="header-section-number">12.1</span> Installation</h2>
+<p>Since <code>dplyr</code> has evolved into an environment of packages, one can install and load the entire package collection via the <code>tidyverse</code> package. For more details on <code>tidyverse</code> see <a href="http://tidyverse.org/">here</a>.</p>
+<pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
+</div>
 <div id="construct-a-data-frame-tibble" class="section level2">
-<h2><span class="header-section-number">12.1</span> Construct a <code>data frame</code> (<code>tibble</code>)</h2>
-<pre class="r"><code>library(dplyr); library(tibble)
+<h2><span class="header-section-number">12.2</span> Construct a <code>data frame</code> (<code>tibble</code>)</h2>
+<pre class="r"><code>library(tidyverse)
 as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
 <pre><code>## # A tibble: 150 × 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
@@ -770,10 +775,10 @@ as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
 tbl_df(iris) # this alternative exists for historical reasons</code></pre>
 </div>
 <div id="reading-and-writing-tabular-files" class="section level2">
-<h2><span class="header-section-number">12.2</span> Reading and writing tabular files</h2>
+<h2><span class="header-section-number">12.3</span> Reading and writing tabular files</h2>
 <p>While the base R read/write utilities can be used for <code>data frames</code>, best time performance with the least amount of typing is achieved with the export/import functions from the <code>readr</code> package. For very large files the <code>fread</code> function from the <code>data.table</code> package achieves the best time performance.</p>
 <div id="import-with-readr" class="section level3">
-<h3><span class="header-section-number">12.2.1</span> Import with <code>readr</code></h3>
+<h3><span class="header-section-number">12.3.1</span> Import with <code>readr</code></h3>
 <p>Import functions provided by <code>readr</code> include:</p>
 <ul>
 <li><code>read_csv()</code>: comma separated (CSV) files</li>
@@ -784,8 +789,7 @@ tbl_df(iris) # this alternative exists for historical reasons</code></pre>
 <li><code>read_log()</code>: web log files</li>
 </ul>
 <p>Create a sample tab delimited file for import</p>
-<pre class="r"><code>library(readr)
-write_tsv(iris, &quot;iris.txt&quot;) # Creates sample file</code></pre>
+<pre class="r"><code>write_tsv(iris, &quot;iris.txt&quot;) # Creates sample file</code></pre>
 <p>Import with <code>read_tsv</code></p>
 <pre class="r"><code>iris_df &lt;- read_tsv(&quot;iris.txt&quot;) # Import with read_tbv from readr package
 iris_df</code></pre>
@@ -806,7 +810,7 @@ iris_df</code></pre>
 <p>To import Google Sheets directly into R, see <a href="http://girke.bioinformatics.ucr.edu/GEN242/mydoc_Rbasics_10.html">here</a>.</p>
 </div>
 <div id="fast-table-import-with-fread" class="section level3">
-<h3><span class="header-section-number">12.2.2</span> Fast table import with <code>fread</code></h3>
+<h3><span class="header-section-number">12.3.2</span> Fast table import with <code>fread</code></h3>
 <p>The <code>fread</code> function from the <code>data.table</code> package provides the best time performance for reading large tabular files into R.</p>
 <pre class="r"><code>library(data.table)
 iris_df &lt;- as_data_frame(fread(&quot;iris.txt&quot;)) # Import with fread and conversion to tibble
@@ -829,7 +833,7 @@ iris_df</code></pre>
 <pre class="r"><code>fread(&quot;grep -v '^#' iris.txt&quot;) </code></pre>
 </div>
 <div id="export-with-readr" class="section level3">
-<h3><span class="header-section-number">12.2.3</span> Export with <code>readr</code></h3>
+<h3><span class="header-section-number">12.3.3</span> Export with <code>readr</code></h3>
 <p>Export function provided by <code>readr</code> inlcude</p>
 <ul>
 <li><code>write_delim()</code>: general delimited files</li>
@@ -842,7 +846,7 @@ iris_df</code></pre>
 </div>
 </div>
 <div id="column-and-row-binds" class="section level2">
-<h2><span class="header-section-number">12.3</span> Column and row binds</h2>
+<h2><span class="header-section-number">12.4</span> Column and row binds</h2>
 <p>The equivalents to base R’s <code>rbind</code> and <code>cbind</code> are <code>bind_rows</code> and <code>bind_cols</code>, respectively.</p>
 <pre class="r"><code>bind_cols(iris_df, iris_df)</code></pre>
 <pre><code>## # A tibble: 150 × 10
@@ -876,7 +880,7 @@ iris_df</code></pre>
 ## # ... with 290 more rows</code></pre>
 </div>
 <div id="important-dplyr-functions" class="section level2">
-<h2><span class="header-section-number">12.4</span> Important <code>dplyr</code> functions</h2>
+<h2><span class="header-section-number">12.5</span> Important <code>dplyr</code> functions</h2>
 <ol style="list-style-type: decimal">
 <li><code>filter()</code> and <code>slice()</code></li>
 <li><code>arrange()</code></li>
@@ -888,9 +892,9 @@ iris_df</code></pre>
 </ol>
 </div>
 <div id="slice-and-filter-functions" class="section level2">
-<h2><span class="header-section-number">12.5</span> Slice and filter functions</h2>
+<h2><span class="header-section-number">12.6</span> Slice and filter functions</h2>
 <div id="filter-function" class="section level3">
-<h3><span class="header-section-number">12.5.1</span> Filter function</h3>
+<h3><span class="header-section-number">12.6.1</span> Filter function</h3>
 <pre class="r"><code>filter(iris_df, Sepal.Length &gt; 7.5, Species==&quot;virginica&quot;)</code></pre>
 <pre><code>## # A tibble: 6 × 5
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
@@ -903,7 +907,7 @@ iris_df</code></pre>
 ## 6          7.7         3.0          6.1         2.3 virginica</code></pre>
 </div>
 <div id="base-r-code-equivalent" class="section level3">
-<h3><span class="header-section-number">12.5.2</span> Base R code equivalent</h3>
+<h3><span class="header-section-number">12.6.2</span> Base R code equivalent</h3>
 <pre class="r"><code>iris_df[iris_df[, &quot;Sepal.Length&quot;] &gt; 7.5 &amp; iris_df[, &quot;Species&quot;]==&quot;virginica&quot;, ]</code></pre>
 <pre><code>## # A tibble: 6 × 5
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
@@ -916,7 +920,7 @@ iris_df</code></pre>
 ## 6          7.7         3.0          6.1         2.3 virginica</code></pre>
 </div>
 <div id="including-boolean-operators" class="section level3">
-<h3><span class="header-section-number">12.5.3</span> Including boolean operators</h3>
+<h3><span class="header-section-number">12.6.3</span> Including boolean operators</h3>
 <pre class="r"><code>filter(iris_df, Sepal.Length &gt; 7.5 | Sepal.Length &lt; 5.5, Species==&quot;virginica&quot;)</code></pre>
 <pre><code>## # A tibble: 7 × 5
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
@@ -930,7 +934,7 @@ iris_df</code></pre>
 ## 7          7.7         3.0          6.1         2.3 virginica</code></pre>
 </div>
 <div id="subset-rows-by-position" class="section level3">
-<h3><span class="header-section-number">12.5.4</span> Subset rows by position</h3>
+<h3><span class="header-section-number">12.6.4</span> Subset rows by position</h3>
 <p><code>dplyr</code> approach</p>
 <pre class="r"><code>slice(iris_df, 1:2)</code></pre>
 <pre><code>## # A tibble: 2 × 5
@@ -947,7 +951,7 @@ iris_df</code></pre>
 ## 2          4.9         3.0          1.4         0.2  setosa</code></pre>
 </div>
 <div id="subset-rows-by-names" class="section level3">
-<h3><span class="header-section-number">12.5.5</span> Subset rows by names</h3>
+<h3><span class="header-section-number">12.6.5</span> Subset rows by names</h3>
 <p>Since <code>data frames</code> do not contain row names, row wise subsetting via the <code>[,]</code> operator cannot be used. However, the corresponding behavior can be achieved by passing to <code>select</code> a row position index obtained by basic R intersect utilities such as <code>match</code>.</p>
 <p>Create a suitable test <code>data frame</code></p>
 <pre class="r"><code>df1 &lt;- bind_cols(data_frame(ids1=paste0(&quot;g&quot;, 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0(&quot;CA&quot;, 1:4)))))
@@ -984,7 +988,7 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 </div>
 </div>
 <div id="sorting-with-arrange" class="section level2">
-<h2><span class="header-section-number">12.6</span> Sorting with <code>arrange</code></h2>
+<h2><span class="header-section-number">12.7</span> Sorting with <code>arrange</code></h2>
 <p>Row-wise ordering based on specific columns</p>
 <p><code>dplyr</code> approach</p>
 <pre class="r"><code>arrange(iris_df, Species, Sepal.Length, Sepal.Width)</code></pre>
@@ -1051,7 +1055,7 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="select-columns-with-select" class="section level2">
-<h2><span class="header-section-number">12.7</span> Select columns with <code>select</code></h2>
+<h2><span class="header-section-number">12.8</span> Select columns with <code>select</code></h2>
 <p>Select specific columns</p>
 <pre class="r"><code>select(iris_df, Species, Petal.Length, Sepal.Length)</code></pre>
 <pre><code>## # A tibble: 150 × 3
@@ -1102,7 +1106,7 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="renaming-columns-with-rename" class="section level2">
-<h2><span class="header-section-number">12.8</span> Renaming columns with <code>rename</code></h2>
+<h2><span class="header-section-number">12.9</span> Renaming columns with <code>rename</code></h2>
 <p><code>dplyr</code> approach</p>
 <pre class="r"><code>rename(iris_df, new_col_name = Species)</code></pre>
 <pre><code>## # A tibble: 150 × 5
@@ -1123,7 +1127,7 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 <pre class="r"><code>colnames(iris_df)[colnames(iris_df)==&quot;Species&quot;] &lt;- &quot;new_col_names&quot;</code></pre>
 </div>
 <div id="obtain-unique-rows-with-distinct" class="section level2">
-<h2><span class="header-section-number">12.9</span> Obtain unique rows with <code>distinct</code></h2>
+<h2><span class="header-section-number">12.10</span> Obtain unique rows with <code>distinct</code></h2>
 <p><code>dplyr</code> approach</p>
 <pre class="r"><code>distinct(iris_df, Species, .keep_all=TRUE)</code></pre>
 <pre><code>## # A tibble: 3 × 5
@@ -1142,9 +1146,9 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 ## 3          6.3         3.3          6.0         2.5  virginica</code></pre>
 </div>
 <div id="add-columns" class="section level2">
-<h2><span class="header-section-number">12.10</span> Add columns</h2>
+<h2><span class="header-section-number">12.11</span> Add columns</h2>
 <div id="mutate" class="section level3">
-<h3><span class="header-section-number">12.10.1</span> <code>mutate</code></h3>
+<h3><span class="header-section-number">12.11.1</span> <code>mutate</code></h3>
 <p>The <code>mutate</code> function allows to append columns to existing ones.</p>
 <pre class="r"><code>mutate(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)</code></pre>
 <pre><code>## # A tibble: 150 × 7
@@ -1163,7 +1167,7 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="transmute" class="section level3">
-<h3><span class="header-section-number">12.10.2</span> <code>transmute</code></h3>
+<h3><span class="header-section-number">12.11.2</span> <code>transmute</code></h3>
 <p>The <code>transmute</code> function does the same as <code>mutate</code> but drops existing columns</p>
 <pre class="r"><code>transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.Width)</code></pre>
 <pre><code>## # A tibble: 150 × 2
@@ -1182,7 +1186,7 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 ## # ... with 140 more rows</code></pre>
 </div>
 <div id="bind_cols" class="section level3">
-<h3><span class="header-section-number">12.10.3</span> <code>bind_cols</code></h3>
+<h3><span class="header-section-number">12.11.3</span> <code>bind_cols</code></h3>
 <p>The <code>bind_cols</code> function is the equivalent of <code>cbind</code> in base R. To add rows, use the corresponding <code>bind_rows</code> function.</p>
 <pre class="r"><code>bind_cols(iris_df, iris_df)</code></pre>
 <pre><code>## # A tibble: 150 × 10
@@ -1202,7 +1206,7 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 </div>
 </div>
 <div id="summarize-data" class="section level2">
-<h2><span class="header-section-number">12.11</span> Summarize data</h2>
+<h2><span class="header-section-number">12.12</span> Summarize data</h2>
 <p>Summary calculation on single column</p>
 <pre class="r"><code>summarize(iris_df, mean(Petal.Length))</code></pre>
 <pre><code>## # A tibble: 1 × 1
@@ -1224,7 +1228,7 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 ## 2 versicolor                4.260
 ## 3  virginica                5.552</code></pre>
 <div id="extract-column-as-vector" class="section level3">
-<h3><span class="header-section-number">12.11.1</span> Extract column as vector</h3>
+<h3><span class="header-section-number">12.12.1</span> Extract column as vector</h3>
 <p>The subsetting operators <code>[[</code> and <code>$</code>can be used to extract from a <code>data frame</code> single columns as vector.</p>
 <pre class="r"><code>iris_df[[5]][1:12]</code></pre>
 <pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
@@ -1235,7 +1239,7 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 </div>
 </div>
 <div id="merging-data-frames" class="section level2">
-<h2><span class="header-section-number">12.12</span> Merging data frames</h2>
+<h2><span class="header-section-number">12.13</span> Merging data frames</h2>
 <p>The <code>dplyr</code> package provides several join functions for merging <code>data frames</code> by a common key column similar to the <code>merge</code> function in base R. These <code>*_join</code> functions include:</p>
 <ul>
 <li><code>inner_join()</code>: returns join only for rows matching among both <code>data tables</code></li>
@@ -1270,7 +1274,7 @@ df2</code></pre>
 ## 3   g11     3     7    11    15
 ## 4   g12     4     8    12    16</code></pre>
 <div id="inner-join" class="section level3">
-<h3><span class="header-section-number">12.12.1</span> Inner join</h3>
+<h3><span class="header-section-number">12.13.1</span> Inner join</h3>
 <pre class="r"><code>inner_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 2 × 9
 ##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1279,7 +1283,7 @@ df2</code></pre>
 ## 2    g5     5    15    25    35     2     6    10    14</code></pre>
 </div>
 <div id="left-join" class="section level3">
-<h3><span class="header-section-number">12.12.2</span> Left join</h3>
+<h3><span class="header-section-number">12.13.2</span> Left join</h3>
 <pre class="r"><code>left_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 10 × 9
 ##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1296,7 +1300,7 @@ df2</code></pre>
 ## 10   g10    10    20    30    40    NA    NA    NA    NA</code></pre>
 </div>
 <div id="right-join" class="section level3">
-<h3><span class="header-section-number">12.12.3</span> Right join</h3>
+<h3><span class="header-section-number">12.13.3</span> Right join</h3>
 <pre class="r"><code>right_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 4 × 9
 ##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1307,7 +1311,7 @@ df2</code></pre>
 ## 4   g12    NA    NA    NA    NA     4     8    12    16</code></pre>
 </div>
 <div id="full-join" class="section level3">
-<h3><span class="header-section-number">12.12.4</span> Full join</h3>
+<h3><span class="header-section-number">12.13.4</span> Full join</h3>
 <pre class="r"><code>full_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 12 × 9
 ##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1326,7 +1330,7 @@ df2</code></pre>
 ## 12   g12    NA    NA    NA    NA     4     8    12    16</code></pre>
 </div>
 <div id="anti-join" class="section level3">
-<h3><span class="header-section-number">12.12.5</span> Anti join</h3>
+<h3><span class="header-section-number">12.13.5</span> Anti join</h3>
 <pre class="r"><code>anti_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 8 × 5
 ##    ids1   CA1   CA2   CA3   CA4
@@ -1343,7 +1347,7 @@ df2</code></pre>
 </div>
 </div>
 <div id="chaining" class="section level2">
-<h2><span class="header-section-number">12.13</span> Chaining</h2>
+<h2><span class="header-section-number">12.14</span> Chaining</h2>
 <p>To simplify chaining of serveral operations (pipes), <code>dplyr</code> provides the <code>%&gt;%</code> operator. where <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. This way one can write multiple operations that can read left-to-right or top-to-bottom. This makes for easy to type and readable code.</p>
 <pre class="r"><code>iris_df %&gt;% # Declare data frame to use 
     select(Sepal.Length:Species) %&gt;% # Select columns

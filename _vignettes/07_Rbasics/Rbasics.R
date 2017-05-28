@@ -236,8 +236,11 @@ dim(frame1)
 my_result <- merge(frame1, iris, by.x = 0, by.y = 0, all = TRUE)
 dim(my_result)
 
+## ----tidyverse_install, eval=FALSE---------------------------------------
+## install.packages("tidyverse")
+
 ## ----data_frame_tbl1, eval=TRUE------------------------------------------
-library(dplyr); library(tibble)
+library(tidyverse)
 as_data_frame(iris) # coerce data.frame to data frame tbl
 
 ## ----data_frame_tbl2, eval=FALSE-----------------------------------------
@@ -245,7 +248,6 @@ as_data_frame(iris) # coerce data.frame to data frame tbl
 ## tbl_df(iris) # this alternative exists for historical reasons
 
 ## ----tabular_sample, eval=TRUE-------------------------------------------
-library(readr)
 write_tsv(iris, "iris.txt") # Creates sample file
 
 ## ----tabular_import1, eval=TRUE------------------------------------------

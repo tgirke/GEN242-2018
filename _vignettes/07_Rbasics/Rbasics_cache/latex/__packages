@@ -11,3 +11,6 @@ data.table
 nycflights13
 tibble
 readr
+tidyverse
+tidyr
+purrr

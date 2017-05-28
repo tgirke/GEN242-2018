@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Sun May 28 14:58:01 2017
+last_updated: Sun May 28 15:59:36 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -19,11 +19,22 @@ More detailed tutorials on this topic can be found here:
 * [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
 * [Fast lookups with `dplyr` and `data.table`](https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/)
 
+## Installation
+
+Since `dplyr` has evolved into an environment of packages, one can install and load the entire package 
+collection via the `tidyverse` package. For more details on `tidyverse` see [here](http://tidyverse.org/).
+
+
+
+```r
+install.packages("tidyverse")
+```
+
 ## Construct a `data frame` (`tibble`)
 
 
 ```r
-library(dplyr); library(tibble)
+library(tidyverse)
 as_data_frame(iris) # coerce data.frame to data frame tbl
 ```
 
@@ -75,7 +86,6 @@ Create a sample tab delimited file for import
 
 
 ```r
-library(readr)
 write_tsv(iris, "iris.txt") # Creates sample file
 ```
 
