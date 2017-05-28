@@ -618,14 +618,14 @@ Import functions provided by `readr` include:
 * `read_log()`: web log files
 
 
-Create a sample file for import
+Create a sample tab delimited file for import
 
 ```{r tabular_sample, eval=TRUE}
 library(readr)
 write_tsv(iris, "iris.txt") # Creates sample file
 ```
 
-Import with 
+Import with `read_tsv` 
 
 ```{r tabular_import1, eval=TRUE}
 iris_df <- read_tsv("iris.txt") # Import with read_tbv from readr package
@@ -849,13 +849,51 @@ iris_df$Species[1:12]
 
 ## Merging data frames
 
+The `dplyr` package provides several join functions for merging `data frames` by a common key column
+similar to the `merge` function in base R. These include: 
+
+* `inner_join()`: returns join only for rows matching among both `data tables`
+* `full_join()`: returns join for all (matching and non-matching) rows of two `data tables` 
+* `left_join()`: returns join for all rows in first `data table` 
+* `right_join()`: returns join for all rows in second `data table`
+* `anti_join()`: returns for first `data table` only those rows that have no match in the second one
+
 Sample `data frames`
 
 ```{r plyr_join_sample, eval=TRUE}
-df1 <- bind_cols(data_frame(ids=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("C", 1:4)))))
+df1 <- bind_cols(data_frame(ids1=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("CA", 1:4)))))
 df1
-df2 <- bind_cols(data_frame(ids=paste0("g", c(2,5,11,12))), as_data_frame(matrix(1:16, 4, 4, dimnames=list(1:4, paste0("C", 1:4)))))
+df2 <- bind_cols(data_frame(ids2=paste0("g", c(2,5,11,12))), as_data_frame(matrix(1:16, 4, 4, dimnames=list(1:4, paste0("CB", 1:4)))))
 df2
+```
+Inner join
+
+```{r plyr_inner_join, eval=TRUE}
+inner_join(df1, df2, by=c("ids1"="ids2"))
+```
+
+Left join
+
+```{r plyr_left_join, eval=TRUE}
+left_join(df1, df2, by=c("ids1"="ids2"))
+```
+
+Rigth join
+
+```{r plyr_right_join, eval=TRUE}
+right_join(df1, df2, by=c("ids1"="ids2"))
+```
+
+Full join
+
+```{r plyr_full_join, eval=TRUE}
+full_join(df1, df2, by=c("ids1"="ids2"))
+```
+
+Anti join
+
+```{r plyr_anti_join, eval=TRUE}
+anti_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
 ## Chaining

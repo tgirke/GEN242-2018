@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sun May 28 12:00:34 2017
+last_updated: Sun May 28 12:40:34 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -71,7 +71,7 @@ Import functions provided by `readr` include:
 * `read_log()`: web log files
 
 
-Create a sample file for import
+Create a sample tab delimited file for import
 
 
 ```r
@@ -79,7 +79,7 @@ library(readr)
 write_tsv(iris, "iris.txt") # Creates sample file
 ```
 
-Import with 
+Import with `read_tsv` 
 
 
 ```r
@@ -698,17 +698,26 @@ iris_df$Species[1:12]
 
 ## Merging data frames
 
+The `dplyr` package provides several join functions for merging `data frames` by a common key column
+similar to the `merge` function in base R. These include: 
+
+* `inner_join()`: returns join only for rows matching among both `data tables`
+* `full_join()`: returns join for all (matching and non-matching) rows of two `data tables` 
+* `left_join()`: returns join for all rows in first `data table` 
+* `right_join()`: returns join for all rows in second `data table`
+* `anti_join()`: returns for first `data table` only those rows that have no match in the second one
+
 Sample `data frames`
 
 
 ```r
-df1 <- bind_cols(data_frame(ids=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("C", 1:4)))))
+df1 <- bind_cols(data_frame(ids1=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("CA", 1:4)))))
 df1
 ```
 
 ```
 ## # A tibble: 10 × 5
-##      ids    C1    C2    C3    C4
+##     ids1   CA1   CA2   CA3   CA4
 ##    <chr> <int> <int> <int> <int>
 ## 1     g1     1    11    21    31
 ## 2     g2     2    12    22    32
@@ -723,18 +732,118 @@ df1
 ```
 
 ```r
-df2 <- bind_cols(data_frame(ids=paste0("g", c(2,5,11,12))), as_data_frame(matrix(1:16, 4, 4, dimnames=list(1:4, paste0("C", 1:4)))))
+df2 <- bind_cols(data_frame(ids2=paste0("g", c(2,5,11,12))), as_data_frame(matrix(1:16, 4, 4, dimnames=list(1:4, paste0("CB", 1:4)))))
 df2
 ```
 
 ```
 ## # A tibble: 4 × 5
-##     ids    C1    C2    C3    C4
+##    ids2   CB1   CB2   CB3   CB4
 ##   <chr> <int> <int> <int> <int>
 ## 1    g2     1     5     9    13
 ## 2    g5     2     6    10    14
 ## 3   g11     3     7    11    15
 ## 4   g12     4     8    12    16
+```
+Inner join
+
+
+```r
+inner_join(df1, df2, by=c("ids1"="ids2"))
+```
+
+```
+## # A tibble: 2 × 9
+##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
+##   <chr> <int> <int> <int> <int> <int> <int> <int> <int>
+## 1    g2     2    12    22    32     1     5     9    13
+## 2    g5     5    15    25    35     2     6    10    14
+```
+
+Left join
+
+
+```r
+left_join(df1, df2, by=c("ids1"="ids2"))
+```
+
+```
+## # A tibble: 10 × 9
+##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
+##    <chr> <int> <int> <int> <int> <int> <int> <int> <int>
+## 1     g1     1    11    21    31    NA    NA    NA    NA
+## 2     g2     2    12    22    32     1     5     9    13
+## 3     g3     3    13    23    33    NA    NA    NA    NA
+## 4     g4     4    14    24    34    NA    NA    NA    NA
+## 5     g5     5    15    25    35     2     6    10    14
+## 6     g6     6    16    26    36    NA    NA    NA    NA
+## 7     g7     7    17    27    37    NA    NA    NA    NA
+## 8     g8     8    18    28    38    NA    NA    NA    NA
+## 9     g9     9    19    29    39    NA    NA    NA    NA
+## 10   g10    10    20    30    40    NA    NA    NA    NA
+```
+
+Rigth join
+
+
+```r
+right_join(df1, df2, by=c("ids1"="ids2"))
+```
+
+```
+## # A tibble: 4 × 9
+##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
+##   <chr> <int> <int> <int> <int> <int> <int> <int> <int>
+## 1    g2     2    12    22    32     1     5     9    13
+## 2    g5     5    15    25    35     2     6    10    14
+## 3   g11    NA    NA    NA    NA     3     7    11    15
+## 4   g12    NA    NA    NA    NA     4     8    12    16
+```
+
+Full join
+
+
+```r
+full_join(df1, df2, by=c("ids1"="ids2"))
+```
+
+```
+## # A tibble: 12 × 9
+##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
+##    <chr> <int> <int> <int> <int> <int> <int> <int> <int>
+## 1     g1     1    11    21    31    NA    NA    NA    NA
+## 2     g2     2    12    22    32     1     5     9    13
+## 3     g3     3    13    23    33    NA    NA    NA    NA
+## 4     g4     4    14    24    34    NA    NA    NA    NA
+## 5     g5     5    15    25    35     2     6    10    14
+## 6     g6     6    16    26    36    NA    NA    NA    NA
+## 7     g7     7    17    27    37    NA    NA    NA    NA
+## 8     g8     8    18    28    38    NA    NA    NA    NA
+## 9     g9     9    19    29    39    NA    NA    NA    NA
+## 10   g10    10    20    30    40    NA    NA    NA    NA
+## 11   g11    NA    NA    NA    NA     3     7    11    15
+## 12   g12    NA    NA    NA    NA     4     8    12    16
+```
+
+Anti join
+
+
+```r
+anti_join(df1, df2, by=c("ids1"="ids2"))
+```
+
+```
+## # A tibble: 8 × 5
+##    ids1   CA1   CA2   CA3   CA4
+##   <chr> <int> <int> <int> <int>
+## 1   g10    10    20    30    40
+## 2    g9     9    19    29    39
+## 3    g8     8    18    28    38
+## 4    g7     7    17    27    37
+## 5    g6     6    16    26    36
+## 6    g4     4    14    24    34
+## 7    g3     3    13    23    33
+## 8    g1     1    11    21    31
 ```
 
 ## Chaining

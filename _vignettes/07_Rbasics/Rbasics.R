@@ -336,10 +336,25 @@ iris_df[[5]][1:12]
 iris_df$Species[1:12]
 
 ## ----plyr_join_sample, eval=TRUE-----------------------------------------
-df1 <- bind_cols(data_frame(ids=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("C", 1:4)))))
+df1 <- bind_cols(data_frame(ids1=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("CA", 1:4)))))
 df1
-df2 <- bind_cols(data_frame(ids=paste0("g", c(2,5,11,12))), as_data_frame(matrix(1:16, 4, 4, dimnames=list(1:4, paste0("C", 1:4)))))
+df2 <- bind_cols(data_frame(ids2=paste0("g", c(2,5,11,12))), as_data_frame(matrix(1:16, 4, 4, dimnames=list(1:4, paste0("CB", 1:4)))))
 df2
+
+## ----plyr_inner_join, eval=TRUE------------------------------------------
+inner_join(df1, df2, by=c("ids1"="ids2"))
+
+## ----plyr_left_join, eval=TRUE-------------------------------------------
+left_join(df1, df2, by=c("ids1"="ids2"))
+
+## ----plyr_right_join, eval=TRUE------------------------------------------
+right_join(df1, df2, by=c("ids1"="ids2"))
+
+## ----plyr_full_join, eval=TRUE-------------------------------------------
+full_join(df1, df2, by=c("ids1"="ids2"))
+
+## ----plyr_anti_join, eval=TRUE-------------------------------------------
+anti_join(df1, df2, by=c("ids1"="ids2"))
 
 ## ----plyr_chaining, eval=TRUE--------------------------------------------
 iris_df %>% # Declare data frame to use 
