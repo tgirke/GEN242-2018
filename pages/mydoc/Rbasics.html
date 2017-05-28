@@ -1232,14 +1232,17 @@ df2</code></pre>
 ## 2    g5     2     6    10    14
 ## 3   g11     3     7    11    15
 ## 4   g12     4     8    12    16</code></pre>
-<p>Inner join</p>
+<div id="inner-join" class="section level4">
+<h4><span class="header-section-number">12.12.0.1</span> Inner join</h4>
 <pre class="r"><code>inner_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 2 × 9
 ##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
 ##   &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
 ## 1    g2     2    12    22    32     1     5     9    13
 ## 2    g5     5    15    25    35     2     6    10    14</code></pre>
-<p>Left join</p>
+</div>
+<div id="left-join" class="section level4">
+<h4><span class="header-section-number">12.12.0.2</span> Left join</h4>
 <pre class="r"><code>left_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 10 × 9
 ##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1254,7 +1257,9 @@ df2</code></pre>
 ## 8     g8     8    18    28    38    NA    NA    NA    NA
 ## 9     g9     9    19    29    39    NA    NA    NA    NA
 ## 10   g10    10    20    30    40    NA    NA    NA    NA</code></pre>
-<p>Rigth join</p>
+</div>
+<div id="rigth-join" class="section level4">
+<h4><span class="header-section-number">12.12.0.3</span> Rigth join</h4>
 <pre class="r"><code>right_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 4 × 9
 ##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1263,7 +1268,9 @@ df2</code></pre>
 ## 2    g5     5    15    25    35     2     6    10    14
 ## 3   g11    NA    NA    NA    NA     3     7    11    15
 ## 4   g12    NA    NA    NA    NA     4     8    12    16</code></pre>
-<p>Full join</p>
+</div>
+<div id="full-join" class="section level4">
+<h4><span class="header-section-number">12.12.0.4</span> Full join</h4>
 <pre class="r"><code>full_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 12 × 9
 ##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
@@ -1280,7 +1287,9 @@ df2</code></pre>
 ## 10   g10    10    20    30    40    NA    NA    NA    NA
 ## 11   g11    NA    NA    NA    NA     3     7    11    15
 ## 12   g12    NA    NA    NA    NA     4     8    12    16</code></pre>
-<p>Anti join</p>
+</div>
+<div id="anti-join" class="section level4">
+<h4><span class="header-section-number">12.12.0.5</span> Anti join</h4>
 <pre class="r"><code>anti_join(df1, df2, by=c(&quot;ids1&quot;=&quot;ids2&quot;))</code></pre>
 <pre><code>## # A tibble: 8 × 5
 ##    ids1   CA1   CA2   CA3   CA4
@@ -1293,6 +1302,7 @@ df2</code></pre>
 ## 6    g4     4    14    24    34
 ## 7    g3     3    13    23    33
 ## 8    g1     1    11    21    31</code></pre>
+</div>
 </div>
 <div id="chaining" class="section level2">
 <h2><span class="header-section-number">12.13</span> Chaining</h2>
