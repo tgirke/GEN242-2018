@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sun May 28 08:57:39 2017
+last_updated: Sun May 28 10:36:53 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -10,14 +10,14 @@ are provided by the `data.table` and `dplyr` packages. The following gives a
 short introduction to the usage and functionalities of the `dplyr` package. 
 More detailed tutorials on this topic can be found here:
 
-* [dplyr: A Grammar of Data Manipulation](https://rdrr.io/cran/dplyr/)
-* [Cheatsheet](http://stat545.com/bit001_dplyr-cheatsheet.html)
-* [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
-* [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
-* [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)
-* [Intro to `data.table` package](https://www.r-bloggers.com/intro-to-the-data-table-package/)
-* [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
-* [Fast lookups with `dplyr` and `data.table`](https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/)
+* [dplyr: A Grammar of Data Manipulation](https://rdrr.io/cran/dplyr/){:target="_blank"}
+* [Cheatsheet from Jenny Bryan](http://stat545.com/bit001_dplyr-cheatsheet.html){:target="_blank"}
+* [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html){:target="_blank"}
+* [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html){:target="_blank"}
+* [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html){:target="_blank"}
+* [Intro to `data.table` package](https://www.r-bloggers.com/intro-to-the-data-table-package/){:target="_blank"}
+* [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/){:target="_blank"}
+* [Fast lookups with `dplyr` and `data.table`](https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/){:target="_blank"}
 
 ## Construct a `data frame` (`tibble`)
 
@@ -660,8 +660,6 @@ iris_df$Species[1:12]
 ##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
 ## [11] "setosa" "setosa"
 ```
-
-
 
 ## Chaining
 
