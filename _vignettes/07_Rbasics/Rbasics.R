@@ -242,14 +242,24 @@ as_data_frame(iris) # coerce data.frame to data frame tbl
 as_tibble(iris) # newer function provided by tibble package
 tbl_df(iris) # gives same result; this alternative exists for historical reasons
 
-## ----tabular_import, eval=TRUE-------------------------------------------
-write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
+## ----tabular_sample, eval=TRUE-------------------------------------------
+library(readr)
+write_tsv(iris, "iris.txt") # Creates sample file
+
+## ----tabular_import1, eval=TRUE------------------------------------------
+iris_df <- read_tsv("iris.txt") # Import with read_tbv from readr package
+iris_df
+
+## ----tabular_import2, eval=TRUE------------------------------------------
 iris_df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
 iris_df
 unlink("iris.txt") # Deletes temp file
 
 ## ----tabular_import_ignore, eval=FALSE-----------------------------------
 ## fread("grep -v '^#' iris.txt")
+
+## ----tabular_export_readr, eval=FALSE------------------------------------
+## iris_df <- read_tsv("iris.txt")
 
 ## ----dplyr_bind, eval=TRUE-----------------------------------------------
 bind_cols(iris_df, iris_df)
@@ -323,13 +333,19 @@ summarize(group_by(iris_df, Species), mean(Petal.Length))
 iris_df[[5]][1:12]
 iris_df$Species[1:12]
 
+## ----plyr_join_sample, eval=TRUE-----------------------------------------
+df1 <- bind_cols(data_frame(ids=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("C", 1:4)))))
+df1
+df2 <- bind_cols(data_frame(ids=paste0("g", c(2,5,11,12))), as_data_frame(matrix(1:16, 4, 4, dimnames=list(1:4, paste0("C", 1:4)))))
+df2
+
 ## ----plyr_chaining, eval=TRUE--------------------------------------------
 iris_df %>% # Declare data frame to use 
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
     mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
-    write.table("iris.txt", quote=FALSE, row.names=FALSE, sep="\t") # Export to file
+    write_tsv("iris.txt") # Export to file
 
 ## ----load_sqlite, eval=TRUE----------------------------------------------
 library(RSQLite)

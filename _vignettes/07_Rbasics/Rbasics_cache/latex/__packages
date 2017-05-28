@@ -10,3 +10,4 @@ dplyr
 data.table
 nycflights13
 tibble
+readr

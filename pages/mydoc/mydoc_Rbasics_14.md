@@ -1,6 +1,6 @@
 ---
 title: 14. Graphics in R
-last_updated: Sun May 28 10:36:53 2017
+last_updated: Sun May 28 11:41:20 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_14.html
 ---

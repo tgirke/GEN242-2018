@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr and data.table 
-last_updated: Sun May 28 10:36:53 2017
+last_updated: Sun May 28 11:41:20 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -10,14 +10,14 @@ are provided by the `data.table` and `dplyr` packages. The following gives a
 short introduction to the usage and functionalities of the `dplyr` package. 
 More detailed tutorials on this topic can be found here:
 
-* [dplyr: A Grammar of Data Manipulation](https://rdrr.io/cran/dplyr/){:target="_blank"}
-* [Cheatsheet from Jenny Bryan](http://stat545.com/bit001_dplyr-cheatsheet.html){:target="_blank"}
-* [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html){:target="_blank"}
-* [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html){:target="_blank"}
-* [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html){:target="_blank"}
-* [Intro to `data.table` package](https://www.r-bloggers.com/intro-to-the-data-table-package/){:target="_blank"}
-* [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/){:target="_blank"}
-* [Fast lookups with `dplyr` and `data.table`](https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/){:target="_blank"}
+* [dplyr: A Grammar of Data Manipulation](https://rdrr.io/cran/dplyr/)
+* [Cheatsheet from Jenny Bryan](http://stat545.com/bit001_dplyr-cheatsheet.html)
+* [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+* [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
+* [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)
+* [Intro to `data.table` package](https://www.r-bloggers.com/intro-to-the-data-table-package/)
+* [Big data with `dplyr` and `data.table`](https://www.r-bloggers.com/working-with-large-datasets-with-dplyr-and-data-table/)
+* [Fast lookups with `dplyr` and `data.table`](https://www.r-bloggers.com/fast-data-lookups-in-r-dplyr-vs-data-table/)
 
 ## Construct a `data frame` (`tibble`)
 
@@ -85,12 +85,66 @@ tbl_df(iris) # gives same result; this alternative exists for historical reasons
 ## 10          4.9         3.1          1.5         0.1  setosa
 ## # ... with 140 more rows
 ```
+## Reading and writing tabular files
 
-## Fast table import with `fread` 
+While the base R read/write utilities can be used for `data frames`, best time
+performance with the least amount of typing is achieved with the export/import
+functions from the `readr` package. For very large files the `fread` function from 
+the `data.table` package achieves the best performance. 
+
+
+### Import with `readr` 
+
+Import functions provided by `readr` include:
+
+* `read_csv()`: comma separated (CSV) files
+* `read_tsv()`: tab separated files
+* `read_delim()`: general delimited files
+* `read_fwf()`: fixed width files
+* `read_table()`: tabular files where colums are separated by white-space.
+* `read_log()`: web log files
+
+
+Create a sample file for import
 
 
 ```r
-write.table(iris, "iris.txt", row.names=FALSE, quote=FALSE, sep="\t") # Creates sample file
+library(readr)
+write_tsv(iris, "iris.txt") # Creates sample file
+```
+
+Import with 
+
+
+```r
+iris_df <- read_tsv("iris.txt") # Import with read_tbv from readr package
+iris_df
+```
+
+```
+## # A tibble: 150 × 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa
+## # ... with 140 more rows
+```
+
+### Fast table import with `fread` 
+
+The `fread` function from the `data.table` package provides the best time performance for reading large
+tabular files into R.
+
+
+```r
 iris_df <- as_data_frame(fread("iris.txt")) # Import with fread and conversion to tibble
 iris_df
 ```
@@ -123,6 +177,24 @@ command for preprocessing the file. The following example illustrates this optio
 ```r
 fread("grep -v '^#' iris.txt") 
 ```
+
+### Export with `readr` 
+
+Export function provided by `readr` inlcude
+
+* `write_delim()`: general delimited files
+* `write_csv()`: comma separated (CSV) files 
+* `write_excel_csv()`: excel style CSV files
+* `write_tsv()`: tab separated files
+
+For instance, the `write_tsv` function writes a `data frame` to a tab delimited file with much nicer
+default settings than the base R `write.table` function. 
+
+
+```r
+iris_df <- read_tsv("iris.txt")
+```
+
 ## Column and row binds
 
 The equivalents to base R's `rbind` and `cbind` are `bind_rows` and `bind_cols`, respectively.
@@ -661,6 +733,47 @@ iris_df$Species[1:12]
 ## [11] "setosa" "setosa"
 ```
 
+## Merging data frames
+
+Sample `data frames`
+
+
+```r
+df1 <- bind_cols(data_frame(ids=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("C", 1:4)))))
+df1
+```
+
+```
+## # A tibble: 10 × 5
+##      ids    C1    C2    C3    C4
+##    <chr> <int> <int> <int> <int>
+## 1     g1     1    11    21    31
+## 2     g2     2    12    22    32
+## 3     g3     3    13    23    33
+## 4     g4     4    14    24    34
+## 5     g5     5    15    25    35
+## 6     g6     6    16    26    36
+## 7     g7     7    17    27    37
+## 8     g8     8    18    28    38
+## 9     g9     9    19    29    39
+## 10   g10    10    20    30    40
+```
+
+```r
+df2 <- bind_cols(data_frame(ids=paste0("g", c(2,5,11,12))), as_data_frame(matrix(1:16, 4, 4, dimnames=list(1:4, paste0("C", 1:4)))))
+df2
+```
+
+```
+## # A tibble: 4 × 5
+##     ids    C1    C2    C3    C4
+##   <chr> <int> <int> <int> <int>
+## 1    g2     1     5     9    13
+## 2    g5     2     6    10    14
+## 3   g11     3     7    11    15
+## 4   g12     4     8    12    16
+```
+
 ## Chaining
 
 To simplify chaining of serveral operations (pipes), `dplyr` provides the `%>%` operator. where `x %>% f(y)`
@@ -674,7 +787,7 @@ iris_df %>% # Declare data frame to use
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
     mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
-    write.table("iris.txt", quote=FALSE, row.names=FALSE, sep="\t") # Export to file
+    write_tsv("iris.txt") # Export to file
 ```
 
 <br><br><center><a href="mydoc_Rbasics_11.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
