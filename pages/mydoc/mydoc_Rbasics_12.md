@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Sun May 28 17:40:38 2017
+last_updated: Sun May 28 17:48:44 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -382,6 +382,29 @@ df1_old[c("g10", "g4", "g4"),]
 ## g4.1   g4   4  14  24  34
 ```
 
+### Extract column as vector
+
+The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
+
+
+```r
+iris_df[[5]][1:12]
+```
+
+```
+##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
+## [11] "setosa" "setosa"
+```
+
+```r
+iris_df$Species[1:12]
+```
+
+```
+##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
+## [11] "setosa" "setosa"
+```
+
 ## Sorting with `arrange`
 
 Row-wise ordering based on specific columns
@@ -748,6 +771,8 @@ summarize(group_by(iris_df, Species), mean(Petal.Length))
 ## 3  virginica                5.552
 ```
 
+Aggregate summaries
+
 
 ```r
 summarize_all(group_by(iris_df, Species), mean) 
@@ -764,28 +789,6 @@ summarize_all(group_by(iris_df, Species), mean)
 
 Note: `group_by` does the looping for the user similar to `aggregate` or `tapply`.
 
-### Extract column as vector
-
-The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
-
-
-```r
-iris_df[[5]][1:12]
-```
-
-```
-##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
-## [11] "setosa" "setosa"
-```
-
-```r
-iris_df$Species[1:12]
-```
-
-```
-##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
-## [11] "setosa" "setosa"
-```
 
 ## Merging data frames
 

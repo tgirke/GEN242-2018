@@ -296,6 +296,10 @@ df1_old <- as.data.frame(df1)
 rownames(df1_old) <- df1_old[,1]
 df1_old[c("g10", "g4", "g4"),]
 
+## ----plyr_get_cols, eval=TRUE--------------------------------------------
+iris_df[[5]][1:12]
+iris_df$Species[1:12]
+
 ## ----plyr_order1, eval=TRUE----------------------------------------------
 arrange(iris_df, Species, Sepal.Length, Sepal.Width)
 
@@ -347,10 +351,6 @@ summarize(group_by(iris_df, Species), mean(Petal.Length))
 
 ## ----plyr_summarize3, eval=TRUE------------------------------------------
 summarize_all(group_by(iris_df, Species), mean) 
-
-## ----plyr_get_cols, eval=TRUE--------------------------------------------
-iris_df[[5]][1:12]
-iris_df$Species[1:12]
 
 ## ----plyr_join_sample, eval=TRUE-----------------------------------------
 df1 <- bind_cols(data_frame(ids1=paste0("g", 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0("CA", 1:4)))))

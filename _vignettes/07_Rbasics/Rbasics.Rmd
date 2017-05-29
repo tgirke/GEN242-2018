@@ -758,6 +758,15 @@ rownames(df1_old) <- df1_old[,1]
 df1_old[c("g10", "g4", "g4"),]
 ```
 
+### Extract column as vector
+
+The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
+
+```{r plyr_get_cols, eval=TRUE}
+iris_df[[5]][1:12]
+iris_df$Species[1:12]
+```
+
 ## Sorting with `arrange`
 
 Row-wise ordering based on specific columns
@@ -877,20 +886,14 @@ Summarize by grouping column
 summarize(group_by(iris_df, Species), mean(Petal.Length))
 ```
 
+Aggregate summaries
+
 ```{r plyr_summarize3, eval=TRUE}
 summarize_all(group_by(iris_df, Species), mean) 
 ```
 
 Note: `group_by` does the looping for the user similar to `aggregate` or `tapply`.
 
-### Extract column as vector
-
-The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
-
-```{r plyr_get_cols, eval=TRUE}
-iris_df[[5]][1:12]
-iris_df$Species[1:12]
-```
 
 ## Merging data frames
 
