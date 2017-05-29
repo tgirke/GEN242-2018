@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Sun May 28 18:02:12 2017
+last_updated: Sun May 28 19:23:50 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -946,8 +946,9 @@ For additional join options users want to cosult the `*_join` help pages.
 
 ## Chaining
 
-To simplify chaining of serveral operations (pipes), `dplyr` provides the `%>%` operator. where `x %>% f(y)`
-turns into `f(x, y)`. This way one can write multiple operations that can read left-to-right or 
+To simplify chaining of serveral operations, `dplyr` provides the `%>%`
+operator. where `x %>% f(y)` turns into `f(x, y)`. This way one can pipe
+together multiple operations by writing them from left-to-right or
 top-to-bottom. This makes for easy to type and readable code.
 
 
