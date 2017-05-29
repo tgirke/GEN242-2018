@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Sun May 28 17:58:55 2017
+last_updated: Sun May 28 18:02:12 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -217,17 +217,6 @@ bind_rows(iris_df, iris_df)
 ## # ... with 290 more rows
 ```
 
-## Important `dplyr` functions
-
-1. `filter()` and `slice()`
-2. `arrange()`
-3. `select()` and `rename()`
-4. `distinct()`
-5. `mutate()` and `transmute()`
-6. `summarise()`
-7. `sample_n()` and `sample_frac()`
-
-
 ## Extract column as vector
 
 The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
@@ -250,6 +239,17 @@ iris_df$Species[1:12]
 ##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
 ## [11] "setosa" "setosa"
 ```
+
+## Important `dplyr` functions
+
+1. `filter()` and `slice()`
+2. `arrange()`
+3. `select()` and `rename()`
+4. `distinct()`
+5. `mutate()` and `transmute()`
+6. `summarise()`
+7. `sample_n()` and `sample_frac()`
+
 
 ## Slice and filter functions 
 

@@ -879,8 +879,18 @@ iris_df</code></pre>
 ## 10          4.9         3.1          1.5         0.1  setosa
 ## # ... with 290 more rows</code></pre>
 </div>
+<div id="extract-column-as-vector" class="section level2">
+<h2><span class="header-section-number">12.5</span> Extract column as vector</h2>
+<p>The subsetting operators <code>[[</code> and <code>$</code>can be used to extract from a <code>data frame</code> single columns as vector.</p>
+<pre class="r"><code>iris_df[[5]][1:12]</code></pre>
+<pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
+## [11] &quot;setosa&quot; &quot;setosa&quot;</code></pre>
+<pre class="r"><code>iris_df$Species[1:12]</code></pre>
+<pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
+## [11] &quot;setosa&quot; &quot;setosa&quot;</code></pre>
+</div>
 <div id="important-dplyr-functions" class="section level2">
-<h2><span class="header-section-number">12.5</span> Important <code>dplyr</code> functions</h2>
+<h2><span class="header-section-number">12.6</span> Important <code>dplyr</code> functions</h2>
 <ol style="list-style-type: decimal">
 <li><code>filter()</code> and <code>slice()</code></li>
 <li><code>arrange()</code></li>
@@ -890,16 +900,6 @@ iris_df</code></pre>
 <li><code>summarise()</code></li>
 <li><code>sample_n()</code> and <code>sample_frac()</code></li>
 </ol>
-</div>
-<div id="extract-column-as-vector" class="section level2">
-<h2><span class="header-section-number">12.6</span> Extract column as vector</h2>
-<p>The subsetting operators <code>[[</code> and <code>$</code>can be used to extract from a <code>data frame</code> single columns as vector.</p>
-<pre class="r"><code>iris_df[[5]][1:12]</code></pre>
-<pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
-## [11] &quot;setosa&quot; &quot;setosa&quot;</code></pre>
-<pre class="r"><code>iris_df$Species[1:12]</code></pre>
-<pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
-## [11] &quot;setosa&quot; &quot;setosa&quot;</code></pre>
 </div>
 <div id="slice-and-filter-functions" class="section level2">
 <h2><span class="header-section-number">12.7</span> Slice and filter functions</h2>
