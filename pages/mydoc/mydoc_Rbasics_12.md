@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Sun May 28 17:48:44 2017
+last_updated: Sun May 28 17:58:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -227,6 +227,30 @@ bind_rows(iris_df, iris_df)
 6. `summarise()`
 7. `sample_n()` and `sample_frac()`
 
+
+## Extract column as vector
+
+The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
+
+
+```r
+iris_df[[5]][1:12]
+```
+
+```
+##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
+## [11] "setosa" "setosa"
+```
+
+```r
+iris_df$Species[1:12]
+```
+
+```
+##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
+## [11] "setosa" "setosa"
+```
+
 ## Slice and filter functions 
 
 ### Filter function
@@ -380,29 +404,6 @@ df1_old[c("g10", "g4", "g4"),]
 ## g10   g10  10  20  30  40
 ## g4     g4   4  14  24  34
 ## g4.1   g4   4  14  24  34
-```
-
-### Extract column as vector
-
-The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
-
-
-```r
-iris_df[[5]][1:12]
-```
-
-```
-##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
-## [11] "setosa" "setosa"
-```
-
-```r
-iris_df$Species[1:12]
-```
-
-```
-##  [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
-## [11] "setosa" "setosa"
 ```
 
 ## Sorting with `arrange`

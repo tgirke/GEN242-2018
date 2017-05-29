@@ -696,6 +696,16 @@ bind_rows(iris_df, iris_df)
 6. `summarise()`
 7. `sample_n()` and `sample_frac()`
 
+
+## Extract column as vector
+
+The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
+
+```{r plyr_get_cols, eval=TRUE}
+iris_df[[5]][1:12]
+iris_df$Species[1:12]
+```
+
 ## Slice and filter functions 
 
 ### Filter function
@@ -756,15 +766,6 @@ Base R equivalent
 df1_old <- as.data.frame(df1)
 rownames(df1_old) <- df1_old[,1]
 df1_old[c("g10", "g4", "g4"),]
-```
-
-### Extract column as vector
-
-The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
-
-```{r plyr_get_cols, eval=TRUE}
-iris_df[[5]][1:12]
-iris_df$Species[1:12]
 ```
 
 ## Sorting with `arrange`

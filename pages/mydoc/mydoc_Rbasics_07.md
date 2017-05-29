@@ -1,6 +1,6 @@
 ---
 title: 7. Data Objects
-last_updated: Sun May 28 17:48:44 2017
+last_updated: Sun May 28 17:58:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_07.html
 ---

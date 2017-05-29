@@ -269,6 +269,10 @@ iris_df
 bind_cols(iris_df, iris_df)
 bind_rows(iris_df, iris_df)
 
+## ----plyr_get_cols, eval=TRUE--------------------------------------------
+iris_df[[5]][1:12]
+iris_df$Species[1:12]
+
 ## ----plyr_filter, eval=TRUE----------------------------------------------
 filter(iris_df, Sepal.Length > 7.5, Species=="virginica")
 
@@ -295,10 +299,6 @@ slice(df1, match(c("g10", "g4", "g4"), df1$ids1))
 df1_old <- as.data.frame(df1)
 rownames(df1_old) <- df1_old[,1]
 df1_old[c("g10", "g4", "g4"),]
-
-## ----plyr_get_cols, eval=TRUE--------------------------------------------
-iris_df[[5]][1:12]
-iris_df$Species[1:12]
 
 ## ----plyr_order1, eval=TRUE----------------------------------------------
 arrange(iris_df, Species, Sepal.Length, Sepal.Width)
