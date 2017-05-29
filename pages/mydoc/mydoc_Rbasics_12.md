@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Sun May 28 17:30:06 2017
+last_updated: Sun May 28 17:40:38 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -747,6 +747,22 @@ summarize(group_by(iris_df, Species), mean(Petal.Length))
 ## 2 versicolor                4.260
 ## 3  virginica                5.552
 ```
+
+
+```r
+summarize_all(group_by(iris_df, Species), mean) 
+```
+
+```
+## # A tibble: 3 × 5
+##      Species Sepal.Length Sepal.Width Petal.Length Petal.Width
+##        <chr>        <dbl>       <dbl>        <dbl>       <dbl>
+## 1     setosa        5.006       3.428        1.462       0.246
+## 2 versicolor        5.936       2.770        4.260       1.326
+## 3  virginica        6.588       2.974        5.552       2.026
+```
+
+Note: `group_by` does the looping for the user similar to `aggregate` or `tapply`.
 
 ### Extract column as vector
 

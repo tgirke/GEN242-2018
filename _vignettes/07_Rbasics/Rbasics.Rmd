@@ -877,6 +877,12 @@ Summarize by grouping column
 summarize(group_by(iris_df, Species), mean(Petal.Length))
 ```
 
+```{r plyr_summarize3, eval=TRUE}
+summarize_all(group_by(iris_df, Species), mean) 
+```
+
+Note: `group_by` does the looping for the user similar to `aggregate` or `tapply`.
+
 ### Extract column as vector
 
 The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.

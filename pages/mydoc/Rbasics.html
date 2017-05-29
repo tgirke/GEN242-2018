@@ -1227,6 +1227,14 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 ## 1     setosa                1.462
 ## 2 versicolor                4.260
 ## 3  virginica                5.552</code></pre>
+<pre class="r"><code>summarize_all(group_by(iris_df, Species), mean) </code></pre>
+<pre><code>## # A tibble: 3 × 5
+##      Species Sepal.Length Sepal.Width Petal.Length Petal.Width
+##        &lt;chr&gt;        &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;
+## 1     setosa        5.006       3.428        1.462       0.246
+## 2 versicolor        5.936       2.770        4.260       1.326
+## 3  virginica        6.588       2.974        5.552       2.026</code></pre>
+<p>Note: <code>group_by</code> does the looping for the user similar to <code>aggregate</code> or <code>tapply</code>.</p>
 <div id="extract-column-as-vector" class="section level3">
 <h3><span class="header-section-number">12.12.1</span> Extract column as vector</h3>
 <p>The subsetting operators <code>[[</code> and <code>$</code>can be used to extract from a <code>data frame</code> single columns as vector.</p>
