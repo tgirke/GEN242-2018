@@ -1,12 +1,12 @@
 ---
 title: Introduction to R  <br> <br> 1. Overview
-last_updated: Sun May 28 19:23:50 2017
+last_updated: Mon May 29 07:33:15 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
 Author: Thomas Girke
 
-Last update: 28 May, 2017 
+Last update: 29 May, 2017 
 
 Alternative formats of this vignette:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Rbasics.html){:target="_blank"} ],

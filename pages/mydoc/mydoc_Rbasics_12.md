@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Sun May 28 19:23:50 2017
+last_updated: Mon May 29 07:33:15 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -21,8 +21,9 @@ More detailed tutorials on this topic can be found here:
 
 ## Installation
 
-Since `dplyr` has evolved into an environment of packages, one can install and load the entire package 
-collection via the `tidyverse` package. For more details on `tidyverse` see [here](http://tidyverse.org/).
+`dplyr` has evolved into an environment of packages. To simplify package management, one can install 
+and load the entire collection via the `tidyverse` package. For more details on `tidyverse` see 
+[here](http://tidyverse.org/).
 
 
 
@@ -962,11 +963,55 @@ iris_df %>% # Declare data frame to use
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
-    mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
-    write_tsv("iris.txt") # Export to file
+    mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append
+```
+
+```
+## # A tibble: 50 × 6
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Subtract
+##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>    <dbl>
+## 1           4.3         3.0          1.1         0.1  setosa      1.0
+## 2           4.4         2.9          1.4         0.2  setosa      1.2
+## 3           4.4         3.0          1.3         0.2  setosa      1.1
+## 4           4.4         3.2          1.3         0.2  setosa      1.1
+## 5           4.5         2.3          1.3         0.3  setosa      1.0
+## 6           4.6         3.1          1.5         0.2  setosa      1.3
+## 7           4.6         3.4          1.4         0.3  setosa      1.1
+## 8           4.6         3.6          1.0         0.2  setosa      0.8
+## 9           4.6         3.2          1.4         0.2  setosa      1.2
+## 10          4.7         3.2          1.3         0.2  setosa      1.1
+## # ... with 40 more rows
+```
+
+```r
+    # write_tsv("iris.txt") # Export to file, omitted here to show result 
 ```
 
 ### Example 2
+
+Series of summary calculations for grouped data (`group_by`)
+
+
+```r
+iris_df %>% # Declare data frame to use 
+    group_by(Species) %>% # Group by species
+    summarize(Mean_Sepal.Length=mean(Sepal.Length), 
+              Max_Sepal.Length=max(Sepal.Length),
+              Min_Sepal.Length=min(Sepal.Length),
+              SD_Sepal.Length=sd(Sepal.Length),
+              Total=n()) 
+```
+
+```
+## # A tibble: 3 × 6
+##      Species Mean_Sepal.Length Max_Sepal.Length Min_Sepal.Length SD_Sepal.Length Total
+##        <chr>             <dbl>            <dbl>            <dbl>           <dbl> <int>
+## 1     setosa             5.006              5.8              4.3       0.3524897    50
+## 2 versicolor             5.936              7.0              4.9       0.5161711    50
+## 3  virginica             6.588              7.9              4.9       0.6358796    50
+```
+
+### Example 3
 
 Combining `dplyr` chaining with `ggplot`
 
@@ -980,7 +1025,7 @@ iris_df %>%
         geom_bar(position="dodge", stat="identity")
 ```
 
-<img src="./pages/mydoc/Rbasics_files/plyr_chaining2-1.png" width="672" />
+<img src="./pages/mydoc/Rbasics_files/plyr_chaining3-1.png" width="672" />
 
 <br><br><center><a href="mydoc_Rbasics_11.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_13.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

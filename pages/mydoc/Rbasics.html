@@ -233,7 +233,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Introduction to R</h1>
 <h4 class="author"><em>Author: Thomas Girke</em></h4>
-<h4 class="date"><em>Last update: 28 May, 2017</em></h4>
+<h4 class="date"><em>Last update: 29 May, 2017</em></h4>
 
 </div>
 
@@ -749,7 +749,7 @@ dim(my_result)</code></pre>
 </ul>
 <div id="installation" class="section level2">
 <h2><span class="header-section-number">12.1</span> Installation</h2>
-<p>Since <code>dplyr</code> has evolved into an environment of packages, one can install and load the entire package collection via the <code>tidyverse</code> package. For more details on <code>tidyverse</code> see <a href="http://tidyverse.org/">here</a>.</p>
+<p><code>dplyr</code> has evolved into an environment of packages. To simplify package management, one can install and load the entire collection via the <code>tidyverse</code> package. For more details on <code>tidyverse</code> see <a href="http://tidyverse.org/">here</a>.</p>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
 </div>
 <div id="construct-a-data-frame-tibble" class="section level2">
@@ -1365,11 +1365,42 @@ df2</code></pre>
     select(Sepal.Length:Species) %&gt;% # Select columns
     filter(Species==&quot;setosa&quot;) %&gt;% # Filter rows by some value
     arrange(Sepal.Length) %&gt;% # Sort by some column
-    mutate(Subtract=Petal.Length - Petal.Width) %&gt;% # Calculate and append
-    write_tsv(&quot;iris.txt&quot;) # Export to file</code></pre>
+    mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append</code></pre>
+<pre><code>## # A tibble: 50 × 6
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Subtract
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;   &lt;chr&gt;    &lt;dbl&gt;
+## 1           4.3         3.0          1.1         0.1  setosa      1.0
+## 2           4.4         2.9          1.4         0.2  setosa      1.2
+## 3           4.4         3.0          1.3         0.2  setosa      1.1
+## 4           4.4         3.2          1.3         0.2  setosa      1.1
+## 5           4.5         2.3          1.3         0.3  setosa      1.0
+## 6           4.6         3.1          1.5         0.2  setosa      1.3
+## 7           4.6         3.4          1.4         0.3  setosa      1.1
+## 8           4.6         3.6          1.0         0.2  setosa      0.8
+## 9           4.6         3.2          1.4         0.2  setosa      1.2
+## 10          4.7         3.2          1.3         0.2  setosa      1.1
+## # ... with 40 more rows</code></pre>
+<pre class="r"><code>    # write_tsv(&quot;iris.txt&quot;) # Export to file, omitted here to show result </code></pre>
 </div>
 <div id="example-2" class="section level3">
 <h3><span class="header-section-number">12.15.2</span> Example 2</h3>
+<p>Series of summary calculations for grouped data (<code>group_by</code>)</p>
+<pre class="r"><code>iris_df %&gt;% # Declare data frame to use 
+    group_by(Species) %&gt;% # Group by species
+    summarize(Mean_Sepal.Length=mean(Sepal.Length), 
+              Max_Sepal.Length=max(Sepal.Length),
+              Min_Sepal.Length=min(Sepal.Length),
+              SD_Sepal.Length=sd(Sepal.Length),
+              Total=n()) </code></pre>
+<pre><code>## # A tibble: 3 × 6
+##      Species Mean_Sepal.Length Max_Sepal.Length Min_Sepal.Length SD_Sepal.Length Total
+##        &lt;chr&gt;             &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;           &lt;dbl&gt; &lt;int&gt;
+## 1     setosa             5.006              5.8              4.3       0.3524897    50
+## 2 versicolor             5.936              7.0              4.9       0.5161711    50
+## 3  virginica             6.588              7.9              4.9       0.6358796    50</code></pre>
+</div>
+<div id="example-3" class="section level3">
+<h3><span class="header-section-number">12.15.3</span> Example 3</h3>
 <p>Combining <code>dplyr</code> chaining with <code>ggplot</code></p>
 <pre class="r"><code>iris_df %&gt;% 
     group_by(Species) %&gt;% 
@@ -1872,7 +1903,7 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12] </code></pre>
 <pre><code> ---
 title: &quot;My First R Markdown Document&quot;
 author: &quot;Author: First Last&quot;
-date: &quot;Last update: 28 May, 2017&quot;
+date: &quot;Last update: 29 May, 2017&quot;
 output:
   BiocStyle::html_document:
     toc: true

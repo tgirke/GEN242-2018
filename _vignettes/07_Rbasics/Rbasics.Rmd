@@ -587,8 +587,9 @@ More detailed tutorials on this topic can be found here:
 
 ## Installation
 
-Since `dplyr` has evolved into an environment of packages, one can install and load the entire package 
-collection via the `tidyverse` package. For more details on `tidyverse` see [here](http://tidyverse.org/).
+`dplyr` has evolved into an environment of packages. To simplify package management, one can install 
+and load the entire collection via the `tidyverse` package. For more details on `tidyverse` see 
+[here](http://tidyverse.org/).
 
 
 ```{r tidyverse_install, eval=FALSE}
@@ -965,15 +966,29 @@ iris_df %>% # Declare data frame to use
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
-    mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
-    write_tsv("iris.txt") # Export to file
+    mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append
+    # write_tsv("iris.txt") # Export to file, omitted here to show result 
 ```
 
 ### Example 2
 
-Combining `dplyr` chaining with `ggplot`
+Series of summary calculations for grouped data (`group_by`)
 
 ```{r plyr_chaining2, eval=TRUE}
+iris_df %>% # Declare data frame to use 
+    group_by(Species) %>% # Group by species
+    summarize(Mean_Sepal.Length=mean(Sepal.Length), 
+              Max_Sepal.Length=max(Sepal.Length),
+              Min_Sepal.Length=min(Sepal.Length),
+              SD_Sepal.Length=sd(Sepal.Length),
+              Total=n()) 
+```
+
+### Example 3
+
+Combining `dplyr` chaining with `ggplot`
+
+```{r plyr_chaining3, eval=TRUE}
 iris_df %>% 
     group_by(Species) %>% 
     summarize_all(mean) %>% 

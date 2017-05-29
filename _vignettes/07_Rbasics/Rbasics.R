@@ -378,10 +378,19 @@ iris_df %>% # Declare data frame to use
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
-    mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
-    write_tsv("iris.txt") # Export to file
+    mutate(Subtract=Petal.Length - Petal.Width) # Calculate and append
+    # write_tsv("iris.txt") # Export to file, omitted here to show result 
 
 ## ----plyr_chaining2, eval=TRUE-------------------------------------------
+iris_df %>% # Declare data frame to use 
+    group_by(Species) %>% # Group by species
+    summarize(Mean_Sepal.Length=mean(Sepal.Length), 
+              Max_Sepal.Length=max(Sepal.Length),
+              Min_Sepal.Length=min(Sepal.Length),
+              SD_Sepal.Length=sd(Sepal.Length),
+              Total=n()) 
+
+## ----plyr_chaining3, eval=TRUE-------------------------------------------
 iris_df %>% 
     group_by(Species) %>% 
     summarize_all(mean) %>% 

@@ -1,6 +1,6 @@
 ---
 title: 16. R Markdown
-last_updated: Sun May 28 19:23:50 2017
+last_updated: Mon May 29 07:33:15 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
@@ -57,7 +57,7 @@ package from Bioconductor.
  ---
 title: "My First R Markdown Document"
 author: "Author: First Last"
-date: "Last update: 28 May, 2017"
+date: "Last update: 29 May, 2017"
 output:
   BiocStyle::html_document:
     toc: true

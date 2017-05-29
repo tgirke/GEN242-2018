@@ -287,7 +287,7 @@ entries:
     - title: 18. References
       url: /mydoc_Rbasics_18.html
       output: web
-
+  
   - title: Programming in R
     output: web, pdf
     folderitems:
