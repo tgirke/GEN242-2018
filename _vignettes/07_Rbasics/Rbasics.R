@@ -370,13 +370,21 @@ full_join(df1, df2, by=c("ids1"="ids2"))
 ## ----plyr_anti_join, eval=TRUE-------------------------------------------
 anti_join(df1, df2, by=c("ids1"="ids2"))
 
-## ----plyr_chaining, eval=TRUE--------------------------------------------
+## ----plyr_chaining1, eval=TRUE-------------------------------------------
 iris_df %>% # Declare data frame to use 
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
     mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
     write_tsv("iris.txt") # Export to file
+
+## ----plyr_chaining2, eval=TRUE-------------------------------------------
+iris_df %>% 
+    group_by(Species) %>% 
+    summarize_all(mean) %>% 
+    reshape2::melt(id.vars=c("Species"), variable.name = "Samples", value.name="Values") %>%
+    ggplot(aes(Samples, Values, fill = Species)) + 
+        geom_bar(position="dodge", stat="identity")
 
 ## ----load_sqlite, eval=TRUE----------------------------------------------
 library(RSQLite)

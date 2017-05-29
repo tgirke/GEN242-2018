@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Sun May 28 15:59:36 2017
+last_updated: Sun May 28 17:30:06 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -931,6 +931,11 @@ turns into `f(x, y)`. This way one can write multiple operations that can read l
 top-to-bottom. This makes for easy to type and readable code.
 
 
+### Example 1
+
+Series of data manipulations and export
+
+
 ```r
 iris_df %>% # Declare data frame to use 
     select(Sepal.Length:Species) %>% # Select columns
@@ -939,6 +944,22 @@ iris_df %>% # Declare data frame to use
     mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
     write_tsv("iris.txt") # Export to file
 ```
+
+### Example 2
+
+Combining `dplyr` chaining with `ggplot`
+
+
+```r
+iris_df %>% 
+    group_by(Species) %>% 
+    summarize_all(mean) %>% 
+    reshape2::melt(id.vars=c("Species"), variable.name = "Samples", value.name="Values") %>%
+    ggplot(aes(Samples, Values, fill = Species)) + 
+        geom_bar(position="dodge", stat="identity")
+```
+
+<img src="./pages/mydoc/Rbasics_files/plyr_chaining2-1.png" width="672" />
 
 <br><br><center><a href="mydoc_Rbasics_11.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_13.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

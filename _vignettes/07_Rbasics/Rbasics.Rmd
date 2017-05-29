@@ -944,13 +944,31 @@ To simplify chaining of serveral operations (pipes), `dplyr` provides the `%>%` 
 turns into `f(x, y)`. This way one can write multiple operations that can read left-to-right or 
 top-to-bottom. This makes for easy to type and readable code.
 
-```{r plyr_chaining, eval=TRUE}
+
+### Example 1
+
+Series of data manipulations and export
+
+```{r plyr_chaining1, eval=TRUE}
 iris_df %>% # Declare data frame to use 
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
     mutate(Subtract=Petal.Length - Petal.Width) %>% # Calculate and append
     write_tsv("iris.txt") # Export to file
+```
+
+### Example 2
+
+Combining `dplyr` chaining with `ggplot`
+
+```{r plyr_chaining2, eval=TRUE}
+iris_df %>% 
+    group_by(Species) %>% 
+    summarize_all(mean) %>% 
+    reshape2::melt(id.vars=c("Species"), variable.name = "Samples", value.name="Values") %>%
+    ggplot(aes(Samples, Values, fill = Species)) + 
+        geom_bar(position="dodge", stat="identity")
 ```
 
 # SQLite Databases
