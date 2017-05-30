@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Mon May 29 07:33:15 2017
+last_updated: Tue May 30 11:33:22 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -21,8 +21,9 @@ More detailed tutorials on this topic can be found here:
 
 ## Installation
 
-`dplyr` has evolved into an environment of packages. To simplify package management, one can install 
-and load the entire collection via the `tidyverse` package. For more details on `tidyverse` see 
+The `dplyr` environment has evolved into an ecosystem of packages. To simplify
+package management, one can install and load the entire collection via the
+`tidyverse` package. For more details on `tidyverse` see
 [here](http://tidyverse.org/).
 
 
