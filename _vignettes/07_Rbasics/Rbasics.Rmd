@@ -587,8 +587,9 @@ More detailed tutorials on this topic can be found here:
 
 ## Installation
 
-`dplyr` has evolved into an environment of packages. To simplify package management, one can install 
-and load the entire collection via the `tidyverse` package. For more details on `tidyverse` see 
+The `dplyr` environment has evolved into an ecosystem of packages. To simplify
+package management, one can install and load the entire collection via the
+`tidyverse` package. For more details on `tidyverse` see
 [here](http://tidyverse.org/).
 
 
