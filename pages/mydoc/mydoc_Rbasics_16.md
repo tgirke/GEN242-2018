@@ -1,6 +1,6 @@
 ---
 title: 16. R Markdown
-last_updated: Tue May 30 11:36:58 2017
+last_updated: Tue May 30 11:45:15 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
@@ -235,6 +235,24 @@ To fine control the formatting of citations and reference lists, users want to c
 the corresponding [R Markdown page](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
 Also, for general reference management and outputting references in Bibtex format [Paperpile](https://paperpile.com/features) 
 can be very helpful.
+
+### Viewing R Markdown report on HPCC cluster
+
+R Markdown reports located on UCR's HPCC Cluster can be viewed locally in a web browser (without moving 
+the source HTML) by creating a symbolic link from a user's `.html` directory. This way any updates to 
+the report can be viewed immediately without creating another copy of the HTML file. For instance, if user 
+`ttest` has generated an R Markdown report under `~/bigdata/today/rmarkdown/sample.html`, then the 
+proper symbolic link to this file can be created as follows:
+
+
+```r
+cd ~/.html
+ln -s ~/bigdata/today/rmarkdown/sample.html sample.html
+```
+
+After this one can view the report in a web browser using this URL [http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html](http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html).
+If necessary access to the URL can be restricted with a password following the instructions [here](http://hpcc.ucr.edu/manuals_linux-cluster_sharing.html#sharing-files-on-the-web).
+
 
 <br><br><center><a href="mydoc_Rbasics_15.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_17.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

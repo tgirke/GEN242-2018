@@ -602,6 +602,10 @@ png("myplot.png")
 ggplot(dsmall, aes(color, price/carat)) + geom_jitter(alpha = I(1 / 2), aes(color=color))
 dev.off()
 
+## ----rmarkdown_symbolic_link, eval=FALSE---------------------------------
+## cd ~/.html
+## ln -s ~/bigdata/today/rmarkdown/sample.html sample.html
+
 ## ----sessionInfo---------------------------------------------------------
 sessionInfo()
 

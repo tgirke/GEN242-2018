@@ -229,7 +229,7 @@ can be very helpful.
 
 ### Viewing R Markdown report on HPCC cluster
 
-R Markdown reports located on the HPCC Cluster can be viewed locally in a web browser (without moving 
+R Markdown reports located on UCR's HPCC Cluster can be viewed locally in a web browser (without moving 
 the source HTML) by creating a symbolic link from a user's `.html` directory. This way any updates to 
 the report will show up immediately without creating another copy of the HTML file. For instance, if user 
 `ttest` has generated an R Markdown report under `~/bigdata/today/rmarkdown/sample.html`, then the 
