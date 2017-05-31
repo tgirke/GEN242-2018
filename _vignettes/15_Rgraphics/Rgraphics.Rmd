@@ -908,11 +908,11 @@ A variety of libraries are available for plotting receiver operating characteris
 ### Example
 
 Most commonly, in an ROC we plot the true positive rate (y-axis) against the false positive rate (x-axis) at decreasing thresholds. 
-An illustrative example is provided in the `ROCR` package where one wants to inspect in particular the content of the `ROCR.simple` 
+An illustrative example is provided in the `ROCR` package where one wants to inspect the content of the `ROCR.simple` object
 defining the structure of the input data in two vectors.
 
 
-```{r ROCR_example, eval=TRUE}
+```{r ROCR_example, eval=TRUE, warning=FALSE, message=FALSE}
 # install.packages("ROCR") # Install if necessary on your laptop
 library(ROCR)
 data(ROCR.simple)

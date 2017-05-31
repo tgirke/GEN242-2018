@@ -389,7 +389,7 @@ library(ChemmineR)
 data(sdfsample)
 plot(sdfsample[1], print=FALSE)
 
-## ----ROCR_example, eval=TRUE---------------------------------------------
+## ----ROCR_example, eval=TRUE, warning=FALSE, message=FALSE---------------
 # install.packages("ROCR") # Install if necessary on your laptop
 library(ROCR)
 data(ROCR.simple)

@@ -1,6 +1,6 @@
 ---
 title: 6. Specialty Graphics
-last_updated: Wed May 31 12:27:56 2017
+last_updated: Wed May 31 12:32:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_6.html
 ---
@@ -42,7 +42,7 @@ A variety of libraries are available for plotting receiver operating characteris
 ### Example
 
 Most commonly, in an ROC we plot the true positive rate (y-axis) against the false positive rate (x-axis) at decreasing thresholds. 
-An illustrative example is provided in the `ROCR` package where one wants to inspect in particular the content of the `ROCR.simple` 
+An illustrative example is provided in the `ROCR` package where one wants to inspect the content of the `ROCR.simple` object
 defining the structure of the input data in two vectors.
 
 
@@ -50,42 +50,6 @@ defining the structure of the input data in two vectors.
 ```r
 # install.packages("ROCR") # Install if necessary on your laptop
 library(ROCR)
-```
-
-```
-## Loading required package: gplots
-```
-
-```
-## 
-## Attaching package: 'gplots'
-```
-
-```
-## The following object is masked from 'package:rtracklayer':
-## 
-##     space
-```
-
-```
-## The following object is masked from 'package:IRanges':
-## 
-##     space
-```
-
-```
-## The following object is masked from 'package:S4Vectors':
-## 
-##     space
-```
-
-```
-## The following object is masked from 'package:stats':
-## 
-##     lowess
-```
-
-```r
 data(ROCR.simple)
 ROCR.simple
 ```
