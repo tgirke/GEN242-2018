@@ -1,6 +1,6 @@
 ---
 title: 7. Transcript Ranges
-last_updated: Sun May 14 15:12:00 2017
+last_updated: Tue May 30 19:21:13 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_07.html
 ---
@@ -173,7 +173,9 @@ listAttributes(mymart) # List available features
 getBM(attributes=c("ensembl_gene_id", "description"), mart=mymart)[1:4,]
 ```
 
-## Efficient Sequence Parsing with `getSeq`
+## Efficient Sequence Parsing 
+
+### `getSeq`
 
 The following parses all annotation ranges provided by `GRanges` object (e.g. `gff`) from a genome sequence stored in a local file.
 
@@ -198,6 +200,17 @@ getSeq(FaFile("./data/test"), gff)
 ## [440]   324 AGTGTAGCTACCAGTTTATGTGGGTGCGCTTG...GCCCGCTCGAGACTGGAATGAGCAGTTGGGCT ChrM
 ## [441]   324 AGTGTAGCTACCAGTTTATGTGGGTGCGCTTG...GCCCGCTCGAGACTGGAATGAGCAGTTGGGCT ChrM
 ## [442]   324 AGTGTAGCTACCAGTTTATGTGGGTGCGCTTG...GCCCGCTCGAGACTGGAATGAGCAGTTGGGCT ChrM
+```
+
+### `extractTranscriptSeqs`
+
+Sequences composed of several ranges, such as transcripts (or CDSs) with several exons, can be parsed with `extractTranscriptSeqs`. 
+Note: the following expects the genome sequence in a file called `mygenome.fasta` and a valid `txdb` defining the ranges for that
+genome.
+
+```r
+library(GenomicFeatures); library(Biostrings); library(Rsamtools)
+extractTranscriptSeqs(FaFile("mygenome.fasta"), exonsBy(txdb, "tx", use.names=TRUE)) 
 ```
 
 <br><br><center><a href="mydoc_Rsequences_06.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page

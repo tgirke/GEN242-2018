@@ -346,6 +346,10 @@ rand <- DNAStringSet(sapply(unique(as.character(seqnames(gff))), function(x) pas
 writeXStringSet(DNAStringSet(rand), "./data/test")
 getSeq(FaFile("./data/test"), gff)
 
+## ----extractTranscritpSeqs, eval=FALSE, message=FALSE, warnings=FALSE----
+## library(GenomicFeatures); library(Biostrings); library(Rsamtools)
+## extractTranscriptSeqs(FaFile("mygenome.fasta"), exonsBy(txdb, "tx", use.names=TRUE))
+
 ## ----hw6a_demultiplex, eval=FALSE----------------------------------------
 ## demultiplex <- function(x, barcode, nreads) {
 ## 	f <- FastqStreamer(x, nreads)
