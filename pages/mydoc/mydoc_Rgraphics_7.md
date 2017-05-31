@@ -1,6 +1,6 @@
 ---
 title: 7. Genome Graphics
-last_updated: Sun May 28 16:51:15 2017
+last_updated: Wed May 31 12:27:56 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_7.html
 ---

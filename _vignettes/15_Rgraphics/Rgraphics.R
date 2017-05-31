@@ -389,6 +389,15 @@ library(ChemmineR)
 data(sdfsample)
 plot(sdfsample[1], print=FALSE)
 
+## ----ROCR_example, eval=TRUE---------------------------------------------
+# install.packages("ROCR") # Install if necessary on your laptop
+library(ROCR)
+data(ROCR.simple)
+ROCR.simple
+pred <- prediction(ROCR.simple$predictions, ROCR.simple$labels)
+perf <- performance( pred, "tpr", "fpr" )
+plot(perf)
+
 ## ----trees_ape1, eval=TRUE-----------------------------------------------
 library(ape)
 tree1 <- rtree(40)

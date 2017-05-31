@@ -27,3 +27,5 @@ VariantAnnotation
 BiocParallel
 ShortRead
 systemPipeR
+gplots
+ROCR

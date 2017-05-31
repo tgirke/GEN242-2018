@@ -29,3 +29,5 @@ GenomicFeatures
 VariantAnnotation
 matrixStats
 DelayedArray
+gplots
+ROCR
