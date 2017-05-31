@@ -1435,7 +1435,7 @@ getBM(attributes=c(&quot;ensembl_gene_id&quot;, &quot;description&quot;), mart=m
 <h2><span class="header-section-number">7.2</span> Efficient Sequence Parsing</h2>
 <div id="getseq" class="section level3">
 <h3><span class="header-section-number">7.2.1</span> <code>getSeq</code></h3>
-<p>The following parses all annotation ranges provided by <code>GRanges</code> object (e.g. <code>gff</code>) from a genome sequence stored in a local file.</p>
+<p>The following parses all annotation ranges provided by a <code>GRanges</code> object (e.g. <code>gff</code>) from a genome sequence stored in a local file.</p>
 <pre class="r"><code>gff &lt;- gff[values(gff)$type != &quot;chromosome&quot;] # Remove chromosome ranges
 rand &lt;- DNAStringSet(sapply(unique(as.character(seqnames(gff))), function(x) paste(sample(c(&quot;A&quot;,&quot;T&quot;,&quot;G&quot;,&quot;C&quot;), 200000, replace=T), collapse=&quot;&quot;)))
 writeXStringSet(DNAStringSet(rand), &quot;./data/test&quot;)

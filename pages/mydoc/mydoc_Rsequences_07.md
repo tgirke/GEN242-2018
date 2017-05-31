@@ -1,6 +1,6 @@
 ---
 title: 7. Transcript Ranges
-last_updated: Tue May 30 19:21:13 2017
+last_updated: Tue May 30 19:23:51 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_07.html
 ---
@@ -177,7 +177,7 @@ getBM(attributes=c("ensembl_gene_id", "description"), mart=mymart)[1:4,]
 
 ### `getSeq`
 
-The following parses all annotation ranges provided by `GRanges` object (e.g. `gff`) from a genome sequence stored in a local file.
+The following parses all annotation ranges provided by a `GRanges` object (e.g. `gff`) from a genome sequence stored in a local file.
 
 ```r
 gff <- gff[values(gff)$type != "chromosome"] # Remove chromosome ranges

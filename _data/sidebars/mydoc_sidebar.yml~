@@ -423,7 +423,7 @@ entries:
     - title: 10. References
       url: /mydoc_Rsequences_10.html
       output: web
-  
+
   - title: NGS Workflow Overview
     output: web, pdf
     folderitems:

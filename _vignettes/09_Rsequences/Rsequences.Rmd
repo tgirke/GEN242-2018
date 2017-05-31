@@ -680,7 +680,7 @@ getBM(attributes=c("ensembl_gene_id", "description"), mart=mymart)[1:4,]
 
 ### `getSeq`
 
-The following parses all annotation ranges provided by `GRanges` object (e.g. `gff`) from a genome sequence stored in a local file.
+The following parses all annotation ranges provided by a `GRanges` object (e.g. `gff`) from a genome sequence stored in a local file.
 ```{r getseq_gff, eval=TRUE, message=FALSE, warnings=FALSE}
 gff <- gff[values(gff)$type != "chromosome"] # Remove chromosome ranges
 rand <- DNAStringSet(sapply(unique(as.character(seqnames(gff))), function(x) paste(sample(c("A","T","G","C"), 200000, replace=T), collapse="")))
