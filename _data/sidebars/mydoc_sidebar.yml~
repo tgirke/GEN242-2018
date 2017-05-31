@@ -120,6 +120,10 @@ entries:
       url: /mydoc_slides_17.html
       output: web
     
+    - title: Profile HMMs
+      url: /mydoc_slides_18.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
@@ -574,42 +578,6 @@ entries:
 
     - title: 14. References
       url: /mydoc_systemPipeVARseq_14.html
-      output: web
-
-  - title: Graphics
-    output: web, pdf
-    folderitems:
-
-    - title: 1. Overview
-      url: /mydoc_Rgraphics_1.html
-      output: web
-
-    - title: 2. Base Graphics
-      url: /mydoc_Rgraphics_2.html
-      output: web
-
-    - title: 3. Grid Graphics
-      url: /mydoc_Rgraphics_3.html
-      output: web
-
-    - title: 4. lattice Graphics
-      url: /mydoc_Rgraphics_4.html
-      output: web
-
-    - title: 5. ggplot2 Graphics
-      url: /mydoc_Rgraphics_5.html
-      output: web
-
-    - title: 6. Specialty Graphics
-      url: /mydoc_Rgraphics_6.html
-      output: web
-
-    - title: 7. Genome Graphics
-      url: /mydoc_Rgraphics_7.html
-      output: web
-
-    - title: 8. References
-      url: /mydoc_Rgraphics_8.html
       output: web
 
   - title: Graphics and Visualization
