@@ -1,12 +1,12 @@
 ---
 title: NGS Analysis Basics <br> <br> 1. Overview
-last_updated: Tue May 30 19:23:51 2017
+last_updated: Sun Jun  4 16:06:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_01.html
 ---
 Author: Thomas Girke
 
-Last update: 30 May, 2017 
+Last update: 04 June, 2017 
 
 Alternative formats of this vignette:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Rsequences.html){:target="_blank"} ],

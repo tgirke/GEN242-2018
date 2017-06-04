@@ -1,6 +1,6 @@
 ---
 title: 4. Sequences in Bioconductor
-last_updated: Tue May 30 19:23:51 2017
+last_updated: Sun Jun  4 16:06:55 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_04.html
 ---
@@ -432,6 +432,8 @@ DNAStringSet(gsub("^ATG", "NNN", myseq)) # String substitution with regular expr
 
 ## PWM Viewing and Searching
 
+### Plot with `seqLogo`
+
 
 ```r
 library(seqLogo) 
@@ -452,6 +454,22 @@ seqLogo(t(t(pwm) * 1/colSums(pwm)))
 ```
 
 <img src="./pages/mydoc/Rsequences_files/pwm_logo-1.png" width="672" />
+
+### Plot with `ggseqlogo`
+
+The `ggseqlogo` package ([manual](https://omarwagih.github.io/ggseqlogo/))
+provides many customization options for plotting sequence logos. It also supports
+various alphabets including sequence logos for amino acid sequences.
+
+
+
+```r
+library(ggplot2); library(ggseqlogo)
+pwm <- PWM(DNAStringSet(c("GCT", "GGT", "GCA"))) 
+ggseqlogo(pwm)
+```
+
+<img src="./pages/mydoc/Rsequences_files/pwm_logo2-1.png" width="672" />
 
 Search sequence for PWM matches with score better than `min.score`
 

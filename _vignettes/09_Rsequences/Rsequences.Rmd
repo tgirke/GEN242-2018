@@ -331,11 +331,26 @@ DNAStringSet(gsub("^ATG", "NNN", myseq)) # String substitution with regular expr
 
 ## PWM Viewing and Searching
 
+### Plot with `seqLogo`
+
 ```{r pwm_logo, eval=TRUE}
 library(seqLogo) 
 pwm <- PWM(DNAStringSet(c("GCT", "GGT", "GCA"))) 
 pwm
 seqLogo(t(t(pwm) * 1/colSums(pwm)))
+```
+
+### Plot with `ggseqlogo`
+
+The `ggseqlogo` package ([manual](https://omarwagih.github.io/ggseqlogo/))
+provides many customization options for plotting sequence logos. It also supports
+various alphabets including sequence logos for amino acid sequences.
+
+
+```{r pwm_logo2, eval=TRUE}
+library(ggplot2); library(ggseqlogo)
+pwm <- PWM(DNAStringSet(c("GCT", "GGT", "GCA"))) 
+ggseqlogo(pwm)
 ```
 
 Search sequence for PWM matches with score better than `min.score`

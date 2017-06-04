@@ -155,6 +155,11 @@ pwm <- PWM(DNAStringSet(c("GCT", "GGT", "GCA")))
 pwm
 seqLogo(t(t(pwm) * 1/colSums(pwm)))
 
+## ----pwm_logo2, eval=TRUE------------------------------------------------
+library(ggplot2); library(ggseqlogo)
+pwm <- PWM(DNAStringSet(c("GCT", "GGT", "GCA"))) 
+ggseqlogo(pwm)
+
 ## ----pwm_search, eval=TRUE-----------------------------------------------
 chr <- DNAString("AAAGCTAAAGGTAAAGCAAAA") 
 matchPWM(pwm, chr, min.score=0.9) 
