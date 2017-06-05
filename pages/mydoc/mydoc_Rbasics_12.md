@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Tue May 30 11:45:15 2017
+last_updated: Mon Jun  5 14:05:35 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -169,7 +169,7 @@ default settings than the base R `write.table` function.
 
 
 ```r
-iris_df <- write_tsv("iris.txt")
+write_tsv(iris_df, "iris.txt")
 ```
 
 ## Column and row binds

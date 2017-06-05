@@ -676,7 +676,7 @@ For instance, the `write_tsv` function writes a `data frame` to a tab delimited 
 default settings than the base R `write.table` function. 
 
 ```{r tabular_export_readr, eval=FALSE}
-iris_df <- write_tsv("iris.txt")
+write_tsv(iris_df, "iris.txt")
 ```
 
 ## Column and row binds
