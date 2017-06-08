@@ -623,6 +623,11 @@ Return uncovered regions
 gaps(gff) 
 ```
 
+More intuitive way to get uncovered regions
+```{r genomicranges_utilities4b, eval=TRUE}
+setdiff(as(seqinfo(gff), "GRanges"), gff) 
+```
+
 Return disjoint ranges
 ```{r genomicranges_utilities5, eval=TRUE}
 disjoin(gff)

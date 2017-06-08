@@ -300,6 +300,9 @@ reduce(gff)
 ## ----genomicranges_utilities4, eval=TRUE---------------------------------
 gaps(gff) 
 
+## ----genomicranges_utilities4b, eval=TRUE--------------------------------
+setdiff(as(seqinfo(gff), "GRanges"), gff) 
+
 ## ----genomicranges_utilities5, eval=TRUE---------------------------------
 disjoin(gff)
 

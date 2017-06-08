@@ -1,6 +1,6 @@
 ---
 title: 10. References
-last_updated: Sun Jun  4 16:06:55 2017
+last_updated: Wed Jun  7 19:39:39 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_10.html
 ---

@@ -1,6 +1,6 @@
 ---
 title: 6. Range Operations  
-last_updated: Sun Jun  4 16:06:55 2017
+last_updated: Wed Jun  7 19:39:39 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_06.html
 ---
@@ -374,6 +374,31 @@ gaps(gff)
 ##   [41]     ChrM  [  735,   8847]      *
 ##   [42]     ChrM  [11416,  11917]      *
 ##   [43]     ChrM  [12242, 366924]      *
+##   -------
+##   seqinfo: 7 sequences from an unspecified genome
+```
+
+More intuitive way to get uncovered regions
+
+```r
+setdiff(as(seqinfo(gff), "GRanges"), gff) 
+```
+
+```
+## GRanges object with 29 ranges and 0 metadata columns:
+##        seqnames            ranges strand
+##           <Rle>         <IRanges>  <Rle>
+##    [1]     Chr1 [    1,     3630]      *
+##    [2]     Chr1 [ 5900,     5927]      *
+##    [3]     Chr1 [ 8738,    11648]      *
+##    [4]     Chr1 [13715, 30427671]      *
+##    [5]     Chr2 [    1,     1024]      *
+##    ...      ...               ...    ...
+##   [25]     ChrC   [ 4348, 154478]      *
+##   [26]     ChrM   [    1,    272]      *
+##   [27]     ChrM   [  735,   8847]      *
+##   [28]     ChrM   [11416,  11917]      *
+##   [29]     ChrM   [12242, 366924]      *
 ##   -------
 ##   seqinfo: 7 sequences from an unspecified genome
 ```
