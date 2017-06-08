@@ -36,7 +36,7 @@ following files:
 * `.Rmd` source script of project report 
 * Report rendered from *.Rmd source in HTML or PDF format
 * Optional: additional file with custom functions, e.g. *_Fct.R 
-* __Deadline__ for submitting the reports: 6:00 PM, June 13th, 2017
+* __Submission Deadline__ for reports: 6:00 PM, June 13th, 2017
 
 
 ## Structure of final project report
