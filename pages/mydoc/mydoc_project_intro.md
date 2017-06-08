@@ -34,8 +34,8 @@ this repository a new directory named `ProjectReport` and include in it the
 following files: 
 
 * `.Rmd` source script of project report 
-* Report rendered from *.Rmd source in HTML or PDF format
-* Optional: additional file with custom functions, e.g. *_Fct.R 
+* Report rendered from `.Rmd` source in HTML or PDF format
+* Optional: additional file with custom functions, e.g. `_Fct.R`
 * __Submission Deadline__ for reports: 6:00 PM, June 13th, 2017
 
 
