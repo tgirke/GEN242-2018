@@ -28,14 +28,14 @@ in R Markdown. A basic tutorial on R Markdown is available [here](http://girke.b
 Both the R Markdown script (`.Rmd`) along with the rendered HTML or PDF report will be submitted to each student's private GitHub repository.
 
 The reports should be submitted to each student’s private GitHub repository that
-was used to submit the homework assignments. For the report please create in
+was used to submit the homework assignments. For the report each student should create in
 this repository a new directory named `ProjectReport` and include in it the
 following files: 
 
 * `.Rmd` source script of project report 
 * Report rendered from *.Rmd source in HTML or PDF format
 * Optional: additional file with custom functions, e.g. *_Fct.R 
-* __Deadline__ for submitting the reports is June 13 at midnight.
+* __Deadline__ for submitting the reports: 6:00 PM, June 13th, 2017
 
 The expected structure of the final project report is outlined below. 
 
