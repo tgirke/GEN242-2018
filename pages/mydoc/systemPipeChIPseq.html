@@ -233,7 +233,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">ChIP-Seq Workflow Template</h1>
 <h4 class="author"><em>First/last name (<a href="mailto:first.last@ucr.edu">first.last@ucr.edu</a>)</em></h4>
-<h4 class="date"><em>Last update: 10 May, 2017</em></h4>
+<h4 class="date"><em>Last update: 10 June, 2017</em></h4>
 
 </div>
 
@@ -515,7 +515,7 @@ writeTargetsout(x=args_diff, file=&quot;targets_rundiff.txt&quot;, overwrite=TRU
 <pre class="r"><code>args &lt;- systemArgs(sysma=&quot;param/macs2.param&quot;, mytargets=&quot;targets_bam_ref.txt&quot;)
 args_anno &lt;- systemArgs(sysma=&quot;param/annotate_peaks.param&quot;, mytargets=&quot;targets_macs.txt&quot;)
 annofiles &lt;- outpaths(args_anno)
-gene_ids &lt;- sapply(names(annofiles), function(x) unique(as.character(read.delim(annofiles[x])[,&quot;geneId&quot;])))
+gene_ids &lt;- sapply(names(annofiles), function(x) unique(as.character(read.delim(annofiles[x])[,&quot;geneId&quot;])), simplify=FALSE)
 load(&quot;data/GO/catdb.RData&quot;)
 BatchResult &lt;- GOCluster_Report(catdb=catdb, setlist=gene_ids, method=&quot;all&quot;, id_type=&quot;gene&quot;, CLSZ=2, cutoff=0.9, gocats=c(&quot;MF&quot;, &quot;BP&quot;, &quot;CC&quot;), recordSpecGO=NULL)</code></pre>
 </div>

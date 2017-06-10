@@ -1,6 +1,6 @@
 ---
 title: 2. Workflow environment
-last_updated: Wed May 10 19:55:47 2017
+last_updated: Sat Jun 10 11:34:52 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_02.html
 ---
