@@ -1455,7 +1455,7 @@ source("exerciseRbasics.R")
 
 # Web Apps with Shiny
 
-<iframe src="https://shiny.rstudio.com/gallery/google-charts.html" style="border: none; width: 880px; height: 900px"></iframe>
+<iframe src="https://tgirke.shinyapps.io/diamonds/" style="border: none; width: 880px; height: 900px"></iframe>
 
 # R Markdown
 

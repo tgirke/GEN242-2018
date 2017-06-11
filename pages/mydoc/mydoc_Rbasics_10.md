@@ -1,6 +1,6 @@
 ---
 title: 10. Reading and Writing External Data
-last_updated: Sun Jun 11 11:24:49 2017
+last_updated: Sun Jun 11 11:27:28 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_10.html
 ---
