@@ -36,7 +36,7 @@ table(iris$Species)
 
 ## D-H. Analysis Worflow
 
-The instructions for these homework assignments are [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_Rbasics_14.html).
+The instructions for these homework assignments are [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_Rbasics_15.html).
 
 ## Homework submission
 

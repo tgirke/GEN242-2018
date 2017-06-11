@@ -1876,25 +1876,20 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12] </code></pre>
 <pre class="r"><code>source(&quot;exerciseRbasics.R&quot;)</code></pre>
 </div>
 </div>
-<div id="web-apps-with-shiny" class="section level1">
-<h1><span class="header-section-number">16</span> Web Apps with Shiny</h1>
-<iframe src="https://tgirke.shinyapps.io/diamonds/" style="border: none; width: 880px; height: 900px">
-</iframe>
-</div>
 <div id="r-markdown" class="section level1">
-<h1><span class="header-section-number">17</span> R Markdown</h1>
+<h1><span class="header-section-number">16</span> R Markdown</h1>
 <div id="overview-2" class="section level2">
-<h2><span class="header-section-number">17.1</span> Overview</h2>
+<h2><span class="header-section-number">16.1</span> Overview</h2>
 <p>R Markdown combines markdown (an easy to write plain text format) with embedded R code chunks. When compiling R Markdown documents, the code components can be evaluated so that both the code and its output can be included in the final document. This makes analysis reports highly reproducible by allowing to automatically regenerate them when the underlying R code or data changes. R Markdown documents (<code>.Rmd</code> files) can be rendered to various formats including HTML and PDF. The R code in an <code>.Rmd</code> document is processed by <code>knitr</code>, while the resulting <code>.md</code> file is rendered by <code>pandoc</code> to the final output formats (<em>e.g.</em> HTML or PDF). Historically, R Markdown is an extension of the older <code>Sweave/Latex</code> environment. Rendering of mathematical expressions and reference management is also supported by R Markdown using embedded Latex syntax and Bibtex, respectively.</p>
 </div>
 <div id="quick-start" class="section level2">
-<h2><span class="header-section-number">17.2</span> Quick Start</h2>
+<h2><span class="header-section-number">16.2</span> Quick Start</h2>
 <div id="install-r-markdown" class="section level3">
-<h3><span class="header-section-number">17.2.1</span> Install R Markdown</h3>
+<h3><span class="header-section-number">16.2.1</span> Install R Markdown</h3>
 <pre class="r"><code>install.packages(&quot;rmarkdown&quot;)</code></pre>
 </div>
 <div id="initialize-a-new-r-markdown-rmd-script" class="section level3">
-<h3><span class="header-section-number">17.2.2</span> Initialize a new R Markdown (<code>Rmd</code>) script</h3>
+<h3><span class="header-section-number">16.2.2</span> Initialize a new R Markdown (<code>Rmd</code>) script</h3>
 <p>To minimize typing, it can be helful to start with an R Markdown template and then modify it as needed. Note the file name of an R Markdown scirpt needs to have the extension <code>.Rmd</code>. Template files for the following examples are available here:</p>
 <ul>
 <li>R Markdown sample script: <a href="https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/sample.Rmd"><code>sample.Rmd</code></a></li>
@@ -1903,7 +1898,7 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12] </code></pre>
 <p>Users want to download these files, open the <code>sample.Rmd</code> file with their preferred R IDE (<em>e.g.</em> RStudio, vim or emacs), initilize an R session and then direct their R session to the location of these two files.</p>
 </div>
 <div id="metadata-section" class="section level3">
-<h3><span class="header-section-number">17.2.3</span> Metadata section</h3>
+<h3><span class="header-section-number">16.2.3</span> Metadata section</h3>
 <p>The metadata section (YAML header) in an R Markdown script defines how it will be processed and rendered. The metadata section also includes both title, author, and date information as well as options for customizing the output format. For instance, PDF and HTML output can be defined with <code>pdf_document</code> and <code>html_document</code>, respectively. The <code>BiocStyle::</code> prefix will use the formatting style of the <a href="http://bioconductor.org/packages/release/bioc/html/BiocStyle.html"><code>BiocStyle</code></a> package from Bioconductor.</p>
 <pre><code> ---
 title: &quot;My First R Markdown Document&quot;
@@ -1920,7 +1915,7 @@ bibliography: bibtex.bib
  ---</code></pre>
 </div>
 <div id="render-rmd-script" class="section level3">
-<h3><span class="header-section-number">17.2.4</span> Render <code>Rmd</code> script</h3>
+<h3><span class="header-section-number">16.2.4</span> Render <code>Rmd</code> script</h3>
 <p>An R Markdown script can be evaluated and rendered with the following <code>render</code> command or by pressing the <code>knit</code> button in RStudio. The <code>output_format</code> argument defines the format of the output (<em>e.g.</em> <code>html_document</code>). The setting <code>output_format=&quot;all&quot;</code> will generate all supported output formats. Alternatively, one can specify several output formats in the metadata section as shown in the above example.</p>
 <pre class="r"><code>rmarkdown::render(&quot;sample.Rmd&quot;, clean=TRUE, output_format=&quot;html_document&quot;)</code></pre>
 <p>The following shows two options how to run the rendering from the command-line.</p>
@@ -1930,7 +1925,7 @@ $ Rscript -e &quot;rmarkdown::render('sample.Rmd', clean=TRUE)&quot;</code></pre
 <pre class="sh"><code>$ make -B</code></pre>
 </div>
 <div id="r-code-chunks" class="section level3">
-<h3><span class="header-section-number">17.2.5</span> R code chunks</h3>
+<h3><span class="header-section-number">16.2.5</span> R code chunks</h3>
 <p>R Code Chunks can be embedded in an R Markdown script by using three backticks at the beginning of a new line along with arguments enclosed in curly braces controlling the behavior of the code. The following lines contain the plain R code. A code chunk is terminated by a new line starting with three backticks. The following shows an example of such a code chunk. Note the backslashes are not part of it. They have been added to print the code chunk syntax in this document.</p>
 <pre><code>    ```\{r code_chunk_name, eval=FALSE\}
     x &lt;- 1:10
@@ -1949,7 +1944,7 @@ $ Rscript -e &quot;rmarkdown::render('sample.Rmd', clean=TRUE)&quot;</code></pre
 <p>For more details on code chunk options see <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">here</a>.</p>
 </div>
 <div id="learning-markdown" class="section level3">
-<h3><span class="header-section-number">17.2.6</span> Learning Markdown</h3>
+<h3><span class="header-section-number">16.2.6</span> Learning Markdown</h3>
 <p>The basic syntax of Markdown and derivatives like kramdown is extremely easy to learn. Rather than providing another introduction on this topic, here are some useful sites for learning Markdown:</p>
 <ul>
 <li><a href="https://guides.github.com/features/mastering-markdown/">Markdown Intro on GitHub</a></li>
@@ -1960,7 +1955,7 @@ $ Rscript -e &quot;rmarkdown::render('sample.Rmd', clean=TRUE)&quot;</code></pre
 </ul>
 </div>
 <div id="tables" class="section level3">
-<h3><span class="header-section-number">17.2.7</span> Tables</h3>
+<h3><span class="header-section-number">16.2.7</span> Tables</h3>
 <p>There are several ways to render tables. First, they can be printed within the R code chunks. Second, much nicer formatted tables can be generated with the functions <code>kable</code>, <code>pander</code> or <code>xtable</code>. The following example uses <code>kable</code> from the <code>knitr</code> package.</p>
 <pre class="r"><code>library(knitr)
 kable(iris[1:12,])</code></pre>
@@ -2063,7 +2058,7 @@ kable(iris[1:12,])</code></pre>
 </table>
 </div>
 <div id="figures" class="section level3">
-<h3><span class="header-section-number">17.2.8</span> Figures</h3>
+<h3><span class="header-section-number">16.2.8</span> Figures</h3>
 <p>Plots generated by the R code chunks in an R Markdown document can be automatically inserted in the output file. The size of the figure can be controlled with the <code>fig.height</code> and <code>fig.width</code> arguments.</p>
 <pre class="r"><code>library(ggplot2)
 dsmall &lt;- diamonds[sample(nrow(diamonds), 1000), ]
@@ -2080,26 +2075,31 @@ dev.off()</code></pre>
 </center>
 </div>
 <div id="inline-r-code" class="section level3">
-<h3><span class="header-section-number">17.2.9</span> Inline R code</h3>
+<h3><span class="header-section-number">16.2.9</span> Inline R code</h3>
 <p>To evaluate R code inline, one can enclose an R expression with a single back-tick followed by <code>r</code> and then the actual expression. For instance, the back-ticked version of ‘r 1 + 1’ evaluates to 2 and ‘r pi’ evaluates to 3.1415927.</p>
 </div>
 <div id="mathematical-equations" class="section level3">
-<h3><span class="header-section-number">17.2.10</span> Mathematical equations</h3>
+<h3><span class="header-section-number">16.2.10</span> Mathematical equations</h3>
 <p>To render mathematical equations, one can use standard Latex syntax. When expressions are enclosed with single <code>$</code> signs then they will be shown inline, while enclosing them with double <code>$$</code> signs will show them in display mode. For instance, the following Latex syntax <code>d(X,Y) = \sqrt[]{ \sum_{i=1}^{n}{(x_{i}-y_{i})^2} }</code> renders in display mode as follows:</p>
 <p><span class="math display">\[d(X,Y) = \sqrt[]{ \sum_{i=1}^{n}{(x_{i}-y_{i})^2} }\]</span></p>
 </div>
 <div id="citations-and-bibliographies" class="section level3">
-<h3><span class="header-section-number">17.2.11</span> Citations and bibliographies</h3>
+<h3><span class="header-section-number">16.2.11</span> Citations and bibliographies</h3>
 <p>Citations and bibliographies can be autogenerated in R Markdown in a similar way as in Latex/Bibtex. Reference collections should be stored in a separate file in Bibtex or other supported formats. To cite a publication in an R Markdown script, one uses the syntax <code>[@&lt;id1&gt;]</code> where <code>&lt;id1&gt;</code> needs to be replaced with a reference identifier present in the Bibtex database listed in the metadata section of the R Markdown script (<em>e.g.</em> <code>bibtex.bib</code>). For instance, to cite Lawrence et al. (2013), one uses its reference identifier (<em>e.g.</em> <code>Lawrence2013-kt</code>) as <code>&lt;id1&gt;</code> <span class="citation">(Lawrence et al. 2013)</span>. This will place the citation inline in the text and add the corresponding reference to a reference list at the end of the output document. For the latter a special section called <code>References</code> needs to be specified at the end of the R Markdown script. To fine control the formatting of citations and reference lists, users want to consult this the corresponding <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">R Markdown page</a>. Also, for general reference management and outputting references in Bibtex format <a href="https://paperpile.com/features">Paperpile</a> can be very helpful.</p>
 </div>
 <div id="viewing-r-markdown-report-on-hpcc-cluster" class="section level3">
-<h3><span class="header-section-number">17.2.12</span> Viewing R Markdown report on HPCC cluster</h3>
+<h3><span class="header-section-number">16.2.12</span> Viewing R Markdown report on HPCC cluster</h3>
 <p>R Markdown reports located on UCR’s HPCC Cluster can be viewed locally in a web browser (without moving the source HTML) by creating a symbolic link from a user’s <code>.html</code> directory. This way any updates to the report can be viewed immediately without creating another copy of the HTML file. For instance, if user <code>ttest</code> has generated an R Markdown report under <code>~/bigdata/today/rmarkdown/sample.html</code>, then the proper symbolic link to this file can be created as follows:</p>
 <pre class="r"><code>cd ~/.html
 ln -s ~/bigdata/today/rmarkdown/sample.html sample.html</code></pre>
 <p>After this one can view the report in a web browser using this URL <a href="http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html" class="uri">http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html</a>. If necessary access to the URL can be restricted with a password following the instructions <a href="http://hpcc.ucr.edu/manuals_linux-cluster_sharing.html#sharing-files-on-the-web">here</a>.</p>
 </div>
 </div>
+</div>
+<div id="web-apps-with-shiny" class="section level1">
+<h1><span class="header-section-number">17</span> Web Apps with Shiny</h1>
+<iframe src="https://tgirke.shinyapps.io/diamonds/" style="border: none; width: 880px; height: 900px">
+</iframe>
 </div>
 <div id="session-info" class="section level1">
 <h1><span class="header-section-number">18</span> Session Info</h1>
