@@ -1,6 +1,6 @@
 ---
 title: 15. Analysis Routine
-last_updated: Mon Jun  5 14:05:35 2017
+last_updated: Sun Jun 11 11:24:49 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_15.html
 ---
@@ -202,6 +202,7 @@ write.table(my_mw_target4, file="my_file.xls", quote=F, sep="\t", col.names = NA
 ```r
 source("exerciseRbasics.R")
 ```
+
 
 <br><br><center><a href="mydoc_Rbasics_14.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_16.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

@@ -1,6 +1,6 @@
 ---
 title: 13. SQLite Databases
-last_updated: Mon Jun  5 14:05:35 2017
+last_updated: Sun Jun 11 11:24:49 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_13.html
 ---

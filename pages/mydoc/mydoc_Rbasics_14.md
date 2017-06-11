@@ -1,6 +1,6 @@
 ---
 title: 14. Graphics in R
-last_updated: Mon Jun  5 14:05:35 2017
+last_updated: Sun Jun 11 11:24:49 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_14.html
 ---
@@ -366,6 +366,8 @@ devSVG("test.svg")
 plot(1:10, 1:10)
 dev.off() 
 ```
+
+
 
 ## Homework 3C
 

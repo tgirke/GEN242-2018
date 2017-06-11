@@ -1303,6 +1303,8 @@ plot(1:10, 1:10)
 dev.off() 
 ```
 
+
+
 ## Homework 3C
 
 Homework 3C: [Bar Plots](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_homework_03.html)
@@ -1449,6 +1451,11 @@ write.table(my_mw_target4, file="my_file.xls", quote=F, sep="\t", col.names = NA
 ```{r source_example, eval=FALSE}
 source("exerciseRbasics.R")
 ```
+
+
+# Web Apps with Shiny
+
+<iframe src="https://shiny.rstudio.com/gallery/google-charts.html" style="border: none; width: 880px; height: 900px"></iframe>
 
 # R Markdown
 

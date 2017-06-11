@@ -284,16 +284,20 @@ entries:
       url: /mydoc_Rbasics_15.html
       output: web
 
-    - title: 16. R Markdown
+    - title: 16. Web Apps with Shiny
       url: /mydoc_Rbasics_16.html
       output: web
 
-    - title: 17. Session Info
+    - title: 17. R Markdown
       url: /mydoc_Rbasics_17.html
       output: web
 
-    - title: 18. References
+    - title: 18. Session Info
       url: /mydoc_Rbasics_18.html
+      output: web
+
+    - title: 19. References
+      url: /mydoc_Rbasics_19.html
       output: web
 
   - title: Programming in R
