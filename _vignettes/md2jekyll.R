@@ -87,7 +87,7 @@ md2Jekyll <- function(mdfile="Rbasics.knit.md", sidebartitle=NULL, sidebarpos, o
     dir.create(image_dir, showWarnings=FALSE)
     ## Get html image file paths
     htmlimgindex <- grepl("src=\".*\"", md)
-    htmlimgindex <- htmlimgindex & !grepl("iframe {1,} src=", md) # To exclude, iframe tags
+    htmlimgindex <- htmlimgindex & !grepl("iframe {1,}src=", md) # To exclude, iframe tags
     if(sum(htmlimgindex) > 0) {
         htmlimgtag <- md[htmlimgindex]
         htmlimgpath <- gsub("^.*?src=\"(.*?)\".*", "\\1", htmlimgtag)
