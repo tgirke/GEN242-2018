@@ -1,6 +1,6 @@
 ---
 title: 17. Shiny Web Apps
-last_updated: Sun Jun 25 17:35:58 2017
+last_updated: Sun Jun 25 17:39:24 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_17.html
 ---
@@ -83,7 +83,8 @@ mydir <- system.file("examples", package="shiny")
 dir.create('my_shiny_test_dir')
 file.copy(mydir, "my_shiny_test_dir", recursive=TRUE)
 setwd("my_shiny_test_dir/examples")
-runApp("01_hello") # Runs first example app in directory. 
+runApp("01_hello") # Runs first example app in directory 
+dir() # Lists available Shiny examples (directories). 
 ```
 
 <br><br><center><a href="mydoc_Rbasics_16.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page

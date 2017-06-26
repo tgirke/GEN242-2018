@@ -632,7 +632,8 @@ dev.off()
 ## dir.create('my_shiny_test_dir')
 ## file.copy(mydir, "my_shiny_test_dir", recursive=TRUE)
 ## setwd("my_shiny_test_dir/examples")
-## runApp("01_hello") # Runs first example app in directory.
+## runApp("01_hello") # Runs first example app in directory
+## dir() # Lists available Shiny examples (directories).
 
 ## ----sessionInfo---------------------------------------------------------
 sessionInfo()
