@@ -288,7 +288,7 @@ entries:
       url: /mydoc_Rbasics_16.html
       output: web
 
-    - title: 17. Web Apps with Shiny
+    - title: 17. Shiny Web Apps
       url: /mydoc_Rbasics_17.html
       output: web
 

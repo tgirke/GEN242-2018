@@ -1672,7 +1672,7 @@ ln -s ~/bigdata/today/rmarkdown/sample.html sample.html
 After this one can view the report in a web browser using this URL [http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html](http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html).
 If necessary access to the URL can be restricted with a password following the instructions [here](http://hpcc.ucr.edu/manuals_linux-cluster_sharing.html#sharing-files-on-the-web).
 
-# Web Apps with Shiny
+# Shiny Web Apps
 
 ## What is Shiny?
 
