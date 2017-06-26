@@ -1,6 +1,6 @@
 ---
 title: 17. Shiny Web Apps
-last_updated: Sun Jun 25 17:08:16 2017
+last_updated: Sun Jun 25 17:12:43 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_17.html
 ---
@@ -30,6 +30,7 @@ AWS, GCP, shinyapp.io service). The basic structure of a Shiny app is an
     ```r
     shinyApp(ui = ui, server = server)
     ```
+Alternatively, the `ui` and `server` functions can be organized in two script files, a `ui.R` and a `server.R` script, respectively. 
 
 ## Develop and test Shiny app locally
 
