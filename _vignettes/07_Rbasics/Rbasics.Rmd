@@ -1696,6 +1696,7 @@ AWS, GCP, shinyapp.io service). The basic structure of a Shiny app is an
     ```{r shinyapp, eval=FALSE}
     shinyApp(ui = ui, server = server)
     ```
+
 Alternatively, the `ui` and `server` functions can be organized in two script files, a `ui.R` and a `server.R` script, respectively. 
 
 ## Develop and test Shiny app locally
