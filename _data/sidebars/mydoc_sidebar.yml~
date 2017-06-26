@@ -364,11 +364,11 @@ entries:
       url: /mydoc_Rbasics_15.html
       output: web
 
-    - title: 16. Web Apps with Shiny
+    - title: 16. R Markdown
       url: /mydoc_Rbasics_16.html
       output: web
 
-    - title: 17. R Markdown
+    - title: 17. Web Apps with Shiny
       url: /mydoc_Rbasics_17.html
       output: web
 

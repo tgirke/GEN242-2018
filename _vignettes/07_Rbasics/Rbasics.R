@@ -606,6 +606,27 @@ dev.off()
 ## cd ~/.html
 ## ln -s ~/bigdata/today/rmarkdown/sample.html sample.html
 
+## ----fluidpage, eval=FALSE-----------------------------------------------
+## ui <- fluidPage()
+
+## ----server, eval=FALSE--------------------------------------------------
+## server <- function(input, output) {}
+
+## ----shinyapp, eval=FALSE------------------------------------------------
+## shinyApp(ui = ui, server = server)
+
+## ----runshinyapp1, eval=FALSE--------------------------------------------
+## library(shiny)
+## runApp("myappdir") # To show code in app, add argument: display.mode="showcase"
+
+## ----deployshinyapp1, eval=FALSE-----------------------------------------
+## setwd("myappdir")
+## library(rsconnect)
+## deployApp()
+
+## ----embedshiny, eval=FALSE----------------------------------------------
+## <iframe src="https://tgirke.shinyapps.io/diamonds/" style="border: none; width: 880px; height: 900px"></iframe>
+
 ## ----sessionInfo---------------------------------------------------------
 sessionInfo()
 
