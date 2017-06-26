@@ -1,6 +1,6 @@
 ---
 title: 17. Shiny Web Apps
-last_updated: Sun Jun 25 17:15:18 2017
+last_updated: Sun Jun 25 17:19:42 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_17.html
 ---
@@ -56,10 +56,6 @@ setwd("myappdir")
 library(rsconnect)
 deployApp()
 ```
-
-To run the Shiny app, the `app.R` file is saved to a dedicated directory (here `myapp`) and then initialized 
-from an R session . 
-
 
 ## Example shiny app
 

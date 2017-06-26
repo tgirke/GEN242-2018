@@ -1721,10 +1721,6 @@ library(rsconnect)
 deployApp()
 ```
 
-To run the Shiny app, the `app.R` file is saved to a dedicated directory (here `myapp`) and then initialized 
-from an R session . 
-
-
 ## Example shiny app
 
 The following Shiny app is hosted on `shinyapps.io` and embedded into the markdown (or html) source of this page
