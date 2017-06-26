@@ -1,6 +1,6 @@
 ---
 title: 16. R Markdown
-last_updated: Sun Jun 25 17:39:24 2017
+last_updated: Sun Jun 25 17:41:27 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
