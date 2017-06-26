@@ -1692,7 +1692,7 @@ AWS, GCP, shinyapp.io service). The basic structure of a Shiny app is an
     ```{r server, eval=FALSE}
     server <- function(input, output) {}
     ```
-3. Run shiny app
+3. Statement to run shiny app
     ```{r shinyapp, eval=FALSE}
     shinyApp(ui = ui, server = server)
     ```
