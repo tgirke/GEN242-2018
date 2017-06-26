@@ -627,6 +627,13 @@ dev.off()
 ## ----embedshiny, eval=FALSE----------------------------------------------
 ## <iframe src="https://tgirke.shinyapps.io/diamonds/" style="border: none; width: 880px; height: 900px"></iframe>
 
+## ----learnshiny, eval=FALSE----------------------------------------------
+## mydir <- system.file("examples", package="shiny")
+## dir.create('my_shiny_test_dir')
+## file.copy(mydir, "my_shiny_test_dir", recursive=TRUE)
+## setwd("my_shiny_test_dir/examples")
+## runApp("01_hello") # Runs first example app in directory.
+
 ## ----sessionInfo---------------------------------------------------------
 sessionInfo()
 

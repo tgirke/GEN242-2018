@@ -2126,11 +2126,20 @@ library(rsconnect)
 deployApp()</code></pre>
 </div>
 <div id="example-shiny-app" class="section level2">
-<h2><span class="header-section-number">17.4</span> Example shiny app</h2>
+<h2><span class="header-section-number">17.4</span> Example Shiny app</h2>
 <p>The following Shiny app is hosted on <code>shinyapps.io</code> and embedded into the markdown (or html) source of this page using the following iframe syntax:</p>
 <pre class="r"><code>&lt;iframe src=&quot;https://tgirke.shinyapps.io/diamonds/&quot; style=&quot;border: none; width: 880px; height: 900px&quot;&gt;&lt;/iframe&gt;</code></pre>
 <iframe src="https://tgirke.shinyapps.io/diamonds/" style="border: none; width: 880px; height: 900px">
 </iframe>
+</div>
+<div id="learning-shiny" class="section level2">
+<h2><span class="header-section-number">17.5</span> Learning Shiny</h2>
+<p>The Shiny section on the Rstudio site contains excellent <a href="https://shiny.rstudio.com/tutorial/lesson1/">tutorials</a>. In addition, users may want to explore the example apps included in the <code>shiny</code> package. This can be done by loading the individual examples (see <a href="https://shiny.rstudio.com/tutorial/lesson1/">here</a> or saving the code to a user writable directory like this:</p>
+<pre class="r"><code>mydir &lt;- system.file(&quot;examples&quot;, package=&quot;shiny&quot;)
+dir.create('my_shiny_test_dir')
+file.copy(mydir, &quot;my_shiny_test_dir&quot;, recursive=TRUE)
+setwd(&quot;my_shiny_test_dir/examples&quot;)
+runApp(&quot;01_hello&quot;) # Runs first example app in directory. </code></pre>
 </div>
 </div>
 <div id="session-info" class="section level1">

@@ -1,6 +1,6 @@
 ---
 title: 17. Shiny Web Apps
-last_updated: Sun Jun 25 17:19:42 2017
+last_updated: Sun Jun 25 17:35:58 2017
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_17.html
 ---
@@ -57,7 +57,7 @@ library(rsconnect)
 deployApp()
 ```
 
-## Example shiny app
+## Example Shiny app
 
 The following Shiny app is hosted on `shinyapps.io` and embedded into the markdown (or html) source of this page
 using the following iframe syntax:
@@ -69,6 +69,22 @@ using the following iframe syntax:
 
 <iframe src="https://tgirke.shinyapps.io/diamonds/" style="border: none; width: 880px; height: 900px"></iframe>
 
+
+## Learning Shiny
+
+The Shiny section on the Rstudio site contains excellent [tutorials](https://shiny.rstudio.com/tutorial/lesson1/).
+In addition, users may want to explore the example apps included in the `shiny` package. This can be
+done by loading the individual examples (see [here](https://shiny.rstudio.com/tutorial/lesson1/) or saving
+the code to a user writable directory like this:
+
+
+```r
+mydir <- system.file("examples", package="shiny")
+dir.create('my_shiny_test_dir')
+file.copy(mydir, "my_shiny_test_dir", recursive=TRUE)
+setwd("my_shiny_test_dir/examples")
+runApp("01_hello") # Runs first example app in directory. 
+```
 
 <br><br><center><a href="mydoc_Rbasics_16.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_18.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

@@ -1721,7 +1721,7 @@ library(rsconnect)
 deployApp()
 ```
 
-## Example shiny app
+## Example Shiny app
 
 The following Shiny app is hosted on `shinyapps.io` and embedded into the markdown (or html) source of this page
 using the following iframe syntax:
@@ -1732,6 +1732,21 @@ using the following iframe syntax:
 
 <iframe src="https://tgirke.shinyapps.io/diamonds/" style="border: none; width: 880px; height: 900px"></iframe>
 
+
+## Learning Shiny
+
+The Shiny section on the Rstudio site contains excellent [tutorials](https://shiny.rstudio.com/tutorial/lesson1/).
+In addition, users may want to explore the example apps included in the `shiny` package. This can be
+done by loading the individual examples (see [here](https://shiny.rstudio.com/tutorial/lesson1/) or saving
+the code to a user writable directory like this:
+
+```{r learnshiny, eval=FALSE}
+mydir <- system.file("examples", package="shiny")
+dir.create('my_shiny_test_dir')
+file.copy(mydir, "my_shiny_test_dir", recursive=TRUE)
+setwd("my_shiny_test_dir/examples")
+runApp("01_hello") # Runs first example app in directory. 
+```
 
 # Session Info
 
