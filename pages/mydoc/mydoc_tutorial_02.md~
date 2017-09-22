@@ -522,3 +522,6 @@ __Session-level comands__
 * `$ tmux kill-session -t <id>`: kills a specific tmux session
 * `Ctrl-a : kill-session`: kills a session from tmux command mode that can be initiated with `Ctrl-a :`
 
+## New Nvim-R-Tmux
+
+See [here](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899)
