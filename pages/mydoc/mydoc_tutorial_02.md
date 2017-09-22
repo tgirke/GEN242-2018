@@ -524,4 +524,6 @@ __Session-level comands__
 
 ## New Nvim-R-Tmux
 
-See [here](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899)
+See [here](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899).
+
+The new Nvim-R plugin also supports the latest extension of Vim called Neovim. The main advantages of Neovim compared to Vim are its better performance and its built-in terminal emulator facilitating the communication among Neovim and interactive programming environments such as R. Since the Vim and Neovim environments are managed independently, one can run them in parallel on the same system without interfering with each other.
