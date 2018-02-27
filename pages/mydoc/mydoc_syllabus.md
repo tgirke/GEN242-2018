@@ -10,9 +10,9 @@ permalink: mydoc_syllabus.html
 Data Analysis in Genome Biology <br>
 GEN242 - Spring 2018
 
-## Printable Google Doc version of syllabus
+## Printable syllabus
 
-See [here](https://goo.gl/fo42NS)
+See Google Doc version [here](https://goo.gl/fo42NS).
 
 ## Instructor
 Name: Thomas Girke <br> 
