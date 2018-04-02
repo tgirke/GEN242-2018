@@ -3,6 +3,8 @@
 topnav:
 - title: Topnav
   items:
+    - title: Piazza
+      external_url: https://piazza.com/class/jfiay7n9r731bs
     - title: GitHub Repo
       external_url: https://github.com/tgirke/GEN242
 
