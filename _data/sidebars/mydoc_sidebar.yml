@@ -56,78 +56,6 @@ entries:
       url: /mydoc_slides_01.html
       output: web
     
-    - title: Molbiol Basics
-      url: /mydoc_slides_02.html
-      output: web
-    
-    - title: Databases and Software
-      url: /mydoc_slides_03.html
-      output: web
-    
-    - title: DNA Sequencing
-      url: /mydoc_slides_04.html
-      output: web
-    
-    - title: Introduction to R
-      url: /mydoc_slides_05.html
-      output: web
-    
-    - title: Sequence Alignments
-      url: /mydoc_slides_06.html
-      output: web
-    
-    - title: Programming in R
-      url: /mydoc_slides_07.html
-      output: web
-    
-    - title: Multiple Alignments
-      url: /mydoc_slides_08.html
-      output: web
-    
-    - title: Short Read Alignments
-      url: /mydoc_slides_09.html
-      output: web
-    
-    - title: NGS Analysis Basics
-      url: /mydoc_slides_10.html
-      output: web
-    
-    - title: Gene Expression Analysis
-      url: /mydoc_slides_11.html
-      output: web
-    
-    - title: NGS Workflows
-      url: /mydoc_slides_12.html
-      output: web
-    
-    - title: ChIP-Seq Overview
-      url: /mydoc_slides_13.html
-      output: web
-    
-    - title: VAR-Seq Overview
-      url: /mydoc_slides_14.html
-      output: web
-    
-    - title: Sequence Assembly
-      url: /mydoc_slides_15.html
-      output: web
-    
-    - title: Gene Annotation and Ontologies
-      url: /mydoc_slides_16.html
-      output: web
-    
-    - title: Cluster Analysis
-      url: /mydoc_slides_17.html
-      output: web
-    
-    - title: Profile HMMs
-      url: /mydoc_slides_18.html
-      output: web
-    
-    - title: Introduction to Phylogenetics
-      url: /mydoc_slides_19.html
-      output: web
-    
   - title: Homework
     output: web
     folderitems:
@@ -136,26 +64,6 @@ entries:
       url: /mydoc_homework_01.html
       output: web
     
-    - title: HW2 - Biocluster/Linux
-      url: /mydoc_homework_02.html
-      output: web
-      
-    - title: HW3 - Introduction to R
-      url: /mydoc_homework_03.html
-      output: web
-    
-    - title: HW4 - Pairwise Alignments
-      url: /mydoc_homework_04.html
-      output: web
-    
-    - title: HW5 - Programming in R
-      url: /mydoc_Programming_in_R_09.html
-      output: web
-    
-    - title: HW6 - Sequence Analysis
-      url: /mydoc_Rsequences_08.html
-      output: web
-  
   - title: GitHub
     output: web
     folderitems:
