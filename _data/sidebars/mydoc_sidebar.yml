@@ -80,12 +80,64 @@ entries:
       url: /mydoc_tutorial_01.html
       output: web
     
+    - title: GitHub in GEN242
+      url: /mydoc_tutorial_01.html#github-in-gen242
+      output: web
+    
+    - title: Installation
+      url: /mydoc_tutorial_01.html#installing-git
+      output: web
+    
+    - title: Git from Command-line
+      url: /mydoc_tutorial_01.html#git-basics-from-command-line
+      output: web
+    
+    - title: GitHub from Command-line
+      url: /mydoc_tutorial_01.html#github-basics-from-command-line
+      output: web
+    
+    - title: GitHub from RStudio
+      url: /mydoc_tutorial_01.html#using-github-from-rstudio
+      output: web
+    
   - title: Linux & HPCC Cluster
     output: web
     folderitems:
     
     - title: Table of Content
       url: /mydoc_tutorial_02.html
+      output: web
+    
+    - title: HPCC Cluster
+      url: /mydoc_tutorial_02.html#hpcc-cluster-overview
+      output: web
+    
+    - title: Linux Basics
+      url: /mydoc_tutorial_02.html#linux-basics
+      output: web
+    
+    - title: Software & Module System
+      url: /mydoc_tutorial_02.html#software-and-module-system
+      output: web
+    
+    - title: Big Data Storage
+      url: /mydoc_tutorial_02.html#big-data-storage
+      output: web
+    
+    - title: Queueing System Slurm
+      url: /mydoc_tutorial_02.html#queuing-system-slurm
+      output: web
+    
+    - title: Text Editors
+      url: /mydoc_tutorial_02.html#textcode-editors
+      output: web
+    
+    - title: Vim-R-Tmux
+      url: /mydoc_tutorial_02.html#vim-r-tmux-essentials
+      output: web
+    
+    - title: Nvim-R-Tmux
+      url: /mydoc_tutorial_02.html#nvim-r-tmux
       output: web
     
   - title: Introduction to R
