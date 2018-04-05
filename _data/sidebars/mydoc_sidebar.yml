@@ -72,6 +72,10 @@ entries:
       url: /mydoc_homework_01.html
       output: web
     
+    - title: HW2 - Biocluster/Linux
+      url: /mydoc_homework_02.html
+      output: web
+      
   - title: GitHub
     output: web
     folderitems:

@@ -108,6 +108,38 @@ entries:
       url: /mydoc_tutorial_02.html
       output: web
     
+    - title: HPCC Cluster
+      url: /mydoc_tutorial_02.html#hpcc-cluster-overview
+      output: web
+    
+    - title: Linux Basics
+      url: /mydoc_tutorial_02.html#linux-basics
+      output: web
+    
+    - title: Software & Module System
+      url: /mydoc_tutorial_02.html#software-and-module-system
+      output: web
+    
+    - title: Big Data Storage
+      url: /mydoc_tutorial_02.html#big-data-storage
+      output: web
+    
+    - title: Queueing System Slurm
+      url: /mydoc_tutorial_02.html#queuing-system-slurm
+      output: web
+    
+    - title: Text Editors
+      url: /mydoc_tutorial_02.html#textcode-editors
+      output: web
+    
+    - title: Vim-R-Tmux
+      url: /mydoc_tutorial_02.html#vim-r-tmux-essentials
+      output: web
+    
+    - title: Nvim-R-Tmux
+      url: /mydoc_tutorial_02.html#nvim-r-tmux
+      output: web
+    
   - title: Introduction to R
     output: web, pdf
     folderitems:
