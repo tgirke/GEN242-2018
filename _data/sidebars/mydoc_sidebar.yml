@@ -56,6 +56,14 @@ entries:
       url: /mydoc_slides_01.html
       output: web
     
+    - title: Molbiol Basics
+      url: /mydoc_slides_02.html
+      output: web
+    
+    - title: Databases and Software
+      url: /mydoc_slides_03.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
