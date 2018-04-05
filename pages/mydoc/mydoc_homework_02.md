@@ -8,11 +8,9 @@ permalink: mydoc_homework_02.html
 
 1. Download Halobacterium proteome and inspect it
     ```sh
-    wget http://biocluster.ucr.edu/~tgirke/Linux.sh # downloads code from this page
-    module load ncbi-blast/2.2.26
-    wget ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/archaea/Halobacterium_salinarum/representative/GCA_000069025.1_ASM6902v1/GCA_000069025.1_ASM6902v1_protein.faa.gz
-    gunzip GCA_000069025.1_ASM6902v1_protein.faa.gz
-    mv GCA_000069025.1_ASM6902v1_protein.faa halobacterium.faa
+    wget ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/archaea/Halobacterium_salinarum/representative/GCA_000006805.1_ASM680v1/GCA_000006805.1_ASM680v1_protein.faa.gz
+    gunzip GCA_000006805.1_ASM680v1_protein.faa.gz
+    mv GCA_000006805.1_ASM680v1_protein.faa halobacterium.faa
     less halobacterium.faa # press q to quit
     ```
 
@@ -35,18 +33,19 @@ permalink: mydoc_homework_02.html
 
 5. Create a BLASTable database with `formatdb`
     ```sh
-    formatdb -i halobacterium.faa -p T -o
+    module load ncbi-blast
+    makeblastdb -in halobacterium.faa -out halobacterium.faa -dbtype prot -hash_index -parse_seqids
     ```
 
 6. Query BLASTable database by IDs stored in a file (_e.g._ `myIDs`)
     ```sh
-    fastacmd -d halobacterium.faa -i myIDs > myseq.fasta
+    blastdbcmd -db halobacterium.faa -dbtype prot -entry_batch myIDs -get_dups -out myseq.fasta
     ```
 
 7. Run BLAST search for sequences stored in `myseq.fasta`
     ```sh
-    blastall -p blastp -i myseq.fasta -d halobacterium.faa -o blastp.out -e 1e-6 -v 10 -b 10
-    blastall -p blastp -i myseq.fasta -d halobacterium.faa -m 8 -e 1e-6 > blastp.tab
+    blastp -query myseq.fasta -db halobacterium.faa -outfmt 0 -evalue 1e-6 -out blastp.out
+    blastp -query myseq.fasta -db halobacterium.faa -outfmt 6 -evalue 1e-6 -out blastp.tab
     ```
 
 Additional exercise material in [Linux Manual](http://hpcc.ucr.edu/manuals_linux-basics.html#exercises)
@@ -54,7 +53,7 @@ Additional exercise material in [Linux Manual](http://hpcc.ucr.edu/manuals_linux
 ## Homework assignment
 
 Perform above analysis on the following _Escherichia coli_ strain: ftp://ftp.ncbi.nih.gov/genomes/genbank/bacteria/Escherichia_coli/latest_assembly_versions/GCA_000461395.1_Esch_coli_UMEA_3592-1_V1/GCA_000461395.1_Esch_coli_UMEA_3592-1_V1_protein.faa.gz. 
-Record result from final BLAST command (with `-m 8`) in text file.
+Record result from final BLAST command (with `outfmt 6`) in text file.
 
 ## Homework submission
 
