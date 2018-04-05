@@ -100,6 +100,14 @@ entries:
       url: /mydoc_tutorial_01.html#github-basics-from-command-line
       output: web
     
+    - title: Exercise
+      url: /mydoc_tutorial_01.html#exercise 
+      output: web
+    
+    - title: Online file upload 
+      url: /mydoc_tutorial_01.html#online-file-upload 
+      output: web
+    
     - title: GitHub from RStudio
       url: /mydoc_tutorial_01.html#using-github-from-rstudio
       output: web

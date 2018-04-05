@@ -92,6 +92,28 @@ permalink: mydoc_tutorial_01.html
     git commit -am "some edits"; git push -u origin master
     ```
 
+## Exercise
+
+Run the following git/github excercise from the command-line.
+
+```sh 
+git clone https://github.com/<user or org>/<repo name> 
+cd <repo name>
+git pull
+touch test # Creates empty file for testing
+git add -A
+git commit -am "some edits"
+git push -u origin master
+##-> Edit test file online and then run `git pull` to inspect changes
+```
+
+## Online file upload
+
+This could be useful for new users who want to upload their homework assignments to GitHub but are not familiar enough with the command-line yet.
+
+1. Press `Create new file` button on your repository. 
+2. Under the file path window add required subdirectory structure and a dummy file name (e.g. `Homework/HW1/dummy.txt`)
+3. After this press `Upload files` and upload any file (e.g. homework) to the newly create directory. After this the initial dummy file can be deleted. The latter is necessary since empty directories are not visible on GitHub.
 
 ## Using GitHub from RStudio
 + After installing Git, set path to Git executable in Rstudio: 
