@@ -38,4 +38,4 @@ Please assemble the results of this homework in one PDF file and upload it to yo
 
 ## Due date
 
-Most homeworks will be due one week after they are assigned. This one is due on Thu, April 13th at 6:00 PM.
+Most homeworks will be due one week after they are assigned. This one is due on Thu, April 12th at 6:00 PM.

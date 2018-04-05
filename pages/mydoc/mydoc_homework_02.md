@@ -62,4 +62,4 @@ Upload result file to your private course GitHub repository under `Homework/HW2/
 
 ## Due date
 
-Most homeworks will be due one week after they are assigned. This one is due on Thu, April 13th at 6:00 PM.
+Most homeworks will be due one week after they are assigned. This one is due on Thu, April 12th at 6:00 PM.
