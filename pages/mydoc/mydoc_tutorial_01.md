@@ -6,6 +6,8 @@ permalink: mydoc_tutorial_01.html
 
 ## GitHub in GEN242 
 
+test
+
 + Note, this class will make heavy use of GitHub 
 + Homework assignments will be submitted to private GitHub repositories: one repository for each student
 + Course projects will also use private GitHub repositories: one repository for each course project (shared among students of each project)
