@@ -8,7 +8,7 @@ permalink: mydoc_homework_02.html
 
 1. Download Halobacterium proteome and inspect it
     ```sh
-    wget http://biocluster.ucr.edu/~tgirke/Linux.sh # downloads code from this slide
+    wget http://biocluster.ucr.edu/~tgirke/Linux.sh # downloads code from this page
     module load ncbi-blast/2.2.26
     wget ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/archaea/Halobacterium_salinarum/representative/GCA_000069025.1_ASM6902v1/GCA_000069025.1_ASM6902v1_protein.faa.gz
     gunzip GCA_000069025.1_ASM6902v1_protein.faa.gz
