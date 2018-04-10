@@ -64,6 +64,10 @@ entries:
       url: /mydoc_slides_03.html
       output: web
     
+    - title: DNA Sequencing
+      url: /mydoc_slides_04.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
