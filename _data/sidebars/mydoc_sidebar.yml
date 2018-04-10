@@ -244,4 +244,24 @@ entries:
       url: /mydoc_project_intro.html
       output: web
     
+    - title: ChIP-Seq1 - Motif Prediction
+      url: /mydoc_project_chipseq1.html
+      output: web
+    
+    - title: ChIP-Seq2 - Peak Callers
+      url: /mydoc_project_chipseq2.html
+      output: web
+    
+    - title: RNA-Seq1 - Aligners
+      url: /mydoc_project_rnaseq1.html
+      output: web
+    
+    - title: RNA-Seq2 - DEG Methods
+      url: /mydoc_project_rnaseq2.html
+      output: web
+    
+    - title: VAR-Seq1 - Functional Prediction
+      url: /mydoc_project_varseq1.html
+      output: web
+    
     

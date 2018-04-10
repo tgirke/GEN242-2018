@@ -64,6 +64,10 @@ entries:
       url: /mydoc_slides_03.html
       output: web
     
+    - title: DNA Sequencing
+      url: /mydoc_slides_04.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
@@ -98,6 +102,14 @@ entries:
     
     - title: GitHub from Command-line
       url: /mydoc_tutorial_01.html#github-basics-from-command-line
+      output: web
+    
+    - title: Exercise
+      url: /mydoc_tutorial_01.html#exercise 
+      output: web
+    
+    - title: Online file upload 
+      url: /mydoc_tutorial_01.html#online-file-upload 
       output: web
     
     - title: GitHub from RStudio
@@ -230,6 +242,26 @@ entries:
     
     - title: Overview
       url: /mydoc_project_intro.html
+      output: web
+    
+    - title: ChIP-Seq1 - Motif Prediction
+      url: /mydoc_project_chipseq1.html
+      output: web
+    
+    - title: ChIP-Seq2 - Peak Callers
+      url: /mydoc_project_chipseq2.html
+      output: web
+    
+    - title: RNA-Seq1 - Aligners
+      url: /mydoc_project_rnaseq1.html
+      output: web
+    
+    - title: RNA-Seq2 - DEG Methods
+      url: /mydoc_project_rnaseq2.html
+      output: web
+    
+    - title: VAR-Seq1 - Functional Prediction
+      url: /mydoc_project_varseq1.html
       output: web
     
     
