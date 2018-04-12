@@ -1,6 +1,6 @@
 ---
 title: Introduction to R  <br> <br> 1. Overview
-last_updated: Thu Apr 12 06:46:11 2018
+last_updated: Thu Apr 12 09:47:49 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
@@ -63,12 +63,12 @@ advanced.
 
 Some userful shortcuts: `Ctrl+Enter` (send code), `Ctrl+Shift+C` (comment/uncomment), `Ctrl+1/2` (switch window focus)
 
-### Example: Vim-R-Tmux
+### Example: Nim-R-Tmux
 
-Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r)
+Terminal-based Working Environment for R: [Nvim-R-Tmux](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899). 
 
-<center><img title="Vim-R-Tmux" src="./pages/mydoc/Rbasics_files/screenshot.png" ></center>
-<center>Vim-R-Tmux IDE for R</center>
+<center><img title="Nvim-R-Tmux" src="./pages/mydoc/Rbasics_files/Nvim-R.gif" ></center>
+<center>Nvim-R-Tmux IDE for R</center>
 
 <br><br><center><a href="mydoc_Rbasics_01.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_02.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

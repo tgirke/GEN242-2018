@@ -86,12 +86,12 @@ advanced.
 
 Some userful shortcuts: `Ctrl+Enter` (send code), `Ctrl+Shift+C` (comment/uncomment), `Ctrl+1/2` (switch window focus)
 
-### Example: Vim-R-Tmux
+### Example: Nim-R-Tmux
 
-Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r)
+Terminal-based Working Environment for R: [Nvim-R-Tmux](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899). 
 
-<center><img title="Vim-R-Tmux" src="images/screenshot.png" ></center>
-<center>Vim-R-Tmux IDE for R</center>
+<center><img title="Nvim-R-Tmux" src="https://raw.githubusercontent.com/jalvesaq/Nvim-R/master/Nvim-R.gif" ></center>
+<center>Nvim-R-Tmux IDE for R</center>
 
 # R Package Repositories
 
