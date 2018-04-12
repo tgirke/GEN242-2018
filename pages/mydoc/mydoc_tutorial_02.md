@@ -492,6 +492,8 @@ binding has been remapped in the provided `.config/nvim/init.vim` file to the sp
 
 ### Important keybindings for nvim
 
+__Nvim commands__
+
 * `\rf`: opens vim-connected R session. If you do this the first time in your user account, you might be asked to create an `R` directory under `~/`. If so approve this action by pressing `y`. 
 * `spacebar`: sends code from vim to R; here remapped in `init.vim` from default `\l`
 * `:split` or `:vsplit`: splits viewport (similar to pane split in tmux)
