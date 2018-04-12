@@ -438,11 +438,13 @@ Important modifier keys to control vim
 * [Official Vim Documentation](http://vimdoc.sourceforge.net/)
 * [UCR Linux Manual](http://manuals.bioinformatics.ucr.edu/home/linux-basics#TOC-Vim-Manual)
 
-## Vim-R-Tmux essentials
-Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r)
+## Vim-R-Tmux essentials 
+
+Terminal-based Working Environment for R: [Vim-R-Tmux](http://manuals.bioinformatics.ucr.edu/home/programming-in-r/vim-r). <font color="red">Note: the new version of of vim-R is <a href="http://127.0.0.1:4000/mydoc_tutorial_02.html#nvim-r-tmux">nvim-R</a>. New users should use the new nvim-R instead of the old vim-R.</font>
 
 <center><img title="Vim-R-Tmux" src="pages/mydoc/Rbasics_files/screenshot.png" ></center>
 <center>Vim-R-Tmux IDE for R</center>
+
 
 ### Basics
 
@@ -524,11 +526,146 @@ __Session-level comands__
 
 ## Nvim-R-Tmux
 
-The new Nvim-R plugin also supports the latest extension of Vim called Neovim.
-The main advantages of Neovim compared to Vim are its better performance and
-its built-in terminal emulator facilitating the communication among Neovim and
-interactive programming environments such as R. Since the Vim and Neovim
-environments are managed independently, one can run them in parallel on the
-same system without interfering with each other.
+<div id='overview'/>
 
-A short manual for Nvim-R-Tmux is available [here](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899).
+### 1. Overview
+
+This page gives an overview of the installation and usage of the new [Nvim-R](https://github.com/jalvesaq/Nvim-R) plugin from Jakson Alves de Aquino, the developer of the original vim-R plugin ([also available here](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899)). The new plugin now also supports the new extension of Vim called [Neovim](https://neovim.io/). The main advantages of Neovim compared to Vim are its better performance and its built-in terminal emulator facilitating the communication among Neovim and interactive programming environments such as R. Since the Vim and Neovim environments are managed independently, one can run them in parallel on the same system without interfering with each other. The Nvim-R project page can be found [here](https://vim.sourceforge.io/scripts/script.php?script_id=2628) and its main manual is [here](https://raw.githubusercontent.com/jalvesaq/Nvim-R/master/doc/Nvim-R.txt). The usage section below introduces how to use the plugin with or without Tmux. 
+
+<center><img title="Nvim-R-Tmux" src="https://raw.githubusercontent.com/jalvesaq/Nvim-R/master/Nvim-R.gif" ></center>
+<center>Nvim-R-Tmux IDE for R</center>
+
+<div id='intallation'/>
+
+### 2 Installation
+
+<div id='neovim'/>
+
+#### 2.1 Install Neovim for your OS 
+Neovim Version >= 0.1.7 is required for Nvim-R. For the installation, follow the instructions [here](https://github.com/neovim/neovim/wiki/Installing-Neovim). A sample config file for controlling Neovim, called `init.vim`, is given [here](https://gist.githubusercontent.com/tgirke/7a7c197b443243937f68c422e5471899/raw/init.vim). This or a similar `init.vim` file should be downloaded and saved to a user's home under `~/.config/nvim/init.vim`.
+
+<div id='tmux'/>
+
+#### 2.2 Install Tmux 
+The usage of Tmux with Nvim-R is highly recommended on Linux or OS X systems but not absolutely necessary. Supported Tmux versions are >=2.0. To upgrade Tmux to a more recent version, one can follow the instructions [here](https://goo.gl/FssKpb). To install it from source, consult this [page](https://gist.github.com/P7h/91e14096374075f5316e#file-tmux_build_from_source_ubuntu-sh). If you get on Ubuntu 16.04 a `locale-gen en_US.UTF-8` error, then the last step [here](https://github.com/openwrt/packages/issues/2900) fixes it.  A sample config file for controlling Tmux, called `.tmux.conf`, is given [here](https://gist.githubusercontent.com/tgirke/7a7c197b443243937f68c422e5471899/raw/tmux.conf). This or a similar `.tmux.conf` file should be downloaded and saved to a user's home under `~/.tmux.conf`.
+
+<div id='colorout'/>
+
+#### 2.3 Install R package `colorout` 
+The R package `colorout` is available on GitHub [here](https://github.com/jalvesaq/colorout). If it is not yet installed in an R environment, one can install it from within R via the `devtools` package as follows: 
+
+```sh
+devtools::install_github("jalvesaq/colorout")
+```
+
+<div id='nvimr'/>
+
+#### 2.4 Install Nvim-R plugin for Neovim
+Download the latest `*.vmb` from [here](https://vim.sourceforge.io/scripts/script.php?script_id=2628). Then open the downloaded file with nvim (neovim), and then run from nvim's command mode the following commands:
+
+```sh
+:packadd vimball
+:so %
+# press space bar a few times until install is complete!
+```
+
+<div id='nerdtree'/>
+
+#### 2.5 Install Nerdtree (optional)
+Download the Nerdtree vim plugin from [here](http://www.vim.org/scripts/script.php?script_id=1658). Then extract to `~/.config/nvim` with:
+
+```sh
+unzip NERD_tree.zip -d ~/.config/nvim
+```
+
+<div id='colorscheme'/>
+
+#### 2.6 Color Scheme (optional)
+Jakson Alves de Aquino has developed the `southernlights` color scheme that works well with Nvim-R. To enable it, users want to save the file `southernlights.vim` from this [repos](https://github.com/jalvesaq/southernlights) to `~/.config/nvim/colors/` and add the recommended bash configurations to your `.bashrc` as described [here](https://github.com/jalvesaq/southernlights). 
+
+<div id='ucrhpcc'/>
+
+#### 2.7 Step-by-step setup in user accounts of UCR's HPCC
+Neovim and Tmux are already installed systemwide on the [HPCC](http://hpcc.ucr.edu/), but need to be loaded from the module system (step 1). What remains to be installed in each user's account are the plugins and configuration files (steps 2-5).
+
+1. Add to your `.bashrc` the following lines
+
+    ```sh
+    if [ -n "$MODULESHOME" ]; then
+        module load neovim
+        module load tmux/2.2
+    fi
+    ```
+
+2. Install Nvim-R plugin for Neovim as instructed [here](#nvimr)
+3. Save this [`init.vim`](https://gist.githubusercontent.com/tgirke/7a7c197b443243937f68c422e5471899/raw/init.vim) sample file to `~/.config/nvim/init.vim`
+4. Install Nerdtree plugin as instructed [here](#nerdtree)
+5. Install `southernlights` color scheme as instructed [here](#colorscheme)
+6. Now log out of the system and in again. After this start tmux and then open a `.R` or `.Rmd` file with `nvim` command. Next open a connected R session with the key combination `\rf` and then follow the usage instructions given [here](#usage).
+
+<div id='ucrhpcc_quick'/>
+
+#### 2.8 Quick setup in user accounts of UCR's HPCC
+
+1. Log into your user account on HPCC and copy and paste these [install commands](http://biocluster.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/vim-r-plugin/README_nvimRtmux).
+2. To enable the nvim-R-tmux environment, log out and in again.
+3. Follow usage instructions of next section.
+
+<div id='usage'/>
+
+### 3. Usage and configuration
+
+The usage of Neovim is almost identical to Vim. Two important differences are:
+
+1. The command for opening Neovim is `nvim` instead of `vim`.
+2. Plugins are usually stored under `~/.config/nvim/` and the counter part of the `.vimrc` config file is `init.vim` located at `~/.config/nvim/init.vim`.
+
+#### 3.1 Run R in built-in terminal emulator
+
+Open a `*.R` or `*.Rmd` file with `nvim` and intialize a connected R session with `\rf`. This command can be remapped to other key combinations, e.g. uncommenting lines 10-12 in `init.vim` will remap it to the `F2` key. Note, the resulting split window among Nvim and R behaves like a split viewport in `nvim` or `vim` meaning the usage of `Ctrl-w w` followed by `i` and `Esc` is important for navigation.
+
+Important keybindings for nvim (vim):
+
+- `\rf`: opens vim-connected R session. If you do this the first time in your user account, you might be asked to create an `R` directory under `~/`. If so approve this action by pressing `y`. 
+- `spacebar`: sends code from vim to R; here remapped in `init.vim` from default `\l`
+- `:split` or `:vsplit`: splits viewport (similar to pane split in tmux)
+- `gz`: maximizes size of viewport in normal mode (similar to Tmux's `Ctrl-a z` zoom utility) 
+- `Ctrl-w w`: jumps cursor to R viewport and back; toggle between insert (`i`) and command (`Esc`) mode is required for navigation and controlling the environment.
+- `Ctrl-w r`: swaps viewports
+- `Ctrl-w =`: resizes splits to equal size
+- `Ctrl-w 5< or 5>`: resizes splits to left or right by 5 steps; change number as needed
+- `Ctrl-w H` or `Ctrl-w K`: toggles between horizontal/vertical splits
+- `Ctrl-spacebar`: omni completion for R objects/functions when nvim is in insert mode. Note, this has been remapped in `init.vim` from difficult to type default `Ctrl-x Ctrl-o`. 
+- `:h nvim-R`: opens nvim-R's user manual; navigation works the same as for any Vim/Nvim help document
+- `:Rhelp fct_name`: opens help for a function from nvim's command mode with text completion support
+- `Ctrl-s and Ctrl-x`: freezes/unfreezes vim (some systems)
+
+
+#### 3.2 Run R in Tmux Pane
+
+To run R in a separate Tmux pane, include the following two lines in your `init.vim`: 
+
+    - `let R_in_buffer=0`
+    - `let R_tmux_split=1`
+
+Open a `*.R` or `*.Rmd` file with `nvim` and start R with `\rf`. Similarly as above, the `\rf` command can be remapped to other key combinations, e.g. uncommenting the three lines containing `F2` in `init.vim` will remap it to the `F2` key. To navigate among the Nvim and R panes, the key combination `Ctrl-w-o` is important. 
+
+Important keybindings for Tmux panes:
+
+- `Ctrl-a o`: jumps cursor to next pane e.g. from Nvim to R console pane
+- `Ctrl-a Ctrl-o`: swaps panes
+- `Ctrl-z z`: maximizes (zooms into) active pane
+
+Note, closing R in this setup will also close the corresponding Tmux pane. This is different from the behavior of the older vim-R plugin where the R pane stayed open and returned a shell after quitting R. This behavior can be useful to open a different R version or ssh into remote systems while maintaining the connected Nvim pane from where code can still be sent to the original pane. To achieve a similar behavior with the new Nvim-R plugin, one can use the following workaround: 
+
+1. Switch cursor scope to R esssion (with `Ctrl-a o`) and then execute from R pane `system("tmux set remain-on-exit on")`
+2. Quit R with `q()`. This gives a dead pane that can be reactivated by starting a shell in it with the commands `Ctrl-a` and `:respawn-pane bash`
+
+<div id='configfiles'/>
+
+### 4. Config files
+The following config files (or similar custom versions) should be saved to the following locations in a user's home directory:
+
+- File [init.vim](https://gist.githubusercontent.com/tgirke/7a7c197b443243937f68c422e5471899/raw/init.vim) for Neovim: `~/.config/nvim/init.vim`
+- File [tmux.conf](https://gist.githubusercontent.com/tgirke/7a7c197b443243937f68c422e5471899/raw/tmux.conf) for Tmux: `~/.tmux.conf`
+
