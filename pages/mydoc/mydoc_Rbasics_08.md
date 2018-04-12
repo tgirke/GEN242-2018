@@ -1,6 +1,6 @@
 ---
 title: 8. Important Utilities
-last_updated: Sun Jun 25 17:41:27 2017
+last_updated: Thu Apr 12 06:46:11 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_08.html
 ---

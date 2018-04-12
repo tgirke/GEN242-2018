@@ -156,12 +156,8 @@ entries:
       url: /mydoc_tutorial_02.html#textcode-editors
       output: web
     
-    - title: Vim-R-Tmux
-      url: /mydoc_tutorial_02.html#vim-r-tmux-essentials
-      output: web
-    
     - title: Nvim-R-Tmux
-      url: /mydoc_tutorial_02.html#nvim-r-tmux
+      url: /mydoc_tutorial_02.html#nvim-r-tmux-essentials
       output: web
     
   - title: Introduction to R
