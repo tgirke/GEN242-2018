@@ -40,7 +40,7 @@ The instructions for these homework assignments are [here](http://girke.bioinfor
 
 ## Homework submission
 
-Assemble the results from homework assignments A-H in a single R script (`HW3.R`) and upload it to your private GitHub repository under `Homework/HW3/HW3.R`.
+Assemble the code from the homework assignments A-H in a single R script (`HW3.R`) and upload it to your private GitHub repository under `Homework/HW3/HW3.R`.
 
 ## Due date
 

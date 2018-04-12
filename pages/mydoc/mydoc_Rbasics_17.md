@@ -1,6 +1,6 @@
 ---
 title: 17. Shiny Web Apps
-last_updated: Thu Apr 12 10:20:53 2018
+last_updated: Thu Apr 12 11:48:07 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_17.html
 ---
