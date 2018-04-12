@@ -1,6 +1,6 @@
 ---
 title: Introduction to R  <br> <br> 1. Overview
-last_updated: Thu Apr 12 10:08:13 2018
+last_updated: Thu Apr 12 10:20:53 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
@@ -63,7 +63,7 @@ advanced.
 
 Some userful shortcuts: `Ctrl+Enter` (send code), `Ctrl+Shift+C` (comment/uncomment), `Ctrl+1/2` (switch window focus)
 
-### Example: Nim-R-Tmux
+### Example: Nvim-R-Tmux
 
 Terminal-based Working Environment for R: [Nvim-R-Tmux](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_tutorial_02.html#nvim-r-tmux-essentials). 
 
