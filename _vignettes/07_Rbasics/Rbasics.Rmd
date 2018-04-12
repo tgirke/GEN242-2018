@@ -90,7 +90,7 @@ Some userful shortcuts: `Ctrl+Enter` (send code), `Ctrl+Shift+C` (comment/uncomm
 
 Terminal-based Working Environment for R: [Nvim-R-Tmux](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899). 
 
-<center><img title="Nvim-R-Tmux" src="images/screenshot.png" ></center>
+<center><img title="Nvim-R-Tmux" src="images/Nvim-R.gif" ></center>
 <center>Nvim-R-Tmux IDE for R</center>
 
 # R Package Repositories
