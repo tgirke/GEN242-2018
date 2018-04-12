@@ -469,7 +469,10 @@ instructions](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899) t
 The official and much more detailed user manual for `Nvim-R` is available [here](https://github.com/jalvesaq/Nvim-R/blob/master/doc/Nvim-R.txt).
 The following gives a short introduction into the basic usage of Nvim-R-Tmux:
 
-__1. Start tmux session__
+__1. Start tmux session__ (optional)
+
+Note, running Nvim from within a tmux session is optional. Skip this step if tmux functionality is not required (_e.g._ reattaching to sessions on remote systems).
+
 ```sh
 tmux # starts a new tmux session 
 tmux a # attaches to an existing session 

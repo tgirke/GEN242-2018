@@ -469,7 +469,10 @@ instructions](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899) t
 The official and much more detailed user manual for `Nvim-R` is available [here](https://github.com/jalvesaq/Nvim-R/blob/master/doc/Nvim-R.txt).
 The following gives a short introduction into the basic usage of Nvim-R-Tmux:
 
-__1. Start tmux session__
+__1. Start tmux session__ (optional)
+
+Note, running Nvim from within a tmux session is optional. Skip this step if tmux functionality is not required (_e.g._ reattaching to sessions on remote systems).
+
 ```sh
 tmux # starts a new tmux session 
 tmux a # attaches to an existing session 
@@ -491,6 +494,8 @@ Please note, the default command for sending code lines in the nvim-r-plugin is 
 binding has been remapped in the provided `.config/nvim/init.vim` file to the space bar. Most other key bindings (shortcuts) still start with the `\` as LocalLeader, _e.g._ `\rh` opens the help for a function/object where the curser is located in nvim. More details on this are given below.
 
 ### Important keybindings for nvim
+
+__Nvim commands__
 
 * `\rf`: opens vim-connected R session. If you do this the first time in your user account, you might be asked to create an `R` directory under `~/`. If so approve this action by pressing `y`. 
 * `spacebar`: sends code from vim to R; here remapped in `init.vim` from default `\l`
