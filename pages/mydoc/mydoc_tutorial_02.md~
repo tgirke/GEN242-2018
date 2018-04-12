@@ -495,6 +495,8 @@ binding has been remapped in the provided `.config/nvim/init.vim` file to the sp
 
 ### Important keybindings for nvim
 
+The main advantages of Neovim compared to Vim are its better performance and its built-in terminal emulator facilitating the communication among Neovim and interactive programming environments such as R. Since the Vim and Neovim environments are managed independently, one can run them in parallel on the same system without interfering with each other.
+
 __Nvim commands__
 
 * `\rf`: opens vim-connected R session. If you do this the first time in your user account, you might be asked to create an `R` directory under `~/`. If so approve this action by pressing `y`. 
