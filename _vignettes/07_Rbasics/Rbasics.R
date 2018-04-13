@@ -59,10 +59,7 @@ suppressPackageStartupMessages({
 ## ----r_execute_script, eval=FALSE----------------------------------------
 ## source("my_script.R")
 
-## ----sh_execute_script, eval=FALSE, engine="sh"--------------------------
 ## $ Rscript my_script.R
-## $ R CMD BATCH my_script.R
-## $ R --slave < my_script.R
 
 ## ----r_numeric_data, eval=TRUE-------------------------------------------
 
@@ -581,11 +578,8 @@ write.table(my_mw_target4, file="my_file.xls", quote=F, sep="\t", col.names = NA
 ## ----render_rmarkdown, eval=FALSE, message=FALSE-------------------------
 ## rmarkdown::render("sample.Rmd", clean=TRUE, output_format="html_document")
 
-## ----render_commandline, eval=FALSE, message=FALSE, engine="sh"----------
 ## $ echo "rmarkdown::render('sample.Rmd', clean=TRUE)" | R --slave
-## $ Rscript -e "rmarkdown::render('sample.Rmd', clean=TRUE)"
 
-## ----render_makefile, eval=FALSE, message=FALSE, engine="sh"-------------
 ## $ make -B
 
 ## ----kable---------------------------------------------------------------
