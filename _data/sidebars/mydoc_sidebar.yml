@@ -72,6 +72,10 @@ entries:
       url: /mydoc_slides_05.html
       output: web
     
+    - title: Sequence Alignments
+      url: /mydoc_slides_06.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
@@ -87,7 +91,11 @@ entries:
     - title: HW3 - Introduction to R
       url: /mydoc_homework_03.html
       output: web
-      
+    
+    - title: HW4 - Pairwise Alignments
+      url: /mydoc_homework_04.html
+      output: web
+    
   - title: GitHub
     output: web
     folderitems:
