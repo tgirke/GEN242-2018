@@ -21,7 +21,9 @@ permalink: mydoc_project_chipseq1.html
 + Challenge project tasks
     + Prioritize/rank peaks by FDR from differential binding analysis
     + Parse peak sequences from genome
-    + Compare two different motif discovery methods: MEME-ChIP and DeepBind 
+    + Determine which peak prioritization method shows the highest enrichment for any of the motifs available in the Jaspar database (motifDB).
+    + Optional: use different statistical methods to test for motif enrichment.
+ 
 
 ## References
 
