@@ -88,13 +88,13 @@ iris[1:2,]
 tapply(iris$Sepal.Length, iris$Species, mean)
 
 ## ----lapply_loop_example, eval=TRUE--------------------------------------
-x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
-lapply(x, mean)
-sapply(x, mean)
+l <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
+lapply(l, mean)
+sapply(l, mean)
 
 ## ----lapply_loop_fct_example, eval=FALSE---------------------------------
-## lapply(names(x), function(x) mean(x))
-## sapply(names(x), function(x) mean(x))
+## lapply(names(l), function(x) mean(l[[x]]))
+## sapply(names(l), function(x) mean(l[[x]]))
 
 ## ----function_def_syntax, eval=FALSE-------------------------------------
 ## myfct <- function(arg1, arg2, ...) {

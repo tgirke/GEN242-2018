@@ -467,8 +467,8 @@ while(z&lt;5) {
 <h3><span class="header-section-number">3.3.3</span> <code>sapply</code> and <code>lapply</code></h3>
 <p>Both apply a function to vector or list objects. The <code>lapply</code> function always returns a list object, while <code>sapply</code> returns <code>vector</code> or <code>matrix</code> objects when it is possible.</p>
 <p><strong>Examples</strong></p>
-<pre class="r"><code>x &lt;- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
-lapply(x, mean)</code></pre>
+<pre class="r"><code>l &lt;- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
+lapply(l, mean)</code></pre>
 <pre><code>## $a
 ## [1] 5.5
 ## 
@@ -477,12 +477,12 @@ lapply(x, mean)</code></pre>
 ## 
 ## $logic
 ## [1] 0.5</code></pre>
-<pre class="r"><code>sapply(x, mean)</code></pre>
+<pre class="r"><code>sapply(l, mean)</code></pre>
 <pre><code>##        a     beta    logic 
 ## 5.500000 4.535125 0.500000</code></pre>
 <p>Often used in combination with a function definition:</p>
-<pre class="r"><code>lapply(names(x), function(x) mean(x))
-sapply(names(x), function(x) mean(x))</code></pre>
+<pre class="r"><code>lapply(names(l), function(x) mean(l[[x]]))
+sapply(names(l), function(x) mean(l[[x]]))</code></pre>
 </div>
 </div>
 </div>

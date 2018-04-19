@@ -1,6 +1,6 @@
 ---
 title: 3. Loops
-last_updated: Thu Apr 19 09:02:37 2018
+last_updated: Thu Apr 19 11:47:08 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_03.html
 ---
@@ -159,8 +159,8 @@ Both apply a function to vector or list objects. The `lapply` function always re
 __Examples__
 
 ```r
-x <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
-lapply(x, mean)
+l <- list(a = 1:10, beta = exp(-3:3), logic = c(TRUE,FALSE,FALSE,TRUE))
+lapply(l, mean)
 ```
 
 ```
@@ -175,7 +175,7 @@ lapply(x, mean)
 ```
 
 ```r
-sapply(x, mean)
+sapply(l, mean)
 ```
 
 ```
@@ -186,8 +186,8 @@ sapply(x, mean)
 Often used in combination with a function definition:
 
 ```r
-lapply(names(x), function(x) mean(x))
-sapply(names(x), function(x) mean(x))
+lapply(names(l), function(x) mean(l[[x]]))
+sapply(names(l), function(x) mean(l[[x]]))
 ```
 
 <br><br><center><a href="mydoc_Programming_in_R_02.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page

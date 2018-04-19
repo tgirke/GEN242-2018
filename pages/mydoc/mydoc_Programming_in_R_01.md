@@ -1,6 +1,6 @@
 ---
 title: Programming in R  <br> <br> 1. Overview
-last_updated: Thu Apr 19 09:02:37 2018
+last_updated: Thu Apr 19 11:47:08 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_01.html
 ---
