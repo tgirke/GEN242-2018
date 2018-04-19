@@ -6,8 +6,6 @@ permalink: mydoc_tutorial_01.html
 
 ## GitHub in GEN242 
 
-test
-
 + Note, this class will make heavy use of GitHub 
 + Homework assignments will be submitted to private GitHub repositories: one repository for each student
 + Course projects will also use private GitHub repositories: one repository for each course project (shared among students of each project)
@@ -118,7 +116,7 @@ This could be useful for new users who want to upload their homework assignments
 3. After this press `Upload files` and upload any file (e.g. homework) to the newly create directory. After this the initial dummy file can be deleted. The latter is necessary since empty directories are not visible on GitHub.
 
 ## Using GitHub from RStudio
-+ After installing Git, set path to Git executable in Rstudio: 
++ After installing Git (see [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)), set path to Git executable in Rstudio: 
 	+ Tools `>` Global Options `>` Git/SVN
 
 + If needed, login to GitHub account and create repository. Use option `Initialize this repository with a README`. 
