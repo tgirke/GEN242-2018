@@ -72,6 +72,10 @@ entries:
       url: /mydoc_slides_05.html
       output: web
     
+    - title: Sequence Alignments
+      url: /mydoc_slides_06.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
@@ -87,7 +91,11 @@ entries:
     - title: HW3 - Introduction to R
       url: /mydoc_homework_03.html
       output: web
-      
+    
+    - title: HW4 - Pairwise Alignments
+      url: /mydoc_homework_04.html
+      output: web
+    
   - title: GitHub
     output: web
     folderitems:
@@ -160,86 +168,6 @@ entries:
       url: /mydoc_tutorial_02.html#nvim-r-tmux-essentials
       output: web
     
-  - title: Introduction
-    output: web, pdf
-    folderitems:
-
-    - title: 1. Overview
-      url: /mydoc_Rbasics_01.html
-      output: web
-
-    - title: 2. R Package Repositories
-      url: /mydoc_Rbasics_02.html
-      output: web
-
-    - title: 3. Installation of R Packages
-      url: /mydoc_Rbasics_03.html
-      output: web
-
-    - title: 4. Getting Around
-      url: /mydoc_Rbasics_04.html
-      output: web
-
-    - title: 5. Basic Syntax
-      url: /mydoc_Rbasics_05.html
-      output: web
-
-    - title: 6. Data Types 
-      url: /mydoc_Rbasics_06.html
-      output: web
-
-    - title: 7. Data Objects
-      url: /mydoc_Rbasics_07.html
-      output: web
-
-    - title: 8. Important Utilities
-      url: /mydoc_Rbasics_08.html
-      output: web
-
-    - title: 9. Operators and Calculations
-      url: /mydoc_Rbasics_09.html
-      output: web
-
-    - title: 10. Reading and Writing External Data
-      url: /mydoc_Rbasics_10.html
-      output: web
-
-    - title: 11. Useful R Functions
-      url: /mydoc_Rbasics_11.html
-      output: web
-
-    - title: 12. dplyr Environment
-      url: /mydoc_Rbasics_12.html
-      output: web
-
-    - title: 13. SQLite Databases
-      url: /mydoc_Rbasics_13.html
-      output: web
-
-    - title: 14. Graphics in R
-      url: /mydoc_Rbasics_14.html
-      output: web
-
-    - title: 15. Analysis Routine
-      url: /mydoc_Rbasics_15.html
-      output: web
-
-    - title: 16. R Markdown
-      url: /mydoc_Rbasics_16.html
-      output: web
-
-    - title: 17. Shiny Web Apps
-      url: /mydoc_Rbasics_17.html
-      output: web
-
-    - title: 18. Session Info
-      url: /mydoc_Rbasics_18.html
-      output: web
-
-    - title: 19. References
-      url: /mydoc_Rbasics_19.html
-      output: web
-
   - title: Introduction to R
     output: web, pdf
     folderitems:
