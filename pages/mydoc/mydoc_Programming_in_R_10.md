@@ -1,6 +1,6 @@
 ---
 title: 10. Session Info
-last_updated: Thu Apr 19 11:47:08 2018
+last_updated: Thu Apr 19 12:18:56 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_10.html
 ---

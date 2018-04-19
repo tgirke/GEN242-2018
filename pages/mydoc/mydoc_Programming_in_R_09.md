@@ -1,6 +1,6 @@
 ---
 title: 9. Homework 5
-last_updated: Thu Apr 19 11:47:08 2018
+last_updated: Thu Apr 19 12:18:56 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_09.html
 ---
@@ -106,7 +106,7 @@ Submit the 3 functions in one well structured and annotated R script to the inst
 
 ## Due date
 
-This homework is due on Thu, April 27th at 6:00 PM.
+This homework is due on Thu, April 26th at 6:00 PM.
 
 ## Homework Solutions
 
