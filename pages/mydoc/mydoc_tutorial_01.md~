@@ -119,7 +119,7 @@ This could be useful for new users who want to upload their homework assignments
 + After installing Git (see [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)), set path to Git executable in Rstudio: 
 	+ Tools `>` Global Options `>` Git/SVN
 
-+ If needed, login to GitHub account and create repository. Use option `Initialize this repository with a README`. 
++ If needed, log in to GitHub account and create repository. Use option `Initialize this repository with a README`. 
 
 + Clone repository by copying & pasting URL from repository into RStudio's 'Clone Git Repository' window: 
     + File `>` New Project `>` Version Control `>` Git `>` Provide URL

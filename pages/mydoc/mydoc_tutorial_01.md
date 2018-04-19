@@ -26,6 +26,8 @@ permalink: mydoc_tutorial_01.html
 
 ## Git Basics from Command-Line
 
+Also try [interactive git tutorial](https://try.github.io/levels/1/challenges/1).
+
 + Finding help from command-line 
 
     ```sh
