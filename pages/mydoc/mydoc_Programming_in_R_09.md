@@ -1,6 +1,6 @@
 ---
 title: 9. Homework 5
-last_updated: Thu Apr 19 08:55:52 2018
+last_updated: Thu Apr 19 09:02:37 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_09.html
 ---
@@ -110,7 +110,6 @@ This homework is due on Thu, April 27th at 6:00 PM.
 
 ## Homework Solutions
 
-See [here](https://drive.google.com/open?id=0B-lLYVUOliJFcGhhRzdVR19aNXM)
 
 <br><br><center><a href="mydoc_Programming_in_R_08.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Programming_in_R_10.html"><img src="images/right_arrow.png" alt="Next page."></a></center>
