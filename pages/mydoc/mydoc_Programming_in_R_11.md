@@ -1,6 +1,6 @@
 ---
 title: 11. References
-last_updated: Mon May  1 17:40:07 2017
+last_updated: Thu Apr 19 08:55:52 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_11.html
 ---

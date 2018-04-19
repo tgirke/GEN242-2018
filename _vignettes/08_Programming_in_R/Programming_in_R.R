@@ -172,16 +172,10 @@ system("blastall -p blastp -i seq.fasta -d uniprot -o seq.blastp")
 ## ----r_script1, eval=FALSE-----------------------------------------------
 ## source("my_script.R")
 
-## ----r_cmd_script1, eval=FALSE, engine="sh"------------------------------
 ## Rscript my_script.R # or just ./myscript.R after making it executable
-## R CMD BATCH my_script.R # Alternative way 1
-## R --slave < my_script.R # Alternative way 2
 
-## ----r_cmd_script2, eval=FALSE, engine="sh"------------------------------
 ## myarg <- commandArgs()
-## print(iris[1:myarg[6], ])
 
-## ----r_cmd_script3, eval=FALSE, engine="sh"------------------------------
 ## Rscript test.R 10
 
 ## ----package_skeleton1, eval=FALSE---------------------------------------
