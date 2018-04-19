@@ -47,4 +47,4 @@ Assemble the results from this homework in one PDF file (`HW4.pdf`) and upload i
 
 ## Due date
 
-This homework is due in two weeks on Tue, April 25th at 6:00 PM.
+This homework is due in two weeks on Tue, April 24th at 6:00 PM.
