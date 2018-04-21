@@ -512,6 +512,8 @@ __Nvim commands__
 * `:h nvim-R`: opens nvim-R's user manual; navigation works the same as for any Vim/Nvim help document
 * `:Rhelp fct_name`: opens help for a function from nvim's command mode with text completion support
 * `Ctrl-s and Ctrl-x`: freezes/unfreezes vim (some systems)
+* `:resize <+5 or -5>`: resizes height by specified value
+* `:vertical resize <+5 or -5>`: resizes width by specified value
 
 ### Important keybindings for tmux
 
@@ -522,6 +524,8 @@ __Pane-level commands__
 * `Ctrl-a o`: jumps cursor to next pane
 * `Ctrl-a Ctrl-o`: swaps panes
 * `Ctrl-a <space bar>`: rotates pane arrangement
+* `Ctrl-a Alt <left or right>`: resizes to left or right
+* `Ctrl-a Esc <up or down>`: resizes to left or right
 
 __Window-level comands__
 

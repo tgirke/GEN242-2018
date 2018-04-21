@@ -460,7 +460,7 @@ in each user account. If this is not the case then follow the quick configuratio
 Skip these steps if Nvim-R-Tmux is already configured in your account. Or follow the [detailed
 instructions](https://gist.github.com/tgirke/7a7c197b443243937f68c422e5471899) to install Nvim-R-Tmux from scratch on your own system.
 
-1. Log in to your user account on HPCC and execute these [install commands](http://biocluster.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/vim-r-plugin/README_nvimRtmux).
+1. Log in to your user account on HPCC and execute `install_nvimRtmux`. Alternatively, follow these step-by-step [install commands](http://biocluster.ucr.edu/~tgirke/Documents/R_BioCond/My_R_Scripts/vim-r-plugin/README_nvimRtmux).
 2. To enable the nvim-R-tmux environment, log out and in again.
 3. Follow usage instructions of next section.
 
@@ -495,7 +495,7 @@ binding has been remapped in the provided `.config/nvim/init.vim` file to the sp
 
 ### Important keybindings for nvim
 
-The main advantages of Neovim compared to Vim are its better performance and its built-in terminal emulator facilitating the communication among Neovim and interactive programming environments such as R. Since the Vim and Neovim environments are managed independently, one can run them in parallel on the same system without interfering with each other.
+The main advantages of Neovim compared to Vim are its better performance and its built-in terminal emulator facilitating the communication among Neovim and interactive programming environments such as R. Since the Vim and Neovim environments are managed independently, one can run them in parallel on the same system without interfering with each other. The usage of Neovim is almost identical to Vim.
 
 __Nvim commands__
 
@@ -512,6 +512,8 @@ __Nvim commands__
 * `:h nvim-R`: opens nvim-R's user manual; navigation works the same as for any Vim/Nvim help document
 * `:Rhelp fct_name`: opens help for a function from nvim's command mode with text completion support
 * `Ctrl-s and Ctrl-x`: freezes/unfreezes vim (some systems)
+* `:resize <+5 or -5>`: resizes height by specified value
+* `:vertical resize <+5 or -5>`: resizes width by specified value
 
 ### Important keybindings for tmux
 
@@ -522,6 +524,8 @@ __Pane-level commands__
 * `Ctrl-a o`: jumps cursor to next pane
 * `Ctrl-a Ctrl-o`: swaps panes
 * `Ctrl-a <space bar>`: rotates pane arrangement
+* `Ctrl-a Alt <left or right>`: resizes to left or right
+* `Ctrl-a Esc <up or down>`: resizes to left or right
 
 __Window-level comands__
 
