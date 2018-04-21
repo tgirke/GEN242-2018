@@ -506,14 +506,13 @@ __Nvim commands__
 * `Ctrl-w w`: jumps cursor to R viewport and back; toggle between insert (`i`) and command (`Esc`) mode is required for navigation and controlling the environment.
 * `Ctrl-w r`: swaps viewports
 * `Ctrl-w =`: resizes splits to equal size
-* `Ctrl-w 5< or 5>`: resizes splits to left or right by 5 steps; change number as needed
+* `:resize <+5 or -5>`: resizes height by specified value
+* `:vertical resize <+5 or -5>`: resizes width by specified value
 * `Ctrl-w H` or `Ctrl-w K`: toggles between horizontal/vertical splits
 * `Ctrl-spacebar`: omni completion for R objects/functions when nvim is in insert mode. Note, this has been remapped in `init.vim` from difficult to type default `Ctrl-x Ctrl-o`. 
 * `:h nvim-R`: opens nvim-R's user manual; navigation works the same as for any Vim/Nvim help document
 * `:Rhelp fct_name`: opens help for a function from nvim's command mode with text completion support
 * `Ctrl-s and Ctrl-x`: freezes/unfreezes vim (some systems)
-* `:resize <+5 or -5>`: resizes height by specified value
-* `:vertical resize <+5 or -5>`: resizes width by specified value
 
 ### Important keybindings for tmux
 
