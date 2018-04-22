@@ -80,6 +80,14 @@ entries:
       url: /mydoc_slides_07.html
       output: web
     
+    - title: Multiple Alignments
+      url: /mydoc_slides_08.html
+      output: web
+    
+    - title: Short Read Alignments
+      url: /mydoc_slides_09.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
