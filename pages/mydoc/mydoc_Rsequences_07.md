@@ -1,6 +1,6 @@
 ---
 title: 7. Transcript Ranges
-last_updated: Wed Jun  7 19:39:39 2017
+last_updated: Wed Apr 25 16:28:31 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_07.html
 ---
@@ -11,14 +11,6 @@ Storing annotation ranges in `TranscriptDb` databases makes many operations more
 library(GenomicFeatures)
 download.file("http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/gff3.gff", "data/gff3.gff")
 txdb <- makeTxDbFromGFF(file="data/gff3.gff", format="gff", dataSource="TAIR", organism="Arabidopsis thaliana")
-```
-
-```
-## Warning in sort(classes): closing unused connection 7 (data/gff3.gff)
-```
-
-```
-## Warning in sort(classes): closing unused connection 5 (data/gff3.gff)
 ```
 
 ```
@@ -49,10 +41,10 @@ saveDb(txdb, file="./data/TAIR10.sqlite")
 ## # exon_nrow: 113
 ## # cds_nrow: 99
 ## # Db created by: GenomicFeatures package from Bioconductor
-## # Creation time: 2017-04-26 10:51:39 -0700 (Wed, 26 Apr 2017)
-## # GenomicFeatures version at creation time: 1.28.0
-## # RSQLite version at creation time: 1.1-2
-## # DBSCHEMAVERSION: 1.1
+## # Creation time: 2018-04-25 16:28:02 -0700 (Wed, 25 Apr 2018)
+## # GenomicFeatures version at creation time: 1.30.3
+## # RSQLite version at creation time: 2.0
+## # DBSCHEMAVERSION: 1.2
 ```
 
 ```r
@@ -189,17 +181,17 @@ getSeq(FaFile("./data/test"), gff)
 ```
 ##   A DNAStringSet instance of length 442
 ##       width seq                                                                 names               
-##   [1]  2269 TAAGTAAGGTGAGCAAGGAAAGCGCTACACGC...GATGGAGGCGCCCACACGATTAGAATGTTACA Chr1
-##   [2]  2269 TAAGTAAGGTGAGCAAGGAAAGCGCTACACGC...GATGGAGGCGCCCACACGATTAGAATGTTACA Chr1
-##   [3]  1871 CTAATGATACTGGGAGTACCGTTGCGATGACC...GCAAGCCCTATAAAATTGAAGGGAGGTGTATA Chr1
-##   [4]   283 TAAGTAAGGTGAGCAAGGAAAGCGCTACACGC...CAGCAGAACAAACAGATACAGCCGGCCCAAGC Chr1
-##   [5]   129 TAAGTAAGGTGAGCAAGGAAAGCGCTACACGC...AGACGTCCCGTCGAGCACGCCTTCCGATTATA Chr1
+##   [1]  2269 CCGAATGAATAAGTGGGCTGTAAACGTCGTAG...GTGCACAAGAGTTTCCTAACTTCAAATGATAT Chr1
+##   [2]  2269 CCGAATGAATAAGTGGGCTGTAAACGTCGTAG...GTGCACAAGAGTTTCCTAACTTCAAATGATAT Chr1
+##   [3]  1871 GGGCGGAAACTGCCCTACTCGTACCCCGCCTT...TTACACTTCGGCACGTGCAGAGTGCAGGAAGC Chr1
+##   [4]   283 CCGAATGAATAAGTGGGCTGTAAACGTCGTAG...TCCCTGACGATTCGCGACGAGGCGTCCACGCG Chr1
+##   [5]   129 CCGAATGAATAAGTGGGCTGTAAACGTCGTAG...ACTCCGGTTAGTGCCATGCTTCGTATCGCGGA Chr1
 ##   ...   ... ...
-## [438]   324 AGTGTAGCTACCAGTTTATGTGGGTGCGCTTG...GCCCGCTCGAGACTGGAATGAGCAGTTGGGCT ChrM
-## [439]   324 AGTGTAGCTACCAGTTTATGTGGGTGCGCTTG...GCCCGCTCGAGACTGGAATGAGCAGTTGGGCT ChrM
-## [440]   324 AGTGTAGCTACCAGTTTATGTGGGTGCGCTTG...GCCCGCTCGAGACTGGAATGAGCAGTTGGGCT ChrM
-## [441]   324 AGTGTAGCTACCAGTTTATGTGGGTGCGCTTG...GCCCGCTCGAGACTGGAATGAGCAGTTGGGCT ChrM
-## [442]   324 AGTGTAGCTACCAGTTTATGTGGGTGCGCTTG...GCCCGCTCGAGACTGGAATGAGCAGTTGGGCT ChrM
+## [438]   324 CACGAAGTAACACTATTACAGGCATTTGATAC...ATCGCGTGCCTGATCCAGTGGAGAATGGCAAA ChrM
+## [439]   324 CACGAAGTAACACTATTACAGGCATTTGATAC...ATCGCGTGCCTGATCCAGTGGAGAATGGCAAA ChrM
+## [440]   324 CACGAAGTAACACTATTACAGGCATTTGATAC...ATCGCGTGCCTGATCCAGTGGAGAATGGCAAA ChrM
+## [441]   324 CACGAAGTAACACTATTACAGGCATTTGATAC...ATCGCGTGCCTGATCCAGTGGAGAATGGCAAA ChrM
+## [442]   324 CACGAAGTAACACTATTACAGGCATTTGATAC...ATCGCGTGCCTGATCCAGTGGAGAATGGCAAA ChrM
 ```
 
 ### `extractTranscriptSeqs`

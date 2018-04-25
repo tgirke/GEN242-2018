@@ -1,6 +1,6 @@
 ---
 title: 5. NGS Sequences
-last_updated: Wed Jun  7 19:39:39 2017
+last_updated: Wed Apr 25 16:28:31 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_05.html
 ---
@@ -75,13 +75,13 @@ dsetq1[1:2]
 ## 
 ##   A DNAStringSet instance of length 2
 ##     width seq
-## [1]    20 GCACAAATGGTGCCCGTATG
-## [2]    20 TTGACGATGCGATTCTTAGC
+## [1]    20 TAAAAACTTATTAGGGATGG
+## [2]    20 TAAATACACACTCTCAACCA
 ## 
 ##   A PhredQuality instance of length 2
 ##     width seq
-## [1]    20 ?)75:6$31(H(.$F=>I='
-## [2]    20 5/-G)7E5'09E4:3#B<#8
+## [1]    20 CBAADAF?)2#?)AED6#5.
+## [2]    20 HD7CE.$.8*%=B#<(3%G)
 ```
 
 ## Processing FASTQ Files with ShortRead
@@ -316,10 +316,6 @@ Streaming through FASTQ files with `FastqStreamer` and random sampling reads wit
 ```r
 fq <- yield(FastqStreamer(fastq[1], 50)) # Imports first 50 reads 
 fq <- yield(FastqSampler(fastq[1], 50)) # Random samples 50 reads 
-```
-
-```
-## Warning in getClassDef(Class, where): closing unused connection 5 (data/SRR038845.fastq)
 ```
 
 Streaming through a FASTQ file while applying filtering/trimming functions and writing the results to a new file

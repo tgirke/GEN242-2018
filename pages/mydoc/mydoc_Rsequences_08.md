@@ -1,6 +1,6 @@
 ---
 title: 8. Homework 6
-last_updated: Wed Jun  7 19:39:39 2017
+last_updated: Wed Apr 25 16:28:31 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_08.html
 ---

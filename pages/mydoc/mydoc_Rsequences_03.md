@@ -1,6 +1,6 @@
 ---
 title: 3. Strings in R Base
-last_updated: Wed Jun  7 19:39:39 2017
+last_updated: Wed Apr 25 16:28:31 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_03.html
 ---
@@ -103,7 +103,7 @@ rand[1:3]
 ```
 
 ```
-## [1] "GGGTACGACA"       "ATCTTTATGACCTC"   "ATATCCTTGTGGGACA"
+## [1] "TCTCAGCAGC"           "GCCGTATCTACAGCTGCGCG" "GTAAACAAACCCT"
 ```
 
 ### Count identical sequences
@@ -115,8 +115,8 @@ table(c(rand[1:4], rand[1]))
 
 ```
 ## 
-## ATATCCTTGTGGGACA   ATCTTTATGACCTC       GGGTACGACA     TTTTCATACAAG 
-##                1                1                2                1
+## GCCGTATCTACAGCTGCGCG      GCGAACGAGGATTGG        GTAAACAAACCCT           TCTCAGCAGC 
+##                    1                    1                    1                    2
 ```
 
 ### Extract reads from reference
@@ -135,7 +135,7 @@ unlist(rand_set)
 
 ```
 ##   15000-letter "DNAString" instance
-## seq: GGATTGTCGATTGCCCAGCGCCAAGAACTGTTATTTCCCTAACCCA...CATGATGCTAACCCGGTCGGTGTAATATGTATTCCCACGCCAGGCC
+## seq: AGATTCTTTCACTCGCTCTCTAATGCTAGCCAAGCGTGGAGTACCA...GTGATGGACGAGTTTATGAAGACACGTGGGGACACAGGAAGAAAAC
 ```
 
 <br><br><center><a href="mydoc_Rsequences_02.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page

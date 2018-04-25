@@ -1,6 +1,6 @@
 ---
 title: 4. Sequences in Bioconductor
-last_updated: Wed Jun  7 19:39:39 2017
+last_updated: Wed Apr 25 16:28:31 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_04.html
 ---
@@ -220,8 +220,8 @@ complement(randset[1:2])
 ```
 ##   A DNAStringSet instance of length 2
 ##     width seq
-## [1]    10 CCCATGCTGT
-## [2]    14 TAGAAATACTGGAG
+## [1]    10 AGAGTCGTCG
+## [2]    20 CGGCATAGATGTCGACGCGC
 ```
 
 ```r
@@ -231,8 +231,8 @@ reverse(randset[1:2])
 ```
 ##   A DNAStringSet instance of length 2
 ##     width seq
-## [1]    10 ACAGCATGGG
-## [2]    14 CTCCAGTATTTCTA
+## [1]    10 CGACGACTCT
+## [2]    20 GCGCGTCGACATCTATGCCG
 ```
 
 ```r
@@ -242,8 +242,8 @@ reverseComplement(randset[1:2])
 ```
 ##   A DNAStringSet instance of length 2
 ##     width seq
-## [1]    10 TGTCGTACCC
-## [2]    14 GAGGTCATAAAGAT
+## [1]    10 GCTGCTGAGA
+## [2]    20 CGCGCAGCTGTAGATACGGC
 ```
 
 ## Translate DNA into Protein
@@ -265,8 +265,8 @@ translate(randset[1:2])
 ```
 ##   A AAStringSet instance of length 2
 ##     width seq
-## [1]     3 GYD
-## [2]     4 IFMT
+## [1]     3 SQQ
+## [2]     6 AVSTAA
 ```
 
 ## Pattern Matching
@@ -437,6 +437,13 @@ DNAStringSet(gsub("^ATG", "NNN", myseq)) # String substitution with regular expr
 
 ```r
 library(seqLogo) 
+```
+
+```
+## Loading required package: grid
+```
+
+```r
 pwm <- PWM(DNAStringSet(c("GCT", "GGT", "GCA"))) 
 pwm
 ```

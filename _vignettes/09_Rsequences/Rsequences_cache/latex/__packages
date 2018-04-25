@@ -8,6 +8,7 @@ IRanges
 XVector
 Biostrings
 seqLogo
+ggseqlogo
 BiocParallel
 GenomeInfoDb
 GenomicRanges
@@ -22,4 +23,3 @@ systemPipeR
 rtracklayer
 AnnotationDbi
 GenomicFeatures
-ggseqlogo

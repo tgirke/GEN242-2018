@@ -1,6 +1,6 @@
 ---
 title: 6. Range Operations  
-last_updated: Wed Jun  7 19:39:39 2017
+last_updated: Wed Apr 25 16:28:31 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_06.html
 ---
@@ -66,17 +66,6 @@ as.data.frame(gff)[1:4, 1:7]
 
 ```r
 gff_rd <- as(gff, "RangedData") 
-```
-
-```
-## Warning in cntxt$tailcall: closing unused connection 7 (/tmp/Rtmp7jsa8n/file78fc7c51c885)
-```
-
-```
-## Warning in cntxt$tailcall: closing unused connection 5 (/tmp/Rtmp7jsa8n/file78fc7c51c885)
-```
-
-```r
 gff_gr <- as(gff_rd, "GRanges") 
 ```
 
