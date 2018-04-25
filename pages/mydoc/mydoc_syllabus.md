@@ -31,7 +31,7 @@ comparative genomics, genome-wide profiling methods, network biology and more.
 The hands-on practicals include homework assignments and course projects
 focusing on data analysis programming of next generation genome data using
 command-line tools on a computer cluster and the programming environment R.
-Credit: 4 units (4 hours lecture, 2 hours discussion)
+Credit: 4 units (2x 1.5 hours lectures, 1 hour discussion)
 
 ## Objectives of course
 
@@ -44,7 +44,7 @@ skills required for mastering the computational aspects of modern genome
 research.
 
 ## Structure of course
-Two lectures per week (2 hours each) plus one discussion section (1 hour).
+Two lectures per week (1.5 hours each) plus one discussion section (1 hour).
 During the first weeks the discussion section will be used for data analysis
 tutorials using Linux command-line tools and R. 
 
