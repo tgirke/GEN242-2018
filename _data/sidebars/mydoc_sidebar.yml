@@ -88,6 +88,10 @@ entries:
       url: /mydoc_slides_09.html
       output: web
     
+    - title: NGS Analysis Basics
+      url: /mydoc_slides_10.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
@@ -110,6 +114,10 @@ entries:
     
     - title: HW5 - Programming in R
       url: /mydoc_Programming_in_R_09.html
+      output: web
+    
+    - title: HW6 - Sequence Analysis
+      url: /mydoc_Rsequences_08.html
       output: web
     
   - title: GitHub
@@ -355,7 +363,6 @@ entries:
     - title: 10. References
       url: /mydoc_Rsequences_10.html
       output: web
-
 
   - title: NGS Workflow Overview
     output: web, pdf

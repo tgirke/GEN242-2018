@@ -1,6 +1,6 @@
 ---
 title: 3. Strings in R Base
-last_updated: Wed Apr 25 16:28:31 2018
+last_updated: Wed Apr 25 17:02:42 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_03.html
 ---

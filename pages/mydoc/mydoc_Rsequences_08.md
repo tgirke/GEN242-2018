@@ -1,6 +1,6 @@
 ---
 title: 8. Homework 6
-last_updated: Wed Apr 25 16:28:31 2018
+last_updated: Wed Apr 25 17:02:42 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_08.html
 ---
@@ -66,8 +66,6 @@ Submit the homework results in one well structured and annotated R script to the
 This homework is due on Thu, May 4th at 6:00 PM.
 
 ## Homework Solutions
-
-See [here](https://drive.google.com/open?id=0B-lLYVUOliJFZDhjMnhOMGhGLUE). 
 
 
 <br><br><center><a href="mydoc_Rsequences_07.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
