@@ -92,6 +92,10 @@ entries:
       url: /mydoc_slides_10.html
       output: web
     
+    - title: Gene Expression Analysis
+      url: /mydoc_slides_11.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:

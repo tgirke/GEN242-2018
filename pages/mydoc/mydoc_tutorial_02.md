@@ -437,7 +437,7 @@ Important modifier keys to control vim/nvim
 
 * [Interactive Vim Tutorial](http://www.openvim.com)
 * [Official Vim Documentation](http://vimdoc.sourceforge.net/)
-* [UCR Linux Manual](http://manuals.bioinformatics.ucr.edu/home/linux-basics#TOC-Vim-Manual)
+* [HPCC Linux Manual](http://hpcc.ucr.edu/manuals_linux-basics_vim.html)
 
 ## Nvim-R-Tmux essentials 
 
