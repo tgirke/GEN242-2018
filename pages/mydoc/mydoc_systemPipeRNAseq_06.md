@@ -1,6 +1,6 @@
 ---
 title: 6. Analysis of DEGs
-last_updated: Mon Jun  5 21:16:33 2017
+last_updated: Wed May  2 16:12:41 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_06.html
 ---
