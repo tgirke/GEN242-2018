@@ -96,6 +96,10 @@ entries:
       url: /mydoc_slides_11.html
       output: web
     
+    - title: NGS Workflows
+      url: /mydoc_slides_12.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
