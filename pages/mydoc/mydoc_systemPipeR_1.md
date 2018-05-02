@@ -1,6 +1,6 @@
 ---
 title: Designing and Running NGS Workflows  <br> <br> 1. Introduction
-last_updated: Wed May  2 14:54:40 2018
+last_updated: Wed May  2 15:14:40 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeR_1.html
 ---
