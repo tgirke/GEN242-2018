@@ -452,4 +452,7 @@ entries:
       url: /mydoc_project_varseq1.html
       output: web
     
+    - title: Project Data
+      url: /mydoc_project_data.html
+      output: web
     
