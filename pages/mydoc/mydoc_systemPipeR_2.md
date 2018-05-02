@@ -1,6 +1,6 @@
 ---
 title: 2. Getting Started
-last_updated: Wed May  2 15:14:40 2018
+last_updated: Wed May  2 15:23:37 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeR_2.html
 ---
@@ -119,6 +119,7 @@ read.delim(targetspath, comment.char = "#")[1:2,1:6]
 ## 1 ./data/SRR446027_1.fastq ./data/SRR446027_2.fastq        M1A     M1  Mock.1h.A          1
 ## 2 ./data/SRR446028_1.fastq ./data/SRR446028_2.fastq        M1B     M1  Mock.1h.B          1
 ```
+
 
 ### Sample comparisons
 Sample comparisons are defined in the header lines of the _`targets`_ file starting with '``# <CMP>``'. 

@@ -1,6 +1,6 @@
 ---
 title: 4. Workflow templates
-last_updated: Wed May  2 15:14:40 2018
+last_updated: Wed May  2 15:23:37 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeR_4.html
 ---
@@ -14,6 +14,7 @@ library(systemPipeRdata)
 genWorkenvir(workflow="rnaseq")
 setwd("rnaseq")
 ```
+
 
 ### Run workflow
 Next, run the chosen sample workflow _`systemPipeRNAseq`_ ([PDF](https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/rnaseq/systemPipeRNAseq.pdf?raw=true), [Rnw](https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/rnaseq/systemPipeRNAseq_single.Rnw)) by executing from the command-line _`make -B`_ within the _`rnaseq`_ directory. Alternatively, one can run the code from the provided _`*.Rnw`_ template file from within R interactively. 
@@ -71,6 +72,7 @@ genWorkenvir(workflow="varseq")
 setwd("varseq")
 ```
 
+
 ### Run workflow
 Next, run the chosen sample workflow _`systemPipeVARseq_single`_ ([PDF](https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/varseq/systemPipeVARseq_single.pdf?raw=true), [Rnw](https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/varseq/systemPipeVARseq_single.Rnw)) by executing from the command-line _`make -B`_ within the _`varseq`_ directory. Alternatively, one can run the code from the provided _`*.Rnw`_ template file from within R interactively. 
 
@@ -85,6 +87,7 @@ Workflow includes following steps:
 5. Variant annotation: _`VariantAnnotation`_
 6. Combine results from many samples
 7. Summary statistics of samples
+
 
 
 ### VAR-Seq workflow for computer cluster

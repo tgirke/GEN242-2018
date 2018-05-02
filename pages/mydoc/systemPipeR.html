@@ -278,9 +278,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </div>
 <p></br></p>
 <p>The intended way of running <em><code>sytemPipeR</code></em> workflows is via <em><code>*.Rnw</code></em> or <em><code>*.Rmd</code></em> files, which can be executed either line-wise in interactive mode or with a single command from R or the command-line using a <a href="https://github.com/tgirke/systemPipeR/blob/master/inst/extdata/Makefile"><em><code>Makefile</code></em></a>. This way comprehensive and reproducible analysis reports in PDF or HTML format can be generated in a fully automated manner by making use of the highly functional reporting utilities available for R. Templates for setting up custom project reports are provided as <em><code>*.Rnw</code></em> files by the helper package <em><code>systemPipeRdata</code></em> and in the vignettes subdirectory of <em><code>systemPipeR</code></em>. The corresponding PDFs of these report templates are available here: <a href="https://github.com/tgirke/systemPipeR/blob/master/vignettes/systemPipeRNAseq.pdf?raw=true"><em><code>systemPipeRNAseq</code></em></a>, <a href="https://github.com/tgirke/systemPipeR/blob/master/vignettes/systemPipeRIBOseq.pdf?raw=true"><em><code>systemPipeRIBOseq</code></em></a>, <a href="https://github.com/tgirke/systemPipeR/blob/master/vignettes/systemPipeChIPseq.pdf?raw=true"><em><code>systemPipeChIPseq</code></em></a> and <a href="https://github.com/tgirke/systemPipeR/blob/master/vignettes/systemPipeVARseq.pdf?raw=true"><em><code>systemPipeVARseq</code></em></a>. To work with <em><code>*.Rnw</code></em> or <em><code>*.Rmd</code></em> files efficiently, basic knowledge of <a href="https://www.stat.uni-muenchen.de/~leisch/Sweave/"><em><code>Sweave</code></em></a> or <a href="http://yihui.name/knitr/"><em><code>knitr</code></em></a> and <a href="http://www.latex-project.org/"><em><code>Latex</code></em></a> or <a href="http://rmarkdown.rstudio.com/"><em><code>R Markdown v2</code></em></a> is required.</p>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="getting-started" class="section level1">
 <h1><span class="header-section-number">2</span> Getting Started</h1>
@@ -290,18 +287,12 @@ document.addEventListener("DOMContentLoaded", function() {
 <pre class="r"><code>source(&quot;http://bioconductor.org/biocLite.R&quot;) # Sources the biocLite.R installation script 
 biocLite(&quot;systemPipeR&quot;) # Installs systemPipeR 
 biocLite(&quot;systemPipeRdata&quot;) # Installs systemPipeRdata</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="loading-package-and-documentation" class="section level2">
 <h2><span class="header-section-number">2.2</span> Loading package and documentation</h2>
 <pre class="r"><code>library(&quot;systemPipeR&quot;) # Loads the package
 library(help=&quot;systemPipeR&quot;) # Lists package info
 vignette(&quot;systemPipeR&quot;) # Opens vignette</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="load-sample-data-and-workflow-templates" class="section level2">
 <h2><span class="header-section-number">2.3</span> Load sample data and workflow templates</h2>
@@ -352,9 +343,6 @@ setwd(&quot;rnaseq&quot;)</code></pre>
 <li><em><code>*.tmpl</code></em>: specifies parameters of scheduler used by a system, <em>e.g.</em> Torque, SGE, StarCluster, Slurm, etc.</li>
 </ul></li>
 </ol>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="structure-of-targets-file" class="section level2">
 <h2><span class="header-section-number">2.4</span> Structure of <em><code>targets</code></em> file</h2>
@@ -384,9 +372,6 @@ read.delim(targetspath, comment.char = &quot;#&quot;)</code></pre>
 ## 17 ./data/SRR446043_1.fastq       V12A    V12  Vir.12h.A          1 23-Mar-2012
 ## 18 ./data/SRR446044_1.fastq       V12B    V12  Vir.12h.B          1 23-Mar-2012</code></pre>
 <p>To work with custom data, users need to generate a <em><code>targets</code></em> file containing the paths to their own FASTQ files and then provide under <em><code>targetspath</code></em> the path to the corresponding <em><code>targets</code></em> file.</p>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="structure-of-targets-file-for-paired-end-pe-samples" class="section level3">
 <h3><span class="header-section-number">2.4.2</span> Structure of <em><code>targets</code></em> file for paired end (PE) samples</h3>
@@ -395,9 +380,6 @@ read.delim(targetspath, comment.char = &quot;#&quot;)[1:2,1:6]</code></pre>
 <pre><code>##                  FileName1                FileName2 SampleName Factor SampleLong Experiment
 ## 1 ./data/SRR446027_1.fastq ./data/SRR446027_2.fastq        M1A     M1  Mock.1h.A          1
 ## 2 ./data/SRR446028_1.fastq ./data/SRR446028_2.fastq        M1B     M1  Mock.1h.B          1</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="sample-comparisons" class="section level3">
 <h3><span class="header-section-number">2.4.3</span> Sample comparisons</h3>
@@ -417,9 +399,6 @@ read.delim(targetspath, comment.char = &quot;#&quot;)[1:2,1:6]</code></pre>
 ## [10] &quot;A1-M6&quot;   &quot;A1-A6&quot;   &quot;A1-V6&quot;   &quot;A1-M12&quot;  &quot;A1-A12&quot;  &quot;A1-V12&quot;  &quot;V1-M6&quot;   &quot;V1-A6&quot;   &quot;V1-V6&quot;  
 ## [19] &quot;V1-M12&quot;  &quot;V1-A12&quot;  &quot;V1-V12&quot;  &quot;M6-A6&quot;   &quot;M6-V6&quot;   &quot;M6-M12&quot;  &quot;M6-A12&quot;  &quot;M6-V12&quot;  &quot;A6-V6&quot;  
 ## [28] &quot;A6-M12&quot;  &quot;A6-A12&quot;  &quot;A6-V12&quot;  &quot;V6-M12&quot;  &quot;V6-A12&quot;  &quot;V6-V12&quot;  &quot;M12-A12&quot; &quot;M12-V12&quot; &quot;A12-V12&quot;</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 </div>
 <div id="structure-of-param-file-and-sysargs-container" class="section level2">
@@ -465,9 +444,6 @@ args</code></pre>
 <p>The content of the <em><code>param</code></em> file can also be returned as JSON object as follows (requires <em><code>rjson</code></em> package).</p>
 <pre class="r"><code>systemArgs(sysma=parampath, mytargets=targetspath, type=&quot;json&quot;)</code></pre>
 <pre><code>## [1] &quot;{\&quot;modules\&quot;:{\&quot;n1\&quot;:\&quot;\&quot;,\&quot;v2\&quot;:\&quot;bowtie2/2.2.5\&quot;,\&quot;n1\&quot;:\&quot;\&quot;,\&quot;v2\&quot;:\&quot;tophat/2.0.14\&quot;},\&quot;software\&quot;:{\&quot;n1\&quot;:\&quot;\&quot;,\&quot;v1\&quot;:\&quot;tophat\&quot;},\&quot;cores\&quot;:{\&quot;n1\&quot;:\&quot;-p\&quot;,\&quot;v1\&quot;:\&quot;4\&quot;},\&quot;other\&quot;:{\&quot;n1\&quot;:\&quot;\&quot;,\&quot;v1\&quot;:\&quot;-g 1 --segment-length 25 -i 30 -I 3000\&quot;},\&quot;outfile1\&quot;:{\&quot;n1\&quot;:\&quot;-o\&quot;,\&quot;v2\&quot;:\&quot;&lt;FileName1&gt;\&quot;,\&quot;n3\&quot;:\&quot;path\&quot;,\&quot;v4\&quot;:\&quot;./results/\&quot;,\&quot;n5\&quot;:\&quot;remove\&quot;,\&quot;v1\&quot;:\&quot;\&quot;,\&quot;n2\&quot;:\&quot;append\&quot;,\&quot;v3\&quot;:\&quot;.tophat\&quot;,\&quot;n4\&quot;:\&quot;outextension\&quot;,\&quot;v5\&quot;:\&quot;.tophat/accepted_hits.bam\&quot;},\&quot;reference\&quot;:{\&quot;n1\&quot;:\&quot;\&quot;,\&quot;v1\&quot;:\&quot;./data/tair10.fasta\&quot;},\&quot;infile1\&quot;:{\&quot;n1\&quot;:\&quot;\&quot;,\&quot;v2\&quot;:\&quot;&lt;FileName1&gt;\&quot;,\&quot;n1\&quot;:\&quot;path\&quot;,\&quot;v2\&quot;:\&quot;\&quot;},\&quot;infile2\&quot;:{\&quot;n1\&quot;:\&quot;\&quot;,\&quot;v2\&quot;:\&quot;&lt;FileName2&gt;\&quot;,\&quot;n1\&quot;:\&quot;path\&quot;,\&quot;v2\&quot;:\&quot;\&quot;}}&quot;</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 </div>
 <div id="workflow-overview" class="section level1">
@@ -481,9 +457,6 @@ genWorkenvir(workflow=&quot;rnaseq&quot;)
 setwd(&quot;rnaseq&quot;)</code></pre>
 <p>Construct <em><code>SYSargs</code></em> object from <em><code>param</code></em> and <em><code>targets</code></em> files.</p>
 <pre class="r"><code>args &lt;- systemArgs(sysma=&quot;param/trim.param&quot;, mytargets=&quot;targets.txt&quot;)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="read-preprocessing" class="section level2">
 <h2><span class="header-section-number">3.2</span> Read Preprocessing</h2>
@@ -499,9 +472,6 @@ filterFct &lt;- function(fq, cutoff=20, Nexceptions=0) {
 }
 preprocessReads(args=args, Fct=&quot;filterFct(fq, cutoff=20, Nexceptions=0)&quot;, batchsize=100000)
 writeTargetsout(x=args, file=&quot;targets_PEtrim.txt&quot;)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="fastq-quality-report" class="section level2">
 <h2><span class="header-section-number">3.3</span> FASTQ quality report</h2>
@@ -515,17 +485,11 @@ dev.off()</code></pre>
 <strong>Figure 2:</strong> FASTQ quality report
 </div>
 <p></br></p>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 <p>Parallelization of QC report on single machine with multiple cores</p>
 <pre class="r"><code>args &lt;- systemArgs(sysma=&quot;param/tophat.param&quot;, mytargets=&quot;targets.txt&quot;)
 f &lt;- function(x) seeFastq(fastq=infile1(args)[x], batchsize=100000, klength=8)
 fqlist &lt;- bplapply(seq(along=args), f, BPPARAM = MulticoreParam(workers=8))
 seeFastqPlot(unlist(fqlist, recursive=FALSE))</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 <p>Parallelization of QC report via scheduler (<em>e.g.</em> Torque) across several compute nodes</p>
 <pre class="r"><code>library(BiocParallel); library(BatchJobs)
 f &lt;- function(x) {
@@ -538,9 +502,6 @@ param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&
 register(param)
 fqlist &lt;- bplapply(seq(along=args), f)
 seeFastqPlot(unlist(fqlist, recursive=FALSE))</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="alignment-with-tophat2" class="section level2">
 <h2><span class="header-section-number">3.4</span> Alignment with <em><code>Tophat2</code></em></h2>
@@ -560,9 +521,6 @@ waitForJobs(reg)</code></pre>
 <pre class="r"><code>showStatus(reg)
 file.exists(outpaths(args))
 sapply(1:length(args), function(x) loadResult(reg, x)) # Works after job completion</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="read-and-alignment-count-stats" class="section level2">
 <h2><span class="header-section-number">3.5</span> Read and alignment count stats</h2>
@@ -592,9 +550,6 @@ param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&
 register(param)
 read_statsList &lt;- bplapply(seq(along=args), f)
 read_statsDF &lt;- do.call(&quot;rbind&quot;, read_statsList)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="create-symbolic-links-for-viewing-bam-files-in-igv" class="section level2">
 <h2><span class="header-section-number">3.6</span> Create symbolic links for viewing BAM files in IGV</h2>
@@ -602,9 +557,6 @@ read_statsDF &lt;- do.call(&quot;rbind&quot;, read_statsList)</code></pre>
 <pre class="r"><code>symLink2bam(sysargs=args, htmldir=c(&quot;~/.html/&quot;, &quot;somedir/&quot;), 
             urlbase=&quot;http://myserver.edu/~username/&quot;, 
         urlfile=&quot;IGVurl.txt&quot;)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="alternative-ngs-aligners" class="section level2">
 <h2><span class="header-section-number">3.7</span> Alternative NGS Aligners</h2>
@@ -619,9 +571,6 @@ bampaths &lt;- runCommandline(args=args)</code></pre>
 reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;slurm.tmpl&quot;, Njobs=18, runid=&quot;01&quot;, 
           resourceList=resources)
 waitForJobs(reg)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="alignment-with-bwa-mem-e.g.-for-var-seq" class="section level3">
 <h3><span class="header-section-number">3.7.2</span> Alignment with <em><code>BWA-MEM</code></em> (<em>e.g.</em> for VAR-Seq)</h3>
@@ -630,9 +579,6 @@ waitForJobs(reg)</code></pre>
 moduleload(modules(args)) # Skip if module system is not available
 system(&quot;bwa index -a bwtsw ./data/tair10.fasta&quot;) # Indexes reference genome
 bampaths &lt;- runCommandline(args=args[1:2])</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="alignment-with-rsubread-e.g.-for-rna-seq" class="section level3">
 <h3><span class="header-section-number">3.7.3</span> Alignment with <em><code>Rsubread</code></em> (<em>e.g.</em> for RNA-Seq)</h3>
@@ -643,9 +589,6 @@ buildindex(basename=reference(args), reference=reference(args)) # Build indexed 
 align(index=reference(args), readfile1=infile1(args)[1:4], input_format=&quot;FASTQ&quot;, 
       output_file=outfile1(args)[1:4], output_format=&quot;SAM&quot;, nthreads=8, indels=1, TH1=2)
 for(i in seq(along=outfile1(args))) asBam(file=outfile1(args)[i], destination=gsub(&quot;.sam&quot;, &quot;&quot;, outfile1(args)[i]), overwrite=TRUE, indexDestination=TRUE)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="alignment-with-gsnap-e.g.-for-var-seq-and-rna-seq" class="section level3">
 <h3><span class="header-section-number">3.7.4</span> Alignment with <em><code>gsnap</code></em> (<em>e.g.</em> for VAR-Seq and RNA-Seq)</h3>
@@ -664,9 +607,6 @@ funs &lt;- makeClusterFunctionsSLURM(&quot;slurm.tmpl&quot;)
 param &lt;- BatchJobsParam(length(args), resources=list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=1, memory=&quot;6gb&quot;), cluster.functions=funs)
 register(param)
 d &lt;- bplapply(seq(along=args), f)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 </div>
 <div id="read-counting-for-mrna-profiling-experiments" class="section level2">
@@ -675,9 +615,6 @@ d &lt;- bplapply(seq(along=args), f)</code></pre>
 <pre class="r"><code>library(GenomicFeatures)
 txdb &lt;- makeTxDbFromGFF(file=&quot;data/tair10.gff&quot;, format=&quot;gff&quot;, dataSource=&quot;TAIR&quot;, organism=&quot;A. thaliana&quot;)
 saveDb(txdb, file=&quot;./data/tair10.sqlite&quot;)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 <p>The following performs read counting with <em><code>summarizeOverlaps</code></em> in parallel mode with multiple cores.</p>
 <pre class="r"><code>library(BiocParallel)
 txdb &lt;- loadDb(&quot;./data/tair10.sqlite&quot;)
@@ -691,9 +628,6 @@ rpkmDFeByg &lt;- apply(countDFeByg, 2, function(x) returnRPKM(counts=x, ranges=e
 write.table(countDFeByg, &quot;results/countDFeByg.xls&quot;, col.names=NA, quote=FALSE, sep=&quot;\t&quot;)
 write.table(rpkmDFeByg, &quot;results/rpkmDFeByg.xls&quot;, col.names=NA, quote=FALSE, sep=&quot;\t&quot;)</code></pre>
 <p>Please note, in addition to read counts this step generates RPKM normalized expression values. For most statistical differential expression or abundance analysis methods, such as <em><code>edgeR</code></em> or <em><code>DESeq2</code></em>, the raw count values should be used as input. The usage of RPKM values should be restricted to specialty applications required by some users, <em>e.g.</em> manually comparing the expression levels of different genes or features.</p>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 <p>Read counting with <em><code>summarizeOverlaps</code></em> using multiple nodes of a cluster</p>
 <pre class="r"><code>library(BiocParallel)
 f &lt;- function(x) {
@@ -710,9 +644,6 @@ register(param)
 counteByg &lt;- bplapply(seq(along=args), f) 
 countDFeByg &lt;- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)
 rownames(countDFeByg) &lt;- names(rowRanges(counteByg[[1]])); colnames(countDFeByg) &lt;- names(outpaths(args))</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="read-counting-for-mirna-profiling-experiments" class="section level2">
 <h2><span class="header-section-number">3.9</span> Read counting for miRNA profiling experiments</h2>
@@ -726,9 +657,6 @@ countDFmiR &lt;- summarizeOverlaps(gff, bfl, mode=&quot;Union&quot;, ignore.stra
 rpkmDFmiR &lt;- apply(countDFmiR, 2, function(x) returnRPKM(counts=x, gffsub=gff))
 write.table(assays(countDFmiR)$counts, &quot;results/countDFmiR.xls&quot;, col.names=NA, quote=FALSE, sep=&quot;\t&quot;)
 write.table(rpkmDFmiR, &quot;results/rpkmDFmiR.xls&quot;, col.names=NA, quote=FALSE, sep=&quot;\t&quot;)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="correlation-analysis-of-samples" class="section level2">
 <h2><span class="header-section-number">3.10</span> Correlation analysis of samples</h2>
@@ -753,9 +681,6 @@ rpkmDFeByg &lt;- rpkmDFeByg[rowMeans(rpkmDFeByg) &gt; 50,]
 d &lt;- cor(rpkmDFeByg, method=&quot;spearman&quot;)
 hc &lt;- hclust(as.dist(1-d))
 plot.phylo(as.phylo(hc), type=&quot;p&quot;, edge.col=&quot;blue&quot;, edge.width=2, show.node.label=TRUE, no.margin=TRUE)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="deg-analysis-with-edger" class="section level2">
 <h2><span class="header-section-number">3.11</span> DEG analysis with <em><code>edgeR</code></em></h2>
@@ -792,9 +717,6 @@ edgeDF &lt;- run_edgeR(countDF=countDFeByg, targets=targets, cmp=cmp[[1]], indep
 ## M1-V1       M1-V1                 1         1           0
 ## A1-V1       A1-V1                 1         1           0
 ## M6-A6       M6-A6                 0         0           0</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="deg-analysis-with-deseq2" class="section level2">
 <h2><span class="header-section-number">3.12</span> DEG analysis with <em><code>DESeq2</code></em></h2>
@@ -807,9 +729,6 @@ edgeDF &lt;- run_edgeR(countDF=countDFeByg, targets=targets, cmp=cmp[[1]], indep
 <strong>Figure 5:</strong> Up and down regulated DEGs identified by <em><code>DESeq2</code></em>.
 </div>
 <p></br></p>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="venn-diagrams" class="section level2">
 <h2><span class="header-section-number">3.13</span> Venn Diagrams</h2>
@@ -822,9 +741,6 @@ vennPlot(list(vennsetup, vennsetdown), mymain=&quot;&quot;, mysub=&quot;&quot;, 
 <strong>Figure 6:</strong> Venn Diagram for 4 Up and Down DEG Sets.
 </div>
 <p></br></p>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="go-term-enrichment-analysis-of-degs" class="section level2">
 <h2><span class="header-section-number">3.14</span> GO term enrichment analysis of DEGs</h2>
@@ -842,9 +758,6 @@ dir.create(&quot;./data/GO&quot;)
 write.table(go, &quot;data/GO/GOannotationsBiomart_mod.txt&quot;, quote=FALSE, row.names=FALSE, col.names=FALSE, sep=&quot;\t&quot;)
 catdb &lt;- makeCATdb(myfile=&quot;data/GO/GOannotationsBiomart_mod.txt&quot;, lib=NULL, org=&quot;&quot;, colno=c(1,2,3), idconv=NULL)
 save(catdb, file=&quot;data/GO/catdb.RData&quot;) </code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="batch-go-term-enrichment-analysis" class="section level3">
 <h3><span class="header-section-number">3.14.2</span> Batch GO term enrichment analysis</h3>
@@ -860,9 +773,6 @@ BatchResult &lt;- GOCluster_Report(catdb=catdb, setlist=DEGlist, method=&quot;al
 library(&quot;biomaRt&quot;); m &lt;- useMart(&quot;ENSEMBL_MART_PLANT&quot;, dataset=&quot;athaliana_eg_gene&quot;)
 goslimvec &lt;- as.character(getBM(attributes=c(&quot;goslim_goa_accession&quot;), mart=m)[,1])
 BatchResultslim &lt;- GOCluster_Report(catdb=catdb, setlist=DEGlist, method=&quot;slim&quot;, id_type=&quot;gene&quot;, myslimv=goslimvec, CLSZ=10, cutoff=0.01, gocats=c(&quot;MF&quot;, &quot;BP&quot;, &quot;CC&quot;), recordSpecGO=NULL)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="plot-batch-go-term-results" class="section level3">
 <h3><span class="header-section-number">3.14.3</span> Plot batch GO term results</h3>
@@ -877,9 +787,6 @@ goBarplot(gos, gocat=&quot;CC&quot;)</code></pre>
 <strong>Figure 7:</strong> GO Slim Barplot for MF Ontology.
 </div>
 <p></br></p>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 </div>
 <div id="clustering-and-heat-maps" class="section level2">
@@ -896,9 +803,6 @@ dev.off()</code></pre>
 <strong>Figure 8:</strong> Heat map with hierarchical clustering dendrograms of DEGs.
 </div>
 <p></br></p>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 </div>
 <div id="workflow-templates" class="section level1">
@@ -909,9 +813,6 @@ dev.off()</code></pre>
 <pre class="r"><code>library(systemPipeRdata)
 genWorkenvir(workflow=&quot;rnaseq&quot;)
 setwd(&quot;rnaseq&quot;)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 <div id="run-workflow" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Run workflow</h3>
 <p>Next, run the chosen sample workflow <em><code>systemPipeRNAseq</code></em> (<a href="https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/rnaseq/systemPipeRNAseq.pdf?raw=true">PDF</a>, <a href="https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/rnaseq/systemPipeRNAseq_single.Rnw">Rnw</a>) by executing from the command-line <em><code>make -B</code></em> within the <em><code>rnaseq</code></em> directory. Alternatively, one can run the code from the provided <em><code>*.Rnw</code></em> template file from within R interactively.</p>
@@ -930,9 +831,6 @@ setwd(&quot;rnaseq&quot;)</code></pre>
 <li>GO term enrichment analysis</li>
 <li>Gene-wise clustering</li>
 </ol>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 </div>
 <div id="chip-seq-sample" class="section level2">
@@ -941,9 +839,6 @@ setwd(&quot;rnaseq&quot;)</code></pre>
 <pre class="r"><code>library(systemPipeRdata)
 genWorkenvir(workflow=&quot;chipseq&quot;)
 setwd(&quot;chipseq&quot;)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 <div id="run-workflow-1" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Run workflow</h3>
 <p>Next, run the chosen sample workflow <em><code>systemPipeChIPseq_single</code></em> (<a href="https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/chipseq/systemPipeChIPseq.pdf?raw=true">PDF</a>, <a href="https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/chipseq/systemPipeChIPseq_single.Rnw">Rnw</a>) by executing from the command-line <em><code>make -B</code></em> within the <em><code>chipseq</code></em> directory. Alternatively, one can run the code from the provided <em><code>*.Rnw</code></em> template file from within R interactively.</p>
@@ -962,9 +857,6 @@ setwd(&quot;chipseq&quot;)</code></pre>
 <li>GO term enrichment analysis</li>
 <li>Motif analysis</li>
 </ol>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 </div>
 <div id="var-seq-sample" class="section level2">
@@ -975,9 +867,6 @@ setwd(&quot;chipseq&quot;)</code></pre>
 <pre class="r"><code>library(systemPipeRdata)
 genWorkenvir(workflow=&quot;varseq&quot;)
 setwd(&quot;varseq&quot;)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="run-workflow-2" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Run workflow</h3>
@@ -996,16 +885,10 @@ setwd(&quot;varseq&quot;)</code></pre>
 <li>Combine results from many samples</li>
 <li>Summary statistics of samples</li>
 </ol>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="var-seq-workflow-for-computer-cluster" class="section level3">
 <h3><span class="header-section-number">4.3.3</span> VAR-Seq workflow for computer cluster</h3>
 <p>The workflow template provided for this step is called <em><code>systemPipeVARseq.Rnw</code></em> (<a href="https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/varseq/systemPipeVARseq.pdf?raw=true">PDF</a>, <a href="https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/varseq/systemPipeVARseq.Rnw">Rnw</a>). It runs the above VAR-Seq workflow in parallel on multiple computer nodes of an HPC system using Torque as scheduler.</p>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 </div>
 <div id="ribo-seq-sample" class="section level2">
@@ -1014,9 +897,6 @@ setwd(&quot;varseq&quot;)</code></pre>
 <pre class="r"><code>library(systemPipeRdata)
 genWorkenvir(workflow=&quot;riboseq&quot;)
 setwd(&quot;riboseq&quot;)</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 <div id="run-workflow-3" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Run workflow</h3>
 <p>Next, run the chosen sample workflow <em><code>systemPipeRIBOseq</code></em> (<a href="https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/riboseq/systemPipeRIBOseq.pdf?raw=true">PDF</a>, <a href="https://github.com/tgirke/systemPipeRdata/blob/master/inst/extdata/workflows/ribseq/systemPipeRIBOseq_single.Rnw">Rnw</a>) by executing from the command-line <em><code>make -B</code></em> within the <em><code>ribseq</code></em> directory. Alternatively, one can run the code from the provided <em><code>*.Rnw</code></em> template file from within R interactively.</p>
@@ -1039,9 +919,6 @@ setwd(&quot;riboseq&quot;)</code></pre>
 <li>Gene-wise clustering</li>
 <li>Differential ribosome binding (translational efficiency)</li>
 </ol>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 </div>
 </div>
@@ -1098,9 +975,6 @@ setwd(&quot;riboseq&quot;)</code></pre>
 ## [81] assertthat_0.2.0        xtable_1.8-2            survival_2.42-3         tibble_1.4.2           
 ## [85] pheatmap_1.0.8          AnnotationDbi_1.40.0    memoise_1.1.0           cluster_2.0.7-1        
 ## [89] brew_1.0-6              GSEABase_1.40.0</code></pre>
-<div align="right">
-<a href>Back to Table of Contents</a>
-</div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>

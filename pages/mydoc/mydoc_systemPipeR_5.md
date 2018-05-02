@@ -1,6 +1,6 @@
 ---
 title: 5. Version information
-last_updated: Wed May  2 15:14:40 2018
+last_updated: Wed May  2 15:23:37 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeR_5.html
 ---
@@ -62,6 +62,7 @@ sessionInfo()
 ## [85] pheatmap_1.0.8          AnnotationDbi_1.40.0    memoise_1.1.0           cluster_2.0.7-1        
 ## [89] brew_1.0-6              GSEABase_1.40.0
 ```
+
 
 <br><br><center><a href="mydoc_systemPipeR_4.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_systemPipeR_6.html"><img src="images/right_arrow.png" alt="Next page."></a></center>

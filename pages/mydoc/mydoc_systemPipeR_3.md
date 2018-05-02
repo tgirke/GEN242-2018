@@ -1,6 +1,6 @@
 ---
 title: 3. Workflow overview
-last_updated: Wed May  2 15:14:40 2018
+last_updated: Wed May  2 15:23:37 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeR_3.html
 ---
@@ -87,6 +87,7 @@ fqlist <- bplapply(seq(along=args), f, BPPARAM = MulticoreParam(workers=8))
 seeFastqPlot(unlist(fqlist, recursive=FALSE))
 ```
 
+
 Parallelization of QC report via scheduler (_e.g._ Torque) across several compute nodes
 
 
@@ -103,6 +104,7 @@ register(param)
 fqlist <- bplapply(seq(along=args), f)
 seeFastqPlot(unlist(fqlist, recursive=FALSE))
 ```
+
 
 ## Alignment with _`Tophat2`_
 Build _`Bowtie2`_ index.
@@ -139,6 +141,7 @@ showStatus(reg)
 file.exists(outpaths(args))
 sapply(1:length(args), function(x) loadResult(reg, x)) # Works after job completion
 ```
+
 
 ## Read and alignment count stats
 Generate table of read and alignment counts for all samples. 
@@ -186,6 +189,7 @@ read_statsList <- bplapply(seq(along=args), f)
 read_statsDF <- do.call("rbind", read_statsList)
 ```
 
+
 ## Create symbolic links for viewing BAM files in IGV
 The genome browser IGV supports reading of indexed/sorted BAM files via web URLs. This way it can be avoided to create unnecessary copies of these large files. To enable this approach, an HTML directory with http access needs to be available in the user account (_e.g._ _`home/publichtml`_) of a system. If this is not the case then the BAM files need to be moved or copied to the system where IGV runs. In the following, _`htmldir`_ defines the path to the HTML directory with http access where the symbolic links to the BAM files will be stored. The corresponding URLs will be written to a text file specified under the `_urlfile`_ argument. 
 
@@ -194,6 +198,7 @@ symLink2bam(sysargs=args, htmldir=c("~/.html/", "somedir/"),
             urlbase="http://myserver.edu/~username/", 
         urlfile="IGVurl.txt")
 ```
+
 
 ## Alternative NGS Aligners
 
@@ -215,6 +220,7 @@ reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18
 waitForJobs(reg)
 ```
 
+
 ### Alignment with _`BWA-MEM`_ (_e.g._ for VAR-Seq)
 The following example runs BWA-MEM as a single process without submitting it to a cluster.
 
@@ -224,6 +230,7 @@ moduleload(modules(args)) # Skip if module system is not available
 system("bwa index -a bwtsw ./data/tair10.fasta") # Indexes reference genome
 bampaths <- runCommandline(args=args[1:2])
 ```
+
 
 ### Alignment with _`Rsubread`_ (_e.g._ for RNA-Seq)
 The following example shows how one can use within the `systemPipeR` environment the R-based 
@@ -237,6 +244,7 @@ align(index=reference(args), readfile1=infile1(args)[1:4], input_format="FASTQ",
       output_file=outfile1(args)[1:4], output_format="SAM", nthreads=8, indels=1, TH1=2)
 for(i in seq(along=outfile1(args))) asBam(file=outfile1(args)[i], destination=gsub(".sam", "", outfile1(args)[i]), overwrite=TRUE, indexDestination=TRUE)
 ```
+
 
 ### Alignment with _`gsnap`_ (_e.g._ for VAR-Seq and RNA-Seq)
 Another R-based short read aligner is _`gsnap`_ from the _`gmapR`_ package (Wu et al., 2010). 
@@ -259,6 +267,7 @@ register(param)
 d <- bplapply(seq(along=args), f)
 ```
 
+
 ## Read counting for mRNA profiling experiments
 Create _`txdb`_ (needs to be done only once)
 
@@ -267,6 +276,7 @@ library(GenomicFeatures)
 txdb <- makeTxDbFromGFF(file="data/tair10.gff", format="gff", dataSource="TAIR", organism="A. thaliana")
 saveDb(txdb, file="./data/tair10.sqlite")
 ```
+
 
 The following performs read counting with _`summarizeOverlaps`_ in parallel mode with multiple cores. 
 
@@ -306,6 +316,7 @@ countDFeByg <- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$c
 rownames(countDFeByg) <- names(rowRanges(counteByg[[1]])); colnames(countDFeByg) <- names(outpaths(args))
 ```
 
+
 ## Read counting for miRNA profiling experiments
 Download miRNA genes from miRBase
 
@@ -320,6 +331,7 @@ rpkmDFmiR <- apply(countDFmiR, 2, function(x) returnRPKM(counts=x, gffsub=gff))
 write.table(assays(countDFmiR)$counts, "results/countDFmiR.xls", col.names=NA, quote=FALSE, sep="\t")
 write.table(rpkmDFmiR, "results/rpkmDFmiR.xls", col.names=NA, quote=FALSE, sep="\t")
 ```
+
 
 ## Correlation analysis of samples
 The following computes the sample-wise Spearman correlation coefficients from the _`rlog`_ (regularized-logarithm) transformed expression values generated with the _`DESeq2`_ package. After transformation to a distance matrix, hierarchical clustering is performed with the _`hclust`_ function and the result is plotted as a dendrogram ([sample\_tree.pdf](./results/sample_tree.pdf)). 
@@ -422,6 +434,7 @@ DEG_list$Summary[1:4,]
 ## M6-A6       M6-A6                 0         0           0
 ```
 
+
 ## DEG analysis with _`DESeq2`_ 
 The following _`run_DESeq2`_ function is a convenience wrapper for
 identifying DEGs in batch mode with _`DESeq2`_ (Love et al., 2014) for any number of
@@ -458,6 +471,7 @@ vennPlot(list(vennsetup, vennsetdown), mymain="", mysub="", colmode=2, ccol=c("b
 <div align="center">**Figure 6:** Venn Diagram for 4 Up and Down DEG Sets. </div>
 
 
+
 ## GO term enrichment analysis of DEGs
 ### Obtain gene-to-GO mappings
 The following shows how to obtain gene-to-GO mappings from _`biomaRt`_ (here for _A. thaliana_) and how to organize them for the downstream GO term enrichment analysis. Alternatively, the gene-to-GO mappings can be obtained for many organisms from Bioconductor's  _`*.db`_ genome annotation packages or GO annotation files provided by various genome databases. For each annotation this relatively slow preprocessing step needs to be performed only once. Subsequently, the preprocessed data can be loaded with the _`load`_ function as shown in the next subsection. 
@@ -476,6 +490,7 @@ catdb <- makeCATdb(myfile="data/GO/GOannotationsBiomart_mod.txt", lib=NULL, org=
 save(catdb, file="data/GO/catdb.RData") 
 ```
 
+
 ### Batch GO term enrichment analysis
 Apply the enrichment analysis to the DEG sets obtained in the above differential expression analysis. Note, in the following example the _FDR_ filter is set here to an unreasonably high value, simply because of the small size of the toy data set used in this vignette. Batch enrichment analysis of many gene sets is performed with the _`GOCluster_Report`_ function. When _`method="all"`_, it returns all GO terms passing the p-value cutoff specified under the _`cutoff`_ arguments. When _`method="slim"`_, it returns only the GO terms specified under the _`myslimv`_ argument. The given example shows how one can obtain such a GO slim vector from BioMart for a specific organism.  
 
@@ -492,6 +507,7 @@ library("biomaRt"); m <- useMart("ENSEMBL_MART_PLANT", dataset="athaliana_eg_gen
 goslimvec <- as.character(getBM(attributes=c("goslim_goa_accession"), mart=m)[,1])
 BatchResultslim <- GOCluster_Report(catdb=catdb, setlist=DEGlist, method="slim", id_type="gene", myslimv=goslimvec, CLSZ=10, cutoff=0.01, gocats=c("MF", "BP", "CC"), recordSpecGO=NULL)
 ```
+
 
 ### Plot batch GO term results
 The _`data.frame`_ generated by _`GOCluster_Report`_ can be plotted with the _`goBarplot`_ function. Because of the variable size of the sample sets, it may not always be desirable to show the results from different DEG sets in the same bar plot. Plotting single sample sets is achieved by subsetting the input data frame as shown in the first line of the following example. 
