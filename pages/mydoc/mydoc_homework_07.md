@@ -29,7 +29,7 @@ Before attempting to solve this homework section please read the vignette _Count
 
 - __Task 3__: Explain the utility (biological relevance) of the different counting modes used under Task 1. Include your explanation as comment text in your homework script (see `HW7.R` below). 
 
-## B. Read counting of different feature types
+## B. Read counting for different feature types
 - __Task 4__: Compute strand-specific count tables for the positive (sense) strand of the following feature types: 
 
    1. Genes
