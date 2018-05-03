@@ -38,9 +38,13 @@ Before attempting to solve this homework section please read the vignette _Count
    4. Introns by genes
    5. 5'-UTRs
 
+## C. DEG analysis
+
+- __Task 5__: Perform the DEG analysis with `edgeR` as outlined under section 6 of the RNA-Seq workflow [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html). Use in one case for the DEG analysis the unstranded count table as input (from Task 1.1) and in another the sense strand count table (Task 1.2). Compare the DEG result of the two methods in a [venn diagram](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html#venn-diagrams-of-deg-sets).
+
 ## Homework submission
 
-Assemble the code from the homework assignments A-B in a single R script (`HW7.R`) and upload it to your private GitHub repository under `Homework/HW7/HW7.R`. Please do not upload any data such as count tables with your homework.
+Assemble the code from the homework assignments A-C in a single R script (`HW7.R`) and upload it to your private GitHub repository under `Homework/HW7/HW7.R`. Please do not upload any data such as count tables with your homework.
 
 ## Due date
 
