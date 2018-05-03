@@ -40,7 +40,10 @@ Before attempting to solve this homework section please read the vignette _Count
 
 ## C. DEG analysis
 
-- __Task 5__: Perform the DEG analysis with `edgeR` as outlined under section 6 of the RNA-Seq workflow [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html). Use in one case for the DEG analysis the unstranded count table as input (from Task 1.1) and in another the sense strand count table (Task 1.2). Compare the DEG result of the two methods in a [venn diagram](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html#venn-diagrams-of-deg-sets).
+- __Task 5__: Perform the DEG analysis with `edgeR` as outlined under section 6 of the RNA-Seq workflow [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html). Use in one case for the DEG analysis the unstranded count table as input (from Task 1.1) and in another the sense strand count table (from Task 1.2). Compare the DEG result of the two methods in two separate 4-way venn diagrams for the same sample comparisons used in the workflow example [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html#venn-diagrams-of-deg-sets).
+
+   1. 4-way Venn diagram for unstranded count table
+   2. 4-way Venn diagram for sense strand count table
 
 ## Homework submission
 
