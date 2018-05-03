@@ -1,6 +1,6 @@
 ---
 title: 2. Samples and environment settings
-last_updated: Wed May  2 19:41:30 2018
+last_updated: Wed May  2 19:54:06 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_02.html
 ---
@@ -75,15 +75,12 @@ Now open the R markdown script `systemPipeRNAseq.Rmd` in your R IDE (_e.g._
 nvim-r or RStudio) and run the workflow as outlined below. 
 
 
-After being connected to a The code of the `Rmd`
-script can then be sent from Vim on the login (head) node to an open R session running
-on the corresponding computer node. 
+Note, Tmux session should always run on one of the headnodes and never on the computer nodes themsleves.
+This is important since Tmux sessions are persistent meaning they don't close automatically when a computer 
+job finishes. Thus, they are not controlled by the queueing system. 
 
-Note, if you use Tmux then the session should always run on one of the headnodes and never on the computer node.
-This is important since Tmux sessions are persisten and don't close automatically when a computer job finishes. 
-
-To check whether your R session is running on a computer node of the cluster and not on a head node, one can 
-execute the following commands from R.
+To check the environment of R session, one can execute the following commands from R. The first line
+returns the node name of the R session.
 
 
 ```r

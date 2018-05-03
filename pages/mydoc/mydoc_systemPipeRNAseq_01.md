@@ -1,6 +1,6 @@
 ---
 title: RNA-Seq Workflow Template  <br> <br> 1. Introduction
-last_updated: Wed May  2 19:41:30 2018
+last_updated: Wed May  2 19:54:06 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_01.html
 ---
