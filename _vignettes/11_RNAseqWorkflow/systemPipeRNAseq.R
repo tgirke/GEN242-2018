@@ -27,7 +27,7 @@ suppressPackageStartupMessages({
 
 ## download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd", "systemPipeRNAseq.Rmd")
 
-## $ wget https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd
+## $ wget -O systemPipeRNAseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd
 
 ## ----node_environment, eval=FALSE----------------------------------------
 ## $ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
@@ -106,14 +106,12 @@ read.table(system.file("extdata", "alignStats.xls", package="systemPipeR"), head
 ## (align <- readGAlignments(outpaths(args)[1])) # Demonstrates how to read bam file into R
 ## eByg <- exonsBy(txdb, by=c("gene"))
 ## bfl <- BamFileList(outpaths(args), yieldSize=50000, index=character())
-## multicoreParam <- MulticoreParam(workers=2); register(multicoreParam); registered()
-## counteByg <- bplapply(bfl, function(x) summarizeOverlaps(eByg, x, mode="Union",
+## counteByg <- summarizeOverlaps(eByg, bfl, mode="Union",
 ##                                                ignore.strand=TRUE,
 ##                                                # preprocess.reads=invertStrand,
 ## 					       inter.feature=FALSE,
-##                                                singleEnd=TRUE))
-## countDFeByg <- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)
-## rownames(countDFeByg) <- names(rowRanges(counteByg[[1]])); colnames(countDFeByg) <- names(bfl)
+##                                                singleEnd=TRUE)
+## countDFeByg <- assays(counteByg)$counts
 ## rpkmDFeByg <- apply(countDFeByg, 2, function(x) returnRPKM(counts=x, ranges=eByg))
 ## write.table(countDFeByg, "results/countDFeByg.xls", col.names=NA, quote=FALSE, sep="\t")
 ## write.table(rpkmDFeByg, "results/rpkmDFeByg.xls", col.names=NA, quote=FALSE, sep="\t")

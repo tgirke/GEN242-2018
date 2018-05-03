@@ -15,7 +15,7 @@ permalink: mydoc_homework_07.html
 The solution for generating the unstranded read counts is given below. Note, the upstream steps 1-4 in the RNA-Seq workflow only need to be rerun to generate the proper inputs for the read counting. Thus, they are not required to be included in the homework results (see `HW7.R` below).
 
 {% highlight r %}
-summarizeOverlaps(eByg, x, mode="Union", 
+summarizeOverlaps(eByg, bfl, mode="Union", 
 					ignore.strand=TRUE, 
                                         # preprocess.reads=invertStrand,
 					inter.feature=FALSE, 
@@ -35,8 +35,8 @@ Before attempting to solve this homework task please read the vignette _Counting
    1. Genes
    2. Exons
    3. Exons by genes 
-   4. Introns by genes
-   5. 5'-UTRs
+   4. Introns by transcripts
+   5. 5'-UTRs by transcripts
 
 ## C. DEG analysis
 

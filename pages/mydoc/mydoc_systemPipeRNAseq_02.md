@@ -1,6 +1,6 @@
 ---
 title: 2. Samples and environment settings
-last_updated: Wed May  2 21:00:28 2018
+last_updated: Thu May  3 12:38:34 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_02.html
 ---
@@ -60,7 +60,7 @@ download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignett
 Or from the command-line one can do this with `wget`.
 
 ```sh
-$ wget https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd
+$ wget -O systemPipeRNAseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd
 ```
 
 If you work under Nvim-R-Tmux, the following command sequence will connect the user from the command-line

@@ -235,7 +235,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">RNA-Seq Workflow Template</h1>
 <h4 class="author"><em>First/last name (<a href="mailto:first.last@ucr.edu">first.last@ucr.edu</a>)</em></h4>
-<h4 class="date"><em>Last update: 02 May, 2018</em></h4>
+<h4 class="date"><em>Last update: 03 May, 2018</em></h4>
 
 </div>
 
@@ -277,7 +277,7 @@ $ cd rnaseq</code></pre>
 <p>Now download the latest <code>systemPipeRNAseq.Rmd</code> script for this course. From within R this can be done as follows.</p>
 <pre class="sh"><code>download.file(&quot;https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd&quot;, &quot;systemPipeRNAseq.Rmd&quot;)</code></pre>
 <p>Or from the command-line one can do this with <code>wget</code>.</p>
-<pre class="sh"><code>$ wget https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd</code></pre>
+<pre class="sh"><code>$ wget -O systemPipeRNAseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd</code></pre>
 <p>If you work under Nvim-R-Tmux, the following command sequence will connect the user from the command-line to a computer node on the cluster.</p>
 <pre class="r"><code>$ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l</code></pre>
 <p>Now open the R markdown script <code>systemPipeRNAseq.Rmd</code> in your R IDE (<em>e.g.</em> nvim-r or RStudio) and run the workflow as outlined below.</p>
@@ -399,7 +399,7 @@ write.table(read_statsDF, &quot;results/alignStats.xls&quot;, row.names=FALSE, q
 <h1><span class="header-section-number">5</span> Read quantification</h1>
 <div id="read-counting-with-summarizeoverlaps-in-parallel-mode-using-multiple-cores" class="section level2">
 <h2><span class="header-section-number">5.1</span> Read counting with <code>summarizeOverlaps</code> in parallel mode using multiple cores</h2>
-<p>Reads overlapping with annotation ranges of interest are counted for each sample using the <code>summarizeOverlaps</code> function <span class="citation">(Lawrence et al. 2013)</span>. The read counting is preformed for exonic gene regions in a non-strand-specific manner while ignoring overlaps among different genes. Subsequently, the expression count values are normalized by <em>reads per kp per million mapped reads</em> (RPKM). The raw read count table (<code>countDFeByg.xls</code>) and the correspoding RPKM table (<code>rpkmDFeByg.xls</code>) are written to separate files in the directory of this project. Parallelization is achieved with the <code>BiocParallel</code> package, here using 8 CPU cores.</p>
+<p>Reads overlapping with annotation ranges of interest are counted for each sample using the <code>summarizeOverlaps</code> function <span class="citation">(Lawrence et al. 2013)</span>. The read counting is preformed for exonic gene regions in a non-strand-specific manner while ignoring overlaps among different genes. Subsequently, the expression count values are normalized by <em>reads per kp per million mapped reads</em> (RPKM). The raw read count table (<code>countDFeByg.xls</code>) and the correspoding RPKM table (<code>rpkmDFeByg.xls</code>) are written to separate files in the directory of this project.</p>
 <pre class="r"><code>library(&quot;GenomicFeatures&quot;); library(BiocParallel)
 txdb &lt;- makeTxDbFromGFF(file=&quot;data/tair10.gff&quot;, format=&quot;gff&quot;, dataSource=&quot;TAIR&quot;, organism=&quot;Arabidopsis thaliana&quot;)
 saveDb(txdb, file=&quot;./data/tair10.sqlite&quot;)
@@ -407,14 +407,12 @@ txdb &lt;- loadDb(&quot;./data/tair10.sqlite&quot;)
 (align &lt;- readGAlignments(outpaths(args)[1])) # Demonstrates how to read bam file into R
 eByg &lt;- exonsBy(txdb, by=c(&quot;gene&quot;))
 bfl &lt;- BamFileList(outpaths(args), yieldSize=50000, index=character())
-multicoreParam &lt;- MulticoreParam(workers=2); register(multicoreParam); registered()
-counteByg &lt;- bplapply(bfl, function(x) summarizeOverlaps(eByg, x, mode=&quot;Union&quot;, 
+counteByg &lt;- summarizeOverlaps(eByg, bfl, mode=&quot;Union&quot;, 
                                                ignore.strand=TRUE, 
                                                # preprocess.reads=invertStrand,
                            inter.feature=FALSE, 
-                                               singleEnd=TRUE)) 
-countDFeByg &lt;- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)
-rownames(countDFeByg) &lt;- names(rowRanges(counteByg[[1]])); colnames(countDFeByg) &lt;- names(bfl)
+                                               singleEnd=TRUE)
+countDFeByg &lt;- assays(counteByg)$counts
 rpkmDFeByg &lt;- apply(countDFeByg, 2, function(x) returnRPKM(counts=x, ranges=eByg))
 write.table(countDFeByg, &quot;results/countDFeByg.xls&quot;, col.names=NA, quote=FALSE, sep=&quot;\t&quot;)
 write.table(rpkmDFeByg, &quot;results/rpkmDFeByg.xls&quot;, col.names=NA, quote=FALSE, sep=&quot;\t&quot;)</code></pre>

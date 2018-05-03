@@ -1,12 +1,12 @@
 ---
 title: RNA-Seq Workflow Template  <br> <br> 1. Introduction
-last_updated: Wed May  2 21:00:28 2018
+last_updated: Thu May  3 12:38:34 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_01.html
 ---
 First/last name (first.last@ucr.edu)
 
-Last update: 02 May, 2018 
+Last update: 03 May, 2018 
 
 Alternative formats of this tutorial:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/systemPipeRNAseq.html){:target="_blank"} ],

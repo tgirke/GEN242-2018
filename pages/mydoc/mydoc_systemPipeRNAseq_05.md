@@ -1,6 +1,6 @@
 ---
 title: 5. Read quantification
-last_updated: Wed May  2 21:00:28 2018
+last_updated: Thu May  3 12:38:34 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_05.html
 ---
@@ -13,9 +13,7 @@ preformed for exonic gene regions in a non-strand-specific manner while
 ignoring overlaps among different genes. Subsequently, the expression
 count values are normalized by *reads per kp per million mapped reads*
 (RPKM). The raw read count table (`countDFeByg.xls`) and the correspoding 
-RPKM table (`rpkmDFeByg.xls`) are written
-to separate files in the directory of this project. Parallelization is
-achieved with the `BiocParallel` package, here using 8 CPU cores.
+RPKM table (`rpkmDFeByg.xls`) are written to separate files in the directory of this project. 
 
 
 ```r
@@ -26,14 +24,12 @@ txdb <- loadDb("./data/tair10.sqlite")
 (align <- readGAlignments(outpaths(args)[1])) # Demonstrates how to read bam file into R
 eByg <- exonsBy(txdb, by=c("gene"))
 bfl <- BamFileList(outpaths(args), yieldSize=50000, index=character())
-multicoreParam <- MulticoreParam(workers=2); register(multicoreParam); registered()
-counteByg <- bplapply(bfl, function(x) summarizeOverlaps(eByg, x, mode="Union", 
+counteByg <- summarizeOverlaps(eByg, bfl, mode="Union", 
                                                ignore.strand=TRUE, 
                                                # preprocess.reads=invertStrand,
 					       inter.feature=FALSE, 
-                                               singleEnd=TRUE)) 
-countDFeByg <- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)
-rownames(countDFeByg) <- names(rowRanges(counteByg[[1]])); colnames(countDFeByg) <- names(bfl)
+                                               singleEnd=TRUE)
+countDFeByg <- assays(counteByg)$counts
 rpkmDFeByg <- apply(countDFeByg, 2, function(x) returnRPKM(counts=x, ranges=eByg))
 write.table(countDFeByg, "results/countDFeByg.xls", col.names=NA, quote=FALSE, sep="\t")
 write.table(rpkmDFeByg, "results/rpkmDFeByg.xls", col.names=NA, quote=FALSE, sep="\t")
