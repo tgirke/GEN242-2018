@@ -1,12 +1,12 @@
 ---
 title: Programming in R  <br> <br> 1. Overview
-last_updated: Thu Apr 19 12:18:56 2018
+last_updated: Thu May  3 07:33:25 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_01.html
 ---
 Author: Thomas Girke
 
-Last update: 19 April, 2018 
+Last update: 03 May, 2018 
 
 Alternative formats of this vignette:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Programming_in_R.html){:target="_blank"} ],

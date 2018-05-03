@@ -1,6 +1,6 @@
 ---
 title: 4. Functions
-last_updated: Thu Apr 19 12:18:56 2018
+last_updated: Thu May  3 07:33:25 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Programming_in_R_04.html
 ---
