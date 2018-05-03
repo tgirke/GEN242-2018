@@ -25,7 +25,7 @@ summarizeOverlaps(eByg, x, mode="Union",
 
 Before attempting to solve this homework section please read the vignette _Counting reads with `summarizeOverlaps`_ ([here](http://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html)) from the `GenomicAlignments` package that defines the `summarizeOverlap` function .
 
-- __Task 2__: provide R code that demonstrates that the two strand-specific count tables sum up to the values of the unstranded count table. 
+- __Task 2__: Provide R code that demonstrates that the two strand-specific count tables sum up to the values of the unstranded count table. 
 
 ## B. Read counting of different feature types
 - __Task 3__: Compute strand-specific count tables for the positive (sense) strand of the following feature types: 
