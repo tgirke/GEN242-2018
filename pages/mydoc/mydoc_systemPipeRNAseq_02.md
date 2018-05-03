@@ -1,6 +1,6 @@
 ---
 title: 2. Samples and environment settings
-last_updated: Wed May  2 16:12:41 2018
+last_updated: Wed May  2 19:41:30 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_02.html
 ---
@@ -45,26 +45,45 @@ Alternatively, this can be done from the command-line as follows:
 
 
 ```sh
-Rscript -e "systemPipeRdata::genWorkenvir(workflow='rnaseq')"
+$ Rscript -e "systemPipeRdata::genWorkenvir(workflow='rnaseq')"
+cd rnaseq
 ```
 
-Now open the R markdown script `systemPipeRNAseq.Rmd`in your R IDE (_e.g._
-vim-r or RStudio) and run the workflow as outlined below. If you work under
-Vim-R-Tmux, the following command sequence will connect the user in an
-interactive session with a node on the cluster. The code of the `Rmd`
-script can then be sent from Vim on the login (head) node to an open R session running
-on the corresponding computer node. This is important since Tmux sessions
-should not be run on the computer nodes. 
+Now download the latest `systemPipeRNAseq.Rmd` script for this course. From
+within R this can be done as follows.
+
+
+```sh
+download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd", "systemPipeRNAseq.Rmd")
+```
+
+Or from the command-line one can do this with `wget`.
+
+```sh
+$ wget https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd
+```
+
+If you work under Nvim-R-Tmux, the following command sequence will connect the user from the command-line
+to a computer node on the cluster. 
 
 
 ```r
-# push `F2` on your keyboard to open interactive R session
-q("no") # closes R session on head node
-srun --x11 --partition=intel --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
-R
+srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
 ```
 
-Now check whether your R session is running on a computer node of the cluster and not on a head node.
+Now open the R markdown script `systemPipeRNAseq.Rmd` in your R IDE (_e.g._
+nvim-r or RStudio) and run the workflow as outlined below. 
+
+
+After being connected to a The code of the `Rmd`
+script can then be sent from Vim on the login (head) node to an open R session running
+on the corresponding computer node. 
+
+Note, if you use Tmux then the session should always run on one of the headnodes and never on the computer node.
+This is important since Tmux sessions are persisten and don't close automatically when a computer job finishes. 
+
+To check whether your R session is running on a computer node of the cluster and not on a head node, one can 
+execute the following commands from R.
 
 
 ```r

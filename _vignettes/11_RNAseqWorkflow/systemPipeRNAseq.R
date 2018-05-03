@@ -23,13 +23,14 @@ suppressPackageStartupMessages({
 ## genWorkenvir(workflow="rnaseq")
 ## setwd("rnaseq")
 
-## Rscript -e "systemPipeRdata::genWorkenvir(workflow='rnaseq')"
+## $ Rscript -e "systemPipeRdata::genWorkenvir(workflow='rnaseq')"
+
+## download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd", "systemPipeRNAseq.Rmd")
+
+## $ wget https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd
 
 ## ----node_environment, eval=FALSE----------------------------------------
-## # push `F2` on your keyboard to open interactive R session
-## q("no") # closes R session on head node
-## srun --x11 --partition=intel --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
-## R
+## srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
 
 ## ----r_environment, eval=FALSE-------------------------------------------
 ## system("hostname") # should return name of a compute node starting with i or c
