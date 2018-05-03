@@ -6,7 +6,7 @@ permalink: mydoc_homework_07.html
 
 ## A. Unstranded and strand-specific read counting for features of interest
 
-- __Task 1__: Rerun the [RNA-Seq workflow](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_01.html) with the toy data sets up to the read quantification step [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_05.html). In the read quantification step with `summarizeOverlaps` generate count tables for the following three strand modes:
+- __Task 1__: Rerun the [RNA-Seq workflow](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_01.html) with the toy data sets up to the read quantification step [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_05.html). In the read quantification step with `summarizeOverlaps` generate count tables for exons by genes (`eByg`) of the following three strand modes:
 
    1. Unstranded 
    2. Strand-specific for positive (sense) strand
@@ -23,7 +23,7 @@ summarizeOverlaps(eByg, x, mode="Union",
 
 {% endhighlight %}
 
-Before attempting to solve this homework section please read the vignette _Counting reads with `summarizeOverlaps`_ ([here](http://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html)) from the `GenomicAlignments` package that defines the `summarizeOverlap` function .
+Before attempting to solve this homework task please read the vignette _Counting reads with `summarizeOverlaps`_ ([here](http://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html)) from the `GenomicAlignments` package that defines the `summarizeOverlap` function .
 
 - __Task 2__: Provide R code that demonstrates that the two strand-specific count tables sum up to the values of the unstranded count table. 
 
@@ -47,7 +47,7 @@ Before attempting to solve this homework section please read the vignette _Count
 
 ## Homework submission
 
-Assemble the code from the homework assignments A-C in a single R script (`HW7.R`) and upload it to your private GitHub repository under `Homework/HW7/HW7.R`. Please do not upload any data such as count tables with your homework.
+Assemble the code from the homework assignments A-C in a single R script (`HW7.R`) and upload it to your private GitHub repository under `Homework/HW7/HW7.R`. Please do not upload any data such as count tables or plots with your homework.
 
 ## Due date
 
