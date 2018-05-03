@@ -10,7 +10,7 @@ permalink: mydoc_homework_07.html
 
    1. Unstranded 
    2. Strand-specific for positive (sense) strand
-   3. Strand-specific for negative (antisense) strands
+   3. Strand-specific for negative (antisense) strand
    
 The solution for generating the unstranded read counts is given below.
 
@@ -27,8 +27,10 @@ Before attempting to solve this homework section please read the vignette _Count
 
 - __Task 2__: Provide R code that demonstrates that the two strand-specific count tables sum up to the values of the unstranded count table. 
 
+- __Task 3__: Explain the utility (biological relevance) of the different counting modes used under Task 1. Include your explanation as comment text in your homework script (see `HW7.R` below). 
+
 ## B. Read counting of different feature types
-- __Task 3__: Compute strand-specific count tables for the positive (sense) strand of the following feature types: 
+- __Task 4__: Compute strand-specific count tables for the positive (sense) strand of the following feature types: 
 
    1. Genes
    2. Exons
