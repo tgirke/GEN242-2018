@@ -42,4 +42,4 @@ Assemble the code from the homework assignments A-B in a single R script (`HW7.R
 
 ## Due date
 
-This homework is due in two weeks on Thu, May 10th at 6:00 PM.
+This homework is due in one week on Thu, May 10th at 6:00 PM.
