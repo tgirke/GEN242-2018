@@ -6,7 +6,13 @@ permalink: mydoc_homework_07.html
 
 ## A. Unstranded and strand-specific read counting
 
-- __Task 1__: Rerun the [RNA-Seq workflow](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_01.html) with the test data to the read quantification step [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_05.html). In the read quantification step with `summarizeOverlaps` generate count tables in an unstranded manner as well as strand-specific manner for both the positive (sense) and negative (antisense) strands. The solution for generating the unstranded read counts is given below.
+- __Task 1__: Rerun the [RNA-Seq workflow](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_01.html) with the toy data sets to the read quantification step [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_05.html). In the read quantification step with `summarizeOverlaps` generate count tables for the following three strand modes:
+
+   1. Unstranded 
+   2. Strand-specific for positive (sense) strand
+   3. Strand-specific for negative (antisense) strands
+   
+The solution for generating the unstranded read counts is given below.
 
 {% highlight r %}
 summarizeOverlaps(eByg, x, mode="Union", 
@@ -17,10 +23,10 @@ summarizeOverlaps(eByg, x, mode="Union",
 
 {% endhighlight %}
 
-Before attempting to solve this homework section please read the vignette _Counting reads with `summarizeOverlaps`_ ([here](http://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html)) from the `GenomicAlignments` package that defines the the `summarizeOverlap` function .
+Before attempting to solve this homework section please read the vignette _Counting reads with `summarizeOverlaps`_ ([here](http://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html)) from the `GenomicAlignments` package that defines the `summarizeOverlap` function .
 
 ## B. Read counting of different feature types
-- __Task 2__: Compute strand-specific count tables for the positive (sense) strand for the following feature types: 
+- __Task 2__: Compute strand-specific count tables for the positive (sense) strand of the following feature types: 
 
    1. Genes
    2. Exons
