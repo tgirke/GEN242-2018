@@ -4,7 +4,7 @@ sidebar: mydoc_sidebar
 permalink: mydoc_homework_07.html 
 ---
 
-## A. Unstranded and strand-specific read counting
+## A. Unstranded and strand-specific read counting for features of interest
 
 - __Task 1__: Rerun the [RNA-Seq workflow](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_01.html) with the toy data sets to the read quantification step [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_05.html). In the read quantification step with `summarizeOverlaps` generate count tables for the following three strand modes:
 
