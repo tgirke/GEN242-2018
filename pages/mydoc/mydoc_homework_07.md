@@ -6,13 +6,13 @@ permalink: mydoc_homework_07.html
 
 ## A. Unstranded and strand-specific read counting for features of interest
 
-- __Task 1__: Rerun the [RNA-Seq workflow](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_01.html) with the toy data sets to the read quantification step [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_05.html). In the read quantification step with `summarizeOverlaps` generate count tables for the following three strand modes:
+- __Task 1__: Rerun the [RNA-Seq workflow](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_01.html) with the toy data sets up to the read quantification step [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_05.html). In the read quantification step with `summarizeOverlaps` generate count tables for the following three strand modes:
 
    1. Unstranded 
    2. Strand-specific for positive (sense) strand
    3. Strand-specific for negative (antisense) strand
    
-The solution for generating the unstranded read counts is given below.
+The solution for generating the unstranded read counts is given below. Note, the upstream steps 1-4 in the RNA-Seq workflow only need to be rerun to generate the proper inputs for the read counting. Thus, they are not required to be included in the homework results (see `HW7.R` below).
 
 {% highlight r %}
 summarizeOverlaps(eByg, x, mode="Union", 
@@ -40,7 +40,7 @@ Before attempting to solve this homework section please read the vignette _Count
 
 ## C. DEG analysis
 
-- __Task 5__: Perform the DEG analysis with `edgeR` as outlined under section 6 of the RNA-Seq workflow [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html). Use in one case for the DEG analysis the unstranded count table as input (from Task 1.1) and in another the sense strand count table (from Task 1.2). Compare the DEG result of the two methods in two separate 4-way venn diagrams for the same sample comparisons used in the workflow example [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html#venn-diagrams-of-deg-sets).
+- __Task 5__: Perform the DEG analysis with `edgeR` as outlined under section 6 of the RNA-Seq workflow [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html). Use in one case for the DEG analysis the unstranded count table as input (from Task 1.1) and in another the sense strand count table (from Task 1.2). Compare the DEG result of the two methods in two separate 4-way Venn diagrams for the same sample comparisons used in the workflow example [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_systemPipeRNAseq_06.html#venn-diagrams-of-deg-sets).
 
    1. 4-way Venn diagram for unstranded count table
    2. 4-way Venn diagram for sense strand count table
