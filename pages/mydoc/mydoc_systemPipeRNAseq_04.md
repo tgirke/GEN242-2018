@@ -1,6 +1,6 @@
 ---
 title: 4. Alignments
-last_updated: Wed May  2 19:54:06 2018
+last_updated: Wed May  2 21:00:28 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_04.html
 ---
@@ -25,7 +25,7 @@ Submission of alignment jobs to compute cluster, here using 72 CPU cores
 ```r
 moduleload(modules(args))
 system("bowtie2-build ./data/tair10.fasta ./data/tair10.fasta")
-resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+resources <- list(walltime="2:00:00", ntasks=1, ncpus=cores(args), memory="10G")
 reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)
@@ -39,7 +39,7 @@ args <- systemArgs(sysma="param/hisat2.param", mytargets="targets.txt")
 sysargs(args)[1] # Command-line parameters for first FASTQ file
 moduleload(modules(args))
 system("hisat2-build ./data/tair10.fasta ./data/tair10.fasta")
-resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+resources <- list(walltime="2:00:00", ntasks=1, ncpus=cores(args), memory="10G")
 reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)

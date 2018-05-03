@@ -30,7 +30,7 @@ suppressPackageStartupMessages({
 ## $ wget https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd
 
 ## ----node_environment, eval=FALSE----------------------------------------
-## srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
+## $ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
 
 ## ----r_environment, eval=FALSE-------------------------------------------
 ## system("hostname") # should return name of a compute node starting with i or c
@@ -68,7 +68,7 @@ targets
 ## ----tophat_alignment2, eval=FALSE---------------------------------------
 ## moduleload(modules(args))
 ## system("bowtie2-build ./data/tair10.fasta ./data/tair10.fasta")
-## resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+## resources <- list(walltime="2:00:00", ntasks=1, ncpus=cores(args), memory="10G")
 ## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
 ##                   resourceList=resources)
 ## waitForJobs(reg)
@@ -78,7 +78,7 @@ targets
 ## sysargs(args)[1] # Command-line parameters for first FASTQ file
 ## moduleload(modules(args))
 ## system("hisat2-build ./data/tair10.fasta ./data/tair10.fasta")
-## resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+## resources <- list(walltime="2:00:00", ntasks=1, ncpus=cores(args), memory="10G")
 ## reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
 ##                   resourceList=resources)
 ## waitForJobs(reg)
@@ -109,7 +109,8 @@ read.table(system.file("extdata", "alignStats.xls", package="systemPipeR"), head
 ## multicoreParam <- MulticoreParam(workers=2); register(multicoreParam); registered()
 ## counteByg <- bplapply(bfl, function(x) summarizeOverlaps(eByg, x, mode="Union",
 ##                                                ignore.strand=TRUE,
-##                                                inter.feature=FALSE,
+##                                                # preprocess.reads=invertStrand,
+## 					       inter.feature=FALSE,
 ##                                                singleEnd=TRUE))
 ## countDFeByg <- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)
 ## rownames(countDFeByg) <- names(rowRanges(counteByg[[1]])); colnames(countDFeByg) <- names(bfl)

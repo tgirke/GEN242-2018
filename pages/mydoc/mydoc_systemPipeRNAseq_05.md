@@ -1,6 +1,6 @@
 ---
 title: 5. Read quantification
-last_updated: Wed May  2 19:54:06 2018
+last_updated: Wed May  2 21:00:28 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_05.html
 ---
@@ -29,7 +29,8 @@ bfl <- BamFileList(outpaths(args), yieldSize=50000, index=character())
 multicoreParam <- MulticoreParam(workers=2); register(multicoreParam); registered()
 counteByg <- bplapply(bfl, function(x) summarizeOverlaps(eByg, x, mode="Union", 
                                                ignore.strand=TRUE, 
-                                               inter.feature=FALSE, 
+                                               # preprocess.reads=invertStrand,
+					       inter.feature=FALSE, 
                                                singleEnd=TRUE)) 
 countDFeByg <- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)
 rownames(countDFeByg) <- names(rowRanges(counteByg[[1]])); colnames(countDFeByg) <- names(bfl)

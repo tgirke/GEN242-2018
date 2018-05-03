@@ -1,6 +1,6 @@
 ---
 title: 2. Samples and environment settings
-last_updated: Wed May  2 19:54:06 2018
+last_updated: Wed May  2 21:00:28 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeRNAseq_02.html
 ---
@@ -46,7 +46,7 @@ Alternatively, this can be done from the command-line as follows:
 
 ```sh
 $ Rscript -e "systemPipeRdata::genWorkenvir(workflow='rnaseq')"
-cd rnaseq
+$ cd rnaseq
 ```
 
 Now download the latest `systemPipeRNAseq.Rmd` script for this course. From
@@ -68,14 +68,14 @@ to a computer node on the cluster.
 
 
 ```r
-srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
+$ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
 ```
 
 Now open the R markdown script `systemPipeRNAseq.Rmd` in your R IDE (_e.g._
 nvim-r or RStudio) and run the workflow as outlined below. 
 
 
-Note, Tmux session should always run on one of the headnodes and never on the computer nodes themsleves.
+Note, Tmux sessions should always run on one of the headnodes and never on the computer nodes themsleves.
 This is important since Tmux sessions are persistent meaning they don't close automatically when a computer 
 job finishes. Thus, they are not controlled by the queueing system. 
 

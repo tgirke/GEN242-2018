@@ -273,15 +273,15 @@ genWorkenvir(workflow=&quot;rnaseq&quot;)
 setwd(&quot;rnaseq&quot;)</code></pre>
 <p>Alternatively, this can be done from the command-line as follows:</p>
 <pre class="sh"><code>$ Rscript -e &quot;systemPipeRdata::genWorkenvir(workflow='rnaseq')&quot;
-cd rnaseq</code></pre>
+$ cd rnaseq</code></pre>
 <p>Now download the latest <code>systemPipeRNAseq.Rmd</code> script for this course. From within R this can be done as follows.</p>
 <pre class="sh"><code>download.file(&quot;https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd&quot;, &quot;systemPipeRNAseq.Rmd&quot;)</code></pre>
 <p>Or from the command-line one can do this with <code>wget</code>.</p>
 <pre class="sh"><code>$ wget https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/11_RNAseqWorkflow/systemPipeRNAseq.Rmd</code></pre>
 <p>If you work under Nvim-R-Tmux, the following command sequence will connect the user from the command-line to a computer node on the cluster.</p>
-<pre class="r"><code>srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l</code></pre>
+<pre class="r"><code>$ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l</code></pre>
 <p>Now open the R markdown script <code>systemPipeRNAseq.Rmd</code> in your R IDE (<em>e.g.</em> nvim-r or RStudio) and run the workflow as outlined below.</p>
-<p>Note, Tmux session should always run on one of the headnodes and never on the computer nodes themsleves. This is important since Tmux sessions are persistent meaning they don’t close automatically when a computer job finishes. Thus, they are not controlled by the queueing system.</p>
+<p>Note, Tmux sessions should always run on one of the headnodes and never on the computer nodes themsleves. This is important since Tmux sessions are persistent meaning they don’t close automatically when a computer job finishes. Thus, they are not controlled by the queueing system.</p>
 <p>To check the environment of R session, one can execute the following commands from R. The first line returns the node name of the R session.</p>
 <pre class="r"><code>system(&quot;hostname&quot;) # should return name of a compute node starting with i or c 
 getwd() # checks current working directory of R session
@@ -356,7 +356,7 @@ sysargs(args)[1] # Command-line parameters for first FASTQ file</code></pre>
 <p>Submission of alignment jobs to compute cluster, here using 72 CPU cores (18 <code>qsub</code> processes each with 4 CPU cores).</p>
 <pre class="r"><code>moduleload(modules(args))
 system(&quot;bowtie2-build ./data/tair10.fasta ./data/tair10.fasta&quot;)
-resources &lt;- list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=cores(args), memory=&quot;10G&quot;)
+resources &lt;- list(walltime=&quot;2:00:00&quot;, ntasks=1, ncpus=cores(args), memory=&quot;10G&quot;)
 reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;slurm.tmpl&quot;, Njobs=18, runid=&quot;01&quot;,
                   resourceList=resources)
 waitForJobs(reg)</code></pre>
@@ -367,7 +367,7 @@ waitForJobs(reg)</code></pre>
 sysargs(args)[1] # Command-line parameters for first FASTQ file
 moduleload(modules(args))
 system(&quot;hisat2-build ./data/tair10.fasta ./data/tair10.fasta&quot;)
-resources &lt;- list(walltime=&quot;20:00:00&quot;, ntasks=1, ncpus=cores(args), memory=&quot;10G&quot;)
+resources &lt;- list(walltime=&quot;2:00:00&quot;, ntasks=1, ncpus=cores(args), memory=&quot;10G&quot;)
 reg &lt;- clusterRun(args, conffile=&quot;.BatchJobs.R&quot;, template=&quot;slurm.tmpl&quot;, Njobs=18, runid=&quot;01&quot;,
                   resourceList=resources)
 waitForJobs(reg)</code></pre>
@@ -410,7 +410,8 @@ bfl &lt;- BamFileList(outpaths(args), yieldSize=50000, index=character())
 multicoreParam &lt;- MulticoreParam(workers=2); register(multicoreParam); registered()
 counteByg &lt;- bplapply(bfl, function(x) summarizeOverlaps(eByg, x, mode=&quot;Union&quot;, 
                                                ignore.strand=TRUE, 
-                                               inter.feature=FALSE, 
+                                               # preprocess.reads=invertStrand,
+                           inter.feature=FALSE, 
                                                singleEnd=TRUE)) 
 countDFeByg &lt;- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)
 rownames(countDFeByg) &lt;- names(rowRanges(counteByg[[1]])); colnames(countDFeByg) &lt;- names(bfl)

@@ -90,7 +90,7 @@ Alternatively, this can be done from the command-line as follows:
 
 ```{sh genRna_workflow_command_line, eval=FALSE}
 $ Rscript -e "systemPipeRdata::genWorkenvir(workflow='rnaseq')"
-cd rnaseq
+$ cd rnaseq
 ```
 
 Now download the latest `systemPipeRNAseq.Rmd` script for this course. From
@@ -109,14 +109,14 @@ If you work under Nvim-R-Tmux, the following command sequence will connect the u
 to a computer node on the cluster. 
 
 ```{r node_environment, eval=FALSE}
-srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
+$ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
 ```
 
 Now open the R markdown script `systemPipeRNAseq.Rmd` in your R IDE (_e.g._
 nvim-r or RStudio) and run the workflow as outlined below. 
 
 
-Note, Tmux session should always run on one of the headnodes and never on the computer nodes themsleves.
+Note, Tmux sessions should always run on one of the headnodes and never on the computer nodes themsleves.
 This is important since Tmux sessions are persistent meaning they don't close automatically when a computer 
 job finishes. Thus, they are not controlled by the queueing system. 
 
@@ -217,7 +217,7 @@ Submission of alignment jobs to compute cluster, here using 72 CPU cores
 ```{r tophat_alignment2, eval=FALSE}
 moduleload(modules(args))
 system("bowtie2-build ./data/tair10.fasta ./data/tair10.fasta")
-resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+resources <- list(walltime="2:00:00", ntasks=1, ncpus=cores(args), memory="10G")
 reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)
@@ -230,7 +230,7 @@ args <- systemArgs(sysma="param/hisat2.param", mytargets="targets.txt")
 sysargs(args)[1] # Command-line parameters for first FASTQ file
 moduleload(modules(args))
 system("hisat2-build ./data/tair10.fasta ./data/tair10.fasta")
-resources <- list(walltime="20:00:00", ntasks=1, ncpus=cores(args), memory="10G")
+resources <- list(walltime="2:00:00", ntasks=1, ncpus=cores(args), memory="10G")
 reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18, runid="01",
                   resourceList=resources)
 waitForJobs(reg)
@@ -297,7 +297,8 @@ bfl <- BamFileList(outpaths(args), yieldSize=50000, index=character())
 multicoreParam <- MulticoreParam(workers=2); register(multicoreParam); registered()
 counteByg <- bplapply(bfl, function(x) summarizeOverlaps(eByg, x, mode="Union", 
                                                ignore.strand=TRUE, 
-                                               inter.feature=FALSE, 
+                                               # preprocess.reads=invertStrand,
+					       inter.feature=FALSE, 
                                                singleEnd=TRUE)) 
 countDFeByg <- sapply(seq(along=counteByg), function(x) assays(counteByg[[x]])$counts)
 rownames(countDFeByg) <- names(rowRanges(counteByg[[1]])); colnames(countDFeByg) <- names(bfl)
