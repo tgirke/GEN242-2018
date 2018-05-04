@@ -293,7 +293,7 @@ Print information about queues/partitions available on a cluster.
 sinfo
 ```
 
-Compute jobs are submitted `sbatch` via a submission script (here `script_name.sh`).
+Compute jobs are submitted with `sbatch` via a submission script (here `script_name.sh`).
 
 ```sh
 sbatch script_name.sh
