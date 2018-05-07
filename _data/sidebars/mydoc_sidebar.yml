@@ -464,7 +464,7 @@ entries:
       url: /mydoc_systemPipeChIPseq_01.html
       output: web
 
-    - title: 2. Workflow environment
+    - title: 2. Generate workflow environment
       url: /mydoc_systemPipeChIPseq_02.html
       output: web
 
