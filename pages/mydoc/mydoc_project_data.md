@@ -122,12 +122,12 @@ important for many analysis routines such as the read counting in the RNA-Seq wo
 downloadRefs <- function(rerun=FALSE) {
     if(rerun==TRUE) {
         library(Biostrings)
-        system("wget ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas -P ./data/tair10.fasta")
-        dna <- readDNAStringSet("./data/tair10.fasta")
+        download.file("ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas", "./data/tair10.fasta")
+	dna <- readDNAStringSet("./data/tair10.fasta")
         names(dna) <- paste(rep("Chr", 7), c(1:5, "M", "C"), sep="") # Fixes chromomse ids
         writeXStringSet(dna, "./data/tair10.fasta")
-        system("wget ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_gff3/TAIR10_GFF3_genes.gff -P ./data/tair10.gff")
-        system("wget ftp://ftp.arabidopsis.org/home/tair/Proteins/TAIR10_functional_descriptions -P ./data/")
+        download.file("ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_gff3/TAIR10_GFF3_genes.gff", "./data/tair10.gff")
+        download.file("ftp://ftp.arabidopsis.org/home/tair/Proteins/TAIR10_functional_descriptions", "./data/tair10.gff")
     }
 }
 ```
