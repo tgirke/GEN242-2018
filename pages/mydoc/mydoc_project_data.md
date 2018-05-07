@@ -23,17 +23,19 @@ a `data` directory and all output files will be written to a `results` directory
 
 Students will work on the course projects within GitHub repositories, one for each course project.
 These project repositories are private and have been shared by the instructor with all members of each project group.
-To populate a course project with an initial project workflow, please follow the instruction
+To populate a course project with an initial project workflow, please follow the instructions
 given [below](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_project_data.html#generate-workflow-environment-with-project-data). 
 
 ## Generate workflow environment with project data
 
-1. Log in to biocluster and set your working directory to `bigdata`
-2. Clone GitHub repository for your project with `git clone ...` (see [here](https://docs.google.com/spreadsheets/d/1ULTa2bcfhzzj_6R0Ba1dnXiq2fr0get1V5pwIBCYRIY/edit#gid=1818533395)) and then `cd` into this directory.
-2. Generate workflow environment for your project on biocluster with `genWorkenvir` from `systemPipeRdata`. 
-3. Replace the `data` and `results` directories by symbolic links pointing to the above described `data` and `results` directories of your course project. For instance, the project RNA-Seq1 should point on biocluster to:
-    + `/bigdata/gen242/shared/RNA-Seq1/data` 
-    + `/bigdata/gen242/shared/RNA-Seq1/results`
+1. Log in to biocluster and set your working directory to `bigdata` or (`/bigdata/gen242/<user_name>`)
+2. Clone the GitHub repository for your project with `git clone ...` (see [here](https://docs.google.com/spreadsheets/d/1ULTa2bcfhzzj_6R0Ba1dnXiq2fr0get1V5pwIBCYRIY/edit#gid=1818533395)) and then `cd` into this directory.
+2. Generate the workflow environment for your project on biocluster with `genWorkenvir` from `systemPipeRdata`. 
+3. Delete the default `data` and `results` directories and replace them with symbolic links pointing to the above described `data` and `results` directories of your course project. For instance, the project RNA-Seq1 should create the symbolic links for their `data` and `results` directories like this:
+   ```sh 
+   ln -s /bigdata/gen242/shared/RNA-Seq1/data data
+   ln -s /bigdata/gen242/shared/RNA-Seq1/results results
+   ```
 4. Add the workflow directory to the GitHub repository of your project with `git add -A`. Note, steps 1-4 need to be performed only by one student in each project. After committing and pushing the repository to GitHub, it can be cloned by all other students with `git clone ...`.
 5. Download the FASTQ files of your project with `getSRAfastq` (see below) to the `data` directory of your project. 
 6. Generate a proper `targets` file for your project where the first column(s) point(s) to the downloaded FASTQ files. In addition, provide sample names matching the experimental design (columns: `SampleNames` and `Factor`).
