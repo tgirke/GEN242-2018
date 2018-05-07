@@ -29,7 +29,7 @@ given [below](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_project_data.html
 ## Generate workflow environment with project data
 
 1. Log in to biocluster and set your working directory to `bigdata`
-2. Clone GitHub repository for your project with `git clone ...` (see [here](https://docs.google.com/spreadsheets/d/1GcIfrs4FplRIKSciwPi8q6LWikU4Bnl3XHjcjPnUFHg/edit#gid=1818533395)) and then `cd` into this directory.
+2. Clone GitHub repository for your project with `git clone ...` (see [here](https://docs.google.com/spreadsheets/d/1ULTa2bcfhzzj_6R0Ba1dnXiq2fr0get1V5pwIBCYRIY/edit#gid=1818533395)) and then `cd` into this directory.
 2. Generate workflow environment for your project on biocluster with `genWorkenvir` from `systemPipeRdata`. 
 3. Replace the `data` and `results` directories by symbolic links pointing to the above described `data` and `results` directories of your course project. For instance, the project RNA-Seq1 should point on biocluster to:
     + `/bigdata/gen242/shared/RNA-Seq1/data` 
