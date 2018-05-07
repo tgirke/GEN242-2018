@@ -44,7 +44,7 @@ given [below](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_project_data.html
 
 ## Download of project data
 
-Open R from within the GitHub respository of your project and then run the following code sections.
+Open R from within the GitHub respository of your project and then run the following code section, but only those that apply to your project.
 
 ### FASTQ files from SRA
 
@@ -122,17 +122,17 @@ important for many analysis routines such as the read counting in the RNA-Seq wo
 downloadRefs <- function(rerun=FALSE) {
     if(rerun==TRUE) {
         library(Biostrings)
-        system("wget ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas -P ./data/")
-        dna <- readDNAStringSet("./data/TAIR10_chr_all.fas")
+        system("wget ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_chromosome_files/TAIR10_chr_all.fas -P ./data/tair10.fasta")
+        dna <- readDNAStringSet("./data/tair10.fasta")
         names(dna) <- paste(rep("Chr", 7), c(1:5, "M", "C"), sep="") # Fixes chromomse ids
-        writeXStringSet(dna, "./data/TAIR10_chr_all.fas")
-        system("wget ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_gff3/TAIR10_GFF3_genes.gff -P ./data/")
+        writeXStringSet(dna, "./data/TAIR10_chr_all.fas tair10.fasta")
+        system("wget ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_gff3/TAIR10_GFF3_genes.gff -P ./data/tair10.gff")
         system("wget ftp://ftp.arabidopsis.org/home/tair/Proteins/TAIR10_functional_descriptions -P ./data/")
     }
 }
 ```
 
-After sourcing the above function, execute it as follows:
+After importing/sourcing the above function, execute it as follows:
 ```r
 downloadRefs(rerun=FALSE) # To execute the function set 'rerun=TRUE'
 ```
