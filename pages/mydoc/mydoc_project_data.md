@@ -36,7 +36,7 @@ given [below](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_project_data.html
    ln -s /bigdata/gen242/shared/RNA-Seq1/data data
    ln -s /bigdata/gen242/shared/RNA-Seq1/results results
    ```
-4. Add the workflow directory to the GitHub repository of your project with `git add -A`. Note, steps 1-4 need to be performed only by one student in each project. After committing and pushing the repository to GitHub, it can be cloned by all other students with `git clone ...`.
+4. Add the workflow directory to the GitHub repository of your project with `git add -A` and the run `commit` and `push` as outlined in the GitHub instructions of this course [here](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_tutorial_01.html#github-basics-from-command-line). Note, steps 1-4 need to be performed only by one student in each project. After committing and pushing the repository to GitHub, it can be cloned by all other students with `git clone ...`.
 5. Download the FASTQ files of your project with `getSRAfastq` (see below) to the `data` directory of your project. 
 6. Generate a proper `targets` file for your project where the first column(s) point(s) to the downloaded FASTQ files. In addition, provide sample names matching the experimental design (columns: `SampleNames` and `Factor`).
 7. Inspect and adjust the `.param` files you will be using. For instance, make sure the software modules you are loading and the path to the reference genome are correct. 
