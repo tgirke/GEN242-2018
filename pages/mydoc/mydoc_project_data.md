@@ -76,7 +76,7 @@ system('fastq-dump --help') # prints help to screen
 #### Redirect cache output of SRA Toolkit 
 
 Newer versions of the SRA Toolkit create a cache directory (named `ncbi`) in the highest level of a user's home directory. 
-To save space in your home account, you may want to redirect this output to your project's
+To save space in home accounts (limited to 20GB), users need to redirect this output to their project's
 `data` directory via a symbolic link. The following shows how to do this for the `data` directory
 of the `ChIP-Seq1` project.
 
