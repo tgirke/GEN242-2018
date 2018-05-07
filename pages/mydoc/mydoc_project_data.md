@@ -44,6 +44,8 @@ given [below](http://girke.bioinformatics.ucr.edu/GEN242/mydoc_project_data.html
 
 ## Download of project data
 
+Open R from within the GitHub respository of your project and then run the following code sections.
+
 ### FASTQ files from SRA
 
 #### Choose FASTQ data for your project
