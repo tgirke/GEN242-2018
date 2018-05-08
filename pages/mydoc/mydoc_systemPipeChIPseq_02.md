@@ -1,6 +1,6 @@
 ---
 title: 2. Generate workflow environment
-last_updated: Mon May  7 16:04:11 2018
+last_updated: Mon May  7 17:42:47 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_02.html
 ---
@@ -49,8 +49,7 @@ Or from the command-line one can do this with `wget`.
 $ wget -O systemPipeChIPseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/12_ChIPseqWorkflow/systemPipeChIPseq.Rmd
 ```
 
-If you work under Nvim-R-Tmux, the following command sequence will connect the user from the command-line
-to a computer node on the cluster. 
+Now log in to a computer node on the HPCC/biocluser. The following command sequence will connect the user from the command-line to a computer node on the cluster. 
 
 
 ```r

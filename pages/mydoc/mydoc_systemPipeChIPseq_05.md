@@ -1,6 +1,6 @@
 ---
 title: 5. Utilities for coverage data
-last_updated: Mon May  7 16:04:11 2018
+last_updated: Mon May  7 17:42:47 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_05.html
 ---

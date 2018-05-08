@@ -1,6 +1,6 @@
 ---
 title: 6. Peak calling with MACS2
-last_updated: Mon May  7 16:04:11 2018
+last_updated: Mon May  7 17:42:47 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_06.html
 ---
@@ -52,6 +52,7 @@ file intermediate for running MACS2 with the corresponding input samples.
 writeTargetsRef(infile="targets_mergeBamByFactor.txt", outfile="targets_bam_ref.txt", silent=FALSE, overwrite=TRUE)
 args_input <- systemArgs(sysma="param/macs2.param", mytargets="targets_bam_ref.txt")
 sysargs(args_input)[1] # Command-line parameters for first FASTQ file
+# unlink(outpaths(args_input)) # Note: if output exists then next line will not be run
 runCommandline(args_input)
 file.exists(outpaths(args_input))
 writeTargetsout(x=args_input, file="targets_macs_input.txt", overwrite=TRUE)

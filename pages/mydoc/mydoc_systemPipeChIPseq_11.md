@@ -1,6 +1,6 @@
 ---
 title: 11. Motif analysis
-last_updated: Mon May  7 16:04:11 2018
+last_updated: Mon May  7 17:42:47 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_11.html
 ---
@@ -25,7 +25,7 @@ for(i in seq(along=rangefiles)) {
     df <- read.delim(rangefiles[i], comment="#")
     peaks <- as(df, "GRanges")
     names(peaks) <- paste0(as.character(seqnames(peaks)), "_", start(peaks), "-", end(peaks))
-    peaks <- peaks[order(values(peaks)$X.log10.pvalue, decreasing=TRUE)]
+    peaks <- peaks[order(values(peaks)$X.log10.pvalue., decreasing=TRUE)]
     pseq <- getSeq(FaFile("./data/tair10.fasta"), peaks)
     names(pseq) <- names(peaks)
     writeXStringSet(pseq, paste0(rangefiles[i], ".fasta")) 

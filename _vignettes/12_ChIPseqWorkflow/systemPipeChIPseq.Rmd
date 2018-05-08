@@ -103,8 +103,7 @@ Or from the command-line one can do this with `wget`.
 $ wget -O systemPipeChIPseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/12_ChIPseqWorkflow/systemPipeChIPseq.Rmd
 ```
 
-If you work under Nvim-R-Tmux, the following command sequence will connect the user from the command-line
-to a computer node on the cluster. 
+Now log in to a computer node on the HPCC/biocluser. The following command sequence will connect the user from the command-line to a computer node on the cluster. 
 
 ```{r node_environment, eval=FALSE}
 $ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
@@ -340,6 +339,7 @@ file intermediate for running MACS2 with the corresponding input samples.
 writeTargetsRef(infile="targets_mergeBamByFactor.txt", outfile="targets_bam_ref.txt", silent=FALSE, overwrite=TRUE)
 args_input <- systemArgs(sysma="param/macs2.param", mytargets="targets_bam_ref.txt")
 sysargs(args_input)[1] # Command-line parameters for first FASTQ file
+# unlink(outpaths(args_input)) # Note: if output exists then next line will not be run
 runCommandline(args_input)
 file.exists(outpaths(args_input))
 writeTargetsout(x=args_input, file="targets_macs_input.txt", overwrite=TRUE)
@@ -398,6 +398,7 @@ writeTargetsout(x=args, file="targets_peakanno.txt", overwrite=TRUE)
 # seqlevels(ge) <- c("Chr1", "Chr2", "Chr3", "Chr4", "Chr5", "ChrC", "ChrM")
 # table(mcols(tx)$tx_type)
 # tx <- tx[!duplicated(unstrsplit(values(tx)$gene_id, sep=","))] # Keeps only first transcript model for each gene]
+# seqlevels(tx) <- c("Chr1", "Chr2", "Chr3", "Chr4", "Chr5", "ChrC", "ChrM")
 # annotatedPeak <- annotatePeakInBatch(peaksGR, AnnotationData = tx)
 ```
 
@@ -499,7 +500,7 @@ for(i in seq(along=rangefiles)) {
     df <- read.delim(rangefiles[i], comment="#")
     peaks <- as(df, "GRanges")
     names(peaks) <- paste0(as.character(seqnames(peaks)), "_", start(peaks), "-", end(peaks))
-    peaks <- peaks[order(values(peaks)$X.log10.pvalue, decreasing=TRUE)]
+    peaks <- peaks[order(values(peaks)$X.log10.pvalue., decreasing=TRUE)]
     pseq <- getSeq(FaFile("./data/tair10.fasta"), peaks)
     names(pseq) <- names(peaks)
     writeXStringSet(pseq, paste0(rangefiles[i], ".fasta")) 

@@ -135,6 +135,7 @@ targets[1:4,-c(5,6)]
 ## writeTargetsRef(infile="targets_mergeBamByFactor.txt", outfile="targets_bam_ref.txt", silent=FALSE, overwrite=TRUE)
 ## args_input <- systemArgs(sysma="param/macs2.param", mytargets="targets_bam_ref.txt")
 ## sysargs(args_input)[1] # Command-line parameters for first FASTQ file
+## # unlink(outpaths(args_input)) # Note: if output exists then next line will not be run
 ## runCommandline(args_input)
 ## file.exists(outpaths(args_input))
 ## writeTargetsout(x=args_input, file="targets_macs_input.txt", overwrite=TRUE)
@@ -171,6 +172,7 @@ targets[1:4,-c(5,6)]
 ## # seqlevels(ge) <- c("Chr1", "Chr2", "Chr3", "Chr4", "Chr5", "ChrC", "ChrM")
 ## # table(mcols(tx)$tx_type)
 ## # tx <- tx[!duplicated(unstrsplit(values(tx)$gene_id, sep=","))] # Keeps only first transcript model for each gene]
+## # seqlevels(tx) <- c("Chr1", "Chr2", "Chr3", "Chr4", "Chr5", "ChrC", "ChrM")
 ## # annotatedPeak <- annotatePeakInBatch(peaksGR, AnnotationData = tx)
 
 ## ----chip_peak_seeker, eval=FALSE----------------------------------------
@@ -219,7 +221,7 @@ targets[1:4,-c(5,6)]
 ##     df <- read.delim(rangefiles[i], comment="#")
 ##     peaks <- as(df, "GRanges")
 ##     names(peaks) <- paste0(as.character(seqnames(peaks)), "_", start(peaks), "-", end(peaks))
-##     peaks <- peaks[order(values(peaks)$X.log10.pvalue, decreasing=TRUE)]
+##     peaks <- peaks[order(values(peaks)$X.log10.pvalue., decreasing=TRUE)]
 ##     pseq <- getSeq(FaFile("./data/tair10.fasta"), peaks)
 ##     names(pseq) <- names(peaks)
 ##     writeXStringSet(pseq, paste0(rangefiles[i], ".fasta"))

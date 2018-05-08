@@ -284,7 +284,7 @@ $ cd rnaseq</code></pre>
 <pre class="sh"><code>download.file(&quot;https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/12_ChIPseqWorkflow/systemPipeChIPseq.Rmd&quot;, &quot;systemPipeChIPseq.Rmd&quot;)</code></pre>
 <p>Or from the command-line one can do this with <code>wget</code>.</p>
 <pre class="sh"><code>$ wget -O systemPipeChIPseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/12_ChIPseqWorkflow/systemPipeChIPseq.Rmd</code></pre>
-<p>If you work under Nvim-R-Tmux, the following command sequence will connect the user from the command-line to a computer node on the cluster.</p>
+<p>Now log in to a computer node on the HPCC/biocluser. The following command sequence will connect the user from the command-line to a computer node on the cluster.</p>
 <pre class="r"><code>$ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l</code></pre>
 <p>Now open the R markdown script <code>systemPipeChIPseq.Rmd</code>in your R IDE (<em>e.g.</em> nvim-r or RStudio) and run the workflow as outlined below.</p>
 <p>Note, Tmux sessions should always run on one of the headnodes and never on the computer nodes themsleves. This is important since Tmux sessions are persistent meaning they don’t close automatically when a computer job finishes. Thus, they are not controlled by the queueing system.</p>
@@ -435,6 +435,7 @@ writeTargetsout(x=args, file=&quot;targets_macs.txt&quot;, overwrite=TRUE)</code
 <pre class="r"><code>writeTargetsRef(infile=&quot;targets_mergeBamByFactor.txt&quot;, outfile=&quot;targets_bam_ref.txt&quot;, silent=FALSE, overwrite=TRUE)
 args_input &lt;- systemArgs(sysma=&quot;param/macs2.param&quot;, mytargets=&quot;targets_bam_ref.txt&quot;)
 sysargs(args_input)[1] # Command-line parameters for first FASTQ file
+# unlink(outpaths(args_input)) # Note: if output exists then next line will not be run
 runCommandline(args_input)
 file.exists(outpaths(args_input))
 writeTargetsout(x=args_input, file=&quot;targets_macs_input.txt&quot;, overwrite=TRUE)</code></pre>
@@ -530,7 +531,7 @@ for(i in seq(along=rangefiles)) {
     df &lt;- read.delim(rangefiles[i], comment=&quot;#&quot;)
     peaks &lt;- as(df, &quot;GRanges&quot;)
     names(peaks) &lt;- paste0(as.character(seqnames(peaks)), &quot;_&quot;, start(peaks), &quot;-&quot;, end(peaks))
-    peaks &lt;- peaks[order(values(peaks)$X.log10.pvalue, decreasing=TRUE)]
+    peaks &lt;- peaks[order(values(peaks)$X.log10.pvalue., decreasing=TRUE)]
     pseq &lt;- getSeq(FaFile(&quot;./data/tair10.fasta&quot;), peaks)
     names(pseq) &lt;- names(peaks)
     writeXStringSet(pseq, paste0(rangefiles[i], &quot;.fasta&quot;)) 
