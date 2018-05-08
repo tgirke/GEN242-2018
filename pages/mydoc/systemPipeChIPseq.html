@@ -235,7 +235,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">ChIP-Seq Workflow Template</h1>
 <h4 class="author"><em>First/last name (<a href="mailto:first.last@ucr.edu">first.last@ucr.edu</a>)</em></h4>
-<h4 class="date"><em>Last update: 07 May, 2018</em></h4>
+<h4 class="date"><em>Last update: 08 May, 2018</em></h4>
 
 </div>
 
@@ -286,6 +286,8 @@ $ cd rnaseq</code></pre>
 <pre class="sh"><code>$ wget -O systemPipeChIPseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/12_ChIPseqWorkflow/systemPipeChIPseq.Rmd</code></pre>
 <p>Now log in to a computer node on the HPCC/biocluser. The following command sequence will connect the user from the command-line to a computer node on the cluster.</p>
 <pre class="r"><code>$ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l</code></pre>
+<p>Load desired R version from module system (here R-3.4.2).</p>
+<pre class="sh"><code>$ module load R/3.4.2</code></pre>
 <p>Now open the R markdown script <code>systemPipeChIPseq.Rmd</code>in your R IDE (<em>e.g.</em> nvim-r or RStudio) and run the workflow as outlined below.</p>
 <p>Note, Tmux sessions should always run on one of the headnodes and never on the computer nodes themsleves. This is important since Tmux sessions are persistent meaning they don’t close automatically when a computer job finishes. Thus, they are not controlled by the queueing system.</p>
 <p>To check the environment of R session, one can execute the following commands from R. The first line returns the node name of the R session.</p>

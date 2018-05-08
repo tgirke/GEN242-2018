@@ -456,10 +456,10 @@ entries:
       url: /mydoc_systemPipeRNAseq_11.html
       output: web
 
-  - title: ChIP-Seq Workflow
+   - title: ChIP-Seq Workflow
     output: web, pdf
     folderitems:
-    
+
     - title: 1. Introduction
       url: /mydoc_systemPipeChIPseq_01.html
       output: web

@@ -109,6 +109,12 @@ Now log in to a computer node on the HPCC/biocluser. The following command seque
 $ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
 ```
 
+Load desired R version from module system (here R-3.4.2).
+
+```{sh module_load_r, eval=FALSE}
+$ module load R/3.4.2
+```
+
 Now open the R markdown script `systemPipeChIPseq.Rmd`in your R IDE (_e.g._ nvim-r or RStudio) and 
 run the workflow as outlined below. 
 

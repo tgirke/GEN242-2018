@@ -32,6 +32,8 @@ suppressPackageStartupMessages({
 ## ----node_environment, eval=FALSE----------------------------------------
 ## $ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
 
+## $ module load R/3.4.2
+
 ## ----r_environment, eval=FALSE-------------------------------------------
 ## system("hostname") # should return name of a compute node starting with i or c
 ## getwd() # checks current working directory of R session

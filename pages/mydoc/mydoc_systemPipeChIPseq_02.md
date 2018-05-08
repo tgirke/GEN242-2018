@@ -1,6 +1,6 @@
 ---
 title: 2. Generate workflow environment
-last_updated: Mon May  7 17:42:47 2018
+last_updated: Tue May  8 13:32:37 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_02.html
 ---
@@ -54,6 +54,13 @@ Now log in to a computer node on the HPCC/biocluser. The following command seque
 
 ```r
 $ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
+```
+
+Load desired R version from module system (here R-3.4.2).
+
+
+```sh
+$ module load R/3.4.2
 ```
 
 Now open the R markdown script `systemPipeChIPseq.Rmd`in your R IDE (_e.g._ nvim-r or RStudio) and 

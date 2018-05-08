@@ -1,6 +1,6 @@
 ---
 title: 9. Differential binding analysis
-last_updated: Mon May  7 17:42:47 2018
+last_updated: Tue May  8 13:32:37 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_09.html
 ---
