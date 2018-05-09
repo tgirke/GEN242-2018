@@ -104,6 +104,10 @@ entries:
       url: /mydoc_slides_13.html
       output: web
     
+    - title: VAR-Seq Overview
+      url: /mydoc_slides_14.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
