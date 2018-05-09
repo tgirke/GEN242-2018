@@ -1,6 +1,6 @@
 ---
 title: 2. Generate workflow environment
-last_updated: Tue May  8 16:46:40 2018
+last_updated: Wed May  9 11:51:20 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_02.html
 ---
@@ -31,7 +31,7 @@ Alternatively, this can be done from the command-line as follows:
 
 
 ```sh
-Rscript -e "systemPipeRdata::genWorkenvir(workflow='chipseq')"
+$ Rscript -e "systemPipeRdata::genWorkenvir(workflow='chipseq')"
 $ cd chipseq
 ```
 

@@ -23,7 +23,7 @@ suppressPackageStartupMessages({
 ## genWorkenvir(workflow="chipseq")
 ## setwd("chipseq")
 
-## Rscript -e "systemPipeRdata::genWorkenvir(workflow='chipseq')"
+## $ Rscript -e "systemPipeRdata::genWorkenvir(workflow='chipseq')"
 
 ## download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/12_ChIPseqWorkflow/systemPipeChIPseq.Rmd", "systemPipeChIPseq.Rmd")
 
