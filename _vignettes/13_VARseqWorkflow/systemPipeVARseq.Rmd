@@ -98,7 +98,7 @@ download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignett
 
 Or from the command-line one can do this with `wget`.
 ```{sh download_workflow_command_line, eval=FALSE}
-$ wget -O systemPipeChIPseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd
+$ wget -O systemPipeVARseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd
 ```
 
 Now log in to a computer node on the HPCC/biocluser. The following command sequence will connect the user from the command-line to a computer node on the cluster. 
