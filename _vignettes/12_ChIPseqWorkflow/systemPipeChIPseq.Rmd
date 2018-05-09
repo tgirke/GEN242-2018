@@ -87,7 +87,7 @@ setwd("chipseq")
 Alternatively, this can be done from the command-line as follows:
 
 ```{sh genChip_workflow_command_line, eval=FALSE}
-Rscript -e "systemPipeRdata::genWorkenvir(workflow='chipseq')"
+$ Rscript -e "systemPipeRdata::genWorkenvir(workflow='chipseq')"
 $ cd chipseq
 ```
 

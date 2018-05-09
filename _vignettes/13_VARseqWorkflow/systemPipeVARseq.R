@@ -23,14 +23,16 @@ suppressPackageStartupMessages({
 ## genWorkenvir(workflow="varseq")
 ## setwd("varseq")
 
-## ----genVar_workflow_command_line, eval=FALSE, engine="sh"---------------
-## Rscript -e "systemPipeRdata::genWorkenvir(workflow='varseq')"
+## $ Rscript -e "systemPipeRdata::genWorkenvir(workflow='varseq')"
+
+## download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd", "systemPipeVARseq.Rmd")
+
+## $ wget -O systemPipeChIPseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd
 
 ## ----node_environment, eval=FALSE----------------------------------------
-## q("no") # closes R session on head node
-## srun --x11 --partition=short --mem=2gb --cpus-per-task 4 --ntasks 1 --time 2:00:00 --pty bash -l
-## module load R/3.3.0
-## R
+## $ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l
+
+## $ module load R/3.4.2
 
 ## ----r_environment, eval=FALSE-------------------------------------------
 ## system("hostname") # should return name of a compute node starting with i or c
