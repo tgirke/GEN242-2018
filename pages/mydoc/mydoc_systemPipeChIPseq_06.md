@@ -1,6 +1,6 @@
 ---
 title: 6. Peak calling with MACS2
-last_updated: Wed May  9 11:51:20 2018
+last_updated: Wed May  9 20:16:43 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeChIPseq_06.html
 ---
@@ -35,6 +35,7 @@ in the corresponding `*.param` file(s).
 ```r
 args <- systemArgs(sysma="param/macs2_noinput.param", mytargets="targets_mergeBamByFactor.txt")
 sysargs(args)[1] # Command-line parameters for first FASTQ file
+moduleload(module="python", envir=c("PATH", "LD_LIBRARY_PATH", "PYTHONPATH"))
 runCommandline(args)
 file.exists(outpaths(args))
 writeTargetsout(x=args, file="targets_macs.txt", overwrite=TRUE)

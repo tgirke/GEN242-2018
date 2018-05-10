@@ -427,6 +427,7 @@ writeTargetsout(x=args_merge, file=&quot;targets_mergeBamByFactor.txt&quot;, ove
 <p>MACS2 can perform peak calling on ChIP-Seq data with and without input samples <span class="citation">(Zhang et al. 2008)</span>. The following performs peak calling without input on all samples specified in the corresponding <code>args</code> object. Note, due to the small size of the sample data, MACS2 needs to be run here with the <code>nomodel</code> setting. For real data sets, users want to remove this parameter in the corresponding <code>*.param</code> file(s).</p>
 <pre class="r"><code>args &lt;- systemArgs(sysma=&quot;param/macs2_noinput.param&quot;, mytargets=&quot;targets_mergeBamByFactor.txt&quot;)
 sysargs(args)[1] # Command-line parameters for first FASTQ file
+moduleload(module=&quot;python&quot;, envir=c(&quot;PATH&quot;, &quot;LD_LIBRARY_PATH&quot;, &quot;PYTHONPATH&quot;))
 runCommandline(args)
 file.exists(outpaths(args))
 writeTargetsout(x=args, file=&quot;targets_macs.txt&quot;, overwrite=TRUE)</code></pre>
