@@ -1,6 +1,6 @@
 ---
 title: 12. Version Information
-last_updated: Wed May  9 13:55:31 2018
+last_updated: Wed May  9 19:08:35 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_12.html
 ---

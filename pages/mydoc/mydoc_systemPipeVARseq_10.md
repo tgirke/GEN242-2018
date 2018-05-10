@@ -1,6 +1,6 @@
 ---
 title: 10. Venn diagram of variants
-last_updated: Wed May  9 13:55:31 2018
+last_updated: Wed May  9 19:08:35 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_10.html
 ---
@@ -18,11 +18,8 @@ vennset_gatk <- overLapper(varlist, type="vennsets")
 args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_sambcf_filtered.txt")
 varlist <- sapply(names(outpaths(args))[1:4], function(x) as.character(read.delim(outpaths(args)[x])$VARID))
 vennset_bcf <- overLapper(varlist, type="vennsets")
-args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_vartools_filtered.txt")
-varlist <- sapply(names(outpaths(args))[1:4], function(x) as.character(read.delim(outpaths(args)[x])$VARID))
-vennset_vartools <- overLapper(varlist, type="vennsets")
 pdf("./results/vennplot_var.pdf")
-vennPlot(list(vennset_gatk, vennset_bcf, vennset_vartools), mymain="", mysub="GATK: red; BCFtools: blue; VariantTools: green", colmode=2, ccol=c("red", "blue", "green"))
+vennPlot(list(vennset_gatk, vennset_bcf), mymain="", mysub="GATK: red; BCFtools: blue", colmode=2, ccol=c("red", "blue"))
 dev.off()
 ```
 

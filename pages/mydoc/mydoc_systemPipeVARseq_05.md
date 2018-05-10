@@ -1,6 +1,6 @@
 ---
 title: 5. Variant calling
-last_updated: Wed May  9 13:55:31 2018
+last_updated: Wed May  9 19:08:35 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_05.html
 ---
@@ -54,29 +54,6 @@ reg <- clusterRun(args, conffile=".BatchJobs.R", template="slurm.tmpl", Njobs=18
 waitForJobs(reg)
 # unlink(outfile1(args), recursive = TRUE, force = TRUE)
 writeTargetsout(x=args, file="targets_sambcf.txt", overwrite=TRUE)
-```
-
-## Variant calling with `VariantTools`  
-
-
-```r
-library(gmapR); library(BiocParallel); library(BatchJobs)
-args <- systemArgs(sysma="param/vartools.param", mytargets="targets_gsnap_bam.txt")
-f <- function(x) {
-    library(VariantTools); library(gmapR); library(systemPipeR)
-    args <- systemArgs(sysma="param/vartools.param", mytargets="targets_gsnap_bam.txt")
-    gmapGenome <- GmapGenome(systemPipeR::reference(args), directory="data", name="gmap_tair10chr", create=FALSE)
-    tally.param <- TallyVariantsParam(gmapGenome, high_base_quality = 23L, indels = TRUE)
-    bfl <- BamFileList(infile1(args)[x], index=character())
-    var <- callVariants(bfl[[1]], tally.param)
-    sampleNames(var) <- names(bfl)
-    writeVcf(asVCF(var), outfile1(args)[x], index = TRUE)
-}
-funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G"), cluster.functions=funs)
-register(param)
-d <- bplapply(seq(along=args), f)
-writeTargetsout(x=args, file="targets_vartools.txt", overwrite=TRUE)
 ```
 
 ## Inspect VCF file 

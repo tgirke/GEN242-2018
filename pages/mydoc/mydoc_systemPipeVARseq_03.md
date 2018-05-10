@@ -1,6 +1,6 @@
 ---
 title: 3. Read preprocessing
-last_updated: Wed May  9 13:55:31 2018
+last_updated: Wed May  9 19:08:35 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_03.html
 ---
@@ -38,7 +38,6 @@ targets[,-c(5,6)]
 ## 18 ./data/SRR446044_1.fastq ./data/SRR446044_2.fastq       V12B    V12 23-Mar-2012
 ```
 
-
 ## Read quality filtering and trimming
 
 The following removes reads with low quality base calls (here Phred
@@ -54,7 +53,6 @@ filterFct <- function(fq, cutoff=20, Nexceptions=0) {
 preprocessReads(args=args, Fct="filterFct(fq, cutoff=20, Nexceptions=0)", batchsize=100000)
 writeTargetsout(x=args, file="targets_PEtrim.txt", overwrite=TRUE)
 ```
-
 
 ## FASTQ quality report
 

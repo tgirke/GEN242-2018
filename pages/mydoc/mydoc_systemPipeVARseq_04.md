@@ -1,6 +1,6 @@
 ---
 title: 4. Alignments
-last_updated: Wed May  9 13:55:31 2018
+last_updated: Wed May  9 19:08:35 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_04.html
 ---
@@ -49,32 +49,6 @@ Check whether all BAM files have been created
 ```r
 file.exists(outpaths(args))
 ```
-
-## Read mapping with `gsnap` 
-
-An alternative variant tolerant aligner is `gsnap` from the `gmapR` package
-(Wu et al., 2010). The following code shows how to run this aligner on
-multiple nodes of a computer cluster that uses Torque as scheduler.
-
-
-```r
-library(gmapR); library(BiocParallel); library(BatchJobs)
-args <- systemArgs(sysma="param/gsnap.param", mytargets="targetsPE.txt")
-gmapGenome <- GmapGenome(systemPipeR::reference(args), directory="data", name="gmap_tair10chr", create=TRUE)
-f <- function(x) {
-    library(gmapR); library(systemPipeR)
-    args <- systemArgs(sysma="param/gsnap.param", mytargets="targetsPE.txt")
-    gmapGenome <- GmapGenome(reference(args), directory="data", name="gmap_tair10chr", create=FALSE)
-    p <- GsnapParam(genome=gmapGenome, unique_only=TRUE, molecule="DNA", max_mismatches=3)
-    o <- gsnap(input_a=infile1(args)[x], input_b=infile2(args)[x], params=p, output=outfile1(args)[x])
-}
-funs <- makeClusterFunctionsSLURM("slurm.tmpl")
-param <- BatchJobsParam(length(args), resources=list(walltime="00:20:00", ntasks=1, ncpus=1, memory="6G"), cluster.functions=funs)
-register(param)
-d <- bplapply(seq(along=args), f)
-writeTargetsout(x=args, file="targets_gsnap_bam.txt", overwrite=TRUE)
-```
-
 
 ## Read and alignment stats
 

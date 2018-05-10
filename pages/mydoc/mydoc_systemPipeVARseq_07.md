@@ -1,6 +1,6 @@
 ---
 title: 7. Annotate filtered variants
-last_updated: Wed May  9 13:55:31 2018
+last_updated: Wed May  9 19:08:35 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_07.html
 ---
@@ -53,20 +53,11 @@ fa <- FaFile(systemPipeR::reference(args))
 suppressAll(variantReport(args=args, txdb=txdb, fa=fa, organism="A. thaliana"))
 ```
 
-## Annotate filtered variants called by `VariantTools`
-
-
-```r
-args <- systemArgs(sysma="param/annotate_vars.param", mytargets="targets_vartools_filtered.txt")
-txdb <- loadDb("./data/tair10.sqlite")
-fa <- FaFile(systemPipeR::reference(args))
-suppressAll(variantReport(args=args, txdb=txdb, fa=fa, organism="A. thaliana"))
-```
-
 View annotation result for single sample
 
 ```r
-read.delim(outpaths(args)[1])[38:40,]
+sampleDF <- read.delim(outpaths(args)[1])[38:40,]
+sampleDF[sampleDF$LOCATION=="coding",]
 ```
 
 <br><br><center><a href="mydoc_systemPipeVARseq_06.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
