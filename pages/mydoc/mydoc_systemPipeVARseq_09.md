@@ -1,6 +1,6 @@
 ---
 title: 9. Summary statistics of variants
-last_updated: Wed May  9 19:08:35 2018
+last_updated: Wed May  9 20:52:49 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_09.html
 ---

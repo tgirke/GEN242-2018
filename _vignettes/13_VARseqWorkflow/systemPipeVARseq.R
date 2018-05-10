@@ -27,7 +27,7 @@ suppressPackageStartupMessages({
 
 ## download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd", "systemPipeVARseq.Rmd")
 
-## $ wget -O systemPipeChIPseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd
+## $ wget -O systemPipeVARseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd
 
 ## ----node_environment, eval=FALSE----------------------------------------
 ## $ srun --x11 --partition=short --mem=2gb --cpus-per-task 1 --ntasks 1 --time 2:00:00 --pty bash -l

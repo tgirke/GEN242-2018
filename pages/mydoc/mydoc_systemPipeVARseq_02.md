@@ -1,6 +1,6 @@
 ---
 title: 2. Generate workflow environment
-last_updated: Wed May  9 19:08:35 2018
+last_updated: Wed May  9 20:52:49 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_systemPipeVARseq_02.html
 ---
@@ -45,7 +45,7 @@ download.file("https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignett
 Or from the command-line one can do this with `wget`.
 
 ```sh
-$ wget -O systemPipeChIPseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd
+$ wget -O systemPipeVARseq.Rmd https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/13_VARseqWorkflow/systemPipeVARseq.Rmd
 ```
 
 Now log in to a computer node on the HPCC/biocluser. The following command sequence will connect the user from the command-line to a computer node on the cluster. 
