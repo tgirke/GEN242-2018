@@ -1,6 +1,6 @@
 ---
 title: 8. References
-last_updated: Wed May 31 12:32:55 2017
+last_updated: Fri May 11 11:27:42 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_8.html
 ---

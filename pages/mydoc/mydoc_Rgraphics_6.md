@@ -1,6 +1,6 @@
 ---
 title: 6. Specialty Graphics
-last_updated: Wed May 31 12:32:55 2017
+last_updated: Fri May 11 11:27:42 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_6.html
 ---
