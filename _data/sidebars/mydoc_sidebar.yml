@@ -624,6 +624,26 @@ entries:
       url: /mydoc_Rclustering_1.html
       output: web
 
+    - title: 2. Data Preprocessing
+      url: /mydoc_Rclustering_2.html
+      output: web
+
+    - title: 3. Clustering Algorithms
+      url: /mydoc_Rclustering_3.html
+      output: web
+
+    - title: 4. Clustering Exercises
+      url: /mydoc_Rclustering_4.html
+      output: web
+
+    - title: 5. Version Information
+      url: /mydoc_Rclustering_5.html
+      output: web
+
+    - title: 6. References
+      url: /mydoc_Rclustering_6.html
+      output: web
+
   - title: Paper Presentations
     output: web
     folderitems:
