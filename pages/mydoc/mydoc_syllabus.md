@@ -114,9 +114,9 @@ addition, a recent version of [R](http://www.r-project.org) and
 
 ### Journal articles
 
-Alkan, C, Sajjadian, S, Eichler, E E (2011) Limitations of next-generation genome sequence assembly. Nat Methods, 8: 61-65. http://www.hubmed.org/display.cgi?uids=21102452
+A.1 Alkan, C, Sajjadian, S, Eichler, E E (2011) Limitations of next-generation genome sequence assembly. Nat Methods, 8: 61-65. http://www.hubmed.org/display.cgi?uids=21102452
 
-Anders, S, Reyes, A, Huber, W (2012) Detecting differential usage of exons from RNA-seq data. Genome Res, 22: 2008-2017. http://www.hubmed.org/display.cgi?uids=22722343
+A.2 Anders, S, Reyes, A, Huber, W (2012) Detecting differential usage of exons from RNA-seq data. Genome Res, 22: 2008-2017. http://www.hubmed.org/display.cgi?uids=22722343
 
 DePristo, M A, Banks, E, Poplin, R, Garimella, K V, Maguire, J R, Hartl, C, Philippakis, A A, del Angel, G, Rivas, M A, Hanna, M, McKenna, A, Fennell, T J, Kernytsky, A M, Sivachenko, A Y, Cibulskis, K, Gabriel, S B, Altshuler, D, Daly, M J (2011) A framework for variation discovery and genotyping using next-generation DNA sequencing data. Nat Genet, 43: 491-498.
 http://www.hubmed.org/display.cgi?uids=21478889
