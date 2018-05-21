@@ -52,3 +52,9 @@ Assemble the code from the homework assignments A-C in a single R script (`HW7.R
 ## Due date
 
 This homework is due in one week on Thu, May 10th at 6:00 PM.
+
+## Homework Solutions
+
+See [here](https://drive.google.com/open?id=1IcnSXQFT_Tw1A6_H7CtZ4gYsYv5ipExi)
+
+
