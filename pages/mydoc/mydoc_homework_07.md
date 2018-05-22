@@ -27,7 +27,7 @@ Before attempting to solve this homework task please read the vignette _Counting
 
 - __Task 2__: Provide R code that demonstrates that the two strand-specific count tables sum up to the values of the unstranded count table. 
 
-- __Task 3__: Explain the utility (biological relevance) of the different counting modes used under Task 1. Include your explanation as comment text in your homework script (see `HW7.R` below). 
+- __Task 3__: Explain the utility (biological relevance) of the different strand counting modes used under Task 1. Include your explanation as comment text in your homework script (see `HW7.R` below). 
 
 ## B. Read counting for different feature types
 - __Task 4__: Compute strand-specific count tables for the positive (sense) strand of the following feature types: 
