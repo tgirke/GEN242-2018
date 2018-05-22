@@ -129,7 +129,8 @@ targets[1:4,-c(5,6)]
 ## ----call_peaks_macs_noref, eval=FALSE-----------------------------------
 ## args <- systemArgs(sysma="param/macs2_noinput.param", mytargets="targets_mergeBamByFactor.txt")
 ## sysargs(args)[1] # Command-line parameters for first FASTQ file
-## moduleload(module="python", envir=c("PATH", "LD_LIBRARY_PATH", "PYTHONPATH"))
+## # moduleload(module="python", envir=c("PATH", "LD_LIBRARY_PATH", "PYTHONPATH")) # Temp solution due to Python path change
+## moduleload(module="python")
 ## runCommandline(args)
 ## file.exists(outpaths(args))
 ## writeTargetsout(x=args, file="targets_macs.txt", overwrite=TRUE)
