@@ -1,6 +1,6 @@
 ---
 title: 10. Reading and Writing External Data
-last_updated: Fri Apr 13 21:00:18 2018
+last_updated: Wed May 23 08:02:44 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_10.html
 ---
@@ -49,6 +49,19 @@ myDF <- readLines("myData.txt")
 
 ```r
 writeLines(month.name, "myData.txt")
+```
+
+## Export R object
+
+```r
+mylist <- list(C1=iris[,1], C2=iris[,2]) # Example to export
+saveRDS(mylist, "mylist.rds")
+```
+
+## Import R object
+
+```r
+mylist <- readRDS("mylist.rds")
 ```
 
 ## Copy and paste into R

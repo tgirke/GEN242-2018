@@ -1,6 +1,6 @@
 ---
 title: 13. SQLite Databases
-last_updated: Fri Apr 13 21:00:18 2018
+last_updated: Wed May 23 08:02:44 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_13.html
 ---
@@ -16,22 +16,12 @@ into an SQLite database (here `test.db`).
 
 ```r
 library(RSQLite)
+unlink("test.db") # Delete any existing test.db
 mydb <- dbConnect(SQLite(), "test.db") # Creates database file test.db
 mydf1 <- data.frame(ids=paste0("id", seq_along(iris[,1])), iris)
 mydf2 <- mydf1[sample(seq_along(mydf1[,1]), 10),]
 dbWriteTable(mydb, "mydf1", mydf1)
-```
-
-```
-## [1] TRUE
-```
-
-```r
 dbWriteTable(mydb, "mydf2", mydf2)
-```
-
-```
-## [1] TRUE
 ```
 
 ## List names of tables in database
@@ -54,16 +44,16 @@ dbGetQuery(mydb, 'SELECT * FROM mydf2')
 
 ```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 1   id99          5.1         2.5          3.0         1.1 versicolor
-## 2   id16          5.7         4.4          1.5         0.4     setosa
-## 3   id51          7.0         3.2          4.7         1.4 versicolor
-## 4  id141          6.7         3.1          5.6         2.4  virginica
-## 5  id135          6.1         2.6          5.6         1.4  virginica
-## 6  id127          6.2         2.8          4.8         1.8  virginica
-## 7   id73          6.3         2.5          4.9         1.5 versicolor
-## 8  id148          6.5         3.0          5.2         2.0  virginica
-## 9   id13          4.8         3.0          1.4         0.1     setosa
-## 10  id40          5.1         3.4          1.5         0.2     setosa
+## 1   id70          5.6         2.5          3.9         1.1 versicolor
+## 2  id146          6.7         3.0          5.2         2.3  virginica
+## 3   id89          5.6         3.0          4.1         1.3 versicolor
+## 4   id63          6.0         2.2          4.0         1.0 versicolor
+## 5  id117          6.5         3.0          5.5         1.8  virginica
+## 6  id113          6.8         3.0          5.5         2.1  virginica
+## 7  id130          7.2         3.0          5.8         1.6  virginica
+## 8   id96          5.7         3.0          4.2         1.2 versicolor
+## 9   id27          5.0         3.4          1.6         0.4     setosa
+## 10   id8          5.0         3.4          1.5         0.2     setosa
 ```
 
 ## Query database
@@ -93,27 +83,27 @@ dbGetQuery(mydb, 'SELECT * FROM mydf1, mydf2 WHERE mydf1.ids = mydf2.ids')
 
 ```
 ##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species   ids Sepal.Length
-## 1   id13          4.8         3.0          1.4         0.1     setosa  id13          4.8
-## 2   id16          5.7         4.4          1.5         0.4     setosa  id16          5.7
-## 3   id40          5.1         3.4          1.5         0.2     setosa  id40          5.1
-## 4   id51          7.0         3.2          4.7         1.4 versicolor  id51          7.0
-## 5   id73          6.3         2.5          4.9         1.5 versicolor  id73          6.3
-## 6   id99          5.1         2.5          3.0         1.1 versicolor  id99          5.1
-## 7  id127          6.2         2.8          4.8         1.8  virginica id127          6.2
-## 8  id135          6.1         2.6          5.6         1.4  virginica id135          6.1
-## 9  id141          6.7         3.1          5.6         2.4  virginica id141          6.7
-## 10 id148          6.5         3.0          5.2         2.0  virginica id148          6.5
+## 1    id8          5.0         3.4          1.5         0.2     setosa   id8          5.0
+## 2   id27          5.0         3.4          1.6         0.4     setosa  id27          5.0
+## 3   id63          6.0         2.2          4.0         1.0 versicolor  id63          6.0
+## 4   id70          5.6         2.5          3.9         1.1 versicolor  id70          5.6
+## 5   id89          5.6         3.0          4.1         1.3 versicolor  id89          5.6
+## 6   id96          5.7         3.0          4.2         1.2 versicolor  id96          5.7
+## 7  id113          6.8         3.0          5.5         2.1  virginica id113          6.8
+## 8  id117          6.5         3.0          5.5         1.8  virginica id117          6.5
+## 9  id130          7.2         3.0          5.8         1.6  virginica id130          7.2
+## 10 id146          6.7         3.0          5.2         2.3  virginica id146          6.7
 ##    Sepal.Width Petal.Length Petal.Width    Species
-## 1          3.0          1.4         0.1     setosa
-## 2          4.4          1.5         0.4     setosa
-## 3          3.4          1.5         0.2     setosa
-## 4          3.2          4.7         1.4 versicolor
-## 5          2.5          4.9         1.5 versicolor
-## 6          2.5          3.0         1.1 versicolor
-## 7          2.8          4.8         1.8  virginica
-## 8          2.6          5.6         1.4  virginica
-## 9          3.1          5.6         2.4  virginica
-## 10         3.0          5.2         2.0  virginica
+## 1          3.4          1.5         0.2     setosa
+## 2          3.4          1.6         0.4     setosa
+## 3          2.2          4.0         1.0 versicolor
+## 4          2.5          3.9         1.1 versicolor
+## 5          3.0          4.1         1.3 versicolor
+## 6          3.0          4.2         1.2 versicolor
+## 7          3.0          5.5         2.1  virginica
+## 8          3.0          5.5         1.8  virginica
+## 9          3.0          5.8         1.6  virginica
+## 10         3.0          5.2         2.3  virginica
 ```
 
 

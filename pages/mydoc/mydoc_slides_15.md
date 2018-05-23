@@ -1,5 +1,5 @@
 ---
-title: Gene Annotation, Ontologies and Enrichment Methods
+title: Assembly of Genomes and Transcriptomes
 sidebar: mydoc_sidebar
 permalink: mydoc_slides_15.html 
 ---

@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Fri Apr 13 21:00:18 2018
+last_updated: Wed May 23 08:02:44 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -41,19 +41,19 @@ as_data_frame(iris) # coerce data.frame to data frame tbl
 ```
 
 ```
-## # A tibble: 150 × 5
+## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           <dbl>       <dbl>        <dbl>       <dbl>  <fctr>
-## 1           5.1         3.5          1.4         0.2  setosa
-## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7         3.2          1.3         0.2  setosa
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5           5.0         3.6          1.4         0.2  setosa
-## 6           5.4         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8           5.0         3.4          1.5         0.2  setosa
-## 9           4.4         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1         5.10        3.50         1.40       0.200 setosa 
+##  2         4.90        3.00         1.40       0.200 setosa 
+##  3         4.70        3.20         1.30       0.200 setosa 
+##  4         4.60        3.10         1.50       0.200 setosa 
+##  5         5.00        3.60         1.40       0.200 setosa 
+##  6         5.40        3.90         1.70       0.400 setosa 
+##  7         4.60        3.40         1.40       0.300 setosa 
+##  8         5.00        3.40         1.50       0.200 setosa 
+##  9         4.40        2.90         1.40       0.200 setosa 
+## 10         4.90        3.10         1.50       0.100 setosa 
 ## # ... with 140 more rows
 ```
 
@@ -100,19 +100,19 @@ iris_df
 ```
 
 ```
-## # A tibble: 150 × 5
+## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
-## 1           5.1         3.5          1.4         0.2  setosa
-## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7         3.2          1.3         0.2  setosa
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5           5.0         3.6          1.4         0.2  setosa
-## 6           5.4         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8           5.0         3.4          1.5         0.2  setosa
-## 9           4.4         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+##  1         5.10        3.50         1.40       0.200 setosa 
+##  2         4.90        3.00         1.40       0.200 setosa 
+##  3         4.70        3.20         1.30       0.200 setosa 
+##  4         4.60        3.10         1.50       0.200 setosa 
+##  5         5.00        3.60         1.40       0.200 setosa 
+##  6         5.40        3.90         1.70       0.400 setosa 
+##  7         4.60        3.40         1.40       0.300 setosa 
+##  8         5.00        3.40         1.50       0.200 setosa 
+##  9         4.40        2.90         1.40       0.200 setosa 
+## 10         4.90        3.10         1.50       0.100 setosa 
 ## # ... with 140 more rows
 ```
 
@@ -131,19 +131,19 @@ iris_df
 ```
 
 ```
-## # A tibble: 150 × 5
+## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
-## 1           5.1         3.5          1.4         0.2  setosa
-## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7         3.2          1.3         0.2  setosa
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5           5.0         3.6          1.4         0.2  setosa
-## 6           5.4         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8           5.0         3.4          1.5         0.2  setosa
-## 9           4.4         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+##  1         5.10        3.50         1.40       0.200 setosa 
+##  2         4.90        3.00         1.40       0.200 setosa 
+##  3         4.70        3.20         1.30       0.200 setosa 
+##  4         4.60        3.10         1.50       0.200 setosa 
+##  5         5.00        3.60         1.40       0.200 setosa 
+##  6         5.40        3.90         1.70       0.400 setosa 
+##  7         4.60        3.40         1.40       0.300 setosa 
+##  8         5.00        3.40         1.50       0.200 setosa 
+##  9         4.40        2.90         1.40       0.200 setosa 
+## 10         4.90        3.10         1.50       0.100 setosa 
 ## # ... with 140 more rows
 ```
 
@@ -182,20 +182,21 @@ bind_cols(iris_df, iris_df)
 ```
 
 ```
-## # A tibble: 150 × 10
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length Sepal.Width Petal.Length
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>        <dbl>       <dbl>        <dbl>
-## 1           5.1         3.5          1.4         0.2  setosa          5.1         3.5          1.4
-## 2           4.9         3.0          1.4         0.2  setosa          4.9         3.0          1.4
-## 3           4.7         3.2          1.3         0.2  setosa          4.7         3.2          1.3
-## 4           4.6         3.1          1.5         0.2  setosa          4.6         3.1          1.5
-## 5           5.0         3.6          1.4         0.2  setosa          5.0         3.6          1.4
-## 6           5.4         3.9          1.7         0.4  setosa          5.4         3.9          1.7
-## 7           4.6         3.4          1.4         0.3  setosa          4.6         3.4          1.4
-## 8           5.0         3.4          1.5         0.2  setosa          5.0         3.4          1.5
-## 9           4.4         2.9          1.4         0.2  setosa          4.4         2.9          1.4
-## 10          4.9         3.1          1.5         0.1  setosa          4.9         3.1          1.5
-## # ... with 140 more rows, and 2 more variables: Petal.Width <dbl>, Species <chr>
+## # A tibble: 150 x 10
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length1 Sepal.Width1
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>           <dbl>        <dbl>
+##  1         5.10        3.50         1.40       0.200 setosa           5.10         3.50
+##  2         4.90        3.00         1.40       0.200 setosa           4.90         3.00
+##  3         4.70        3.20         1.30       0.200 setosa           4.70         3.20
+##  4         4.60        3.10         1.50       0.200 setosa           4.60         3.10
+##  5         5.00        3.60         1.40       0.200 setosa           5.00         3.60
+##  6         5.40        3.90         1.70       0.400 setosa           5.40         3.90
+##  7         4.60        3.40         1.40       0.300 setosa           4.60         3.40
+##  8         5.00        3.40         1.50       0.200 setosa           5.00         3.40
+##  9         4.40        2.90         1.40       0.200 setosa           4.40         2.90
+## 10         4.90        3.10         1.50       0.100 setosa           4.90         3.10
+## # ... with 140 more rows, and 3 more variables: Petal.Length1 <dbl>, Petal.Width1 <dbl>,
+## #   Species1 <chr>
 ```
 
 ```r
@@ -203,19 +204,19 @@ bind_rows(iris_df, iris_df)
 ```
 
 ```
-## # A tibble: 300 × 5
+## # A tibble: 300 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
-## 1           5.1         3.5          1.4         0.2  setosa
-## 2           4.9         3.0          1.4         0.2  setosa
-## 3           4.7         3.2          1.3         0.2  setosa
-## 4           4.6         3.1          1.5         0.2  setosa
-## 5           5.0         3.6          1.4         0.2  setosa
-## 6           5.4         3.9          1.7         0.4  setosa
-## 7           4.6         3.4          1.4         0.3  setosa
-## 8           5.0         3.4          1.5         0.2  setosa
-## 9           4.4         2.9          1.4         0.2  setosa
-## 10          4.9         3.1          1.5         0.1  setosa
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+##  1         5.10        3.50         1.40       0.200 setosa 
+##  2         4.90        3.00         1.40       0.200 setosa 
+##  3         4.70        3.20         1.30       0.200 setosa 
+##  4         4.60        3.10         1.50       0.200 setosa 
+##  5         5.00        3.60         1.40       0.200 setosa 
+##  6         5.40        3.90         1.70       0.400 setosa 
+##  7         4.60        3.40         1.40       0.300 setosa 
+##  8         5.00        3.40         1.50       0.200 setosa 
+##  9         4.40        2.90         1.40       0.200 setosa 
+## 10         4.90        3.10         1.50       0.100 setosa 
 ## # ... with 290 more rows
 ```
 
@@ -263,15 +264,15 @@ filter(iris_df, Sepal.Length > 7.5, Species=="virginica")
 ```
 
 ```
-## # A tibble: 6 × 5
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-##          <dbl>       <dbl>        <dbl>       <dbl>     <chr>
-## 1          7.6         3.0          6.6         2.1 virginica
-## 2          7.7         3.8          6.7         2.2 virginica
-## 3          7.7         2.6          6.9         2.3 virginica
-## 4          7.7         2.8          6.7         2.0 virginica
-## 5          7.9         3.8          6.4         2.0 virginica
-## 6          7.7         3.0          6.1         2.3 virginica
+## # A tibble: 6 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+##          <dbl>       <dbl>        <dbl>       <dbl> <chr>    
+## 1         7.60        3.00         6.60        2.10 virginica
+## 2         7.70        3.80         6.70        2.20 virginica
+## 3         7.70        2.60         6.90        2.30 virginica
+## 4         7.70        2.80         6.70        2.00 virginica
+## 5         7.90        3.80         6.40        2.00 virginica
+## 6         7.70        3.00         6.10        2.30 virginica
 ```
 
 ### Base R code equivalent
@@ -282,15 +283,15 @@ iris_df[iris_df[, "Sepal.Length"] > 7.5 & iris_df[, "Species"]=="virginica", ]
 ```
 
 ```
-## # A tibble: 6 × 5
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-##          <dbl>       <dbl>        <dbl>       <dbl>     <chr>
-## 1          7.6         3.0          6.6         2.1 virginica
-## 2          7.7         3.8          6.7         2.2 virginica
-## 3          7.7         2.6          6.9         2.3 virginica
-## 4          7.7         2.8          6.7         2.0 virginica
-## 5          7.9         3.8          6.4         2.0 virginica
-## 6          7.7         3.0          6.1         2.3 virginica
+## # A tibble: 6 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+##          <dbl>       <dbl>        <dbl>       <dbl> <chr>    
+## 1         7.60        3.00         6.60        2.10 virginica
+## 2         7.70        3.80         6.70        2.20 virginica
+## 3         7.70        2.60         6.90        2.30 virginica
+## 4         7.70        2.80         6.70        2.00 virginica
+## 5         7.90        3.80         6.40        2.00 virginica
+## 6         7.70        3.00         6.10        2.30 virginica
 ```
 
 ### Including boolean operators
@@ -301,16 +302,16 @@ filter(iris_df, Sepal.Length > 7.5 | Sepal.Length < 5.5, Species=="virginica")
 ```
 
 ```
-## # A tibble: 7 × 5
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-##          <dbl>       <dbl>        <dbl>       <dbl>     <chr>
-## 1          7.6         3.0          6.6         2.1 virginica
-## 2          4.9         2.5          4.5         1.7 virginica
-## 3          7.7         3.8          6.7         2.2 virginica
-## 4          7.7         2.6          6.9         2.3 virginica
-## 5          7.7         2.8          6.7         2.0 virginica
-## 6          7.9         3.8          6.4         2.0 virginica
-## 7          7.7         3.0          6.1         2.3 virginica
+## # A tibble: 7 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+##          <dbl>       <dbl>        <dbl>       <dbl> <chr>    
+## 1         7.60        3.00         6.60        2.10 virginica
+## 2         4.90        2.50         4.50        1.70 virginica
+## 3         7.70        3.80         6.70        2.20 virginica
+## 4         7.70        2.60         6.90        2.30 virginica
+## 5         7.70        2.80         6.70        2.00 virginica
+## 6         7.90        3.80         6.40        2.00 virginica
+## 7         7.70        3.00         6.10        2.30 virginica
 ```
 
 ### Subset rows by position
@@ -323,11 +324,11 @@ slice(iris_df, 1:2)
 ```
 
 ```
-## # A tibble: 2 × 5
+## # A tibble: 2 x 5
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##          <dbl>       <dbl>        <dbl>       <dbl>   <chr>
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
+##          <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+## 1         5.10        3.50         1.40       0.200 setosa 
+## 2         4.90        3.00         1.40       0.200 setosa
 ```
 
 Base R code equivalent
@@ -338,11 +339,11 @@ iris_df[1:2,]
 ```
 
 ```
-## # A tibble: 2 × 5
+## # A tibble: 2 x 5
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##          <dbl>       <dbl>        <dbl>       <dbl>   <chr>
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
+##          <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+## 1         5.10        3.50         1.40       0.200 setosa 
+## 2         4.90        3.00         1.40       0.200 setosa
 ```
 
 ### Subset rows by names
@@ -361,19 +362,19 @@ df1
 ```
 
 ```
-## # A tibble: 10 × 5
-##     ids1   CA1   CA2   CA3   CA4
+## # A tibble: 10 x 5
+##    ids1    CA1   CA2   CA3   CA4
 ##    <chr> <int> <int> <int> <int>
-## 1     g1     1    11    21    31
-## 2     g2     2    12    22    32
-## 3     g3     3    13    23    33
-## 4     g4     4    14    24    34
-## 5     g5     5    15    25    35
-## 6     g6     6    16    26    36
-## 7     g7     7    17    27    37
-## 8     g8     8    18    28    38
-## 9     g9     9    19    29    39
-## 10   g10    10    20    30    40
+##  1 g1        1    11    21    31
+##  2 g2        2    12    22    32
+##  3 g3        3    13    23    33
+##  4 g4        4    14    24    34
+##  5 g5        5    15    25    35
+##  6 g6        6    16    26    36
+##  7 g7        7    17    27    37
+##  8 g8        8    18    28    38
+##  9 g9        9    19    29    39
+## 10 g10      10    20    30    40
 ```
 
 `dplyr` approach
@@ -384,12 +385,12 @@ slice(df1, match(c("g10", "g4", "g4"), df1$ids1))
 ```
 
 ```
-## # A tibble: 3 × 5
-##    ids1   CA1   CA2   CA3   CA4
+## # A tibble: 3 x 5
+##   ids1    CA1   CA2   CA3   CA4
 ##   <chr> <int> <int> <int> <int>
-## 1   g10    10    20    30    40
-## 2    g4     4    14    24    34
-## 3    g4     4    14    24    34
+## 1 g10      10    20    30    40
+## 2 g4        4    14    24    34
+## 3 g4        4    14    24    34
 ```
 
 Base R equivalent
@@ -420,19 +421,19 @@ arrange(iris_df, Species, Sepal.Length, Sepal.Width)
 ```
 
 ```
-## # A tibble: 150 × 5
+## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
-## 1           4.3         3.0          1.1         0.1  setosa
-## 2           4.4         2.9          1.4         0.2  setosa
-## 3           4.4         3.0          1.3         0.2  setosa
-## 4           4.4         3.2          1.3         0.2  setosa
-## 5           4.5         2.3          1.3         0.3  setosa
-## 6           4.6         3.1          1.5         0.2  setosa
-## 7           4.6         3.2          1.4         0.2  setosa
-## 8           4.6         3.4          1.4         0.3  setosa
-## 9           4.6         3.6          1.0         0.2  setosa
-## 10          4.7         3.2          1.3         0.2  setosa
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+##  1         4.30        3.00         1.10       0.100 setosa 
+##  2         4.40        2.90         1.40       0.200 setosa 
+##  3         4.40        3.00         1.30       0.200 setosa 
+##  4         4.40        3.20         1.30       0.200 setosa 
+##  5         4.50        2.30         1.30       0.300 setosa 
+##  6         4.60        3.10         1.50       0.200 setosa 
+##  7         4.60        3.20         1.40       0.200 setosa 
+##  8         4.60        3.40         1.40       0.300 setosa 
+##  9         4.60        3.60         1.00       0.200 setosa 
+## 10         4.70        3.20         1.30       0.200 setosa 
 ## # ... with 140 more rows
 ```
 
@@ -444,19 +445,19 @@ arrange(iris_df, desc(Species), Sepal.Length, Sepal.Width)
 ```
 
 ```
-## # A tibble: 150 × 5
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-##           <dbl>       <dbl>        <dbl>       <dbl>     <chr>
-## 1           4.9         2.5          4.5         1.7 virginica
-## 2           5.6         2.8          4.9         2.0 virginica
-## 3           5.7         2.5          5.0         2.0 virginica
-## 4           5.8         2.7          5.1         1.9 virginica
-## 5           5.8         2.7          5.1         1.9 virginica
-## 6           5.8         2.8          5.1         2.4 virginica
-## 7           5.9         3.0          5.1         1.8 virginica
-## 8           6.0         2.2          5.0         1.5 virginica
-## 9           6.0         3.0          4.8         1.8 virginica
-## 10          6.1         2.6          5.6         1.4 virginica
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>    
+##  1         4.90        2.50         4.50        1.70 virginica
+##  2         5.60        2.80         4.90        2.00 virginica
+##  3         5.70        2.50         5.00        2.00 virginica
+##  4         5.80        2.70         5.10        1.90 virginica
+##  5         5.80        2.70         5.10        1.90 virginica
+##  6         5.80        2.80         5.10        2.40 virginica
+##  7         5.90        3.00         5.10        1.80 virginica
+##  8         6.00        2.20         5.00        1.50 virginica
+##  9         6.00        3.00         4.80        1.80 virginica
+## 10         6.10        2.60         5.60        1.40 virginica
 ## # ... with 140 more rows
 ```
 
@@ -468,19 +469,19 @@ iris_df[order(iris_df$Species, iris_df$Sepal.Length, iris_df$Sepal.Width), ]
 ```
 
 ```
-## # A tibble: 150 × 5
+## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>
-## 1           4.3         3.0          1.1         0.1  setosa
-## 2           4.4         2.9          1.4         0.2  setosa
-## 3           4.4         3.0          1.3         0.2  setosa
-## 4           4.4         3.2          1.3         0.2  setosa
-## 5           4.5         2.3          1.3         0.3  setosa
-## 6           4.6         3.1          1.5         0.2  setosa
-## 7           4.6         3.2          1.4         0.2  setosa
-## 8           4.6         3.4          1.4         0.3  setosa
-## 9           4.6         3.6          1.0         0.2  setosa
-## 10          4.7         3.2          1.3         0.2  setosa
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>  
+##  1         4.30        3.00         1.10       0.100 setosa 
+##  2         4.40        2.90         1.40       0.200 setosa 
+##  3         4.40        3.00         1.30       0.200 setosa 
+##  4         4.40        3.20         1.30       0.200 setosa 
+##  5         4.50        2.30         1.30       0.300 setosa 
+##  6         4.60        3.10         1.50       0.200 setosa 
+##  7         4.60        3.20         1.40       0.200 setosa 
+##  8         4.60        3.40         1.40       0.300 setosa 
+##  9         4.60        3.60         1.00       0.200 setosa 
+## 10         4.70        3.20         1.30       0.200 setosa 
 ## # ... with 140 more rows
 ```
 
@@ -489,19 +490,19 @@ iris_df[order(iris_df$Species, decreasing=TRUE), ]
 ```
 
 ```
-## # A tibble: 150 × 5
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-##           <dbl>       <dbl>        <dbl>       <dbl>     <chr>
-## 1           6.3         3.3          6.0         2.5 virginica
-## 2           5.8         2.7          5.1         1.9 virginica
-## 3           7.1         3.0          5.9         2.1 virginica
-## 4           6.3         2.9          5.6         1.8 virginica
-## 5           6.5         3.0          5.8         2.2 virginica
-## 6           7.6         3.0          6.6         2.1 virginica
-## 7           4.9         2.5          4.5         1.7 virginica
-## 8           7.3         2.9          6.3         1.8 virginica
-## 9           6.7         2.5          5.8         1.8 virginica
-## 10          7.2         3.6          6.1         2.5 virginica
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>    
+##  1         6.30        3.30         6.00        2.50 virginica
+##  2         5.80        2.70         5.10        1.90 virginica
+##  3         7.10        3.00         5.90        2.10 virginica
+##  4         6.30        2.90         5.60        1.80 virginica
+##  5         6.50        3.00         5.80        2.20 virginica
+##  6         7.60        3.00         6.60        2.10 virginica
+##  7         4.90        2.50         4.50        1.70 virginica
+##  8         7.30        2.90         6.30        1.80 virginica
+##  9         6.70        2.50         5.80        1.80 virginica
+## 10         7.20        3.60         6.10        2.50 virginica
 ## # ... with 140 more rows
 ```
 
@@ -515,19 +516,19 @@ select(iris_df, Species, Petal.Length, Sepal.Length)
 ```
 
 ```
-## # A tibble: 150 × 3
+## # A tibble: 150 x 3
 ##    Species Petal.Length Sepal.Length
-##      <chr>        <dbl>        <dbl>
-## 1   setosa          1.4          5.1
-## 2   setosa          1.4          4.9
-## 3   setosa          1.3          4.7
-## 4   setosa          1.5          4.6
-## 5   setosa          1.4          5.0
-## 6   setosa          1.7          5.4
-## 7   setosa          1.4          4.6
-## 8   setosa          1.5          5.0
-## 9   setosa          1.4          4.4
-## 10  setosa          1.5          4.9
+##    <chr>          <dbl>        <dbl>
+##  1 setosa          1.40         5.10
+##  2 setosa          1.40         4.90
+##  3 setosa          1.30         4.70
+##  4 setosa          1.50         4.60
+##  5 setosa          1.40         5.00
+##  6 setosa          1.70         5.40
+##  7 setosa          1.40         4.60
+##  8 setosa          1.50         5.00
+##  9 setosa          1.40         4.40
+## 10 setosa          1.50         4.90
 ## # ... with 140 more rows
 ```
 
@@ -539,19 +540,19 @@ select(iris_df, Sepal.Length : Petal.Width)
 ```
 
 ```
-## # A tibble: 150 × 4
+## # A tibble: 150 x 4
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width
 ##           <dbl>       <dbl>        <dbl>       <dbl>
-## 1           5.1         3.5          1.4         0.2
-## 2           4.9         3.0          1.4         0.2
-## 3           4.7         3.2          1.3         0.2
-## 4           4.6         3.1          1.5         0.2
-## 5           5.0         3.6          1.4         0.2
-## 6           5.4         3.9          1.7         0.4
-## 7           4.6         3.4          1.4         0.3
-## 8           5.0         3.4          1.5         0.2
-## 9           4.4         2.9          1.4         0.2
-## 10          4.9         3.1          1.5         0.1
+##  1         5.10        3.50         1.40       0.200
+##  2         4.90        3.00         1.40       0.200
+##  3         4.70        3.20         1.30       0.200
+##  4         4.60        3.10         1.50       0.200
+##  5         5.00        3.60         1.40       0.200
+##  6         5.40        3.90         1.70       0.400
+##  7         4.60        3.40         1.40       0.300
+##  8         5.00        3.40         1.50       0.200
+##  9         4.40        2.90         1.40       0.200
+## 10         4.90        3.10         1.50       0.100
 ## # ... with 140 more rows
 ```
 
@@ -563,19 +564,19 @@ select(iris_df, -(Sepal.Length : Petal.Width))
 ```
 
 ```
-## # A tibble: 150 × 1
+## # A tibble: 150 x 1
 ##    Species
-##      <chr>
-## 1   setosa
-## 2   setosa
-## 3   setosa
-## 4   setosa
-## 5   setosa
-## 6   setosa
-## 7   setosa
-## 8   setosa
-## 9   setosa
-## 10  setosa
+##    <chr>  
+##  1 setosa 
+##  2 setosa 
+##  3 setosa 
+##  4 setosa 
+##  5 setosa 
+##  6 setosa 
+##  7 setosa 
+##  8 setosa 
+##  9 setosa 
+## 10 setosa 
 ## # ... with 140 more rows
 ```
 
@@ -590,19 +591,19 @@ rename(iris_df, new_col_name = Species)
 ```
 
 ```
-## # A tibble: 150 × 5
+## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width new_col_name
-##           <dbl>       <dbl>        <dbl>       <dbl>        <chr>
-## 1           5.1         3.5          1.4         0.2       setosa
-## 2           4.9         3.0          1.4         0.2       setosa
-## 3           4.7         3.2          1.3         0.2       setosa
-## 4           4.6         3.1          1.5         0.2       setosa
-## 5           5.0         3.6          1.4         0.2       setosa
-## 6           5.4         3.9          1.7         0.4       setosa
-## 7           4.6         3.4          1.4         0.3       setosa
-## 8           5.0         3.4          1.5         0.2       setosa
-## 9           4.4         2.9          1.4         0.2       setosa
-## 10          4.9         3.1          1.5         0.1       setosa
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>       
+##  1         5.10        3.50         1.40       0.200 setosa      
+##  2         4.90        3.00         1.40       0.200 setosa      
+##  3         4.70        3.20         1.30       0.200 setosa      
+##  4         4.60        3.10         1.50       0.200 setosa      
+##  5         5.00        3.60         1.40       0.200 setosa      
+##  6         5.40        3.90         1.70       0.400 setosa      
+##  7         4.60        3.40         1.40       0.300 setosa      
+##  8         5.00        3.40         1.50       0.200 setosa      
+##  9         4.40        2.90         1.40       0.200 setosa      
+## 10         4.90        3.10         1.50       0.100 setosa      
 ## # ... with 140 more rows
 ```
 
@@ -623,12 +624,12 @@ distinct(iris_df, Species, .keep_all=TRUE)
 ```
 
 ```
-## # A tibble: 3 × 5
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-##          <dbl>       <dbl>        <dbl>       <dbl>      <chr>
-## 1          5.1         3.5          1.4         0.2     setosa
-## 2          7.0         3.2          4.7         1.4 versicolor
-## 3          6.3         3.3          6.0         2.5  virginica
+## # A tibble: 3 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
+##          <dbl>       <dbl>        <dbl>       <dbl> <chr>     
+## 1         5.10        3.50         1.40       0.200 setosa    
+## 2         7.00        3.20         4.70       1.40  versicolor
+## 3         6.30        3.30         6.00       2.50  virginica
 ```
 
 Base R code approach
@@ -639,12 +640,12 @@ iris_df[!duplicated(iris_df$Species),]
 ```
 
 ```
-## # A tibble: 3 × 5
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-##          <dbl>       <dbl>        <dbl>       <dbl>      <chr>
-## 1          5.1         3.5          1.4         0.2     setosa
-## 2          7.0         3.2          4.7         1.4 versicolor
-## 3          6.3         3.3          6.0         2.5  virginica
+## # A tibble: 3 x 5
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
+##          <dbl>       <dbl>        <dbl>       <dbl> <chr>     
+## 1         5.10        3.50         1.40       0.200 setosa    
+## 2         7.00        3.20         4.70       1.40  versicolor
+## 3         6.30        3.30         6.00       2.50  virginica
 ```
 
 ## Add columns
@@ -659,19 +660,19 @@ mutate(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepal.W
 ```
 
 ```
-## # A tibble: 150 × 7
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species    Ratio   Sum
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>    <dbl> <dbl>
-## 1           5.1         3.5          1.4         0.2  setosa 1.457143   8.6
-## 2           4.9         3.0          1.4         0.2  setosa 1.633333   7.9
-## 3           4.7         3.2          1.3         0.2  setosa 1.468750   7.9
-## 4           4.6         3.1          1.5         0.2  setosa 1.483871   7.7
-## 5           5.0         3.6          1.4         0.2  setosa 1.388889   8.6
-## 6           5.4         3.9          1.7         0.4  setosa 1.384615   9.3
-## 7           4.6         3.4          1.4         0.3  setosa 1.352941   8.0
-## 8           5.0         3.4          1.5         0.2  setosa 1.470588   8.4
-## 9           4.4         2.9          1.4         0.2  setosa 1.517241   7.3
-## 10          4.9         3.1          1.5         0.1  setosa 1.580645   8.0
+## # A tibble: 150 x 7
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Ratio   Sum
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>   <dbl> <dbl>
+##  1         5.10        3.50         1.40       0.200 setosa   1.46  8.60
+##  2         4.90        3.00         1.40       0.200 setosa   1.63  7.90
+##  3         4.70        3.20         1.30       0.200 setosa   1.47  7.90
+##  4         4.60        3.10         1.50       0.200 setosa   1.48  7.70
+##  5         5.00        3.60         1.40       0.200 setosa   1.39  8.60
+##  6         5.40        3.90         1.70       0.400 setosa   1.38  9.30
+##  7         4.60        3.40         1.40       0.300 setosa   1.35  8.00
+##  8         5.00        3.40         1.50       0.200 setosa   1.47  8.40
+##  9         4.40        2.90         1.40       0.200 setosa   1.52  7.30
+## 10         4.90        3.10         1.50       0.100 setosa   1.58  8.00
 ## # ... with 140 more rows
 ```
 
@@ -685,19 +686,19 @@ transmute(iris_df, Ratio = Sepal.Length / Sepal.Width, Sum = Sepal.Length + Sepa
 ```
 
 ```
-## # A tibble: 150 × 2
-##       Ratio   Sum
-##       <dbl> <dbl>
-## 1  1.457143   8.6
-## 2  1.633333   7.9
-## 3  1.468750   7.9
-## 4  1.483871   7.7
-## 5  1.388889   8.6
-## 6  1.384615   9.3
-## 7  1.352941   8.0
-## 8  1.470588   8.4
-## 9  1.517241   7.3
-## 10 1.580645   8.0
+## # A tibble: 150 x 2
+##    Ratio   Sum
+##    <dbl> <dbl>
+##  1  1.46  8.60
+##  2  1.63  7.90
+##  3  1.47  7.90
+##  4  1.48  7.70
+##  5  1.39  8.60
+##  6  1.38  9.30
+##  7  1.35  8.00
+##  8  1.47  8.40
+##  9  1.52  7.30
+## 10  1.58  8.00
 ## # ... with 140 more rows
 ```
 
@@ -712,20 +713,21 @@ bind_cols(iris_df, iris_df)
 ```
 
 ```
-## # A tibble: 150 × 10
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length Sepal.Width Petal.Length
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>        <dbl>       <dbl>        <dbl>
-## 1           5.1         3.5          1.4         0.2  setosa          5.1         3.5          1.4
-## 2           4.9         3.0          1.4         0.2  setosa          4.9         3.0          1.4
-## 3           4.7         3.2          1.3         0.2  setosa          4.7         3.2          1.3
-## 4           4.6         3.1          1.5         0.2  setosa          4.6         3.1          1.5
-## 5           5.0         3.6          1.4         0.2  setosa          5.0         3.6          1.4
-## 6           5.4         3.9          1.7         0.4  setosa          5.4         3.9          1.7
-## 7           4.6         3.4          1.4         0.3  setosa          4.6         3.4          1.4
-## 8           5.0         3.4          1.5         0.2  setosa          5.0         3.4          1.5
-## 9           4.4         2.9          1.4         0.2  setosa          4.4         2.9          1.4
-## 10          4.9         3.1          1.5         0.1  setosa          4.9         3.1          1.5
-## # ... with 140 more rows, and 2 more variables: Petal.Width <dbl>, Species <chr>
+## # A tibble: 150 x 10
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Sepal.Length1 Sepal.Width1
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>           <dbl>        <dbl>
+##  1         5.10        3.50         1.40       0.200 setosa           5.10         3.50
+##  2         4.90        3.00         1.40       0.200 setosa           4.90         3.00
+##  3         4.70        3.20         1.30       0.200 setosa           4.70         3.20
+##  4         4.60        3.10         1.50       0.200 setosa           4.60         3.10
+##  5         5.00        3.60         1.40       0.200 setosa           5.00         3.60
+##  6         5.40        3.90         1.70       0.400 setosa           5.40         3.90
+##  7         4.60        3.40         1.40       0.300 setosa           4.60         3.40
+##  8         5.00        3.40         1.50       0.200 setosa           5.00         3.40
+##  9         4.40        2.90         1.40       0.200 setosa           4.40         2.90
+## 10         4.90        3.10         1.50       0.100 setosa           4.90         3.10
+## # ... with 140 more rows, and 3 more variables: Petal.Length1 <dbl>, Petal.Width1 <dbl>,
+## #   Species1 <chr>
 ```
 
 ## Summarize data
@@ -738,10 +740,10 @@ summarize(iris_df, mean(Petal.Length))
 ```
 
 ```
-## # A tibble: 1 × 1
+## # A tibble: 1 x 1
 ##   `mean(Petal.Length)`
 ##                  <dbl>
-## 1                3.758
+## 1                 3.76
 ```
 
 Summary calculation on many columns
@@ -752,10 +754,10 @@ summarize_all(iris_df[,1:4], mean)
 ```
 
 ```
-## # A tibble: 1 × 4
+## # A tibble: 1 x 4
 ##   Sepal.Length Sepal.Width Petal.Length Petal.Width
 ##          <dbl>       <dbl>        <dbl>       <dbl>
-## 1     5.843333    3.057333        3.758    1.199333
+## 1         5.84        3.06         3.76        1.20
 ```
 
 Summarize by grouping column
@@ -766,12 +768,12 @@ summarize(group_by(iris_df, Species), mean(Petal.Length))
 ```
 
 ```
-## # A tibble: 3 × 2
-##      Species `mean(Petal.Length)`
-##        <chr>                <dbl>
-## 1     setosa                1.462
-## 2 versicolor                4.260
-## 3  virginica                5.552
+## # A tibble: 3 x 2
+##   Species    `mean(Petal.Length)`
+##   <chr>                     <dbl>
+## 1 setosa                     1.46
+## 2 versicolor                 4.26
+## 3 virginica                  5.55
 ```
 
 Aggregate summaries
@@ -782,12 +784,12 @@ summarize_all(group_by(iris_df, Species), mean)
 ```
 
 ```
-## # A tibble: 3 × 5
-##      Species Sepal.Length Sepal.Width Petal.Length Petal.Width
-##        <chr>        <dbl>       <dbl>        <dbl>       <dbl>
-## 1     setosa        5.006       3.428        1.462       0.246
-## 2 versicolor        5.936       2.770        4.260       1.326
-## 3  virginica        6.588       2.974        5.552       2.026
+## # A tibble: 3 x 5
+##   Species    Sepal.Length Sepal.Width Petal.Length Petal.Width
+##   <chr>             <dbl>       <dbl>        <dbl>       <dbl>
+## 1 setosa             5.01        3.43         1.46       0.246
+## 2 versicolor         5.94        2.77         4.26       1.33 
+## 3 virginica          6.59        2.97         5.55       2.03
 ```
 
 Note: `group_by` does the looping for the user similar to `aggregate` or `tapply`.
@@ -813,19 +815,19 @@ df1
 ```
 
 ```
-## # A tibble: 10 × 5
-##     ids1   CA1   CA2   CA3   CA4
+## # A tibble: 10 x 5
+##    ids1    CA1   CA2   CA3   CA4
 ##    <chr> <int> <int> <int> <int>
-## 1     g1     1    11    21    31
-## 2     g2     2    12    22    32
-## 3     g3     3    13    23    33
-## 4     g4     4    14    24    34
-## 5     g5     5    15    25    35
-## 6     g6     6    16    26    36
-## 7     g7     7    17    27    37
-## 8     g8     8    18    28    38
-## 9     g9     9    19    29    39
-## 10   g10    10    20    30    40
+##  1 g1        1    11    21    31
+##  2 g2        2    12    22    32
+##  3 g3        3    13    23    33
+##  4 g4        4    14    24    34
+##  5 g5        5    15    25    35
+##  6 g6        6    16    26    36
+##  7 g7        7    17    27    37
+##  8 g8        8    18    28    38
+##  9 g9        9    19    29    39
+## 10 g10      10    20    30    40
 ```
 
 ```r
@@ -834,13 +836,13 @@ df2
 ```
 
 ```
-## # A tibble: 4 × 5
-##    ids2   CB1   CB2   CB3   CB4
+## # A tibble: 4 x 5
+##   ids2    CB1   CB2   CB3   CB4
 ##   <chr> <int> <int> <int> <int>
-## 1    g2     1     5     9    13
-## 2    g5     2     6    10    14
-## 3   g11     3     7    11    15
-## 4   g12     4     8    12    16
+## 1 g2        1     5     9    13
+## 2 g5        2     6    10    14
+## 3 g11       3     7    11    15
+## 4 g12       4     8    12    16
 ```
 ### Inner join
 
@@ -850,11 +852,11 @@ inner_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
 ```
-## # A tibble: 2 × 9
-##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
+## # A tibble: 2 x 9
+##   ids1    CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
 ##   <chr> <int> <int> <int> <int> <int> <int> <int> <int>
-## 1    g2     2    12    22    32     1     5     9    13
-## 2    g5     5    15    25    35     2     6    10    14
+## 1 g2        2    12    22    32     1     5     9    13
+## 2 g5        5    15    25    35     2     6    10    14
 ```
 
 ### Left join
@@ -865,19 +867,19 @@ left_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
 ```
-## # A tibble: 10 × 9
-##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
+## # A tibble: 10 x 9
+##    ids1    CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
 ##    <chr> <int> <int> <int> <int> <int> <int> <int> <int>
-## 1     g1     1    11    21    31    NA    NA    NA    NA
-## 2     g2     2    12    22    32     1     5     9    13
-## 3     g3     3    13    23    33    NA    NA    NA    NA
-## 4     g4     4    14    24    34    NA    NA    NA    NA
-## 5     g5     5    15    25    35     2     6    10    14
-## 6     g6     6    16    26    36    NA    NA    NA    NA
-## 7     g7     7    17    27    37    NA    NA    NA    NA
-## 8     g8     8    18    28    38    NA    NA    NA    NA
-## 9     g9     9    19    29    39    NA    NA    NA    NA
-## 10   g10    10    20    30    40    NA    NA    NA    NA
+##  1 g1        1    11    21    31    NA    NA    NA    NA
+##  2 g2        2    12    22    32     1     5     9    13
+##  3 g3        3    13    23    33    NA    NA    NA    NA
+##  4 g4        4    14    24    34    NA    NA    NA    NA
+##  5 g5        5    15    25    35     2     6    10    14
+##  6 g6        6    16    26    36    NA    NA    NA    NA
+##  7 g7        7    17    27    37    NA    NA    NA    NA
+##  8 g8        8    18    28    38    NA    NA    NA    NA
+##  9 g9        9    19    29    39    NA    NA    NA    NA
+## 10 g10      10    20    30    40    NA    NA    NA    NA
 ```
 
 ### Right join
@@ -888,13 +890,13 @@ right_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
 ```
-## # A tibble: 4 × 9
-##    ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
+## # A tibble: 4 x 9
+##   ids1    CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
 ##   <chr> <int> <int> <int> <int> <int> <int> <int> <int>
-## 1    g2     2    12    22    32     1     5     9    13
-## 2    g5     5    15    25    35     2     6    10    14
-## 3   g11    NA    NA    NA    NA     3     7    11    15
-## 4   g12    NA    NA    NA    NA     4     8    12    16
+## 1 g2        2    12    22    32     1     5     9    13
+## 2 g5        5    15    25    35     2     6    10    14
+## 3 g11      NA    NA    NA    NA     3     7    11    15
+## 4 g12      NA    NA    NA    NA     4     8    12    16
 ```
 
 ### Full join
@@ -905,21 +907,21 @@ full_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
 ```
-## # A tibble: 12 × 9
-##     ids1   CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
+## # A tibble: 12 x 9
+##    ids1    CA1   CA2   CA3   CA4   CB1   CB2   CB3   CB4
 ##    <chr> <int> <int> <int> <int> <int> <int> <int> <int>
-## 1     g1     1    11    21    31    NA    NA    NA    NA
-## 2     g2     2    12    22    32     1     5     9    13
-## 3     g3     3    13    23    33    NA    NA    NA    NA
-## 4     g4     4    14    24    34    NA    NA    NA    NA
-## 5     g5     5    15    25    35     2     6    10    14
-## 6     g6     6    16    26    36    NA    NA    NA    NA
-## 7     g7     7    17    27    37    NA    NA    NA    NA
-## 8     g8     8    18    28    38    NA    NA    NA    NA
-## 9     g9     9    19    29    39    NA    NA    NA    NA
-## 10   g10    10    20    30    40    NA    NA    NA    NA
-## 11   g11    NA    NA    NA    NA     3     7    11    15
-## 12   g12    NA    NA    NA    NA     4     8    12    16
+##  1 g1        1    11    21    31    NA    NA    NA    NA
+##  2 g2        2    12    22    32     1     5     9    13
+##  3 g3        3    13    23    33    NA    NA    NA    NA
+##  4 g4        4    14    24    34    NA    NA    NA    NA
+##  5 g5        5    15    25    35     2     6    10    14
+##  6 g6        6    16    26    36    NA    NA    NA    NA
+##  7 g7        7    17    27    37    NA    NA    NA    NA
+##  8 g8        8    18    28    38    NA    NA    NA    NA
+##  9 g9        9    19    29    39    NA    NA    NA    NA
+## 10 g10      10    20    30    40    NA    NA    NA    NA
+## 11 g11      NA    NA    NA    NA     3     7    11    15
+## 12 g12      NA    NA    NA    NA     4     8    12    16
 ```
 
 ### Anti join
@@ -930,17 +932,17 @@ anti_join(df1, df2, by=c("ids1"="ids2"))
 ```
 
 ```
-## # A tibble: 8 × 5
-##    ids1   CA1   CA2   CA3   CA4
+## # A tibble: 8 x 5
+##   ids1    CA1   CA2   CA3   CA4
 ##   <chr> <int> <int> <int> <int>
-## 1   g10    10    20    30    40
-## 2    g9     9    19    29    39
-## 3    g8     8    18    28    38
-## 4    g7     7    17    27    37
-## 5    g6     6    16    26    36
-## 6    g4     4    14    24    34
-## 7    g3     3    13    23    33
-## 8    g1     1    11    21    31
+## 1 g1        1    11    21    31
+## 2 g3        3    13    23    33
+## 3 g4        4    14    24    34
+## 4 g6        6    16    26    36
+## 5 g7        7    17    27    37
+## 6 g8        8    18    28    38
+## 7 g9        9    19    29    39
+## 8 g10      10    20    30    40
 ```
 
 For additional join options users want to cosult the `*_join` help pages.
@@ -968,19 +970,19 @@ iris_df %>% # Declare data frame to use
 ```
 
 ```
-## # A tibble: 50 × 6
+## # A tibble: 50 x 6
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Subtract
-##           <dbl>       <dbl>        <dbl>       <dbl>   <chr>    <dbl>
-## 1           4.3         3.0          1.1         0.1  setosa      1.0
-## 2           4.4         2.9          1.4         0.2  setosa      1.2
-## 3           4.4         3.0          1.3         0.2  setosa      1.1
-## 4           4.4         3.2          1.3         0.2  setosa      1.1
-## 5           4.5         2.3          1.3         0.3  setosa      1.0
-## 6           4.6         3.1          1.5         0.2  setosa      1.3
-## 7           4.6         3.4          1.4         0.3  setosa      1.1
-## 8           4.6         3.6          1.0         0.2  setosa      0.8
-## 9           4.6         3.2          1.4         0.2  setosa      1.2
-## 10          4.7         3.2          1.3         0.2  setosa      1.1
+##           <dbl>       <dbl>        <dbl>       <dbl> <chr>      <dbl>
+##  1         4.30        3.00         1.10       0.100 setosa     1.00 
+##  2         4.40        2.90         1.40       0.200 setosa     1.20 
+##  3         4.40        3.00         1.30       0.200 setosa     1.10 
+##  4         4.40        3.20         1.30       0.200 setosa     1.10 
+##  5         4.50        2.30         1.30       0.300 setosa     1.00 
+##  6         4.60        3.10         1.50       0.200 setosa     1.30 
+##  7         4.60        3.40         1.40       0.300 setosa     1.10 
+##  8         4.60        3.60         1.00       0.200 setosa     0.800
+##  9         4.60        3.20         1.40       0.200 setosa     1.20 
+## 10         4.70        3.20         1.30       0.200 setosa     1.10 
 ## # ... with 40 more rows
 ```
 
@@ -1004,12 +1006,12 @@ iris_df %>% # Declare data frame to use
 ```
 
 ```
-## # A tibble: 3 × 6
-##      Species Mean_Sepal.Length Max_Sepal.Length Min_Sepal.Length SD_Sepal.Length Total
-##        <chr>             <dbl>            <dbl>            <dbl>           <dbl> <int>
-## 1     setosa             5.006              5.8              4.3       0.3524897    50
-## 2 versicolor             5.936              7.0              4.9       0.5161711    50
-## 3  virginica             6.588              7.9              4.9       0.6358796    50
+## # A tibble: 3 x 6
+##   Species    Mean_Sepal.Length Max_Sepal.Length Min_Sepal.Length SD_Sepal.Length Total
+##   <chr>                  <dbl>            <dbl>            <dbl>           <dbl> <int>
+## 1 setosa                  5.01             5.80             4.30           0.352    50
+## 2 versicolor              5.94             7.00             4.90           0.516    50
+## 3 virginica               6.59             7.90             4.90           0.636    50
 ```
 
 ### Example 3

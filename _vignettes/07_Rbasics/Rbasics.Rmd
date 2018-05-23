@@ -1,4 +1,4 @@
----
+G--
 title: "Introduction to R" 
 author: "Author: Thomas Girke"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
@@ -495,6 +495,17 @@ myDF <- readLines("myData.txt")
 ## Line-wise export
 ```{r writelines, eval=FALSE}
 writeLines(month.name, "myData.txt")
+```
+
+## Export R object
+```{r saveRDSlist, eval=FALSE}
+mylist <- list(C1=iris[,1], C2=iris[,2]) # Example to export
+saveRDS(mylist, "mylist.rds")
+```
+
+## Import R object
+```{r readRDSlist, eval=FALSE}
+mylist <- readRDS("mylist.rds")
 ```
 
 ## Copy and paste into R
@@ -1010,6 +1021,7 @@ into an SQLite database (here `test.db`).
 
 ```{r load_sqlite, eval=TRUE}
 library(RSQLite)
+unlink("test.db") # Delete any existing test.db
 mydb <- dbConnect(SQLite(), "test.db") # Creates database file test.db
 mydf1 <- data.frame(ids=paste0("id", seq_along(iris[,1])), iris)
 mydf2 <- mydf1[sample(seq_along(mydf1[,1]), 10),]

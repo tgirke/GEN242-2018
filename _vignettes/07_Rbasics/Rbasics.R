@@ -199,6 +199,13 @@ apply(iris[1:6,1:3], 1, mean)
 ## ----writelines, eval=FALSE----------------------------------------------
 ## writeLines(month.name, "myData.txt")
 
+## ----saveRDSlist, eval=FALSE---------------------------------------------
+## mylist <- list(C1=iris[,1], C2=iris[,2]) # Example to export
+## saveRDS(mylist, "mylist.rds")
+
+## ----readRDSlist, eval=FALSE---------------------------------------------
+## mylist <- readRDS("mylist.rds")
+
 ## ----paste_windows, eval=FALSE-------------------------------------------
 ## read.delim("clipboard")
 
@@ -397,6 +404,7 @@ iris_df %>%
 
 ## ----load_sqlite, eval=TRUE----------------------------------------------
 library(RSQLite)
+unlink("test.db") # Delete any existing test.db
 mydb <- dbConnect(SQLite(), "test.db") # Creates database file test.db
 mydf1 <- data.frame(ids=paste0("id", seq_along(iris[,1])), iris)
 mydf2 <- mydf1[sample(seq_along(mydf1[,1]), 10),]
