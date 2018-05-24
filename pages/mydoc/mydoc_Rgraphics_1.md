@@ -1,6 +1,6 @@
 ---
 title: Graphics and Data Visualization in R  <br> <br> 1. Overview
-last_updated: Wed May 23 19:40:00 2018
+last_updated: Wed May 23 19:50:53 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_1.html
 ---
@@ -24,7 +24,6 @@ Alternative formats of this tutorial:
 -   Fully programmable
 -   Highly reproducible
 -   Full [LaTeX](http://www.latex-project.org/), [Sweave](http://www.stat.auckland.ac.nz/~dscott/782/Sweave-manual-20060104.pdf), [knitr](http://yihui.name/knitr/) and [R Markdown](http://rmarkdown.rstudio.com/) support.
-    support
 -   Vast number of R packages with graphics utilities
 
 

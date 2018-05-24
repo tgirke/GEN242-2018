@@ -379,7 +379,7 @@ print(a, vp = viewport(layout.pos.row = 1, layout.pos.col = 1:2))
 print(b, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
 print(c, vp = viewport(layout.pos.row = 2, layout.pos.col = 2, width=0.3, height=0.3, x=0.8, y=0.8))
 
-## ----ggplot_arrange_graphics2, eval=TRUE---------------------------------
+## ----ggplot_arrange_graphics2, eval=TRUE, warning=FALSE, message=FALSE----
 library(gridExtra)                                                                                                                                                            
 grid.arrange(a, b, c, nrow = 2, ncol=2)                                                                                                                                       
 

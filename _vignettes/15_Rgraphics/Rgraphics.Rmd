@@ -42,7 +42,6 @@ knitr::opts_chunk$set(
 -   Fully programmable
 -   Highly reproducible
 -   Full [LaTeX](http://www.latex-project.org/), [Sweave](http://www.stat.auckland.ac.nz/~dscott/782/Sweave-manual-20060104.pdf), [knitr](http://yihui.name/knitr/) and [R Markdown](http://rmarkdown.rstudio.com/) support.
-    support
 -   Vast number of R packages with graphics utilities
 
 
@@ -880,7 +879,7 @@ print(c, vp = viewport(layout.pos.row = 2, layout.pos.col = 2, width=0.3, height
 
 Using `gridExtra` package                                                                                                                                                     
                                                                                                                                                                               
-```{r ggplot_arrange_graphics2, eval=TRUE}                                                                                                                                     
+```{r ggplot_arrange_graphics2, eval=TRUE, warning=FALSE, message=FALSE}
 library(gridExtra)                                                                                                                                                            
 grid.arrange(a, b, c, nrow = 2, ncol=2)                                                                                                                                       
 ```    

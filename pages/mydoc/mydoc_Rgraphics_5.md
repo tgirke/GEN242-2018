@@ -1,6 +1,6 @@
 ---
 title: 5. ggplot2 Graphics
-last_updated: Wed May 23 19:40:01 2018
+last_updated: Wed May 23 19:50:53 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_5.html
 ---
@@ -647,26 +647,6 @@ Using `gridExtra` package
 
 ```r
 library(gridExtra)                                                                                                                                                            
-```
-
-```
-## 
-## Attaching package: 'gridExtra'
-```
-
-```
-## The following object is masked from 'package:Biobase':
-## 
-##     combine
-```
-
-```
-## The following object is masked from 'package:BiocGenerics':
-## 
-##     combine
-```
-
-```r
 grid.arrange(a, b, c, nrow = 2, ncol=2)                                                                                                                                       
 ```
 
