@@ -1,6 +1,6 @@
 ---
 title: 7. Genome Graphics
-last_updated: Wed May 23 19:50:53 2018
+last_updated: Thu May 24 12:38:05 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_7.html
 ---
@@ -159,7 +159,7 @@ http://faculty.ucr.edu/~tgirke/HTML_Presentations/Manuals/Workshop_Dec_6_10_2012
 
 For viewing BAM files in IGV as part of `systemPipeR` workflows.
 
-- `systemPipeR`: utilities for building NGS analysis [pipelines](https://github.com/tgirke/systemPipeR)
+- `systemPipeR`: utilities for building NGS analysis pipelines.
 	
 
 
@@ -178,6 +178,7 @@ Note this may not work on all systems.
 
 ```r
 library(SRAdb)
+myurls <- readLines("http://biocluster.ucr.edu/~tgirke/Documents/R_BioCond/Samples/bam_urls.txt")
 #startIGV("lm") # opens IGV
 sock <- IGVsocket()
 session <- IGVsession(files=myurls, 

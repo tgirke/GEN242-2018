@@ -480,6 +480,7 @@ tracks(Reads=p1, Coverage=p2, Variant=p3, Transcripts=p4, heights = c(0.3, 0.2, 
 
 ## ----control_igv, eval=FALSE, warning=FALSE, message=FALSE---------------
 ## library(SRAdb)
+## myurls <- readLines("http://biocluster.ucr.edu/~tgirke/Documents/R_BioCond/Samples/bam_urls.txt")
 ## #startIGV("lm") # opens IGV
 ## sock <- IGVsocket()
 ## session <- IGVsession(files=myurls,

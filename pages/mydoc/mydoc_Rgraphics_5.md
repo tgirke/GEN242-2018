@@ -1,12 +1,12 @@
 ---
 title: 5. ggplot2 Graphics
-last_updated: Wed May 23 19:50:53 2018
+last_updated: Thu May 24 12:38:05 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_5.html
 ---
 
 - What is `ggplot2`?
-    - High-level graphics system
+    - High-level graphics system developed by Hadley Wickham
     - Implements grammar of graphics from [Leland Wilkinson](http://www.amazon.com/Grammar-Graphics-Leland-Wilkinson/dp/0387987746) 
     - Streamlines many graphics workflows for complex plots
     - Syntax centered around main `ggplot` function 
@@ -27,8 +27,8 @@ permalink: mydoc_Rgraphics_5.html
 - List of available `geom_*` functions see [here](http://docs.ggplot2.org/current/) 
 - Settings of plotting theme can be accessed with the command `theme_get()` and its settings can be changed with `theme()`. 
 - Preferred input data object 
-    - `qplot`: `data.frame` (support for `vector`, `matrix`, `...`)
-    - `ggplot`: `data.frame`
+    - `qplot`: `data.frame` or `tibble` (support for `vector`, `matrix`, `...`)
+    - `ggplot`: `data.frame` or `tibble`
 - Packages with convenience utilities to create expected inputs
     - `plyr`
     - `reshape`

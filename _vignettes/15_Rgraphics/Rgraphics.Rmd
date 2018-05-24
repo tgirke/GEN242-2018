@@ -403,7 +403,7 @@ plot(p2)
 # ggplot2 Graphics
 
 - What is `ggplot2`?
-    - High-level graphics system
+    - High-level graphics system developed by Hadley Wickham
     - Implements grammar of graphics from [Leland Wilkinson](http://www.amazon.com/Grammar-Graphics-Leland-Wilkinson/dp/0387987746) 
     - Streamlines many graphics workflows for complex plots
     - Syntax centered around main `ggplot` function 
@@ -424,8 +424,8 @@ plot(p2)
 - List of available `geom_*` functions see [here](http://docs.ggplot2.org/current/) 
 - Settings of plotting theme can be accessed with the command `theme_get()` and its settings can be changed with `theme()`. 
 - Preferred input data object 
-    - `qplot`: `data.frame` (support for `vector`, `matrix`, `...`)
-    - `ggplot`: `data.frame`
+    - `qplot`: `data.frame` or `tibble` (support for `vector`, `matrix`, `...`)
+    - `ggplot`: `data.frame` or `tibble`
 - Packages with convenience utilities to create expected inputs
     - `plyr`
     - `reshape`
@@ -1095,7 +1095,7 @@ http://faculty.ucr.edu/~tgirke/HTML_Presentations/Manuals/Workshop_Dec_6_10_2012
 
 For viewing BAM files in IGV as part of `systemPipeR` workflows.
 
-- `systemPipeR`: utilities for building NGS analysis [pipelines](https://github.com/tgirke/systemPipeR)
+- `systemPipeR`: utilities for building NGS analysis pipelines.
 	
 
 ```{r systempiper_symbolic_links, eval=FALSE}
@@ -1112,6 +1112,7 @@ Note this may not work on all systems.
 
 ```{r control_igv, eval=FALSE, warning=FALSE, message=FALSE}
 library(SRAdb)
+myurls <- readLines("http://biocluster.ucr.edu/~tgirke/Documents/R_BioCond/Samples/bam_urls.txt")
 #startIGV("lm") # opens IGV
 sock <- IGVsocket()
 session <- IGVsession(files=myurls, 
