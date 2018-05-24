@@ -1,6 +1,6 @@
 ---
 title: 5. ggplot2 Graphics
-last_updated: Fri May 11 11:27:42 2018
+last_updated: Wed May 23 19:40:01 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_5.html
 ---
@@ -40,7 +40,7 @@ The syntax of `qplot` is similar as R's basic `plot` function
 - Arguments
     - `x`: x-coordinates (_e.g._ `col1`)
     - `y`: y-coordinates (_e.g._ `col2`)
-	- `data`: data frame with corresponding column names
+	- `data`: `data.frame` or `tibble` with corresponding column names
 	- `xlim, ylim`: _e.g._ `xlim=c(0,10)` 
     - `log`: _e.g._ `log="x"` or `log="xy"`
 	- `main`: main title; see `?plotmath` for mathematical formula
@@ -138,7 +138,7 @@ print(p) # Setting se=FALSE removes error shade
 
 - More important than `qplot` to access full functionality of `ggplot2`
 - Main arguments
-    - data set, usually a `data.frame`
+    - data set, usually a `data.frame` or `tibble`
 	- aesthetic mappings provided by `aes` function
 - General `ggplot` syntax
     - `ggplot(data, aes(...)) + geom() + ... + stat() + ...`
@@ -187,7 +187,7 @@ Print dots with different sizes and colors
 
 
 ```r
-bestfit <- geom_smooth(methodw = "lm", se = F, color = alpha("steelblue", 0.5), size = 2)
+bestfit <- geom_smooth(method = "lm", se = F, color = alpha("steelblue", 0.5), size = 2)
 p + bestfit # Plot with custom regression line
 ```
 
@@ -211,6 +211,8 @@ ggsave(p, file="myplot.pdf")
 
 
 ```r
+set.seed(1410)  
+dsmall <- as.data.frame(diamonds[sample(nrow(diamonds), 1000), ])
 p <- ggplot(dsmall, aes(carat, price, color=color)) + 
             geom_point(size=4)
 print(p) 
@@ -552,6 +554,16 @@ print(p)
 
 <img src="./pages/mydoc/Rgraphics_files/ggplot_box_plot2-1.png" width="672" />
 
+## Violin plots                                                                                                                                                               
+                                                                                                                                                                              
+
+```r
+p <- ggplot(dsmall, aes(color, price/carat, fill=color)) + geom_violin()                                                                                                      
+print(p)                                                                                                                                                                      
+```
+
+<img src="./pages/mydoc/Rgraphics_files/ggplot_box_violin-1.png" width="672" />
+
 ## Density plots 
 
 ### Line coloring
@@ -613,6 +625,8 @@ print(p)
 
 ## Arranging Graphics on Page 
 
+Using `grid` package
+
 
 ```r
 library(grid)
@@ -627,6 +641,36 @@ print(c, vp = viewport(layout.pos.row = 2, layout.pos.col = 2, width=0.3, height
 ```
 
 <img src="./pages/mydoc/Rgraphics_files/ggplot_arrange_graphics-1.png" width="672" />
+
+Using `gridExtra` package                                                                                                                                                     
+                                                                                                                                                                              
+
+```r
+library(gridExtra)                                                                                                                                                            
+```
+
+```
+## 
+## Attaching package: 'gridExtra'
+```
+
+```
+## The following object is masked from 'package:Biobase':
+## 
+##     combine
+```
+
+```
+## The following object is masked from 'package:BiocGenerics':
+## 
+##     combine
+```
+
+```r
+grid.arrange(a, b, c, nrow = 2, ncol=2)                                                                                                                                       
+```
+
+<img src="./pages/mydoc/Rgraphics_files/ggplot_arrange_graphics2-1.png" width="672" />
 
 ## Inserting Graphics into Plots
 

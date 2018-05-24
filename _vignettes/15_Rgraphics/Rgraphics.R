@@ -192,7 +192,7 @@ print(p) # Setting se=FALSE removes error shade
 ## summary(p)
 
 ## ----ggplot_dot_sizes, eval=FALSE----------------------------------------
-## bestfit <- geom_smooth(methodw = "lm", se = F, color = alpha("steelblue", 0.5), size = 2)
+## bestfit <- geom_smooth(method = "lm", se = F, color = alpha("steelblue", 0.5), size = 2)
 ## p + bestfit # Plot with custom regression line
 
 ## ----ggplot_pass_data, eval=FALSE----------------------------------------
@@ -202,6 +202,8 @@ print(p) # Setting se=FALSE removes error shade
 ## ggsave(p, file="myplot.pdf")
 
 ## ----ggplot_scatter_plot1, eval=TRUE-------------------------------------
+set.seed(1410)  
+dsmall <- as.data.frame(diamonds[sample(nrow(diamonds), 1000), ])
 p <- ggplot(dsmall, aes(carat, price, color=color)) + 
             geom_point(size=4)
 print(p) 
@@ -335,6 +337,10 @@ print(p)
 p <- ggplot(dsmall, aes(color, price/carat, fill=color)) + geom_boxplot()
 print(p) 
 
+## ----ggplot_box_violin, eval=TRUE----------------------------------------
+p <- ggplot(dsmall, aes(color, price/carat, fill=color)) + geom_violin()                                                                                                      
+print(p)                                                                                                                                                                      
+
 ## ----ggplot_density_plot_linecol, eval=TRUE------------------------------
 p <- ggplot(dsmall, aes(carat)) + geom_density(aes(color = color))
 print(p) 
@@ -373,6 +379,10 @@ print(a, vp = viewport(layout.pos.row = 1, layout.pos.col = 1:2))
 print(b, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
 print(c, vp = viewport(layout.pos.row = 2, layout.pos.col = 2, width=0.3, height=0.3, x=0.8, y=0.8))
 
+## ----ggplot_arrange_graphics2, eval=TRUE---------------------------------
+library(gridExtra)                                                                                                                                                            
+grid.arrange(a, b, c, nrow = 2, ncol=2)                                                                                                                                       
+
 ## ----ggplot_insert_graphics, eval=TRUE-----------------------------------
 library(grid)
 print(a)
@@ -397,6 +407,10 @@ ROCR.simple
 pred <- prediction(ROCR.simple$predictions, ROCR.simple$labels)
 perf <- performance( pred, "tpr", "fpr" )
 plot(perf)
+
+## ----ROCR_example2, eval=TRUE, warning=FALSE, message=FALSE--------------
+auc <- performance( pred, "tpr", "fpr", measure = "auc")                                                                                                                      
+auc@y.values[[1]]                                                                                                                                                             
 
 ## ----trees_ape1, eval=TRUE-----------------------------------------------
 library(ape)
@@ -466,7 +480,7 @@ tracks(Reads=p1, Coverage=p2, Variant=p3, Transcripts=p4, heights = c(0.3, 0.2, 
 
 ## ----control_igv, eval=FALSE, warning=FALSE, message=FALSE---------------
 ## library(SRAdb)
-## startIGV("lm")
+## #startIGV("lm") # opens IGV
 ## sock <- IGVsocket()
 ## session <- IGVsession(files=myurls,
 ##                       sessionFile="session.xml",

@@ -438,7 +438,7 @@ The syntax of `qplot` is similar as R's basic `plot` function
 - Arguments
     - `x`: x-coordinates (_e.g._ `col1`)
     - `y`: y-coordinates (_e.g._ `col2`)
-	- `data`: data frame with corresponding column names
+	- `data`: `data.frame` or `tibble` with corresponding column names
 	- `xlim, ylim`: _e.g._ `xlim=c(0,10)` 
     - `log`: _e.g._ `log="x"` or `log="xy"`
 	- `main`: main title; see `?plotmath` for mathematical formula
@@ -510,7 +510,7 @@ print(p) # Setting se=FALSE removes error shade
 
 - More important than `qplot` to access full functionality of `ggplot2`
 - Main arguments
-    - data set, usually a `data.frame`
+    - data set, usually a `data.frame` or `tibble`
 	- aesthetic mappings provided by `aes` function
 - General `ggplot` syntax
     - `ggplot(data, aes(...)) + geom() + ... + stat() + ...`
@@ -555,7 +555,7 @@ summary(p)
 Print dots with different sizes and colors
 
 ```{r ggplot_dot_sizes, eval=FALSE}
-bestfit <- geom_smooth(methodw = "lm", se = F, color = alpha("steelblue", 0.5), size = 2)
+bestfit <- geom_smooth(method = "lm", se = F, color = alpha("steelblue", 0.5), size = 2)
 p + bestfit # Plot with custom regression line
 ```
 
@@ -576,6 +576,8 @@ ggsave(p, file="myplot.pdf")
 ### Basic example
 
 ```{r ggplot_scatter_plot1, eval=TRUE}
+set.seed(1410)  
+dsmall <- as.data.frame(diamonds[sample(nrow(diamonds), 1000), ])
 p <- ggplot(dsmall, aes(carat, price, color=color)) + 
             geom_point(size=4)
 print(p) 
@@ -809,6 +811,13 @@ p <- ggplot(dsmall, aes(color, price/carat, fill=color)) + geom_boxplot()
 print(p) 
 ```
 
+## Violin plots                                                                                                                                                               
+                                                                                                                                                                              
+```{r ggplot_box_violin, eval=TRUE}                                                                                                                                           
+p <- ggplot(dsmall, aes(color, price/carat, fill=color)) + geom_violin()                                                                                                      
+print(p)                                                                                                                                                                      
+```      
+
 ## Density plots 
 
 ### Line coloring
@@ -855,6 +864,8 @@ print(p)
 
 ## Arranging Graphics on Page 
 
+Using `grid` package
+
 ```{r ggplot_arrange_graphics, eval=TRUE}
 library(grid)
 a <- ggplot(dsmall, aes(color, price/carat)) + geom_jitter(size=4, alpha = I(1 / 1.5), aes(color=color))
@@ -866,6 +877,13 @@ print(a, vp = viewport(layout.pos.row = 1, layout.pos.col = 1:2))
 print(b, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
 print(c, vp = viewport(layout.pos.row = 2, layout.pos.col = 2, width=0.3, height=0.3, x=0.8, y=0.8))
 ```
+
+Using `gridExtra` package                                                                                                                                                     
+                                                                                                                                                                              
+```{r ggplot_arrange_graphics2, eval=TRUE}                                                                                                                                     
+library(gridExtra)                                                                                                                                                            
+grid.arrange(a, b, c, nrow = 2, ncol=2)                                                                                                                                       
+```    
 
 ## Inserting Graphics into Plots
 
@@ -922,6 +940,13 @@ perf <- performance( pred, "tpr", "fpr" )
 plot(perf)
 ```
 
+Obtain area under the curve (AUC)                                                                                                                                             
+                                                                                                                                                                              
+```{r ROCR_example2, eval=TRUE, warning=FALSE, message=FALSE}                                                                                                                 
+auc <- performance( pred, "tpr", "fpr", measure = "auc")                                                                                                                      
+auc@y.values[[1]]                                                                                                                                                             
+```  
+
 ## Trees 
 
 The [`ape`](http://ape-package.ird.fr/ape_screenshots.html) package provides many useful utilities for phylogenetic analysis and tree plotting. Another useful package for 
@@ -953,7 +978,7 @@ cophyloplot(tree1, tree2, assoc = association,
     - `ggbio`'s convenience plotting function is `autoplot`. For more customizable plots, one can use the generic `ggplot` function.
 	- Apart from the standard `ggplot2` plotting components, `ggbio` defines serval new components useful for genomic data visualization. A detailed list is given in Table 1.2 of the vignette [here](http://www.bioconductor.org/packages/release/bioc/vignettes/ggbio/inst/doc/ggbio.pdf). 
 	- Useful web sites:
-        - [ggbio manual](http://www.tengfei.name/ggbio/docs/)
+        	- [ggbio manual](http://www.tengfei.name/ggbio/docs/)
 		- [ggbio functions](http://www.tengfei.name/ggbio/docs/man/)
 		- [autoplot demo](http://www.tengfei.name/ggbio/docs/man/autoplot-method.html)
 
@@ -1083,11 +1108,12 @@ symLink2bam(sysargs=args, htmldir=c("~/.html/", "somedir/"),
 
 ### Controlling IGV from R
 
-Note this may not work on all systems.
+Open IGV before running the following routine. Alternatively, open IGV from within R with `startIGV("lm")` .
+Note this may not work on all systems. 
 
 ```{r control_igv, eval=FALSE, warning=FALSE, message=FALSE}
 library(SRAdb)
-startIGV("lm")
+#startIGV("lm") # opens IGV
 sock <- IGVsocket()
 session <- IGVsession(files=myurls, 
                       sessionFile="session.xml", 

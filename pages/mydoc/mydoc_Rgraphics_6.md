@@ -1,6 +1,6 @@
 ---
 title: 6. Specialty Graphics
-last_updated: Fri May 11 11:27:42 2018
+last_updated: Wed May 23 19:40:01 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_6.html
 ---
@@ -101,6 +101,18 @@ plot(perf)
 ```
 
 <img src="./pages/mydoc/Rgraphics_files/ROCR_example-1.png" width="672" />
+
+Obtain area under the curve (AUC)                                                                                                                                             
+                                                                                                                                                                              
+
+```r
+auc <- performance( pred, "tpr", "fpr", measure = "auc")                                                                                                                      
+auc@y.values[[1]]                                                                                                                                                             
+```
+
+```
+## [1] 0.8341875
+```
 
 ## Trees 
 

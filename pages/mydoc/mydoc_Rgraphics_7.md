@@ -1,6 +1,6 @@
 ---
 title: 7. Genome Graphics
-last_updated: Fri May 11 11:27:42 2018
+last_updated: Wed May 23 19:40:01 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_7.html
 ---
@@ -17,7 +17,7 @@ permalink: mydoc_Rgraphics_7.html
     - `ggbio`'s convenience plotting function is `autoplot`. For more customizable plots, one can use the generic `ggplot` function.
 	- Apart from the standard `ggplot2` plotting components, `ggbio` defines serval new components useful for genomic data visualization. A detailed list is given in Table 1.2 of the vignette [here](http://www.bioconductor.org/packages/release/bioc/vignettes/ggbio/inst/doc/ggbio.pdf). 
 	- Useful web sites:
-        - [ggbio manual](http://www.tengfei.name/ggbio/docs/)
+        	- [ggbio manual](http://www.tengfei.name/ggbio/docs/)
 		- [ggbio functions](http://www.tengfei.name/ggbio/docs/man/)
 		- [autoplot demo](http://www.tengfei.name/ggbio/docs/man/autoplot-method.html)
 
@@ -172,12 +172,13 @@ symLink2bam(sysargs=args, htmldir=c("~/.html/", "somedir/"),
 
 ### Controlling IGV from R
 
-Note this may not work on all systems.
+Open IGV before running the following routine. Alternatively, open IGV from within R with `startIGV("lm")` .
+Note this may not work on all systems. 
 
 
 ```r
 library(SRAdb)
-startIGV("lm")
+#startIGV("lm") # opens IGV
 sock <- IGVsocket()
 session <- IGVsession(files=myurls, 
                       sessionFile="session.xml", 

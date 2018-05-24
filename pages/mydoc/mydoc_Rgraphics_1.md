@@ -1,12 +1,12 @@
 ---
 title: Graphics and Data Visualization in R  <br> <br> 1. Overview
-last_updated: Fri May 11 11:27:42 2018
+last_updated: Wed May 23 19:40:00 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_1.html
 ---
 First/last name (first.last@ucr.edu)
 
-Last update: 11 May, 2018 
+Last update: 23 May, 2018 
 
 Alternative formats of this tutorial:
 [ [HTML](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Rgraphics.html){:target="_blank"} ],

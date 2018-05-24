@@ -1,6 +1,6 @@
 ---
 title: 3. Grid Graphics
-last_updated: Fri May 11 11:27:42 2018
+last_updated: Wed May 23 19:40:01 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rgraphics_3.html
 ---
