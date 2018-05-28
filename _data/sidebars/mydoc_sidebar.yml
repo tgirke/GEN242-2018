@@ -120,6 +120,10 @@ entries:
       url: /mydoc_slides_17.html
       output: web
     
+    - title: Profile HMMs
+      url: /mydoc_slides_18.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
