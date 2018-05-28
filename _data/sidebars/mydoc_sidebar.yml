@@ -124,6 +124,10 @@ entries:
       url: /mydoc_slides_18.html
       output: web
     
+    - title: Introduction to Phylogenetics
+      url: /mydoc_slides_19.html
+      output: web
+    
   - title: Homework
     output: web
     folderitems:
