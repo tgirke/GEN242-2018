@@ -16,3 +16,4 @@ bindrcpp
 RSQLite
 gplots
 knitr
+DT

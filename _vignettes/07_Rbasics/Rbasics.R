@@ -586,13 +586,19 @@ write.table(my_mw_target4, file="my_file.xls", quote=F, sep="\t", col.names = NA
 ## ----render_rmarkdown, eval=FALSE, message=FALSE-------------------------
 ## rmarkdown::render("sample.Rmd", clean=TRUE, output_format="html_document")
 
-## $ echo "rmarkdown::render('sample.Rmd', clean=TRUE)" | R --slave
+## $ Rscript -e "rmarkdown::render('sample.Rmd', clean=TRUE)"
 
 ## $ make -B
 
 ## ----kable---------------------------------------------------------------
 library(knitr)
 kable(iris[1:12,])
+
+## ----dt------------------------------------------------------------------
+library(DT)                                                                                                                                                                   
+datatable(iris, filter = 'top', options = list(                                                                                                                               
+  pageLength = 100, scrollX = TRUE, scrollY = "600px", autoWidth = TRUE                                                                                                       
+))                                                                                                                                                                            
 
 ## ----some_jitter_plot, eval=TRUE-----------------------------------------
 library(ggplot2)
