@@ -19,7 +19,7 @@ assigned a private GitHub repository (see
 
 The results of the Challenge Projects will be presented by each student group
 during the last week of the course (see Slideshow Template
-[here](https://docs.google.com/spreadsheets/d/1ULTa2bcfhzzj_6R0Ba1dnXiq2fr0get1V5pwIBCYRIY/edit#gid=1818533395)).
+[here](https://docs.google.com/presentation/d/172QKFv_m2CYCwPVqAIZJ5SWzwMUSQYyF6YyXf8IDgiU/edit#slide=id.p)).
 In addition, each student will write a detailed analysis report of the assigned
 course project. This report needs to include all analysis steps of the
 corresponding NGS Workflow (_e.g._ full RNA-Seq analysis) as well as the
@@ -28,8 +28,7 @@ in R Markdown. A basic tutorial on R Markdown is available [here](http://girke.b
 Both the R Markdown script (`.Rmd`) along with the rendered HTML or PDF report will 
 be submitted to each student's private GitHub repository. All helper code used for 
 the challenge project needs to be organized as well documented R functions in each 
-project's `*_Fct.R` script and also be submitted as part of the project report. 
-The expected structure of the final project report is outlined below. 
+project's `*_Fct.R` script. The expected structure of the final project report is outlined below. 
 
 The reports should be submitted to each student’s private GitHub repository that
 was used to submit the homework assignments. For the report each student should create in
