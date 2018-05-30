@@ -594,12 +594,6 @@ write.table(my_mw_target4, file="my_file.xls", quote=F, sep="\t", col.names = NA
 library(knitr)
 kable(iris[1:12,])
 
-## ----dt------------------------------------------------------------------
-library(DT)                                                                                                                                                                   
-datatable(iris, filter = 'top', options = list(                                                                                                                               
-  pageLength = 100, scrollX = TRUE, scrollY = "600px", autoWidth = TRUE                                                                                                       
-))                                                                                                                                                                            
-
 ## ----some_jitter_plot, eval=TRUE-----------------------------------------
 library(ggplot2)
 dsmall <- diamonds[sample(nrow(diamonds), 1000), ]

@@ -1,6 +1,6 @@
 ---
 title: Introduction to R  <br> <br> 1. Overview
-last_updated: Wed May 30 16:38:53 2018
+last_updated: Wed May 30 16:44:22 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_01.html
 ---
