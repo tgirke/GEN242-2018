@@ -1,6 +1,6 @@
 ---
 title: 16. R Markdown
-last_updated: Thu May 31 12:21:20 2018
+last_updated: Thu May 31 12:31:49 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
@@ -265,13 +265,13 @@ cd ~/.html
 ln -s ~/bigdata/today/rmarkdown/sample.html sample.html
 ```
 
+After this one can view the report in a web browser using this URL [http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html](http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html).
+If necessary access to the URL can be restricted with a password following the instructions [here](http://hpcc.ucr.edu/manuals_linux-cluster_sharing.html#sharing-files-on-the-web).
+
 A sample R Markdown report for an RNA-Seq project is given here:
 
 + [RNASeq.html](http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.html)
 + [RNASeq.Rmd](http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.Rmd)
-
-After this one can view the report in a web browser using this URL [http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html](http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html).
-If necessary access to the URL can be restricted with a password following the instructions [here](http://hpcc.ucr.edu/manuals_linux-cluster_sharing.html#sharing-files-on-the-web).
 
 <br><br><center><a href="mydoc_Rbasics_15.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_17.html"><img src="images/right_arrow.png" alt="Next page."></a></center>
