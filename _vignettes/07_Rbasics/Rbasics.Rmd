@@ -1692,6 +1692,11 @@ cd ~/.html
 ln -s ~/bigdata/today/rmarkdown/sample.html sample.html
 ```
 
+A sample R Markdown report for an RNA-Seq project is given here:
+
++ [RNASeq.html](http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.html)
++ [RNASeq.Rmd](http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.Rmd)
+
 After this one can view the report in a web browser using this URL [http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html](http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html).
 If necessary access to the URL can be restricted with a password following the instructions [here](http://hpcc.ucr.edu/manuals_linux-cluster_sharing.html#sharing-files-on-the-web).
 

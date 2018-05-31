@@ -1,6 +1,6 @@
 ---
 title: 16. R Markdown
-last_updated: Wed May 30 20:59:44 2018
+last_updated: Thu May 31 12:21:20 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
@@ -57,7 +57,7 @@ package from Bioconductor.
  ---
 title: "My First R Markdown Document"
 author: "Author: First Last"
-date: "Last update: 30 May, 2018"
+date: "Last update: 31 May, 2018"
 output:
   BiocStyle::html_document:
     toc: true
@@ -264,6 +264,11 @@ proper symbolic link to this file can be created as follows:
 cd ~/.html
 ln -s ~/bigdata/today/rmarkdown/sample.html sample.html
 ```
+
+A sample R Markdown report for an RNA-Seq project is given here:
+
++ [RNASeq.html](http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.html)
++ [RNASeq.Rmd](http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.Rmd)
 
 After this one can view the report in a web browser using this URL [http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html](http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html).
 If necessary access to the URL can be restricted with a password following the instructions [here](http://hpcc.ucr.edu/manuals_linux-cluster_sharing.html#sharing-files-on-the-web).

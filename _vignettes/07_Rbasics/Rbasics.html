@@ -247,7 +247,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Introduction to R</h1>
 <h4 class="author"><em>Author: Thomas Girke</em></h4>
-<h4 class="date"><em>Last update: 30 May, 2018</em></h4>
+<h4 class="date"><em>Last update: 31 May, 2018</em></h4>
 
 </div>
 
@@ -1927,7 +1927,7 @@ data.frame(my_mw_target4, mean=mymean, stdev=mystdev)[1:2,5:12] </code></pre>
 <pre><code> ---
 title: &quot;My First R Markdown Document&quot;
 author: &quot;Author: First Last&quot;
-date: &quot;Last update: 30 May, 2018&quot;
+date: &quot;Last update: 31 May, 2018&quot;
 output:
   BiocStyle::html_document:
     toc: true
@@ -2122,6 +2122,11 @@ dev.off()</code></pre>
 <p>R Markdown reports located on UCR’s HPCC Cluster can be viewed locally in a web browser (without moving the source HTML) by creating a symbolic link from a user’s <code>.html</code> directory. This way any updates to the report can be viewed immediately without creating another copy of the HTML file. For instance, if user <code>ttest</code> has generated an R Markdown report under <code>~/bigdata/today/rmarkdown/sample.html</code>, then the proper symbolic link to this file can be created as follows:</p>
 <pre class="r"><code>cd ~/.html
 ln -s ~/bigdata/today/rmarkdown/sample.html sample.html</code></pre>
+<p>A sample R Markdown report for an RNA-Seq project is given here:</p>
+<ul>
+<li><a href="http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.html">RNASeq.html</a></li>
+<li><a href="http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.Rmd">RNASeq.Rmd</a></li>
+</ul>
 <p>After this one can view the report in a web browser using this URL <a href="http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html" class="uri">http://biocluster.ucr.edu/~ttest/rmarkdown/sample.html</a>. If necessary access to the URL can be restricted with a password following the instructions <a href="http://hpcc.ucr.edu/manuals_linux-cluster_sharing.html#sharing-files-on-the-web">here</a>.</p>
 </div>
 </div>
