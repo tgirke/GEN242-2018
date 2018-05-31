@@ -1,6 +1,6 @@
 ---
 title: 16. R Markdown
-last_updated: Wed May 30 17:04:14 2018
+last_updated: Wed May 30 17:07:21 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
@@ -172,7 +172,7 @@ kable(iris[1:12,])
 A much more elegant and powerful solution is to create fully interactive tables
 with the [`DT` package](https://rstudio.github.io/DT/). This JavaScirpt based environment provides a wrapper to the DataTables library
 using jQuery. The resulting tables can be sorted, queried and resized by the
-user. For an example see [here]().
+user. For an example see [here](http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Rbasics.html#1627_tables).
 
 
 ```r

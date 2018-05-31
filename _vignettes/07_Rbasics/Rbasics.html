@@ -2079,7 +2079,7 @@ kable(iris[1:12,])</code></pre>
 </tr>
 </tbody>
 </table>
-<p>A much more elegant and powerful solution is to create fully interactive tables with the <a href="https://rstudio.github.io/DT/"><code>DT</code> package</a>. This JavaScirpt based environment provides a wrapper to the DataTables library using jQuery. The resulting tables can be sorted, queried and resized by the user. For an example see <a href>here</a>.</p>
+<p>A much more elegant and powerful solution is to create fully interactive tables with the <a href="https://rstudio.github.io/DT/"><code>DT</code> package</a>. This JavaScirpt based environment provides a wrapper to the DataTables library using jQuery. The resulting tables can be sorted, queried and resized by the user. For an example see <a href="http://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/Rbasics.html#1627_tables">here</a>.</p>
 <pre class="r"><code>library(DT)
 datatable(iris, filter = 'top', options = list(
       pageLength = 100, scrollX = TRUE, scrollY = &quot;600px&quot;, autoWidth = TRUE
