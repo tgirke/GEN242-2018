@@ -245,11 +245,11 @@ dim(my_result)
 
 ## ----data_frame_tbl1, eval=TRUE------------------------------------------
 library(tidyverse)
-as_data_frame(iris) # coerce data.frame to data frame tbl
+as_tibble(iris) # coerce data.frame to tibble tbl
 
 ## ----data_frame_tbl2, eval=FALSE-----------------------------------------
-## as_tibble(iris) # newer function provided by tibble package
-## tbl_df(iris) # this alternative exists for historical reasons
+## as_data_frame(iris)
+## tbl_df(iris)
 
 ## ----tabular_sample, eval=TRUE-------------------------------------------
 write_tsv(iris, "iris.txt") # Creates sample file
@@ -378,7 +378,7 @@ full_join(df1, df2, by=c("ids1"="ids2"))
 anti_join(df1, df2, by=c("ids1"="ids2"))
 
 ## ----plyr_chaining1, eval=TRUE-------------------------------------------
-iris_df %>% # Declare data frame to use 
+iris_df %>% # Declare tibble to use 
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
@@ -386,7 +386,7 @@ iris_df %>% # Declare data frame to use
     # write_tsv("iris.txt") # Export to file, omitted here to show result 
 
 ## ----plyr_chaining2, eval=TRUE-------------------------------------------
-iris_df %>% # Declare data frame to use 
+iris_df %>% # Declare tibble to use 
     group_by(Species) %>% # Group by species
     summarize(Mean_Sepal.Length=mean(Sepal.Length), 
               Max_Sepal.Length=max(Sepal.Length),

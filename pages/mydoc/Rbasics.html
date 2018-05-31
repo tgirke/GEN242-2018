@@ -747,9 +747,9 @@ close(zz) </code></pre>
 <p>Join two data frames by common field entries with <code>merge</code> (here row names <code>by.x=0</code>). To obtain only the common rows, change <code>all=TRUE</code> to <code>all=FALSE</code>. To merge on specific columns, refer to them by their position numbers or their column names.</p>
 <pre class="r"><code>frame1 &lt;- iris[sample(1:length(iris[,1]), 30), ]
 frame1[1:2,]</code></pre>
-<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 86           6.0         3.4          4.5         1.6 versicolor
-## 105          6.5         3.0          5.8         2.2  virginica</code></pre>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 111          6.5         3.2          5.1           2 virginica
+## 148          6.5         3.0          5.2           2 virginica</code></pre>
 <pre class="r"><code>dim(frame1)</code></pre>
 <pre><code>## [1] 30  5</code></pre>
 <pre class="r"><code>my_result &lt;- merge(frame1, iris, by.x = 0, by.y = 0, all = TRUE)
@@ -762,7 +762,7 @@ dim(my_result)</code></pre>
 <p>Modern object classes and methods for handling <code>data.frame</code> like structures are provided by the <code>dplyr</code> and <code>data.table</code> packages. The following gives a short introduction to the usage and functionalities of the <code>dplyr</code> package. More detailed tutorials on this topic can be found here:</p>
 <ul>
 <li><a href="https://rdrr.io/cran/dplyr/">dplyr: A Grammar of Data Manipulation</a></li>
-<li><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">Introduction to <code>dplyr</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">Introduction to <code>dplyr</code></a></li>
 <li><a href="http://genomicsclass.github.io/book/pages/dplyr_tutorial.html">Tutorial on <code>dplyr</code></a></li>
 <li><a href="http://stat545.com/bit001_dplyr-cheatsheet.html">Cheatsheet for Joins from Jenny Bryan</a></li>
 <li><a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">Tibbles</a></li>
@@ -775,10 +775,10 @@ dim(my_result)</code></pre>
 <p>The <code>dplyr</code> environment has evolved into an ecosystem of packages. To simplify package management, one can install and load the entire collection via the <code>tidyverse</code> package. For more details on <code>tidyverse</code> see <a href="http://tidyverse.org/">here</a>.</p>
 <pre class="r"><code>install.packages(&quot;tidyverse&quot;)</code></pre>
 </div>
-<div id="construct-a-data-frame-tibble" class="section level2">
-<h2><span class="header-section-number">12.2</span> Construct a <code>data frame</code> (<code>tibble</code>)</h2>
+<div id="construct-a-tibble-tibble" class="section level2">
+<h2><span class="header-section-number">12.2</span> Construct a <code>tibble</code> (<code>tibble</code>)</h2>
 <pre class="r"><code>library(tidyverse)
-as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
+as_tibble(iris) # coerce data.frame to tibble tbl</code></pre>
 <pre><code>## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
@@ -793,13 +793,13 @@ as_data_frame(iris) # coerce data.frame to data frame tbl</code></pre>
 ##  9         4.40        2.90         1.40       0.200 setosa 
 ## 10         4.90        3.10         1.50       0.100 setosa 
 ## # ... with 140 more rows</code></pre>
-<p>Alternative functions producing the same result include <code>as_tibble</code> and <code>tbl_df</code>:</p>
-<pre class="r"><code>as_tibble(iris) # newer function provided by tibble package
-tbl_df(iris) # this alternative exists for historical reasons</code></pre>
+<p>Alternative functions producing the same result include <code>as_data_frame</code> and <code>tbl_df</code>:</p>
+<pre class="r"><code>as_data_frame(iris) 
+tbl_df(iris) </code></pre>
 </div>
 <div id="reading-and-writing-tabular-files" class="section level2">
 <h2><span class="header-section-number">12.3</span> Reading and writing tabular files</h2>
-<p>While the base R read/write utilities can be used for <code>data frames</code>, best time performance with the least amount of typing is achieved with the export/import functions from the <code>readr</code> package. For very large files the <code>fread</code> function from the <code>data.table</code> package achieves the best time performance.</p>
+<p>While the base R read/write utilities can be used for <code>data.frames</code>, best time performance with the least amount of typing is achieved with the export/import functions from the <code>readr</code> package. For very large files the <code>fread</code> function from the <code>data.table</code> package achieves the best time performance.</p>
 <div id="import-with-readr" class="section level3">
 <h3><span class="header-section-number">12.3.1</span> Import with <code>readr</code></h3>
 <p>Import functions provided by <code>readr</code> include:</p>
@@ -864,7 +864,7 @@ iris_df</code></pre>
 <li><code>write_excel_csv()</code>: excel style CSV files</li>
 <li><code>write_tsv()</code>: tab separated files</li>
 </ul>
-<p>For instance, the <code>write_tsv</code> function writes a <code>data frame</code> to a tab delimited file with much nicer default settings than the base R <code>write.table</code> function.</p>
+<p>For instance, the <code>write_tsv</code> function writes a <code>data.frame</code> or <code>tibble</code> to a tab delimited file with much nicer default settings than the base R <code>write.table</code> function.</p>
 <pre class="r"><code>write_tsv(iris_df, &quot;iris.txt&quot;)</code></pre>
 </div>
 </div>
@@ -905,7 +905,7 @@ iris_df</code></pre>
 </div>
 <div id="extract-column-as-vector" class="section level2">
 <h2><span class="header-section-number">12.5</span> Extract column as vector</h2>
-<p>The subsetting operators <code>[[</code> and <code>$</code>can be used to extract from a <code>data frame</code> single columns as vector.</p>
+<p>The subsetting operators <code>[[</code> and <code>$</code>can be used to extract from a <code>tibble</code> single columns as vector.</p>
 <pre class="r"><code>iris_df[[5]][1:12]</code></pre>
 <pre><code>##  [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;
 ## [11] &quot;setosa&quot; &quot;setosa&quot;</code></pre>
@@ -986,8 +986,8 @@ iris_df</code></pre>
 </div>
 <div id="subset-rows-by-names" class="section level3">
 <h3><span class="header-section-number">12.7.5</span> Subset rows by names</h3>
-<p>Since <code>data frames</code> do not contain row names, row wise subsetting via the <code>[,]</code> operator cannot be used. However, the corresponding behavior can be achieved by passing to <code>select</code> a row position index obtained by basic R intersect utilities such as <code>match</code>.</p>
-<p>Create a suitable test <code>data frame</code></p>
+<p>Since <code>tibbles</code> do not contain row names, row wise subsetting via the <code>[,]</code> operator cannot be used. However, the corresponding behavior can be achieved by passing to <code>select</code> a row position index obtained by basic R intersect utilities such as <code>match</code>.</p>
+<p>Create a suitable test <code>tibble</code></p>
 <pre class="r"><code>df1 &lt;- bind_cols(data_frame(ids1=paste0(&quot;g&quot;, 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0(&quot;CA&quot;, 1:4)))))
 df1</code></pre>
 <pre><code>## # A tibble: 10 x 5
@@ -1272,17 +1272,17 @@ df1_old[c(&quot;g10&quot;, &quot;g4&quot;, &quot;g4&quot;),]</code></pre>
 ## 3 virginica          6.59        2.97         5.55       2.03</code></pre>
 <p>Note: <code>group_by</code> does the looping for the user similar to <code>aggregate</code> or <code>tapply</code>.</p>
 </div>
-<div id="merging-data-frames" class="section level2">
-<h2><span class="header-section-number">12.14</span> Merging data frames</h2>
-<p>The <code>dplyr</code> package provides several join functions for merging <code>data frames</code> by a common key column similar to the <code>merge</code> function in base R. These <code>*_join</code> functions include:</p>
+<div id="merging-tibbles" class="section level2">
+<h2><span class="header-section-number">12.14</span> Merging tibbles</h2>
+<p>The <code>dplyr</code> package provides several join functions for merging <code>tibbles</code> by a common key column similar to the <code>merge</code> function in base R. These <code>*_join</code> functions include:</p>
 <ul>
-<li><code>inner_join()</code>: returns join only for rows matching among both <code>data tables</code></li>
-<li><code>full_join()</code>: returns join for all (matching and non-matching) rows of two <code>data tables</code></li>
-<li><code>left_join()</code>: returns join for all rows in first <code>data table</code></li>
-<li><code>right_join()</code>: returns join for all rows in second <code>data table</code></li>
-<li><code>anti_join()</code>: returns for first <code>data table</code> only those rows that have no match in the second one</li>
+<li><code>inner_join()</code>: returns join only for rows matching among both <code>tibbles</code></li>
+<li><code>full_join()</code>: returns join for all (matching and non-matching) rows of two <code>tibbles</code></li>
+<li><code>left_join()</code>: returns join for all rows in first <code>tibble</code></li>
+<li><code>right_join()</code>: returns join for all rows in second <code>tibble</code></li>
+<li><code>anti_join()</code>: returns for first <code>tibble</code> only those rows that have no match in the second one</li>
 </ul>
-<p>Sample <code>data frames</code> to illustrate <code>*.join</code> functions.</p>
+<p>Sample <code>tibbles</code> to illustrate <code>*.join</code> functions.</p>
 <pre class="r"><code>df1 &lt;- bind_cols(data_frame(ids1=paste0(&quot;g&quot;, 1:10)), as_data_frame(matrix(1:40, 10, 4, dimnames=list(1:10, paste0(&quot;CA&quot;, 1:4)))))
 df1</code></pre>
 <pre><code>## # A tibble: 10 x 5
@@ -1382,11 +1382,11 @@ df2</code></pre>
 </div>
 <div id="chaining" class="section level2">
 <h2><span class="header-section-number">12.15</span> Chaining</h2>
-<p>To simplify chaining of serveral operations, <code>dplyr</code> provides the <code>%&gt;%</code> operator. where <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. This way one can pipe together multiple operations by writing them from left-to-right or top-to-bottom. This makes for easy to type and readable code.</p>
+<p>To simplify chaining of serveral operations, <code>dplyr</code> provides the <code>%&gt;%</code> operator, where <code>x %&gt;% f(y)</code> turns into <code>f(x, y)</code>. This way one can pipe together multiple operations by writing them from left-to-right or top-to-bottom. This makes for easy to type and readable code.</p>
 <div id="example-1" class="section level3">
 <h3><span class="header-section-number">12.15.1</span> Example 1</h3>
 <p>Series of data manipulations and export</p>
-<pre class="r"><code>iris_df %&gt;% # Declare data frame to use 
+<pre class="r"><code>iris_df %&gt;% # Declare tibble to use 
     select(Sepal.Length:Species) %&gt;% # Select columns
     filter(Species==&quot;setosa&quot;) %&gt;% # Filter rows by some value
     arrange(Sepal.Length) %&gt;% # Sort by some column
@@ -1410,7 +1410,7 @@ df2</code></pre>
 <div id="example-2" class="section level3">
 <h3><span class="header-section-number">12.15.2</span> Example 2</h3>
 <p>Series of summary calculations for grouped data (<code>group_by</code>)</p>
-<pre class="r"><code>iris_df %&gt;% # Declare data frame to use 
+<pre class="r"><code>iris_df %&gt;% # Declare tibble to use 
     group_by(Species) %&gt;% # Group by species
     summarize(Mean_Sepal.Length=mean(Sepal.Length), 
               Max_Sepal.Length=max(Sepal.Length),
@@ -1460,16 +1460,16 @@ dbWriteTable(mydb, &quot;mydf2&quot;, mydf2)</code></pre>
 <h2><span class="header-section-number">13.3</span> Import table into <code>data.frame</code></h2>
 <pre class="r"><code>dbGetQuery(mydb, 'SELECT * FROM mydf2')</code></pre>
 <pre><code>##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 1   id70          5.6         2.5          3.9         1.1 versicolor
-## 2  id146          6.7         3.0          5.2         2.3  virginica
-## 3   id89          5.6         3.0          4.1         1.3 versicolor
-## 4   id63          6.0         2.2          4.0         1.0 versicolor
-## 5  id117          6.5         3.0          5.5         1.8  virginica
-## 6  id113          6.8         3.0          5.5         2.1  virginica
-## 7  id130          7.2         3.0          5.8         1.6  virginica
-## 8   id96          5.7         3.0          4.2         1.2 versicolor
-## 9   id27          5.0         3.4          1.6         0.4     setosa
-## 10   id8          5.0         3.4          1.5         0.2     setosa</code></pre>
+## 1   id90          5.5         2.5          4.0         1.3 versicolor
+## 2   id15          5.8         4.0          1.2         0.2     setosa
+## 3   id80          5.7         2.6          3.5         1.0 versicolor
+## 4  id117          6.5         3.0          5.5         1.8  virginica
+## 5  id130          7.2         3.0          5.8         1.6  virginica
+## 6  id127          6.2         2.8          4.8         1.8  virginica
+## 7  id134          6.3         2.8          5.1         1.5  virginica
+## 8  id116          6.4         3.2          5.3         2.3  virginica
+## 9   id31          4.8         3.1          1.6         0.2     setosa
+## 10  id42          4.5         2.3          1.3         0.3     setosa</code></pre>
 </div>
 <div id="query-database" class="section level2">
 <h2><span class="header-section-number">13.4</span> Query database</h2>
@@ -1486,27 +1486,27 @@ dbWriteTable(mydb, &quot;mydf2&quot;, mydf2)</code></pre>
 <p>The two tables can be joined on the shared <code>ids</code> column as follows.</p>
 <pre class="r"><code>dbGetQuery(mydb, 'SELECT * FROM mydf1, mydf2 WHERE mydf1.ids = mydf2.ids')</code></pre>
 <pre><code>##      ids Sepal.Length Sepal.Width Petal.Length Petal.Width    Species   ids Sepal.Length
-## 1    id8          5.0         3.4          1.5         0.2     setosa   id8          5.0
-## 2   id27          5.0         3.4          1.6         0.4     setosa  id27          5.0
-## 3   id63          6.0         2.2          4.0         1.0 versicolor  id63          6.0
-## 4   id70          5.6         2.5          3.9         1.1 versicolor  id70          5.6
-## 5   id89          5.6         3.0          4.1         1.3 versicolor  id89          5.6
-## 6   id96          5.7         3.0          4.2         1.2 versicolor  id96          5.7
-## 7  id113          6.8         3.0          5.5         2.1  virginica id113          6.8
-## 8  id117          6.5         3.0          5.5         1.8  virginica id117          6.5
+## 1   id15          5.8         4.0          1.2         0.2     setosa  id15          5.8
+## 2   id31          4.8         3.1          1.6         0.2     setosa  id31          4.8
+## 3   id42          4.5         2.3          1.3         0.3     setosa  id42          4.5
+## 4   id80          5.7         2.6          3.5         1.0 versicolor  id80          5.7
+## 5   id90          5.5         2.5          4.0         1.3 versicolor  id90          5.5
+## 6  id116          6.4         3.2          5.3         2.3  virginica id116          6.4
+## 7  id117          6.5         3.0          5.5         1.8  virginica id117          6.5
+## 8  id127          6.2         2.8          4.8         1.8  virginica id127          6.2
 ## 9  id130          7.2         3.0          5.8         1.6  virginica id130          7.2
-## 10 id146          6.7         3.0          5.2         2.3  virginica id146          6.7
+## 10 id134          6.3         2.8          5.1         1.5  virginica id134          6.3
 ##    Sepal.Width Petal.Length Petal.Width    Species
-## 1          3.4          1.5         0.2     setosa
-## 2          3.4          1.6         0.4     setosa
-## 3          2.2          4.0         1.0 versicolor
-## 4          2.5          3.9         1.1 versicolor
-## 5          3.0          4.1         1.3 versicolor
-## 6          3.0          4.2         1.2 versicolor
-## 7          3.0          5.5         2.1  virginica
-## 8          3.0          5.5         1.8  virginica
+## 1          4.0          1.2         0.2     setosa
+## 2          3.1          1.6         0.2     setosa
+## 3          2.3          1.3         0.3     setosa
+## 4          2.6          3.5         1.0 versicolor
+## 5          2.5          4.0         1.3 versicolor
+## 6          3.2          5.3         2.3  virginica
+## 7          3.0          5.5         1.8  virginica
+## 8          2.8          4.8         1.8  virginica
 ## 9          3.0          5.8         1.6  virginica
-## 10         3.0          5.2         2.3  virginica</code></pre>
+## 10         2.8          5.1         1.5  virginica</code></pre>
 </div>
 </div>
 <div id="graphics-in-r" class="section level1">
@@ -1802,7 +1802,7 @@ my_target[1:2,]</code></pre>
 ## 1 AT1G08520.1   C 0.822 0.137 0.029 0.039
 ## 2 AT1G08530.1   C 0.817 0.058 0.010 0.100</code></pre>
 </div>
-<div id="merging-data-frames-1" class="section level2">
+<div id="merging-data-frames" class="section level2">
 <h2><span class="header-section-number">15.3</span> Merging Data Frames</h2>
 <ul>
 <li><strong>Step 2</strong>: Assign uniform gene ID column titles</li>
@@ -2130,7 +2130,7 @@ ln -s ~/bigdata/today/rmarkdown/sample.html sample.html</code></pre>
 <h1><span class="header-section-number">17</span> Shiny Web Apps</h1>
 <div id="what-is-shiny" class="section level2">
 <h2><span class="header-section-number">17.1</span> What is Shiny?</h2>
-<p><a href="https://shiny.rstudio.com/tutorial/lesson1/">Shiny</a> is an R-based environment for building interactive web applications for data analysis and exploration. Since most JavaScript code is autogenerated by the environment, basic R knowledge is sufficient for developing Shiny apps. They can be deployed on local computers or web servers including custom and cloud-based servers (e.g. AWS, GCP, shinyapp.io service). The basic structure of a Shiny app is an <code>app.R</code> script containing the following components:</p>
+<p><a href="https://shiny.rstudio.com/gallery/">Shiny</a> is an R-based environment for building interactive web applications for data analysis and exploration. Since most JavaScript code is autogenerated by the environment, basic R knowledge is sufficient for developing Shiny apps. They can be deployed on local computers or web servers including custom and cloud-based servers (e.g. AWS, GCP, <a href="http://www.shinyapps.io/">shinyapp.io</a> service). The basic structure of a Shiny app is an <code>app.R</code> script containing the following components:</p>
 <ol style="list-style-type: decimal">
 <li><p>User interface</p>
 <pre class="r"><code>ui &lt;- fluidPage()</code></pre></li>
@@ -2164,7 +2164,7 @@ deployApp()</code></pre>
 </div>
 <div id="learning-shiny" class="section level2">
 <h2><span class="header-section-number">17.5</span> Learning Shiny</h2>
-<p>The Shiny section on the Rstudio site contains excellent <a href="https://shiny.rstudio.com/tutorial/lesson1/">tutorials</a>. In addition, users may want to explore the example apps included in the <code>shiny</code> package. This can be done by loading the individual examples (see <a href="https://shiny.rstudio.com/tutorial/lesson1/">here</a>) or saving the code to a user writable directory like this:</p>
+<p>The Shiny section on the Rstudio site contains excellent <a href="https://shiny.rstudio.com/tutorial/">tutorials</a>. In addition, users may want to explore the example apps included in the <code>shiny</code> package. This can be done by loading the individual examples (see <a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/">here</a>) or saving the code to a user writable directory like this:</p>
 <pre class="r"><code>mydir &lt;- system.file(&quot;examples&quot;, package=&quot;shiny&quot;)
 dir.create('my_shiny_test_dir')
 file.copy(mydir, &quot;my_shiny_test_dir&quot;, recursive=TRUE)
@@ -2191,28 +2191,30 @@ dir() # Lists available Shiny examples (directories). </code></pre>
 ## [10] LC_TELEPHONE=C             LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## [1] stats     graphics  grDevices utils     datasets  base     
 ## 
 ## other attached packages:
-##  [1] knitr_1.20          gplots_3.0.1        RSQLite_2.0         bindrcpp_0.2       
-##  [5] data.table_1.10.4-3 forcats_0.3.0       stringr_1.2.0       dplyr_0.7.4        
-##  [9] purrr_0.2.4         readr_1.1.1         tidyr_0.7.2         tibble_1.4.2       
-## [13] tidyverse_1.2.1     ggplot2_2.2.1       limma_3.34.0        BiocStyle_2.6.1    
-## [17] nvimcom_0.9-34     
+##  [1] DT_0.4              knitr_1.20          gplots_3.0.1        RSQLite_2.0        
+##  [5] bindrcpp_0.2        data.table_1.10.4-3 forcats_0.3.0       stringr_1.2.0      
+##  [9] dplyr_0.7.4         purrr_0.2.4         readr_1.1.1         tidyr_0.7.2        
+## [13] tibble_1.4.2        tidyverse_1.2.1     ggplot2_2.2.1       limma_3.34.0       
+## [17] BiocStyle_2.6.1    
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.13       lubridate_1.7.4    lattice_0.20-35    gtools_3.5.0       assertthat_0.2.0  
-##  [6] rprojroot_1.3-2    digest_0.6.12      psych_1.8.3.3      R6_2.2.2           cellranger_1.1.0  
-## [11] plyr_1.8.4         backports_1.1.1    evaluate_0.10.1    highr_0.6          httr_1.3.1        
-## [16] pillar_1.2.1       rlang_0.2.0        lazyeval_0.2.1     readxl_1.0.0       rstudioapi_0.7    
-## [21] gdata_2.18.0       blob_1.1.0         rmarkdown_1.9      labeling_0.3       foreign_0.8-70    
-## [26] bit_1.1-12         munsell_0.4.3      broom_0.4.4        compiler_3.4.4     modelr_0.1.1      
-## [31] pkgconfig_2.0.1    mnormt_1.5-5       htmltools_0.3.6    codetools_0.2-15   crayon_1.3.4      
-## [36] bitops_1.0-6       grid_3.4.4         nlme_3.1-137       jsonlite_1.5       gtable_0.2.0      
-## [41] DBI_0.7            magrittr_1.5       scales_0.5.0       KernSmooth_2.23-15 cli_1.0.0         
-## [46] stringi_1.1.5      reshape2_1.4.2     xml2_1.1.1         tools_3.4.4        bit64_0.9-7       
-## [51] glue_1.2.0         hms_0.3            parallel_3.4.4     yaml_2.1.14        colorspace_1.3-2  
-## [56] caTools_1.17.1     rvest_0.3.2        memoise_1.1.0      bindr_0.1          haven_1.1.1</code></pre>
+##  [1] httr_1.3.1         bit64_0.9-7        jsonlite_1.5       modelr_0.1.1       gtools_3.5.0      
+##  [6] shiny_1.0.5        assertthat_0.2.0   highr_0.6          blob_1.1.0         cellranger_1.1.0  
+## [11] yaml_2.1.14        pillar_1.2.1       backports_1.1.1    lattice_0.20-35    glue_1.2.0        
+## [16] digest_0.6.12      rvest_0.3.2        colorspace_1.3-2   htmltools_0.3.6    httpuv_1.3.5      
+## [21] plyr_1.8.4         psych_1.8.3.3      pkgconfig_2.0.1    broom_0.4.4        haven_1.1.1       
+## [26] xtable_1.8-2       scales_0.5.0       gdata_2.18.0       lazyeval_0.2.1     cli_1.0.0         
+## [31] mnormt_1.5-5       magrittr_1.5       crayon_1.3.4       readxl_1.0.0       mime_0.5          
+## [36] memoise_1.1.0      evaluate_0.10.1    methods_3.4.4      nlme_3.1-137       xml2_1.1.1        
+## [41] foreign_0.8-70     tools_3.4.4        hms_0.3            munsell_0.4.3      compiler_3.4.4    
+## [46] caTools_1.17.1     rlang_0.2.0        grid_3.4.4         rstudioapi_0.7     htmlwidgets_1.2   
+## [51] crosstalk_1.0.0    bitops_1.0-6       labeling_0.3       rmarkdown_1.9      gtable_0.2.0      
+## [56] codetools_0.2-15   DBI_0.7            reshape2_1.4.2     R6_2.2.2           lubridate_1.7.4   
+## [61] bit_1.1-12         utf8_1.1.3         bindr_0.1          rprojroot_1.3-2    KernSmooth_2.23-15
+## [66] stringi_1.1.5      parallel_3.4.4     Rcpp_0.12.13</code></pre>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1>References</h1>

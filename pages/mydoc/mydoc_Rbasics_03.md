@@ -1,6 +1,6 @@
 ---
 title: 3. Installation of R Packages
-last_updated: Wed May 30 17:07:21 2018
+last_updated: Wed May 30 20:59:44 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_03.html
 ---

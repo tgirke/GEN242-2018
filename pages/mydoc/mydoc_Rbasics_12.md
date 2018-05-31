@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Wed May 30 17:07:21 2018
+last_updated: Wed May 30 20:59:44 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -11,7 +11,7 @@ short introduction to the usage and functionalities of the `dplyr` package.
 More detailed tutorials on this topic can be found here:
 
 * [dplyr: A Grammar of Data Manipulation](https://rdrr.io/cran/dplyr/)
-* [Introduction to `dplyr`](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+* [Introduction to `dplyr`](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
 * [Tutorial on `dplyr`](http://genomicsclass.github.io/book/pages/dplyr_tutorial.html)
 * [Cheatsheet for Joins from Jenny Bryan](http://stat545.com/bit001_dplyr-cheatsheet.html)
 * [Tibbles](https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html)
@@ -32,12 +32,12 @@ package management, one can install and load the entire collection via the
 install.packages("tidyverse")
 ```
 
-## Construct a `data frame` (`tibble`)
+## Construct a `tibble` (`tibble`)
 
 
 ```r
 library(tidyverse)
-as_data_frame(iris) # coerce data.frame to data frame tbl
+as_tibble(iris) # coerce data.frame to tibble tbl
 ```
 
 ```
@@ -57,16 +57,16 @@ as_data_frame(iris) # coerce data.frame to data frame tbl
 ## # ... with 140 more rows
 ```
 
-Alternative functions producing the same result include `as_tibble` and `tbl_df`:
+Alternative functions producing the same result include `as_data_frame` and `tbl_df`:
 
 
 ```r
-as_tibble(iris) # newer function provided by tibble package
-tbl_df(iris) # this alternative exists for historical reasons
+as_data_frame(iris) 
+tbl_df(iris) 
 ```
 ## Reading and writing tabular files
 
-While the base R read/write utilities can be used for `data frames`, best time
+While the base R read/write utilities can be used for `data.frames`, best time
 performance with the least amount of typing is achieved with the export/import
 functions from the `readr` package. For very large files the `fread` function from 
 the `data.table` package achieves the best time performance. 
@@ -164,7 +164,7 @@ Export function provided by `readr` inlcude
 * `write_excel_csv()`: excel style CSV files
 * `write_tsv()`: tab separated files
 
-For instance, the `write_tsv` function writes a `data frame` to a tab delimited file with much nicer
+For instance, the `write_tsv` function writes a `data.frame` or `tibble` to a tab delimited file with much nicer
 default settings than the base R `write.table` function. 
 
 
@@ -222,7 +222,7 @@ bind_rows(iris_df, iris_df)
 
 ## Extract column as vector
 
-The subsetting operators `[[` and `$`can be used to extract from a `data frame` single columns as vector.
+The subsetting operators `[[` and `$`can be used to extract from a `tibble` single columns as vector.
 
 
 ```r
@@ -348,12 +348,12 @@ iris_df[1:2,]
 
 ### Subset rows by names
 
-Since `data frames` do not contain row names, row wise subsetting via the `[,]` operator cannot be used.
+Since `tibbles` do not contain row names, row wise subsetting via the `[,]` operator cannot be used.
 However, the corresponding behavior can be achieved by passing to `select` a row position index 
 obtained by basic R intersect utilities such as `match`.
 
 
-Create a suitable test `data frame`
+Create a suitable test `tibble`
 
 
 ```r
@@ -795,18 +795,18 @@ summarize_all(group_by(iris_df, Species), mean)
 Note: `group_by` does the looping for the user similar to `aggregate` or `tapply`.
 
 
-## Merging data frames
+## Merging tibbles
 
-The `dplyr` package provides several join functions for merging `data frames` by a common key column
+The `dplyr` package provides several join functions for merging `tibbles` by a common key column
 similar to the `merge` function in base R. These `*_join` functions include: 
 
-* `inner_join()`: returns join only for rows matching among both `data tables`
-* `full_join()`: returns join for all (matching and non-matching) rows of two `data tables` 
-* `left_join()`: returns join for all rows in first `data table` 
-* `right_join()`: returns join for all rows in second `data table`
-* `anti_join()`: returns for first `data table` only those rows that have no match in the second one
+* `inner_join()`: returns join only for rows matching among both `tibbles`
+* `full_join()`: returns join for all (matching and non-matching) rows of two `tibbles` 
+* `left_join()`: returns join for all rows in first `tibble` 
+* `right_join()`: returns join for all rows in second `tibble`
+* `anti_join()`: returns for first `tibble` only those rows that have no match in the second one
 
-Sample `data frames` to illustrate `*.join` functions.
+Sample `tibbles` to illustrate `*.join` functions.
 
 
 ```r
@@ -951,7 +951,7 @@ For additional join options users want to cosult the `*_join` help pages.
 ## Chaining
 
 To simplify chaining of serveral operations, `dplyr` provides the `%>%`
-operator. where `x %>% f(y)` turns into `f(x, y)`. This way one can pipe
+operator, where `x %>% f(y)` turns into `f(x, y)`. This way one can pipe
 together multiple operations by writing them from left-to-right or
 top-to-bottom. This makes for easy to type and readable code.
 
@@ -962,7 +962,7 @@ Series of data manipulations and export
 
 
 ```r
-iris_df %>% # Declare data frame to use 
+iris_df %>% # Declare tibble to use 
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
@@ -996,7 +996,7 @@ Series of summary calculations for grouped data (`group_by`)
 
 
 ```r
-iris_df %>% # Declare data frame to use 
+iris_df %>% # Declare tibble to use 
     group_by(Species) %>% # Group by species
     summarize(Mean_Sepal.Length=mean(Sepal.Length), 
               Max_Sepal.Length=max(Sepal.Length),
