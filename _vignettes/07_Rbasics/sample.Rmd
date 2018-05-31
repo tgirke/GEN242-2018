@@ -101,13 +101,12 @@ rmarkdown::render("sample.Rmd", clean=TRUE, output_format="html_document")
 The following shows two options how to run the rendering from the command-line.
 
 ```{sh render_commandline, eval=FALSE, message=FALSE}
-$ echo "rmarkdown::render('sample.Rmd', clean=TRUE)" | R --slave
 $ Rscript -e "rmarkdown::render('sample.Rmd', clean=TRUE)"
 ```
 
 Alternatively, one can use a Makefile to evaluate and render an R Markdown
 script. A sample Makefile for rendering the above `sample.Rmd` can be
-downloaded [`here`](https://raw.githubusercontent.com/tgirke/GEN242/master/vignettes/07_Rbasics/Makefile).
+downloaded [`here`](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/Makefile).
 To apply it to a custom `Rmd` file, one needs open the Makefile in a text
 editor and change the value assigned to `MAIN` (line 13) to the base name of
 the corresponding `.Rmd` file (_e.g._ assign `systemPipeRNAseq` if the file
@@ -167,6 +166,17 @@ example uses `kable` from the `knitr` package.
 ```{r kable}
 library(knitr)
 kable(iris[1:12,])
+```
+
+A much more elegant and powerful solution is to create fully interactive tables with the [`DT` package](https://rstudio.github.io/DT/). 
+This JavaScirpt based environment provides a wrapper to the DataTables library using jQuery. The resulting tables can be sorted, queried and resized by the
+user. 
+
+```{r dt}
+library(DT)
+datatable(iris, filter = 'top', options = list(
+  pageLength = 100, scrollX = TRUE, scrollY = "600px", autoWidth = TRUE
+))
 ```
 
 ### Figures
