@@ -1,4 +1,4 @@
-k--
+---
 title: "Introduction to R" 
 author: "Author: Thomas Girke"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
@@ -1610,11 +1610,17 @@ library(knitr)
 kable(iris[1:12,])
 ```
 
-A much more elegant and powerful solution is to create fully interactive tables with the [`DT` package](https://rstudio.github.io/DT/).                                       
-This JavaScirpt based environment provides a wrapper to the DataTables library using jQuery. The resulting tables can be sorted, queried and resized by the                   
-user. See [here](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/sample.html) for an example.
+A much more elegant and powerful solution is to create fully interactive tables
+with the [`DT` package](https://rstudio.github.io/DT/). This JavaScirpt based environment provides a wrapper to the DataTables library
+using jQuery. The resulting tables can be sorted, queried and resized by the
+user. For an example see [here]().
 
-                                                                                                                                                                              
+```{r dt}
+library(DT)
+datatable(iris, filter = 'top', options = list(
+	  pageLength = 100, scrollX = TRUE, scrollY = "600px", autoWidth = TRUE
+	 ))
+```
 
 ### Figures
 

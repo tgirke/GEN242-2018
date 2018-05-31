@@ -1,6 +1,6 @@
 ---
 title: 18. Session Info
-last_updated: Wed May 30 16:44:22 2018
+last_updated: Wed May 30 17:04:14 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_18.html
 ---
