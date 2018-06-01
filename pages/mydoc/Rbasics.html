@@ -1386,7 +1386,8 @@ df2</code></pre>
 <div id="example-1" class="section level3">
 <h3><span class="header-section-number">12.15.1</span> Example 1</h3>
 <p>Series of data manipulations and export</p>
-<pre class="r"><code>iris_df %&gt;% # Declare tibble to use 
+<pre class="r"><code>read_tsv(&quot;iris.txt&quot;) %&gt;% # Import with read_tbv from readr package
+    as_tibble() %&gt;% # Declare tibble to use
     select(Sepal.Length:Species) %&gt;% # Select columns
     filter(Species==&quot;setosa&quot;) %&gt;% # Filter rows by some value
     arrange(Sepal.Length) %&gt;% # Sort by some column

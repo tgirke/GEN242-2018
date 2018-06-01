@@ -974,7 +974,8 @@ top-to-bottom. This makes for easy to type and readable code.
 Series of data manipulations and export
 
 ```{r plyr_chaining1, eval=TRUE}
-iris_df %>% # Declare tibble to use 
+read_tsv("iris.txt") %>% # Import with read_tbv from readr package
+    as_tibble() %>% # Declare tibble to use
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column

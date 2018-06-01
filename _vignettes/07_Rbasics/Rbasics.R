@@ -378,7 +378,8 @@ full_join(df1, df2, by=c("ids1"="ids2"))
 anti_join(df1, df2, by=c("ids1"="ids2"))
 
 ## ----plyr_chaining1, eval=TRUE-------------------------------------------
-iris_df %>% # Declare tibble to use 
+read_tsv("iris.txt") %>% # Import with read_tbv from readr package
+    as_tibble() %>% # Declare tibble to use
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column

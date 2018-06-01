@@ -1,6 +1,6 @@
 ---
 title: 2. R Package Repositories
-last_updated: Thu May 31 12:31:49 2018
+last_updated: Thu May 31 20:38:36 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_02.html
 ---

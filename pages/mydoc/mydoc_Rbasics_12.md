@@ -1,6 +1,6 @@
 ---
 title: 12. dplyr Environment
-last_updated: Thu May 31 12:31:49 2018
+last_updated: Thu May 31 20:38:36 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_12.html
 ---
@@ -962,7 +962,8 @@ Series of data manipulations and export
 
 
 ```r
-iris_df %>% # Declare tibble to use 
+read_tsv("iris.txt") %>% # Import with read_tbv from readr package
+    as_tibble() %>% # Declare tibble to use
     select(Sepal.Length:Species) %>% # Select columns
     filter(Species=="setosa") %>% # Filter rows by some value
     arrange(Sepal.Length) %>% # Sort by some column
