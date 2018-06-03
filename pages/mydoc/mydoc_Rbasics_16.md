@@ -1,6 +1,6 @@
 ---
 title: 16. R Markdown
-last_updated: Sat Jun  2 17:48:07 2018
+last_updated: Sat Jun  2 17:57:44 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
@@ -270,8 +270,8 @@ If necessary access to the URL can be restricted with a password following the i
 
 A sample R Markdown report for an RNA-Seq project is given here:
 
-+ [RNASeq.html](http://htmlpreview.github.io/?https://github.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/demo_files/systemPipeRNAseq.html)
-+ [RNASeq.Rmd](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/demo_files/systemPipeRNAseq.Rmd){:target="_blank"} ],
++ [RNASeq.html](https://girke.bioinformatics.ucr.edu/GEN242/pages/mydoc/demo_files/systemPipeRNAseq.html){:target="_blank"}
++ [RNASeq.Rmd](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/pages/mydoc/demo_files/systemPipeRNAseq.Rmd){:target="_blank"}
 
 
 <br><br><center><a href="mydoc_Rbasics_15.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page

@@ -1,6 +1,6 @@
 ---
 title: 19. References
-last_updated: Sat Jun  2 17:48:07 2018
+last_updated: Sat Jun  2 17:57:44 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_19.html
 ---
