@@ -1,6 +1,6 @@
 ---
 title: 16. R Markdown
-last_updated: Thu May 31 20:38:36 2018
+last_updated: Sat Jun  2 17:38:33 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rbasics_16.html
 ---
@@ -57,7 +57,7 @@ package from Bioconductor.
  ---
 title: "My First R Markdown Document"
 author: "Author: First Last"
-date: "Last update: 31 May, 2018"
+date: "Last update: 02 June, 2018"
 output:
   BiocStyle::html_document:
     toc: true
@@ -270,8 +270,9 @@ If necessary access to the URL can be restricted with a password following the i
 
 A sample R Markdown report for an RNA-Seq project is given here:
 
-+ [RNASeq.html](http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.html)
-+ [RNASeq.Rmd](http://biocluster.ucr.edu/~tgirke/gen242/today/systemPipeRNAseq.Rmd)
++ [RNASeq.html](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/demo_files/systemPipeRNAseq.html)
++ [RNASeq.Rmd](https://raw.githubusercontent.com/tgirke/GEN242/gh-pages/_vignettes/07_Rbasics/demo_files/systemPipeRNAseq.Rmd){:target="_blank"} ],
+
 
 <br><br><center><a href="mydoc_Rbasics_15.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page
 <a href="mydoc_Rbasics_17.html"><img src="images/right_arrow.png" alt="Next page."></a></center>
