@@ -21,7 +21,7 @@ permalink: mydoc_project_chipseq1.html
 + Challenge project tasks
     + Prioritize/rank peaks by FDR from differential binding analysis
     + Parse peak sequences from genome
-    + Determine which motifs in the Jaspar database ([motifDB](http://bioconductor.org/packages/release/bioc/html/MotifDb.html)) show the highest enrichment in the peak sequences. The motif enrichment tests can be performed with the [PWMEnrich](http://bioconductor.org/packages/release/bioc/html/PWMEnrich.html) packages. Basic starter code is provided [here](https://gist.github.com/tgirke/df6fe20c2e42e71a7ade04941d4a05e9).
+    + Determine which _A. thaliana_ motifs in the Jaspar database ([motifDB](http://bioconductor.org/packages/release/bioc/html/MotifDb.html)) show the highest enrichment in the peak sequences. The motif enrichment tests can be performed with the [PWMEnrich](http://bioconductor.org/packages/release/bioc/html/PWMEnrich.html) package. Basic starter code for accomplishing these tasks is provided [here](https://gist.github.com/tgirke/df6fe20c2e42e71a7ade04941d4a05e9).
     + Optional: use different statistical methods to test for motif enrichment.
  
 
