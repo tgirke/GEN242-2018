@@ -235,7 +235,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">NGS Analysis Basics</h1>
 <h4 class="author"><em>Author: Thomas Girke</em></h4>
-<h4 class="date"><em>Last update: 06 May, 2018</em></h4>
+<h4 class="date"><em>Last update: 04 June, 2018</em></h4>
 
 </div>
 
@@ -1485,7 +1485,8 @@ getSeq(FaFile(&quot;./data/test&quot;), gff)</code></pre>
 <h3><span class="header-section-number">7.2.2</span> <code>extractTranscriptSeqs</code></h3>
 <p>Sequences composed of several ranges, such as transcripts (or CDSs) with several exons, can be parsed with <code>extractTranscriptSeqs</code>. Note: the following expects the genome sequence in a file called <code>mygenome.fasta</code> and a valid <code>txdb</code> defining the ranges for that genome.</p>
 <pre class="r"><code>library(GenomicFeatures); library(Biostrings); library(Rsamtools)
-extractTranscriptSeqs(FaFile(&quot;mygenome.fasta&quot;), exonsBy(txdb, &quot;tx&quot;, use.names=TRUE)) </code></pre>
+indexFa(&quot;mygenome.fasta&quot;) # Creates index for genome fasta
+txseq &lt;- extractTranscriptSeqs(FaFile(&quot;mygenome.fasta&quot;), txdb, use.names=TRUE) </code></pre>
 </div>
 </div>
 </div>

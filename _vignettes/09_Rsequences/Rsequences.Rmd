@@ -715,7 +715,8 @@ Note: the following expects the genome sequence in a file called `mygenome.fasta
 genome.
 ```{r extractTranscritpSeqs, eval=FALSE, message=FALSE, warnings=FALSE}
 library(GenomicFeatures); library(Biostrings); library(Rsamtools)
-extractTranscriptSeqs(FaFile("mygenome.fasta"), exonsBy(txdb, "tx", use.names=TRUE)) 
+indexFa("mygenome.fasta") # Creates index for genome fasta
+txseq <- extractTranscriptSeqs(FaFile("mygenome.fasta"), txdb, use.names=TRUE) 
 ```
 
 # Homework 6

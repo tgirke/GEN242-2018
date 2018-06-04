@@ -1,6 +1,6 @@
 ---
 title: 7. Transcript Ranges
-last_updated: Sun May  6 14:41:35 2018
+last_updated: Mon Jun  4 09:59:09 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_07.html
 ---
@@ -202,7 +202,8 @@ genome.
 
 ```r
 library(GenomicFeatures); library(Biostrings); library(Rsamtools)
-extractTranscriptSeqs(FaFile("mygenome.fasta"), exonsBy(txdb, "tx", use.names=TRUE)) 
+indexFa("mygenome.fasta") # Creates index for genome fasta
+txseq <- extractTranscriptSeqs(FaFile("mygenome.fasta"), txdb, use.names=TRUE) 
 ```
 
 <br><br><center><a href="mydoc_Rsequences_06.html"><img src="images/left_arrow.png" alt="Previous page."></a>Previous Page &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Next Page

@@ -1,6 +1,6 @@
 ---
 title: 6. Range Operations  
-last_updated: Sun May  6 14:41:35 2018
+last_updated: Mon Jun  4 09:59:09 2018
 sidebar: mydoc_sidebar
 permalink: mydoc_Rsequences_06.html
 ---
