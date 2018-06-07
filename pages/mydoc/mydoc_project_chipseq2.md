@@ -22,7 +22,7 @@ permalink: mydoc_project_chipseq2.html
     + Call peaks with MACS2 and PeakSeq
     + Compare the results from (a) with peaks identified by Kaufmann et al (2010)
     + Report unique and common peaks among three methods and plot the results as venn diagrams
-    + Plot the performance of the peak callers in form of ROC plots. As true result set one can use the union of the peaks identified by all methods. 
+    + Plot the performance of the peak callers in form of ROC plots. As true result set one can use the intersect of the peaks identified by all methods. 
 
 ## References
 
