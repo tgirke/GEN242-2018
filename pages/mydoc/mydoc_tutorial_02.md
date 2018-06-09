@@ -554,6 +554,7 @@ user accounts of UCR’s HPCC, the above install script `install_nvimRtmux` incl
 install of `vimcmdline`.
 
 The usage of `vimcmdline` is very similar to `nvim-R`. To start a connected terminal session, one
-opens with nvim a code file with the extension of a given languate (_e.g._ `*.sh` for Bash or `*.py` for Python), 
+opens with nvim a code file with the extension of a given language (_e.g._ `*.sh` for Bash or `*.py` for Python), 
 while the corresponding interactive interpreter session is initiated
-with the `\s` (corresponds to `\rf` under `nvim-R`). Subsequently, code lines can be sent by pressing the space bar. 
+by pressing the key sequence `\s` (corresponds to `\rf` under `nvim-R`). Subsequently, code lines can be sent 
+with the space bar. More details are available [here](https://github.com/jalvesaq/vimcmdline). 
