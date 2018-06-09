@@ -547,11 +547,11 @@ __Session-level comands__
 ## Nvim IDEs for other languages
 
 For other languages, such as Bash, Python and Ruby, one can use the
-[vimcmdline](https://github.com/jalvesaq/vimcmdline) for nvim (or vim). To
+[vimcmdline](https://github.com/jalvesaq/vimcmdline) plugin for nvim (or vim). To
 install it, one needs to copy from the `vimcmdline` resository the directories
 `ftplugin`, `plugin` and `syntax` and their files to `~/.config/nvim/`. For
 user accounts of UCR’s HPCC, the above install script `install_nvimRtmux` includes the 
-install of `vimcmdline`.
+install of `vimcmdline` (since 09-Jun-18).
 
 The usage of `vimcmdline` is very similar to `nvim-R`. To start a connected terminal session, one
 opens with nvim a code file with the extension of a given language (_e.g._ `*.sh` for Bash or `*.py` for Python), 
