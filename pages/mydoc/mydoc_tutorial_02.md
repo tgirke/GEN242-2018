@@ -544,3 +544,13 @@ __Session-level comands__
 * `$ tmux kill-session -t <id>`: kills a specific tmux session
 * `Ctrl-a : kill-session`: kills a session from tmux command mode that can be initiated with `Ctrl-a :`
 
+## Nvim IDEs for other languages
+
+For other languages, such as Bash, Python and Ruby, one can use the
+[vimcmdline](https://github.com/jalvesaq/vimcmdline) for nvim (or vim). To
+install it, one needs to copy from the `vimcmdline` resository the directories
+`ftplugin`, `plugin` and `syntax` and their files to `~/.config/nvim/`. For
+user accounts of UCR’s HPCC, the above install script `install_nvimRtmux` includes the 
+install of `vimcmdline`.
+
+
