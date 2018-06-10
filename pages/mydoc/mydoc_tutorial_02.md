@@ -202,7 +202,7 @@ chmod ugo+rx my_file
 * `-` causes them to be removed
 * `=` causes them to be the only permissions that the file has.
 
-When performing the same operation on many files with subdirectories then on can 
+When performing the same operation on many files with subdirectories then one can 
 use `-R` for recursive behavior.
 ```sh
 chmod -R ugo+rx my_dir
@@ -212,7 +212,7 @@ Since directories have to be executable the capital `X` option can be useful whi
 applies only to directories but not to files. The following will assign to directories
 `drwxr-xr-x` and to files `-rw-r--r--`.
 ```sh
-chmod -R u+rwX,go+rX,go-w *
+chmod -R u+rwX,go+rX,go-w my_dir
 ```
 
 Syntax for changing user & group ownership
