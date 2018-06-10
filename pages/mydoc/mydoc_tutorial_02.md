@@ -416,10 +416,10 @@ The following opens a file (here `myfile`) with nvim (or vim)
 nvim myfile.txt # for neovim (or 'vim myfile.txt' for vim)
 ```
 
-Once you are in Nvim the most important commands are:
+Once you are in Nvim, there are three main modes: normal, insert and command mode. The most important commands for switching between the three modes are:
 
-* `i`: The `i` key brings you into the insert mode for typing. 
-* `Esc`: The `Esc` key brings you out of the insert mode.
+* `i`: The `i` key brings you from the normal mode to the insert mode. The latter is usded for typing. 
+* `Esc`: The `Esc` key brings you from the insert mode back to the normal mode.
 * `:`: The `:` key starts the command mode at the bottom of the screen.
 
 Use the arrow keys to move your cursor in the text. Using `Fn Up/Down key` allows to page through
