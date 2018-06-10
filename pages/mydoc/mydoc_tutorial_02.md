@@ -209,10 +209,10 @@ chmod -R ugo+rx my_dir
 ```
 
 Since directories have to be executable the capital `X` option can be useful which
-applies only to directories but not to files. The following will assign to directories
-`drwxr-xr-x` and to files `-rw-r--r--`.
+applies only to directories but not to files. The following will assign `drwxr-xr-x` to directories 
+and `-rw-r--r--` to files and hidden files.
 ```sh
-chmod -R u+rwX,go+rX,go-w my_dir
+chmod -R ugo-x,u+rwX,go+rX,go-w ./* ./.[!.]*
 ```
 
 Syntax for changing user & group ownership
