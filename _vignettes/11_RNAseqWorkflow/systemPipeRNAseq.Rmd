@@ -516,6 +516,6 @@ sessionInfo()
 
 # Funding
 
-This project was supported by funds from the National Institutes of Health (NIH).
+This project was supported by funds from the National Science Foundation (NSF; PGRP-1810468, ABI-1661152).
 
 # References
