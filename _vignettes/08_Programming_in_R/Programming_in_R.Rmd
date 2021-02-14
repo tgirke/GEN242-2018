@@ -1,5 +1,4 @@
-k--
-
+---
 title: "Programming in R" 
 author: "Author: Thomas Girke"
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`" 
